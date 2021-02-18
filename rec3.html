@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 3 Recitation3 Example | DATA 101 Book Demo</title>
+  <meta name="description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 3 Recitation3 Example | DATA 101 Book Demo" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 3 Recitation3 Example | DATA 101 Book Demo" />
+  
+  <meta name="twitter:description" content="This is a minimal example of using the bookdown package to write a book. The output format for this example is bookdown::gitbook." />
+  
+
+<meta name="author" content="Deep Lokhande" />
+
+
+<meta name="date" content="2021-02-18" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="permtest.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Prerequisites</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> Introduction</a></li>
+<li class="chapter" data-level="3" data-path="rec3.html"><a href="rec3.html"><i class="fa fa-check"></i><b>3</b> Recitation3 Example</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="rec3.html"><a href="rec3.html#topics"><i class="fa fa-check"></i><b>3.1</b> Topics</a></li>
+<li class="chapter" data-level="3.2" data-path="rec3.html"><a href="rec3.html#create-column"><i class="fa fa-check"></i><b>3.2</b> Create Column</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="permtest.html"><a href="permtest.html"><i class="fa fa-check"></i><b>4</b> Permutation Test</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="permtest.html"><a href="permtest.html#permutation-test-one-step"><i class="fa fa-check"></i><b>4.1</b> Permutation Test One Step</a></li>
+<li class="chapter" data-level="4.2" data-path="permtest.html"><a href="permtest.html#permutation-function-on-traffic.csv"><i class="fa fa-check"></i><b>4.2</b> Permutation Function on Traffic.csv</a></li>
+<li class="chapter" data-level="4.3" data-path="permtest.html"><a href="permtest.html#exercise---how-p-value-is-affected-by-difference-of-means-and-standard-deviations"><i class="fa fa-check"></i><b>4.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DATA 101 Book Demo</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="rec3" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Recitation3 Example</h1>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<p><strong>NOTE: Not all code chunks are converted to interactive, only the first create column example is converted.</strong></p>
+<hr />
+<div id="topics" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Topics</h2>
+<ul>
+<li>Create Column</li>
+<li>Table</li>
+<li>Subset</li>
+<li>Tapply</li>
+<li>Patterns from plots</li>
+<li>Cut</li>
+<li>Some helpful functions</li>
+</ul>
+<hr />
+</div>
+<div id="create-column" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Create Column</h2>
+<ul>
+<li>Lets put a column I have created using age to partition it into 3 category. I’ll tell you how to partition more in upcoming sections.</li>
+<li>For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6ImE8LTVcbmI8LTNcbmxpYnJhcnkocmVhZHIpXG5tZHkgPC0gcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFfdGVzdC9tYWluL01PT0RZLTIwMTkuY3N2XCIpXG5WaWV3KG1keSkiLCJzYW1wbGUiOiIjY29sYWdlIGNvbHVtbiBoYXMgMyBjYXRlZ29yeSBhbmQgZGl2aWRlcyBvbiB0aGUgYmFzaXMgb2YgYWdlLlxuY29seWVhciA8LSBjdXQoc2FtcGxlKDE4OjIyLCBucm93KG1keSksIHJlcGxhY2U9VFJVRSksYnJlYWtzPTQsbGFiZWxzPWMoIFwiRnJlc2htYW5cIiwgXCJTb3Bob21vcmVcIiwgXCJKdW5pb3JcIiwgXCJTZW5pb3JcIikpXG4jIGxlbmd0aChjb2xhZ2UpICNOdW1iZXIgb2Ygcm93cyBpbiBuZXcgY29sdW1uLlxuIyBucm93KG1keSkgI051bWJlciBvZiBSb3dzIGluIGRhdGFmcmFtZVxuXG4jIFRvIGFkZCB0aGlzIG5ldyBjb2x1bW4gY29sYWdlIGluIGRhdGFmcmFtZSBtZHkuXG5uYW1lcyhtZHkpICMgSW5pdGlhbGx5IGRhdGFmcmFtZSBoYXMgNyBjb2x1bW5zXG5tZHkkQ09MX1lFQVIgPC0gY29seWVhciAjUHV0IHN5bnRheCBkYXRhRnJhbWVOYW1lJGNvbHVtbkhlYWRlck5hbWUgPC0gbmV3Q29sdW1uXG5uYW1lcyhtZHkpICMgTm93IGRhdGFmcmFtZSBoYXMgOCBjb2x1bW5zIn0=
+</div></li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1uIHNpemUgbWlzbWF0Y2guXG5iYWRjb2wgPC0gYygxOjEwKVxubGVuZ3RoKGJhZGNvbClcblxubWR5JGJhZGNvbCA8LSBiYWRjb2wgI1Rocm93cyBDb21wYXRpYmlsaXR5IGVycm9yLiAifQ==
+</div>
+<!-- --- -->
+<!-- ## Table -->
+<!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->
+<!-- ```{r} -->
+<!-- tableex1<- table(mdy$GRADE) #Use of table  function on the new column. -->
+<!-- tableex1 -->
+<!-- barplot(tableex1,col =c("red","purple","cyan","yellow","green"),xlab = "Labels", ylab = "Frequency",main = "table() example 1") #plot. -->
+<!-- ``` -->
+<!-- - More use of table() is when you use multiple categorical columns. For example, lets see the count of *grade* vs *asks_questions*. -->
+<!-- ```{r} -->
+<!-- tableex2<-table(mdy$GRADE,mdy$ASKS_QUESTIONS) -->
+<!-- tableex2 -->
+<!-- mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2") -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Subset -->
+<!-- - subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters. -->
+<!-- - NOTE: To create a subset, not only can you use the subset() function, but also: -->
+<!--     - you can use [ ] operator. Ex: dataFrameName['columnName']  -->
+<!--     - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName -->
+<!-- ```{r} -->
+<!-- #Subset of rows -->
+<!-- mdy_never_smartphone<-subset(mdy,ON_SMARTPHONE=="never") -->
+<!-- nrow(mdy) -->
+<!-- nrow(mdy_never_smartphone) -->
+<!-- table(mdy_never_smartphone$ON_SMARTPHONE) # You can see only student never on smartphone are in the subset. -->
+<!-- #subset of columns -->
+<!-- mdy_except8<-subset(mdy, select = -c(8)) -->
+<!-- ncol(mdy) -->
+<!-- ncol(mdy_except8) # You can see the number of columns has been reduced by 1, due to subsetting without column 8 -->
+<!-- #Subset of Rows and Columns -->
+<!-- mdy_except8_never<-subset(mdy, select = -c(8), ON_SMARTPHONE == "never") -->
+<!-- table(mdy_except8_never$ON_SMARTPHONE) -->
+<!-- dim(mdy) -->
+<!-- dim(mdy_except8_never)# You can see only student never on smartphones without column 8 data are present in the subset. -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## tapply -->
+<!-- - tapply() function in R Language is used to apply a function over a subset of vectors given by a combination of factors -->
+<!-- - This is a very versatile function, as we'll see from the use case.  -->
+<!-- - Note : There are different aggregate functions that can be used. For example, Mean, Median, Variance, Sum etc. -->
+<!-- ```{r} -->
+<!-- # To apply tapply() on capital gains factored on mdydiac sign. -->
+<!-- mdy_scoreavg<-tapply(mdy$SCORE,mdy$ON_SMARTPHONE,mean) -->
+<!-- mdy_scoreavg # We can see it calculated mean value of the score by students with respect to their use of phone in class. -->
+<!-- barplot(mdy_scoreavg,col = "cyan",xlab = "Labels", ylab = "mean_val",main = "tapply() example 1",las = 2, cex.names = 0.75)#plot -->
+<!-- ``` -->
+<!-- - We can also factor it on multiple attributes. -->
+<!-- - Lets factor the grades on on_smartphone as well as grade category. -->
+<!-- ```{r} -->
+<!-- mdy.scoreavg2d<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) -->
+<!-- mdy.scoreavg2d[is.na(mdy.scoreavg2d)]<-0 -->
+<!-- mdy.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category. -->
+<!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Finding Patterns using plots. -->
+<!-- See slide 14 -->
+<!-- ### Good Example  -->
+<!-- - Let’s look at the frequency of students grades excluding those who "never" and "always" use smartphones in class. -->
+<!-- ```{r} -->
+<!-- freq_rare_user<-subset(mdy, ON_SMARTPHONE!="never" & ON_SMARTPHONE!="always") # We created a subset based on two constraint -->
+<!-- freq_rare_usertable= table(freq_rare_user$ON_SMARTPHONE,freq_rare_user$GRADE) # We created a table for frequency. -->
+<!-- freq_rare_usertable -->
+<!-- barplot(freq_rare_usertable, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(freq_rare_usertable)) #plot -->
+<!-- ``` -->
+<!-- - We can see that students with higher grades use more phone. -->
+<!-- - While very less students who "rarely" use phone in class get A grade. -->
+<!-- ##### (Disclaimer: Findings are based on this dataset only, and the claims may or may-not be valid in real world case. Please consider it for academic purpose only.) -->
+<!-- ### Bad Example 1 -->
+<!-- - Let’s look at the barplot of the Grade factored by student who always use their smartphone in class. -->
+<!-- ```{r} -->
+<!-- user<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) # We applied tapply on created a subset based on 1 constraint -->
+<!-- user[is.na(user)]<-0 -->
+<!-- always_user<-user[0:1,] -->
+<!-- always_user -->
+<!-- # We created a table for frequency. -->
+<!-- barplot(always_user, main = "Number of students 'always' on smartphone vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(always_user)) #plot -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ### Bad Example 2 -->
+<!-- - Lets look at grade distribution for people who are "sometimes" or "never" late for class. -->
+<!-- ```{r} -->
+<!-- not_always_late<-subset(mdy, LATE_IN_CLASS != "Yes") -->
+<!-- # not_always_late<-subset(mdy,LATE_IN_CLASS == "Sometimes" & LATE_IN_CLASS == "Never") -->
+<!-- nal_table<-table(not_always_late$LATE_IN_CLASS,not_always_late$GRADE) -->
+<!-- nal_table -->
+<!-- barplot(nal_table, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(nal_table)) #plot -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Cut -->
+<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
+<!-- ```{r} -->
+<!-- # We access the Score column from moody dataset. -->
+<!-- score0 <- cut(mdy$SCORE,10) -->
+<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
+<!-- table(score0) #lets check the distribution of people in each partition. -->
+<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
+<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
+<!-- table(score1) -->
+<!-- # Example using pretty - Cutting the numerical data into categories. -->
+<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
+<!-- table(score2) -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ### Some helpful functions -->
+<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
+<!-- ```{r} -->
+<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
+<!-- ``` -->
+<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
+<!-- ```{r} -->
+<!-- seq(2,10,2) -->
+<!-- ``` -->
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="permtest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdemo.html"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

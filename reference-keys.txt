@@ -7,5 +7,5 @@ topics
 create-column
 permtest
 permutation-test-one-step
-permutation-function-on-traffic.csv
+permutation-function
 exercise---how-p-value-is-affected-by-difference-of-means-and-standard-deviations

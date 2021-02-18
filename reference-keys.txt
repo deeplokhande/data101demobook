@@ -6,6 +6,6 @@ rec3
 topics
 create-column
 permtest
-permutation-test-one-step
-permutation-function
-exercise---how-p-value-is-affected-by-difference-of-means-and-standard-deviations
+permonestep
+permfunction
+aniceexample

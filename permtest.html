@@ -142,9 +142,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4" data-path="permtest.html"><a href="permtest.html"><i class="fa fa-check"></i><b>4</b> Permutation Test</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="permtest.html"><a href="permtest.html#permutation-test-one-step"><i class="fa fa-check"></i><b>4.1</b> Permutation Test One Step</a></li>
-<li class="chapter" data-level="4.2" data-path="permtest.html"><a href="permtest.html#permutation-function"><i class="fa fa-check"></i><b>4.2</b> Permutation Function</a></li>
-<li class="chapter" data-level="4.3" data-path="permtest.html"><a href="permtest.html#exercise---how-p-value-is-affected-by-difference-of-means-and-standard-deviations"><i class="fa fa-check"></i><b>4.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+<li class="chapter" data-level="4.1" data-path="permtest.html"><a href="permtest.html#permonestep"><i class="fa fa-check"></i><b>4.1</b> Permutation Test One Step</a></li>
+<li class="chapter" data-level="4.2" data-path="permtest.html"><a href="permtest.html#permfunction"><i class="fa fa-check"></i><b>4.2</b> Permutation Function</a></li>
+<li class="chapter" data-level="4.3" data-path="permtest.html"><a href="permtest.html#aniceexample"><i class="fa fa-check"></i><b>4.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -170,7 +170,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 4</span> Permutation Test</h1>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 <p>Permutation test also know as “Randomization Test”, is a type of statistical significance test in which the distribution of the test statistic under null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of observed data points.</p>
-<div id="permutation-test-one-step" class="section level2" number="4.1">
+<div id="permonestep" class="section level2" number="4.1">
 <h2><span class="header-section-number">4.1</span> Permutation Test One Step</h2>
 <p>Permutation test in one step is the most direct way to see randomness close by. One step permutation function shows one single data shuffle. By shuffling the data one destroys associations which exist between values of the data frame. This make data frame random.</p>
 <p>You can execute the one step permutation multiple times. This will show how data frame varies and how does it affect the observed difference of means.</p>
@@ -181,7 +181,7 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InRyYWZmaWM8LXJlYWQuY3N2KCdodHRw
 </div>
 <hr />
 </div>
-<div id="permutation-function" class="section level2" number="4.2">
+<div id="permfunction" class="section level2" number="4.2">
 <h2><span class="header-section-number">4.2</span> Permutation Function</h2>
 <ul>
 <li><p>The permutation function is used to run multiple iteration of the one-step permutation studied above, to get a complete relational understanding between the components involved in any hypothesis.</p></li>
@@ -190,8 +190,11 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InRyYWZmaWM8LXJlYWQuY3N2KCdodHRw
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InRyYWZmaWM8LXJlYWQuY3N2KCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20va3VuYWwwODk1L1JEYXRhc2V0cy9tYXN0ZXIvVFJBRkZJQy5jc3YnKVxuUGVybXV0YXRpb24gPC0gZnVuY3Rpb24oZGYxLGMxLGMyLG4sdzEsdzIpe1xuICBkZiA8LSBhcy5kYXRhLmZyYW1lKGRmMSlcbiAgRF9udWxsPC1jKClcbiAgVjE8LWRmWyxjMV1cbiAgVjI8LWRmWyxjMl1cbiAgc3ViLnZhbHVlMSA8LSBkZltkZlssIGMxXSA9PSB3MSwgYzJdXG4gIHN1Yi52YWx1ZTIgPC0gZGZbZGZbLCBjMV0gPT0gdzIsIGMyXVxuICBEIDwtICBhYnMobWVhbihzdWIudmFsdWUyLCBuYS5ybT1UUlVFKSAtIG1lYW4oc3ViLnZhbHVlMSwgbmEucm09VFJVRSkpXG4gIG09bGVuZ3RoKFYxKVxuICBsPWxlbmd0aChWMVtWMT09dzJdKVxuICBmb3IoamogaW4gMTpuKXtcbiAgICBudWxsIDwtIHJlcCh3MSxsZW5ndGgoVjEpKVxuICAgIG51bGxbc2FtcGxlKG0sbCldIDwtIHcyXG4gICAgbmYgPC0gZGF0YS5mcmFtZShLZXk9bnVsbCwgVmFsdWU9VjIpXG4gICAgbmFtZXMobmYpIDwtIGMoXCJLZXlcIixcIlZhbHVlXCIpXG4gICAgdzFfbnVsbCA8LSBuZltuZiRLZXkgPT0gdzEsMl1cbiAgICB3Ml9udWxsIDwtIG5mW25mJEtleSA9PSB3MiwyXVxuICAgIERfbnVsbCA8LSBjKERfbnVsbCxtZWFuKHcyX251bGwsIG5hLnJtPVRSVUUpIC0gbWVhbih3MV9udWxsLCBuYS5ybT1UUlVFKSlcbiAgfVxuICBteWhpc3Q8LWhpc3QoRF9udWxsLCBwcm9iPVRSVUUpXG4gIG11bHRpcGxpZXIgPC0gbXloaXN0JGNvdW50cyAvIG15aGlzdCRkZW5zaXR5XG4gIG15ZGVuc2l0eSA8LSBkZW5zaXR5KERfbnVsbCwgYWRqdXN0PTIpXG4gIG15ZGVuc2l0eSR5IDwtIG15ZGVuc2l0eSR5ICogbXVsdGlwbGllclsxXVxuICBwbG90KG15aGlzdClcbiAgbGluZXMobXlkZW5zaXR5LCBjb2w9J2JsdWUnKVxuICBhYmxpbmUodj1ELCBjb2w9J3JlZCcpXG4gIE08LW1lYW4oRF9udWxsPkQpXG4gIHJldHVybihNKVxufSIsInNhbXBsZSI6IlBlcm11dGF0aW9uKHRyYWZmaWMsIFwiVFVOTkVMXCIsIFwiVk9MVU1FX1BFUl9NSU5VVEVcIiwxMDAwLFwiSG9sbGFuZFwiLCBcIkxpbmNvbG5cIikifQ==
 </div>
+<ul>
+<li>Note: You can find the permutation function code here: <a href="https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R">Permutation()</a></li>
+</ul>
 </div>
-<div id="exercise---how-p-value-is-affected-by-difference-of-means-and-standard-deviations" class="section level2" number="4.3">
+<div id="aniceexample" class="section level2" number="4.3">
 <h2><span class="header-section-number">4.3</span> Exercise - How p-value is affected by difference of means and standard deviations</h2>
 <p>Here, you can generate your own data by changing parameters of the rnorm() function.</p>
 <p>See how changing the mean and sd in rnorm distributions affects the p-value! It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively. The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random sfuffles of permutation function. Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value.</p>

@@ -5,6 +5,12 @@
 knitr::opts_chunk$set(echo = TRUE)
 tutorial::go_interactive(greedy = FALSE)
 ```
+Permutation test in one step  is the most direct way to see randomness close by. One step permutation function shows one single data shuffle. By shuffiling the data one destroys associations which exist between values of the data frame. This make data frame random. 
+
+You can execute the one step permutation multiple times. This will show how data frame varies and how does it affect the observed difference of means.
+
+Apply one step permutation function first, multiple times before you move to the proper Permutation test function. One of the parameters of the Permutation test function
+specifies the number of "shuffles" which will be peformed. This could be a very large number, 10,000 or even 100,000. The purpose of making so many random permutations is to test how often observed difference of means can arise in just random data. The more often this takes place, the more likely you observation is just random. To reject the null hypothesis you need to show that the observed difference of means will come very infrequently in permutation test. Less than 5% of the time, to be exact.
 
 ## Permutation Test One Step
 
@@ -115,7 +121,9 @@ Permutation(traffic, "TUNNEL", "VOLUME_PER_MINUTE",1000,"Holland", "Lincoln")
 
 ## Exercise - How p-value is affected by difference of means and standard deviations
 
-- See how changing the mean and sd in rnorm distributions affects the p-value! It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.
+Here, you can generate your own data by changing parameters of the rnorm() function. 
+
+See how changing the mean and sd in rnorm distributions affects the p-value! It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.  The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random sfuffles of permutation function.  Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value.
 
 
 ```{r,tut=TRUE,ex="permutationniceexample",type="pre-exercise-code"}

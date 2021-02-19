@@ -1,46 +1,54 @@
 # Permutation Test {#permtest}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
+Permutation test also know as "Randomization Test", is a type of statistical significance test in which the distribution of the test statistic under null hypothesis is obtained by calculating all possible values of the test statistic under all possible rearrangements of observed data points. 
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 tutorial::go_interactive(greedy = FALSE)
 ```
-Permutation test in one step  is the most direct way to see randomness close by. One step permutation function shows one single data shuffle. By shuffiling the data one destroys associations which exist between values of the data frame. This make data frame random. 
 
-You can execute the one step permutation multiple times. This will show how data frame varies and how does it affect the observed difference of means.
 
-Apply one step permutation function first, multiple times before you move to the proper Permutation test function. One of the parameters of the Permutation test function
-specifies the number of "shuffles" which will be peformed. This could be a very large number, 10,000 or even 100,000. The purpose of making so many random permutations is to test how often observed difference of means can arise in just random data. The more often this takes place, the more likely you observation is just random. To reject the null hypothesis you need to show that the observed difference of means will come very infrequently in permutation test. Less than 5% of the time, to be exact.
+## Permutation Test One Step {#permonestep}
 
-## Permutation Test One Step
+- Permutation test in one step  is the most direct way to see randomness close by. One step permutation function shows one single data shuffle. By shuffling the data one destroys associations which exist between values of the data frame. This make data frame random. 
 
-- add theory
+- You can execute the one step permutation multiple times. This will show how data frame varies and how does it affect the observed difference of means.
+
+- Apply one step permutation function first, multiple times before you move to the proper Permutation test function. One of the parameters of the Permutation test function
+specifies the number of "shuffles" which will be preformed. This could be a very large number, 10,000 or even 100,000. The purpose of making so many random permutations is to test how often observed difference of means can arise in just random data. The more often this takes place, the more likely you observation is just random. To reject the null hypothesis you need to show that the observed difference of means will come very infrequently in permutation test. Less than 5% of the time, to be exact.
+
 
 ```{r ,tut=TRUE,ex="permutationtestonestep",type="pre-exercise-code"}
 traffic<-read.csv('https://raw.githubusercontent.com/kunal0895/RDatasets/master/TRAFFIC.csv')
 ```
 
 ```{r ,tut=TRUE,ex="permutationtestonestep",type="sample-code"}
+summary(traffic)
 D<- mean(traffic[traffic$TUNNEL=='Holland',3]) - mean(traffic[traffic$TUNNEL=='Lincoln',3])
-null_tunnel <- rep("Holland",2801)
-null_tunnel[sample(2801,1400)] <- "Lincoln"
+null_tunnel <- rep("Holland",2801) # Create 2801 copies of Holland 
+null_tunnel[sample(2801,1400)] <- "Lincoln" # Replace RANDOMLY 1400 copies with Lincoln
 null <- data.frame(null_tunnel,traffic[,3])
 names(null) <- c("TUNNEL","VOLUME_PER_MINUTE")
-summary(null$TUNNEL)
+summary(null)
 holland_null <- null[null$TUNNEL == "Holland",2]
 lincoln_null <- null[null$TUNNEL == "Lincoln",2]
 mean(holland_null)
 mean(lincoln_null)
 D_null <- mean(lincoln_null) - mean(holland_null)
-D_null
-D
+cat("The mean difference of permutation one step data: ", D_null,"\n")# Calculate the difference between the mean of the random data.
+cat("The mean difference of original data: ", D) # Difference of mean value of original data.
 ```
 
 ---
 
-## Permutation Function on Traffic.csv
+## Permutation Function {#permfunction}
 
-- add theory
+- The permutation function is used to run multiple iteration of the one-step permutation studied above, to get a complete relational understanding between the components involved in any hypothesis. 
+
+- Here you can run the example of running the permutation test on the Traffic.csv dataset, on volume of traffic in Holland and Lincoln Tunnel.
+
 
 ```{r,tut=TRUE,ex="permutationtestfunction",type="pre-exercise-code"}
 traffic<-read.csv('https://raw.githubusercontent.com/kunal0895/RDatasets/master/TRAFFIC.csv')
@@ -77,7 +85,7 @@ Permutation <- function(df1,c1,c2,n,w1,w2){
 ```
 
 
-```{r,eval=FALSE}
+```{r ,eval=FALSE,include=FALSE}
 
 Permutation <- function(df1,c1,c2,n,w1,w2){
   df <- as.data.frame(df1)
@@ -107,7 +115,7 @@ Permutation <- function(df1,c1,c2,n,w1,w2){
   abline(v=D, col='red')
   M<-mean(D_null>D)
   return(M)
-
+}
 ```
 
 
@@ -118,12 +126,15 @@ Permutation(traffic, "TUNNEL", "VOLUME_PER_MINUTE",1000,"Holland", "Lincoln")
 ```
 
 
+- Note: You can find the permutation function code here: [Permutation()](https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R)
 
-## Exercise - How p-value is affected by difference of means and standard deviations
 
-Here, you can generate your own data by changing parameters of the rnorm() function. 
+## Exercise - How p-value is affected by difference of means and standard deviations {#aniceexample}
 
-See how changing the mean and sd in rnorm distributions affects the p-value! It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.  The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random sfuffles of permutation function.  Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value.
+- Here, you can generate your own data by changing parameters of the rnorm() function. 
+
+- See how changing the mean and sd in rnorm distributions affects the p-value! It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.  The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random sfuffles of permutation function.  
+- Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value.
 
 
 ```{r,tut=TRUE,ex="permutationniceexample",type="pre-exercise-code"}
@@ -156,7 +167,7 @@ Permutation <- function(df1,c1,c2,n,w1,w2){
   abline(v=D, col='red')
   M<-mean(D_null>D)
   return(M)
-  
+}
 ```
 
 
@@ -192,8 +203,7 @@ Observed_Difference<-mean(d[d$Cat=='GroupA',2])-mean(d[d$Cat=='GroupB',2])
 #This will calculate the mean of the second column (having 10 random values for each group), and the mean of groupB values is subtracted from the mean of groupA values, which will give you the value of the difference of the mean.
 
 
-PermutationTestSecond::Permutation(d, "Cat", "Val",10000, "GroupA", "GroupB")
+Permutation(d, "Cat", "Val",10000, "GroupA", "GroupB")
 
 #The Permutation function returns the absolute value of the difference. So the red line is the absolute value of the observed difference. You will see a histogram having a normal distribution with a red showing the observed difference.
 ```
-

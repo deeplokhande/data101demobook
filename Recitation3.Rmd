@@ -9,8 +9,6 @@ knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 
 **NOTE: Not all code chunks are converted to interactive, only the first create column example is converted.**
 
-Text by Prof. Imielinski.
-
 ---
 
 ## Topics 

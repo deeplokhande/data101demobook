@@ -1,4 +1,4 @@
-# Recitation3 Example {#rec3}
+# Data Frames & New Column. {#newcolumn}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
@@ -6,45 +6,27 @@ tutorial::go_interactive(greedy = FALSE)
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
-
-**NOTE: Not all code chunks are converted to interactive, only the first create column example is converted.**
-
----
-
-## Topics 
-
-- Create Column
-- Table
-- Subset
-- Tapply
-- Patterns from plots
-- Cut
-- Some helpful functions
-
-
 ---
 
 ## Create Column
 * Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
 * For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
 ```{r ,tut=TRUE, ex="create_a",type="pre-exercise-code"}
-a<-5
-b<-3
-library(readr)
-mdy <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
-View(mdy)
+# mdy <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+moody<-read.csv("../files/dataset/moody2020b.csv")
+# View(mdy)
 ```
 
 ```{r ,tut=TRUE, ex="create_a",type="sample-code"}
 #colage column has 3 category and divides on the basis of age.
-colyear <- cut(sample(18:22, nrow(mdy), replace=TRUE),breaks=4,labels=c( "Freshman", "Sophomore", "Junior", "Senior"))
+pf <- cut(moody$SCORE,breaks=c(0,50,100),labels=c("F","P"))
 # length(colage) #Number of rows in new column.
 # nrow(mdy) #Number of Rows in dataframe
 
 # To add this new column colage in dataframe mdy.
-names(mdy) # Initially dataframe has 7 columns
-mdy$COL_YEAR <- colyear #Put syntax dataFrameName$columnHeaderName <- newColumn
-names(mdy) # Now dataframe has 8 columns
+names(moody) # Initially dataframe has 5 columns
+moody$passfail <- pf #Put syntax dataFrameName$columnHeaderName <- newColumn
+names(moody) # Now dataframe has 8 columns
 ```
 
 ```{r ,tut=TRUE,error=TRUE}
@@ -52,7 +34,7 @@ names(mdy) # Now dataframe has 8 columns
 badcol <- c(1:10)
 length(badcol)
 
-mdy$badcol <- badcol #Throws Compatibility error. 
+moody$badcol <- badcol #Throws Compatibility error. 
 ```
 
 

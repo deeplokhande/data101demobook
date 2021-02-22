@@ -1,8 +1,12 @@
-fig:nice-fig
-tab:nice-tab
-prerequisites
+tab:unnamed-chunk-3
 intro
-rec3
+rsetup
+plots
+scatter-plot
+bar-plot
+box-plot
+mosiac-plot
+datatransform
 topics
 create-column
 permtest

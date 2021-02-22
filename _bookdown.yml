@@ -1,7 +1,13 @@
 book_filename: "bookdemo"
 output_dir: "docs"
 delete_merged_file: true
-rmd_files: ["index.Rmd","./Chapters/01-intro.Rmd","./Chapters/Recitation3.Rmd","./Chapters/permutationtest.Rmd"]
+rmd_files: [
+  "index.Rmd",
+  "./chapters/intro.Rmd",
+  "./chapters/plots.Rmd",
+  "./chapters/freestyleexp.Rmd",
+  "./chapters/datatransformation.Rmd",
+  "./chapters/permutationtest.Rmd"]
 language:
   ui:
     chapter_name: "Chapter "

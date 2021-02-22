@@ -134,3 +134,43 @@ moody$badcol <- badcol #Throws Compatibility error.
 <!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
 <!-- ``` -->
 
+
+<!-- --- -->
+
+<!-- ## Cut -->
+
+<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
+
+<!-- ```{r} -->
+
+<!-- # We access the Score column from moody dataset. -->
+<!-- score0 <- cut(mdy$SCORE,10) -->
+
+<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
+<!-- table(score0) #lets check the distribution of people in each partition. -->
+
+<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
+<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
+<!-- table(score1) -->
+
+<!-- # Example using pretty - Cutting the numerical data into categories. -->
+<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
+<!-- table(score2) -->
+
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- ### Some helpful functions -->
+<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
+
+<!-- ```{r} -->
+<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
+<!-- ``` -->
+
+<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
+
+<!-- ```{r} -->
+<!-- seq(2,10,2) -->
+<!-- ``` -->

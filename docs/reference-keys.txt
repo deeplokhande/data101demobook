@@ -13,6 +13,7 @@ Moodyexplaination
 newcolumn
 create-column
 stateval
+some-basics-first
 z-test
 permtest
 permonestep

@@ -4,10 +4,29 @@ The biggest enemy of your findings is randomness. In order to convince your audi
 
 This is where you need statistics and simple hypothesis testing. 
 
+
+#### Some Basics First:
+
+- _Mean_
+\begin{equation}
+\bar{X}=\frac{\sum{X}}{N}
+\ \text{where, X is set of numbers and 
+N is size of set.}
+\end{equation}
+
+- _Standard Deviation_
+
+
 ## z-test *
+
+A z-test is any statistical test used in hypothesis testing with an underlying normal distribution.
+In other words, when the distribution of the test statistic under the null hypothesis can be approximated by a normal distribution, z-test can be used.
+Outcome of the z-test is the z-score which is a numerical measure to test the mean of a distribution.
+z-score is measured in terms of standard deviation from mean.
+
 
 ```{r child="./chapters/permutationtest.Rmd"}
 
 ```
 
-## Multiple Hypothesis - Bonferroni Correction.
+## Multiple Hypothesis - Bonferroni Correction.*

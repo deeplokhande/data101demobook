@@ -1,4 +1,4 @@
-# Data Frames & New Column. {#newcolumn}
+## Data Frames & New Column. {#newcolumn}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
@@ -8,7 +8,7 @@ knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 
 ---
 
-## Create Column
+### Create Column
 * Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
 * For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
 ```{r ,tut=TRUE, ex="create_a",type="pre-exercise-code"}

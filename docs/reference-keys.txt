@@ -1,13 +1,14 @@
 tab:unnamed-chunk-3
 intro
 rsetup
+dataexp
 plots
 scatter-plot
 bar-plot
 box-plot
 mosiac-plot
-datatransform
-topics
+freestyle
+newcolumn
 create-column
 permtest
 permonestep

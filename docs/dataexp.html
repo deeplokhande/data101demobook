@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 2 Data Exploration | DATA 101 Shortest Textbook</title>
+  <meta name="description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 2 Data Exploration | DATA 101 Shortest Textbook" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 2 Data Exploration | DATA 101 Shortest Textbook" />
+  
+  <meta name="twitter:description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
+  
+
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="permtest.html"/>
+<script src="libs/header-attrs-2.6/header-attrs.js"></script>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">DATA 101 Book Demo</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>FRONTMATTER</a></li>
+<li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#rsetup"><i class="fa fa-check"></i><b>1.1</b> Setting Up R. *</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="dataexp.html"><a href="dataexp.html"><i class="fa fa-check"></i><b>2</b> Data Exploration</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="dataexp.html"><a href="dataexp.html#plots"><i class="fa fa-check"></i><b>2.1</b> Plots</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="dataexp.html"><a href="dataexp.html#scatter-plot"><i class="fa fa-check"></i><b>2.1.1</b> Scatter Plot</a></li>
+<li class="chapter" data-level="2.1.2" data-path="dataexp.html"><a href="dataexp.html#bar-plot"><i class="fa fa-check"></i><b>2.1.2</b> Bar Plot</a></li>
+<li class="chapter" data-level="2.1.3" data-path="dataexp.html"><a href="dataexp.html#box-plot"><i class="fa fa-check"></i><b>2.1.3</b> Box Plot</a></li>
+<li class="chapter" data-level="2.1.4" data-path="dataexp.html"><a href="dataexp.html#mosiac-plot"><i class="fa fa-check"></i><b>2.1.4</b> Mosiac Plot</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="dataexp.html"><a href="dataexp.html#freestyle"><i class="fa fa-check"></i><b>2.2</b> Free Style data exploration with just seven R commands</a></li>
+<li class="chapter" data-level="2.3" data-path="dataexp.html"><a href="dataexp.html#newcolumn"><i class="fa fa-check"></i><b>2.3</b> Data Frames &amp; New Column.</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="dataexp.html"><a href="dataexp.html#create-column"><i class="fa fa-check"></i><b>2.3.1</b> Create Column</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="permtest.html"><a href="permtest.html"><i class="fa fa-check"></i><b>3</b> Permutation Test</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="permtest.html"><a href="permtest.html#permonestep"><i class="fa fa-check"></i><b>3.1</b> Permutation Test One Step</a></li>
+<li class="chapter" data-level="3.2" data-path="permtest.html"><a href="permtest.html#permfunction"><i class="fa fa-check"></i><b>3.2</b> Permutation Function</a></li>
+<li class="chapter" data-level="3.3" data-path="permtest.html"><a href="permtest.html#aniceexample"><i class="fa fa-check"></i><b>3.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">DATA 101 Shortest Textbook</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="dataexp" class="section level1" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Data Exploration</h1>
+<div id="plots" class="section level2" number="2.1">
+<h2><span class="header-section-number">2.1</span> Plots</h2>
+<table>
+<caption><span id="tab:unnamed-chunk-3">Table 2.1: </span>Snippet of Moody Dataset</caption>
+<thead>
+<tr class="header">
+<th align="right">score</th>
+<th align="left">grade</th>
+<th align="left">texting</th>
+<th align="left">questions</th>
+<th align="right">participation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">26.89</td>
+<td align="left">F</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="even">
+<td align="right">71.57</td>
+<td align="left">B</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="right">90.11</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">never</td>
+<td align="right">0.27</td>
+</tr>
+<tr class="even">
+<td align="right">31.52</td>
+<td align="left">D</td>
+<td align="left">sometimes</td>
+<td align="left">rarely</td>
+<td align="right">0.68</td>
+</tr>
+<tr class="odd">
+<td align="right">95.94</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td align="right">45.72</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.19</td>
+</tr>
+<tr class="odd">
+<td align="right">90.82</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td align="right">75.52</td>
+<td align="left">B</td>
+<td align="left">sometimes</td>
+<td align="left">never</td>
+<td align="right">0.28</td>
+</tr>
+<tr class="odd">
+<td align="right">52.31</td>
+<td align="left">C</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.67</td>
+</tr>
+<tr class="even">
+<td align="right">39.57</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.40</td>
+</tr>
+</tbody>
+</table>
+<!-- --- -->
+<!-- ### Topics visited in this sub-chapter -->
+<!-- * Scatter Plot -->
+<!-- * Barplot -->
+<!-- * Boxplot -->
+<!-- * Mosaic Plot -->
+<hr />
+<div id="scatter-plot" class="section level3" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Scatter Plot</h3>
+<ul>
+<li>Scatter Plot are used to plot points on the Cartesian plane (X-Y Plane)</li>
+<li>Hence it is used when both the labels are numerical values.</li>
+</ul>
+<p>Lets look at example of scatter plot using Moody.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="dataexp.html#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let&#39;s look at a 2 attribute scatter plot.</span></span>
+<span id="cb1-2"><a href="dataexp.html#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="dataexp.html#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(moody<span class="sc">$</span>participation,moody<span class="sc">$</span>score,<span class="at">ylab=</span><span class="st">&quot;score&quot;</span>,<span class="at">xlab=</span><span class="st">&quot;participation&quot;</span>,<span class="at">main=</span><span class="st">&quot; Participation vs Score&quot;</span>,<span class="at">col=</span><span class="st">&quot;red&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="bar-plot" class="section level3" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Bar Plot</h3>
+<ul>
+<li>A bar plot is used to plot rectangular bars proportional to the values present in a numerical vector.</li>
+<li>This rectangle height is proportional to the value of the variable in the vector.</li>
+<li>Barplots are also used to graphically represent the distribution of a categorical variable, after converting the categorical vector into a table(i.e. frequency distribution table)</li>
+<li>In a bar plot, you can also give different colors to each bar.</li>
+</ul>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="dataexp.html#cb2-1" aria-hidden="true" tabindex="-1"></a>colors<span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;cyan&#39;</span>,<span class="st">&#39;yellow&#39;</span>,<span class="st">&#39;green&#39;</span>) <span class="co"># Assigning different colors to bars</span></span>
+<span id="cb2-2"><a href="dataexp.html#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="dataexp.html#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co">#lets make a table for the grades of students and counts of students for each Grade. </span></span>
+<span id="cb2-4"><a href="dataexp.html#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="dataexp.html#cb2-5" aria-hidden="true" tabindex="-1"></a>t<span class="ot">&lt;-</span><span class="fu">table</span>(moody<span class="sc">$</span>grade)</span>
+<span id="cb2-6"><a href="dataexp.html#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="dataexp.html#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co">#once we have the table lets create a barplot for it.</span></span>
+<span id="cb2-8"><a href="dataexp.html#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="dataexp.html#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(t,<span class="at">xlab=</span><span class="st">&quot;Grade&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Number of Students&quot;</span>,<span class="at">col=</span>colors,</span>
+<span id="cb2-10"><a href="dataexp.html#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">main=</span><span class="st">&quot;Barplot for student grade distribution&quot;</span>,<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<hr />
+</div>
+<div id="box-plot" class="section level3" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Box Plot</h3>
+<ul>
+<li>A boxplot shows the distribution of data in a dataset.</li>
+<li>A boxplot shows the following things:
+<ul>
+<li>Minimum</li>
+<li>Maximum</li>
+<li>Median</li>
+<li>First quartile</li>
+<li>Third quartile</li>
+<li>Outliers</li>
+</ul></li>
+<li>You can create a single boxplot using just a vector or a multiple boxplot using a formula.</li>
+<li>When you write a formula, you should use the Tilde (~) operator. This column name on the left side of this operator goes on the y axis and the column name on the right side of this operator goes on the x axis.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="dataexp.html#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#Suppose you want to find the distribution of students score per Grade. We use box plot for getting that. </span></span>
+<span id="cb3-2"><a href="dataexp.html#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(score<span class="sc">~</span>grade,<span class="at">data=</span>moody,<span class="at">xlab=</span><span class="st">&quot;Grade&quot;</span>,<span class="at">ylab=</span><span class="st">&quot;Score&quot;</span>, <span class="at">main=</span><span class="st">&quot;Boxplot of grade vs score&quot;</span>,<span class="at">col=</span>colors,<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="dataexp.html#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the circles represent outliers.</span></span></code></pre></div>
+<!-- ## 4. Histogram -->
+<!-- Refer Slide 15. -->
+<!-- ```{r} -->
+<!-- #Suppose you want to find the frequecy/distribution of cars with mileage in particular range. We use histogram for this.  -->
+<!-- hist(automobile$`city-mpg`,xlim = c(0,100),xlab = 'milage', main = "Histogram of Car milage",col=colors,border="black") -->
+<!-- # You can Change column range using breaks. -->
+<!-- ``` -->
+<!-- For more detail,reference and example refer Slides -->
+<hr />
+</div>
+<div id="mosiac-plot" class="section level3" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Mosiac Plot</h3>
+<ul>
+<li>Mosaic plot is a graphical method for visualizing data from two or more qualitative variables.</li>
+<li>The length of the rectangles in the mosaic plot represents the frequency of that particular value.</li>
+<li>The width and length of the mosaic plot can be used to interpret the frequencies of the elements.
+-For example, if you want to plot the number of individuals per letter grade using a smartphone, you want to look at mosiac plot.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="dataexp.html#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#suppose you want to find numbers of students with a particular grade based on their texting habits. Use Mosiac-plot.</span></span>
+<span id="cb5-2"><a href="dataexp.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="dataexp.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(moody<span class="sc">$</span>grade<span class="sc">~</span>moody<span class="sc">$</span>texting,<span class="at">xlab =</span> <span class="st">&#39;Grade&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;Texting habit&#39;</span>, <span class="at">main =</span> <span class="st">&quot;Mosiac of grade vs texing habit in class&quot;</span>,<span class="at">col=</span>colors,<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+
+</div>
+</div>
+<div id="freestyle" class="section level2" number="2.2">
+<h2><span class="header-section-number">2.2</span> Free Style data exploration with just seven R commands</h2>
+<p>Now as you know to make simple but quite colorful basic graphs it is time to have some fun with them. This is the subject of data exploration.
+In this section we will go though this process which we call free style data exploration. Free style, since we are not going to use any sophisticated libraries, in fact we will just use 7 commands of R. And with these 7 commands we will be able to do quite a bit, more than you would ever guess in fact.<br />
+So, no statistics, no sophisticated R programs. Just feeling the data with four plots and three R instructions:
+Subsetting, table and tapply</p>
+
+</div>
+<div id="newcolumn" class="section level2" number="2.3">
+<h2><span class="header-section-number">2.3</span> Data Frames &amp; New Column.</h2>
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<hr />
+<div id="create-column" class="section level3" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Create Column</h3>
+<ul>
+<li>Lets put a column I have created using age to partition it into 3 category. I’ll tell you how to partition more in upcoming sections.</li>
+<li>For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgbWR5IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxX3Rlc3QvbWFpbi9NT09EWS0yMDE5LmNzdlwiKVxubW9vZHk8LXJlYWQuY3N2KFwiLi4vZmlsZXMvZGF0YXNldC9tb29keTIwMjBiLmNzdlwiKVxuIyBWaWV3KG1keSkiLCJzYW1wbGUiOiIjY29sYWdlIGNvbHVtbiBoYXMgMyBjYXRlZ29yeSBhbmQgZGl2aWRlcyBvbiB0aGUgYmFzaXMgb2YgYWdlLlxucGYgPC0gY3V0KG1vb2R5JFNDT1JFLGJyZWFrcz1jKDAsNTAsMTAwKSxsYWJlbHM9YyhcIkZcIixcIlBcIikpXG4jIGxlbmd0aChjb2xhZ2UpICNOdW1iZXIgb2Ygcm93cyBpbiBuZXcgY29sdW1uLlxuIyBucm93KG1keSkgI051bWJlciBvZiBSb3dzIGluIGRhdGFmcmFtZVxuXG4jIFRvIGFkZCB0aGlzIG5ldyBjb2x1bW4gY29sYWdlIGluIGRhdGFmcmFtZSBtZHkuXG5uYW1lcyhtb29keSkgIyBJbml0aWFsbHkgZGF0YWZyYW1lIGhhcyA1IGNvbHVtbnNcbm1vb2R5JHBhc3NmYWlsIDwtIHBmICNQdXQgc3ludGF4IGRhdGFGcmFtZU5hbWUkY29sdW1uSGVhZGVyTmFtZSA8LSBuZXdDb2x1bW5cbm5hbWVzKG1vb2R5KSAjIE5vdyBkYXRhZnJhbWUgaGFzIDggY29sdW1ucyJ9
+</div></li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1uIHNpemUgbWlzbWF0Y2guXG5iYWRjb2wgPC0gYygxOjEwKVxubGVuZ3RoKGJhZGNvbClcblxubW9vZHkkYmFkY29sIDwtIGJhZGNvbCAjVGhyb3dzIENvbXBhdGliaWxpdHkgZXJyb3IuICJ9
+</div>
+<!-- --- -->
+<!-- ## Table -->
+<!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->
+<!-- ```{r} -->
+<!-- tableex1<- table(mdy$GRADE) #Use of table  function on the new column. -->
+<!-- tableex1 -->
+<!-- barplot(tableex1,col =c("red","purple","cyan","yellow","green"),xlab = "Labels", ylab = "Frequency",main = "table() example 1") #plot. -->
+<!-- ``` -->
+<!-- - More use of table() is when you use multiple categorical columns. For example, lets see the count of *grade* vs *asks_questions*. -->
+<!-- ```{r} -->
+<!-- tableex2<-table(mdy$GRADE,mdy$ASKS_QUESTIONS) -->
+<!-- tableex2 -->
+<!-- mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2") -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Subset -->
+<!-- - subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters. -->
+<!-- - NOTE: To create a subset, not only can you use the subset() function, but also: -->
+<!--     - you can use [ ] operator. Ex: dataFrameName['columnName']  -->
+<!--     - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName -->
+<!-- ```{r} -->
+<!-- #Subset of rows -->
+<!-- mdy_never_smartphone<-subset(mdy,ON_SMARTPHONE=="never") -->
+<!-- nrow(mdy) -->
+<!-- nrow(mdy_never_smartphone) -->
+<!-- table(mdy_never_smartphone$ON_SMARTPHONE) # You can see only student never on smartphone are in the subset. -->
+<!-- #subset of columns -->
+<!-- mdy_except8<-subset(mdy, select = -c(8)) -->
+<!-- ncol(mdy) -->
+<!-- ncol(mdy_except8) # You can see the number of columns has been reduced by 1, due to subsetting without column 8 -->
+<!-- #Subset of Rows and Columns -->
+<!-- mdy_except8_never<-subset(mdy, select = -c(8), ON_SMARTPHONE == "never") -->
+<!-- table(mdy_except8_never$ON_SMARTPHONE) -->
+<!-- dim(mdy) -->
+<!-- dim(mdy_except8_never)# You can see only student never on smartphones without column 8 data are present in the subset. -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## tapply -->
+<!-- - tapply() function in R Language is used to apply a function over a subset of vectors given by a combination of factors -->
+<!-- - This is a very versatile function, as we'll see from the use case.  -->
+<!-- - Note : There are different aggregate functions that can be used. For example, Mean, Median, Variance, Sum etc. -->
+<!-- ```{r} -->
+<!-- # To apply tapply() on capital gains factored on mdydiac sign. -->
+<!-- mdy_scoreavg<-tapply(mdy$SCORE,mdy$ON_SMARTPHONE,mean) -->
+<!-- mdy_scoreavg # We can see it calculated mean value of the score by students with respect to their use of phone in class. -->
+<!-- barplot(mdy_scoreavg,col = "cyan",xlab = "Labels", ylab = "mean_val",main = "tapply() example 1",las = 2, cex.names = 0.75)#plot -->
+<!-- ``` -->
+<!-- - We can also factor it on multiple attributes. -->
+<!-- - Lets factor the grades on on_smartphone as well as grade category. -->
+<!-- ```{r} -->
+<!-- mdy.scoreavg2d<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) -->
+<!-- mdy.scoreavg2d[is.na(mdy.scoreavg2d)]<-0 -->
+<!-- mdy.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category. -->
+<!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Finding Patterns using plots. -->
+<!-- See slide 14 -->
+<!-- ### Good Example  -->
+<!-- - Let’s look at the frequency of students grades excluding those who "never" and "always" use smartphones in class. -->
+<!-- ```{r} -->
+<!-- freq_rare_user<-subset(mdy, ON_SMARTPHONE!="never" & ON_SMARTPHONE!="always") # We created a subset based on two constraint -->
+<!-- freq_rare_usertable= table(freq_rare_user$ON_SMARTPHONE,freq_rare_user$GRADE) # We created a table for frequency. -->
+<!-- freq_rare_usertable -->
+<!-- barplot(freq_rare_usertable, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(freq_rare_usertable)) #plot -->
+<!-- ``` -->
+<!-- - We can see that students with higher grades use more phone. -->
+<!-- - While very less students who "rarely" use phone in class get A grade. -->
+<!-- ##### (Disclaimer: Findings are based on this dataset only, and the claims may or may-not be valid in real world case. Please consider it for academic purpose only.) -->
+<!-- ### Bad Example 1 -->
+<!-- - Let’s look at the barplot of the Grade factored by student who always use their smartphone in class. -->
+<!-- ```{r} -->
+<!-- user<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) # We applied tapply on created a subset based on 1 constraint -->
+<!-- user[is.na(user)]<-0 -->
+<!-- always_user<-user[0:1,] -->
+<!-- always_user -->
+<!-- # We created a table for frequency. -->
+<!-- barplot(always_user, main = "Number of students 'always' on smartphone vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(always_user)) #plot -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ### Bad Example 2 -->
+<!-- - Lets look at grade distribution for people who are "sometimes" or "never" late for class. -->
+<!-- ```{r} -->
+<!-- not_always_late<-subset(mdy, LATE_IN_CLASS != "Yes") -->
+<!-- # not_always_late<-subset(mdy,LATE_IN_CLASS == "Sometimes" & LATE_IN_CLASS == "Never") -->
+<!-- nal_table<-table(not_always_late$LATE_IN_CLASS,not_always_late$GRADE) -->
+<!-- nal_table -->
+<!-- barplot(nal_table, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(nal_table)) #plot -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ## Cut -->
+<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
+<!-- ```{r} -->
+<!-- # We access the Score column from moody dataset. -->
+<!-- score0 <- cut(mdy$SCORE,10) -->
+<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
+<!-- table(score0) #lets check the distribution of people in each partition. -->
+<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
+<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
+<!-- table(score1) -->
+<!-- # Example using pretty - Cutting the numerical data into categories. -->
+<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
+<!-- table(score2) -->
+<!-- ``` -->
+<!-- --- -->
+<!-- ### Some helpful functions -->
+<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
+<!-- ```{r} -->
+<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
+<!-- ``` -->
+<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
+<!-- ```{r} -->
+<!-- seq(2,10,2) -->
+<!-- ``` -->
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="permtest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["bookdemo.html"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

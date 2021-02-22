@@ -1,0 +1,6 @@
+## Free Style data exploration with just seven R commands {#freestyle}
+
+Now as you know to make simple but quite colorful basic graphs it is time to have some fun with them. This is the subject of data exploration. 
+In this section we will go though this process which we call free style data exploration. Free style, since we are not going to use any sophisticated libraries, in fact we will just use 7 commands of R. And with these 7 commands we will be able to do quite a bit, more than you would ever guess in fact.  
+So, no statistics, no sophisticated R programs. Just feeling the data with four plots and  three R instructions:
+Subsetting, table and tapply

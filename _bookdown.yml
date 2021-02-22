@@ -5,9 +5,9 @@ rmd_files: [
   "index.Rmd",
   "./chapters/intro.Rmd",
   "./chapters/plots.Rmd",
-  "./chapters/freestyleexp.Rmd",
-  "./chapters/datatransformation.Rmd",
-  "./chapters/permutationtest.Rmd"]
+  # "./chapters/freestyleexp.Rmd",
+  # "./chapters/datatransformation.Rmd",
+  "./chapters/stateval.Rmd"]
 language:
   ui:
     chapter_name: "Chapter "

@@ -30,7 +30,7 @@
   
   
 <link rel="prev" href="intro.html"/>
-<link rel="next" href="permtest.html"/>
+<link rel="next" href="stateval.html"/>
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -145,17 +145,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.3" data-path="dataexp.html"><a href="dataexp.html#box-plot"><i class="fa fa-check"></i><b>2.1.3</b> Box Plot</a></li>
 <li class="chapter" data-level="2.1.4" data-path="dataexp.html"><a href="dataexp.html#mosiac-plot"><i class="fa fa-check"></i><b>2.1.4</b> Mosiac Plot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="dataexp.html"><a href="dataexp.html#freestyle"><i class="fa fa-check"></i><b>2.2</b> Free Style data exploration with just seven R commands</a></li>
+<li class="chapter" data-level="2.2" data-path="dataexp.html"><a href="dataexp.html#freestyle"><i class="fa fa-check"></i><b>2.2</b> Free Style data exploration with just seven R commands " R.7 "</a></li>
 <li class="chapter" data-level="2.3" data-path="dataexp.html"><a href="dataexp.html#newcolumn"><i class="fa fa-check"></i><b>2.3</b> Data Frames &amp; New Column.</a>
 <ul>
 <li class="chapter" data-level="2.3.1" data-path="dataexp.html"><a href="dataexp.html#create-column"><i class="fa fa-check"></i><b>2.3.1</b> Create Column</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="permtest.html"><a href="permtest.html"><i class="fa fa-check"></i><b>3</b> Permutation Test</a>
+<li class="chapter" data-level="3" data-path="stateval.html"><a href="stateval.html"><i class="fa fa-check"></i><b>3</b> Simple Statistical Evaluation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="permtest.html"><a href="permtest.html#permonestep"><i class="fa fa-check"></i><b>3.1</b> Permutation Test One Step</a></li>
-<li class="chapter" data-level="3.2" data-path="permtest.html"><a href="permtest.html#permfunction"><i class="fa fa-check"></i><b>3.2</b> Permutation Function</a></li>
-<li class="chapter" data-level="3.3" data-path="permtest.html"><a href="permtest.html#aniceexample"><i class="fa fa-check"></i><b>3.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#z-test"><i class="fa fa-check"></i><b>3.1</b> z-test *</a></li>
+<li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="stateval.html"><a href="stateval.html#permonestep"><i class="fa fa-check"></i><b>3.2.1</b> Permutation Test One Step</a></li>
+<li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
+<li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> Multiple Hypothesis - Bonferroni Correction.</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -348,21 +353,307 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb5-2"><a href="dataexp.html#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="dataexp.html#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(moody<span class="sc">$</span>grade<span class="sc">~</span>moody<span class="sc">$</span>texting,<span class="at">xlab =</span> <span class="st">&#39;Grade&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;Texting habit&#39;</span>, <span class="at">main =</span> <span class="st">&quot;Mosiac of grade vs texing habit in class&quot;</span>,<span class="at">col=</span>colors,<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
 <p><img src="bookdemo_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
-
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 </div>
 </div>
 <div id="freestyle" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Free Style data exploration with just seven R commands</h2>
+<h2><span class="header-section-number">2.2</span> Free Style data exploration with just seven R commands " R.7 "</h2>
 <p>Now as you know to make simple but quite colorful basic graphs it is time to have some fun with them. This is the subject of data exploration.
 In this section we will go though this process which we call free style data exploration. Free style, since we are not going to use any sophisticated libraries, in fact we will just use 7 commands of R. And with these 7 commands we will be able to do quite a bit, more than you would ever guess in fact.<br />
 So, no statistics, no sophisticated R programs. Just feeling the data with four plots and three R instructions:
-Subsetting, table and tapply</p>
-
+<em>subset(), table() and tapply()</em></p>
+<!-- Let's dive into these functions. -->
+<p><strong>Instant gratification through data exploration!</strong></p>
+<p>It is amazing how much you can do with the data knowing 7 commands. There is no need for months of classes in stats or boot camp in R. You can learn one command a day, or an hour. And be ready to show off your skills and impress with such small arsenal of tools at your disposal.</p>
+<div id="Moodyexplaination" class="section level4" number="2.2.0.1">
+<h4><span class="header-section-number">2.2.0.1</span> Professor Moody Puzzle</h4>
+<ul>
+<li>Here is professor Moody’s puzzle which is the opening data puzzle in my Rutgers data 101 class, every year since 2015. And every year the data is generated according to different pattern.</li>
+</ul>
+<div class="sourceCode" id="cb6"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb6-1"><a href="dataexp.html#cb6-1" aria-hidden="true" tabindex="-1"></a>- Professor Moody has been teaching statistics 101 class for many years. His teaching evaluations went considerably south with the chief complaint:  he DOES NOT seem to assign grades fairly.   Students compared their scores among themselves and found quite a bit of discrepancies! But their complaints went nowhere since Professor promptly disappeared after posting the final grades and scores.</span>
+<span id="cb6-2"><a href="dataexp.html#cb6-2" aria-hidden="true" tabindex="-1"></a>- A new brave TA,  managed to get hold of the carefully maintained grading table (spanning multiple years) of professor Moody by ….messing a bit with Moody&#39;s computer….well,  let&#39;s not explain the details because he would get in trouble. What he found out was a remarkably structured account of how professor Moody assigns his grades.  </span>
+<span id="cb6-3"><a href="dataexp.html#cb6-3" aria-hidden="true" tabindex="-1"></a>- Looks like Professor Moody is in fact very alert in class. He is aware of  what students do,  detecting texting during class and remembering exactly who asked many questions in class.  He also keeps the mysterious &quot;participation index&quot; which is a numerical score from 0 to 1. This is probably related to questions asked and answered by students as well as their general attentiveness in class.  Remarkable but a little creepy, isn&#39;t it?</span>
+<span id="cb6-4"><a href="dataexp.html#cb6-4" aria-hidden="true" tabindex="-1"></a>- What is the best advice the new TA, can give future students how to get a good grade in Professor Moody&#39;s class?  What factors influence the grade besides the score?   Back your recommendation  up with plots and evidence from the attached data.</span></code></pre></div>
+<p>The Moody data set is defined here by the following attributes</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="dataexp.html#cb7-1" aria-hidden="true" tabindex="-1"></a>moody<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;../files/dataset/moody2020b.csv&quot;</span>) <span class="co">#static Load</span></span>
+<span id="cb7-2"><a href="dataexp.html#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># moody&lt;-read.csv(&quot;&quot;) #web load</span></span>
+<span id="cb7-3"><a href="dataexp.html#cb7-3" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb7-4"><a href="dataexp.html#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">head</span>(moody, <span class="dv">10</span>), <span class="at">caption =</span> <span class="st">&#39;Snippet of Moody Dataset&#39;</span>,</span>
+<span id="cb7-5"><a href="dataexp.html#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">booktabs =</span> <span class="cn">TRUE</span></span>
+<span id="cb7-6"><a href="dataexp.html#cb7-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:unnamed-chunk-11">Table 2.2: </span>Snippet of Moody Dataset</caption>
+<thead>
+<tr class="header">
+<th align="right">score</th>
+<th align="left">grade</th>
+<th align="left">texting</th>
+<th align="left">questions</th>
+<th align="right">participation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">26.89</td>
+<td align="left">F</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="even">
+<td align="right">71.57</td>
+<td align="left">B</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="right">90.11</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">never</td>
+<td align="right">0.27</td>
+</tr>
+<tr class="even">
+<td align="right">31.52</td>
+<td align="left">D</td>
+<td align="left">sometimes</td>
+<td align="left">rarely</td>
+<td align="right">0.68</td>
+</tr>
+<tr class="odd">
+<td align="right">95.94</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td align="right">45.72</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.19</td>
+</tr>
+<tr class="odd">
+<td align="right">90.82</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td align="right">75.52</td>
+<td align="left">B</td>
+<td align="left">sometimes</td>
+<td align="left">never</td>
+<td align="right">0.28</td>
+</tr>
+<tr class="odd">
+<td align="right">52.31</td>
+<td align="left">C</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.67</td>
+</tr>
+<tr class="even">
+<td align="right">39.57</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.40</td>
+</tr>
+</tbody>
+</table>
+<p>Moody[StudentID, score, grade, participation, questions, texting, late, early, dozingoff]
+Score and grade are self explanatory. Participation is supposedly measuring students participation in class.</p>
+<p>One can only guess that this may be fraction of classes that student was present during the semester, but who knows it may be a fraction of minutes s/he was paying attention?</p>
+<p>Professor Moody is a mysterious and eccentric figure and we do not really know how he calculates participation, nor what kind of electronic surveillance tools he is using in his class. Attribute questions has several values “always”, “frequently”, “sometimes” and “never”. So are the attributes such as texting, late, early, dozing off. In our data set there are students who are always dozing off and are always texting, late in class and leave early and who never ask any questions. Oh, yes, and are almost never around! Guess what grade are they getting? F, you probably guess. Not necessarily.</p>
+<p>By the way, our Professor Moody’s scheme differs from year to year we usually use different “behavioral attributes” about students, like “sitting in the first row”, “backrow student” etc.</p>
+<p>Grading rules supposedly depend on Professor Moody’s mood in a given semester. Our data set is synthetic and every year we generate it following new patterns embedded different moods of Professor Moody for that specific year. The job of students is to find these patterns.</p>
+<p>This is a good illustration of what data exploration is and can achieve. It is just an example, but one can of course easily see that, things we discuss here, applies to any data sets.</p>
+<p>Data exploration can be viewed as an indefinite loop:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb8-1"><a href="dataexp.html#cb8-1" aria-hidden="true" tabindex="-1"></a>REPEAT{</span>
+<span id="cb8-2"><a href="dataexp.html#cb8-2" aria-hidden="true" tabindex="-1"></a>Plot,one or many plots.</span>
+<span id="cb8-3"><a href="dataexp.html#cb8-3" aria-hidden="true" tabindex="-1"></a>Transform Data.</span>
+<span id="cb8-4"><a href="dataexp.html#cb8-4" aria-hidden="true" tabindex="-1"></a>} UNTIL GRATIFICATION</span></code></pre></div>
+<p>In other words we keep plotting data for different slices of data and depending on the results we slice and plot and slice and plot until we are satisfied.</p>
+<p>Put yourself in the position of a student in Moody’s class.
+- What does s/he want to know?
+- What should I do in order to pass his class.<br />
+- Aside from getting the best score possible?
+- Ask many questions?
+- Do not text?<br />
+- Do not doze off?
+- May be it is better not to come to class, when one is sleepy. What is the bigger risk?
+- How can we find the “leads” – helping us to discover the grading method of Professor Moody?</p>
+<p><em>What is the approach?</em></p>
+<p>First you need “kick the tires”, make some plots, feel the data and perhaps rule out the obvious. In case of Professor Moody data it may mean the following:
+- Test if straightforward mapping of scores into grades work in Professor Moody’s class.
+Admittedly it is a long shot. We expect more from professor Moody than just merely following the scoring intervals with A above, say 85, B between 70 and 85 etc. But we need to establish that it is not the case quickly. Since it would be embarrassing to miss the obvious and simplest recommendation. Just score as high as you can. Does not matter what else you do. You may never ask any questions, always come late to class, always text in class or simply…never even show up. All it matters is score!</p>
+<p>There is just one plot which can quickly establish whether this simple rule works. And it is boxplot.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCIuLi9maWxlcy9kYXRhc2V0L21vb2R5MjAyMGIuY3N2XCIpXG5ib3hwbG90KG1vb2R5JHNjb3JlIH4gbW9vZHkkZ3JhZGUsIG1haW4gPSAnRGlzdHJpYnV0aW9uIG9mIFNjb3JlcyBieSBHcmFkZScsIHlsYWIgPSdTY29yZSAob3V0IG9mIDEwMCknLCB4bGFiID0gJ0xldHRlciBHcmFkZScsY29sPWMoJ3JlZCcsJ2JsdWUnLCdncmVlbicsJ2N5YW4nLCd5ZWxsb3cnKSkifQ==
+</div>
+<p>As we see in the plot, there are significant overlaps between successive grades. This disproves that there is a function between score and grade. At least it is not always a function. If your score falls in certain areas you may get either one of two grades (A or B, B or C, C or D, D or F).</p>
+<p>Here is how we can check which factors may impact the grade. One way of doing this analysis is to make barplots for all possible slices of Moody data frame by a given categorical variable</p>
+<p>For example,we want to know if asking questions “matters” for the grade? This can be validated by comparing barplots of grade distribution for different values of attribute questions.
+The following slices represent subsets of the Moody data frame for each of the values of the attribute “questions”</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb9-1"><a href="dataexp.html#cb9-1" aria-hidden="true" tabindex="-1"></a>moody[moody$questions==’always’,]</span>
+<span id="cb9-2"><a href="dataexp.html#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="dataexp.html#cb9-3" aria-hidden="true" tabindex="-1"></a>moody[moody$questions==’frequently’,]</span>
+<span id="cb9-4"><a href="dataexp.html#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="dataexp.html#cb9-5" aria-hidden="true" tabindex="-1"></a>moody[moody$questions==’sometimes’,]</span>
+<span id="cb9-6"><a href="dataexp.html#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="dataexp.html#cb9-7" aria-hidden="true" tabindex="-1"></a>moody[moody$questions==’never’,]</span></code></pre></div>
+<p>The command <span class="math inline">\(\color{violet}{\text{table}}\)</span> (one of the 7 commands) will provide us grade distribution for each of these slices. For example,
+<code>table(moody[moody$questions==’always’,]$grade)</code></p>
+<p>And the barplot, will visualize this table.</p>
+<p>Let’s look at the example of the above process for students who always ask question.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="dataexp.html#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">table</span>(moody[moody<span class="sc">$</span>questions<span class="sc">==</span><span class="st">&#39;always&#39;</span>,]<span class="sc">$</span>grade),<span class="at">main =</span> <span class="st">&#39;Frequency of students by Grade who &quot;always&quot; ask questions&#39;</span>, <span class="at">ylab =</span><span class="st">&#39;Frequency&#39;</span>, <span class="at">xlab =</span> <span class="st">&#39; Grade&#39;</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;green&#39;</span>,<span class="st">&#39;cyan&#39;</span>,<span class="st">&#39;yellow&#39;</span>))</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p>We can also run several mosaic plots of GRADE vs one of the behavioral attributes to see if they matter in any way for the grade.</p>
+<p>In the following command we can combine attribute grade with anyone of the behavioral attributes</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="dataexp.html#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(moody<span class="sc">$</span>grade<span class="sc">~</span>moody<span class="sc">$</span>texting,<span class="at">xlab =</span> <span class="st">&#39;Grade&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;Texting habit&#39;</span>, <span class="at">main =</span> <span class="st">&quot;Mosiac of grade vs texing habit in class&quot;</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;green&#39;</span>,<span class="st">&#39;cyan&#39;</span>,<span class="st">&#39;yellow&#39;</span>),<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>This can be concluded by comparing different columns and rows of the mosaic table. If grade distribution is similar for different values of behavioural attributes, this would indicate that these attributes do not matter in the establishing the grade. On the other hand we may “catch professor Moody” and find out that for some value of some attribute, grade distribution is significantly affected. This was the case several years ago when students sitting in the first row, got a grade bump up, even if they get similar scores to students sitting in the back row.</p>
+<p>We can see that asking many questions (frequently and always) really maters for the grade, there is more A’s and more B’s for these slices than in general.
+But this may have nothing to do with Professor Moody rewarding students with the bonus for asking questions. It may be simply the case that such students are more involved and study harder (or are more interested in the topic) and simply get higher scores. We need to dig deeper and see which of the two is the case. Moody’s just gives his personal bonus to students who ask a lot of questions or no such bonus is given – such students simply score higher.</p>
+<p>We can accomplish this using again one of the seven R commands – the tapply.</p>
+<p><code>tapply(moody$score, moody$questions, mean)</code></p>
+<pre><code>##   always    never   rarely 
+## 51.08277 56.32474 53.69217</code></pre>
+<p>will return average score for each of the values of the attribute moody$questions.</p>
+<p>If this values are more or less uniform than it will informally (not statistically yet, for this we have to wait for the next sections) show that questions matter in professor moody grading method and are not just correlated with student’s score.
+Take a look at</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="dataexp.html#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">tapply</span>(moody<span class="sc">$</span>score, moody<span class="sc">$</span>questions, mean), <span class="at">xlab =</span> <span class="st">&#39;question categories&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;Score Average&#39;</span>, <span class="at">main =</span> <span class="st">&quot;Mean Score vs Questions Asked using tapply()&quot;</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;green&#39;</span>,<span class="st">&#39;cyan&#39;</span>,<span class="st">&#39;yellow&#39;</span>),<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>What is the conclusion? Does asking questions often imply higher score?
+We can repeat this process for all attributes in our data set and all values. <em>Yes, it is tedious!</em> But mechanical. If there were a lot of values it would be a problem for sure, but we only have 4 values per attribute, all in all we have to 4 sets of 4 plots. They lead us to conclusion that the only other attributes which matters is when students “always” doze off, here the distributions of lower grades C, D and F is higher.
+And again we check if this is simply because scores for such students are lower</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="dataexp.html#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">tapply</span>(moody<span class="sc">$</span>score, moody<span class="sc">$</span>texting, mean), <span class="at">xlab =</span> <span class="st">&#39;texting categories&#39;</span>,<span class="at">ylab =</span> <span class="st">&#39;Score Average&#39;</span>, <span class="at">main =</span> <span class="st">&quot;Mean Score vs Texting using tapply()&quot;</span>,<span class="at">col=</span><span class="fu">c</span>(<span class="st">&#39;red&#39;</span>,<span class="st">&#39;blue&#39;</span>,<span class="st">&#39;green&#39;</span>,<span class="st">&#39;cyan&#39;</span>,<span class="st">&#39;yellow&#39;</span>),<span class="at">border=</span><span class="st">&quot;black&quot;</span>)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>shows that mean scores are the same across different values of the texting attribute.
+Therefore it seems that the “behavioural” attributes: questions, texting and dozing do not seem to have an impact on the grade.</p>
+<p>Lets examine participation attribute.</p>
+<p>We define intervals of score as clear, if there is only one grade associated with scores from such interval. The remaining intervals are defined as grey - scores where grade can be either A or B, B or C, C or D and D or F respectively.<br />
+We can run a simple R commands to establish the bounds for score intervals for each grade:</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="dataexp.html#cb15-1" aria-hidden="true" tabindex="-1"></a>LowestA&lt;-min(moody[moody$grade==&#39;A&#39;, ]$score)</span>
+<span id="cb15-2"><a href="dataexp.html#cb15-2" aria-hidden="true" tabindex="-1"></a>HighestB&lt;-max(moody[moody$grade==&#39;B&#39;, ]$score)</span>
+<span id="cb15-3"><a href="dataexp.html#cb15-3" aria-hidden="true" tabindex="-1"></a>LowestB&lt;-min(moody[moody$grade==&#39;B&#39;, ]$score)</span>
+<span id="cb15-4"><a href="dataexp.html#cb15-4" aria-hidden="true" tabindex="-1"></a>HighestC&lt;-max(moody[moody$grade==&#39;C&#39;, ]$score)</span>
+<span id="cb15-5"><a href="dataexp.html#cb15-5" aria-hidden="true" tabindex="-1"></a>LowestC&lt;-min(moody[moody$grade==&#39;C&#39;, ]$score)</span>
+<span id="cb15-6"><a href="dataexp.html#cb15-6" aria-hidden="true" tabindex="-1"></a>HighestD&lt;-max(moody[moody$grade==&#39;D&#39;, ]$score)</span>
+<span id="cb15-7"><a href="dataexp.html#cb15-7" aria-hidden="true" tabindex="-1"></a>LowestD&lt;-min(moody[moody$grade==&#39;D&#39;, ]$score)</span>
+<span id="cb15-8"><a href="dataexp.html#cb15-8" aria-hidden="true" tabindex="-1"></a>HighestF&lt;-max(moody[moody$grade==&#39;F&#39;, ]$score)</span></code></pre></div>
+<p>Then the grey intervals of score, corresponding to multiple grades are as follows:</p>
+<ul>
+<li><p>&lt;HighestB, LowestA&gt;</p></li>
+<li><p>&lt;HighestC, LowestB&gt;</p></li>
+<li><p>&lt;HighestD, LowestC&gt;</p></li>
+<li><p>&lt;HighestF, LowestD&gt;</p></li>
+</ul>
+<p>Then we can examine how participation influences grades in these grey areas of score. Our hypothesis is that higher participation would probably offer better odds for higher grade.
+We can run the following command for different values of q.</p>
+<p>Lets check how the grade distribution changes for different values of q from the lower values of q to higher values of q.
+Run the following command for different values of q</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="dataexp.html#cb16-1" aria-hidden="true" tabindex="-1"></a>LowestA<span class="ot">&lt;-</span><span class="fu">min</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;A&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-2"><a href="dataexp.html#cb16-2" aria-hidden="true" tabindex="-1"></a>HighestB<span class="ot">&lt;-</span><span class="fu">max</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;B&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-3"><a href="dataexp.html#cb16-3" aria-hidden="true" tabindex="-1"></a>LowestB<span class="ot">&lt;-</span><span class="fu">min</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;B&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-4"><a href="dataexp.html#cb16-4" aria-hidden="true" tabindex="-1"></a>HighestC<span class="ot">&lt;-</span><span class="fu">max</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;C&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-5"><a href="dataexp.html#cb16-5" aria-hidden="true" tabindex="-1"></a>LowestC<span class="ot">&lt;-</span><span class="fu">min</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;C&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-6"><a href="dataexp.html#cb16-6" aria-hidden="true" tabindex="-1"></a>HighestD<span class="ot">&lt;-</span><span class="fu">max</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;D&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-7"><a href="dataexp.html#cb16-7" aria-hidden="true" tabindex="-1"></a>LowestD<span class="ot">&lt;-</span><span class="fu">min</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;D&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-8"><a href="dataexp.html#cb16-8" aria-hidden="true" tabindex="-1"></a>HighestF<span class="ot">&lt;-</span><span class="fu">max</span>(moody[moody<span class="sc">$</span>grade<span class="sc">==</span><span class="st">&#39;F&#39;</span>, ]<span class="sc">$</span>score)</span>
+<span id="cb16-9"><a href="dataexp.html#cb16-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-10"><a href="dataexp.html#cb16-10" aria-hidden="true" tabindex="-1"></a>q<span class="ot">=</span><span class="fl">0.5</span></span>
+<span id="cb16-11"><a href="dataexp.html#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(moody[moody<span class="sc">$</span>score<span class="sc">&gt;</span>LowestA <span class="sc">&amp;</span> moody<span class="sc">$</span>score<span class="sc">&lt;</span>HighestB<span class="sc">&amp;</span> moody<span class="sc">$</span>participation <span class="sc">&gt;</span> q,]<span class="sc">$</span>grade)</span></code></pre></div>
+<pre><code>## 
+##  A  B 
+## 31 11</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="dataexp.html#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(moody[moody<span class="sc">$</span>score<span class="sc">&gt;</span>LowestB <span class="sc">&amp;</span> moody<span class="sc">$</span>score<span class="sc">&lt;</span>HighestC<span class="sc">&amp;</span> moody<span class="sc">$</span>participation <span class="sc">&gt;</span> q,]<span class="sc">$</span>grade)</span></code></pre></div>
+<pre><code>## 
+##  B  C 
+## 45 32</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="dataexp.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(moody[moody<span class="sc">$</span>score<span class="sc">&gt;</span>LowestC <span class="sc">&amp;</span> moody<span class="sc">$</span>score<span class="sc">&lt;</span>HighestD<span class="sc">&amp;</span> moody<span class="sc">$</span>participation <span class="sc">&gt;</span> q,]<span class="sc">$</span>grade)</span></code></pre></div>
+<pre><code>## 
+##  C  D 
+## 30 13</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="dataexp.html#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(moody[moody<span class="sc">$</span>score<span class="sc">&gt;</span>LowestD <span class="sc">&amp;</span> moody<span class="sc">$</span>score<span class="sc">&lt;</span>HighestF<span class="sc">&amp;</span> moody<span class="sc">$</span>participation <span class="sc">&gt;</span> q,]<span class="sc">$</span>grade)</span></code></pre></div>
+<pre><code>## 
+##  D  F 
+## 46 14</code></pre>
+<p>Please verify that for higher values of 0&lt;q&lt;1, the table operation show higher percentages of better grades.</p>
+<p>We come to conclusion that participation matter in grey area of score, in having higher chance for better grade, if participation is higher. Thus, just in case (since no one can predict if they will end up in border line score) it is better to earn high participation index – by (probably) coming to class more often and participating in discussions, and answering professor Moody’s questions.</p>
+<p><strong>Now we can reveal how data was generated? What was the real rule embedded in the data.</strong></p>
+<p>Now it is time to reveal how we generated our data?</p>
+<p>We have indeed defined border areas in score value. In this border areas of score, participation plays a role.
+Student whose’s score falls into the grey area may get one of two grades, A or B, B or C, C or D and D or F, depending on the score.For example score of 72 may result in A or B. It is more likely to be A if student’s participation is high (higher the better the odds of getting A). If student’s participation is low, it is much more likely to result in lower grade, for the score of 72, it would be B.</p>
+<p><strong>Relationship between participation, score and grade</strong></p>
+<p>In the process of slicing, dicing and plotting the data we would also discover other interesting relationships still using just 7 commands.</p>
+<p>Does higher participation mean higher score, in general? Meaning that such students just know more and perform better in tests and assignments.</p>
+<p>We can run scatter plot</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="dataexp.html#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(moody<span class="sc">$</span>participation, moody<span class="sc">$</span>score)</span></code></pre></div>
+<p><img src="bookdemo_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<p>Perhaps professor Moody used some threshold of participation to decide between A and B, we can define subset of moody frame</p>
+<pre><code>moodyAB&lt;-moody[moody$score&gt;LowestA &amp; moody$score&lt;HighestB,]
+M&lt;-Min(moodyAB[moodyAB$grade==A, ]$participation)
+N&lt;-Max(moodyAB[moodyAB$grade==B, ]$participation)</code></pre>
+<p>To see if M is perhaps higher than N? , if it is perhaps a threshold L, between M&lt;L&lt;N was used to decide between the grades of A and B.
+Another way of checking if higher participation was perhaps associated with A, in the scores falling into AB interval, would be to run boxplot for this subset of the data frame</p>
+<pre><code>Boxplot(moodyAB$participation ~ moodyAB$Grade) </code></pre>
+<p>and see the two boxplots for A and for B. If the one for A had higher median this would be an indication that participation mattered there.</p>
+<p>One of the most important questions in data science addresses difference between correlation and causation. What is the relationship of participation and score?</p>
+<p>One probably would not expect higher participation translating directly into higher score. But the following scatter plot seems to indicate (rather unexpectedly) that the higher the participation the lower the score!<br />
+This seems very unintuitive. This is more of a consequence how we generated our data. For clear intervals, with score clearly mapping into single grade, we make participation low- reflecting the intended grading method which would ignore participation in case student’s score is “clear”.<br />
+We can change values of parameters q and s
+q&lt;-0.1
+s&lt;-70
+and examine in more detail the relationships between scores and participation.</p>
+<div class="sourceCode" id="cb27"><pre class="sourceCode txt"><code class="sourceCode default"><span id="cb27-1"><a href="dataexp.html#cb27-1" aria-hidden="true" tabindex="-1"></a>mean(moody[moody$participation &lt;q,]$score)</span>
+<span id="cb27-2"><a href="dataexp.html#cb27-2" aria-hidden="true" tabindex="-1"></a>mean(moody[moody$score &lt;s,]$participation)</span></code></pre></div>
+<p>Exploring Behaviors of Students in professor Moody’s class.
+One may even drop the grade entirely from the picture and simply inquire about behavioral characteristics of Professor Moody’s students.
+We already know what is the distribution of each type of behavior</p>
+<pre><code>Table(moody$questions);
+Table(moody$texting)</code></pre>
+<p>But lets ask for associations between behaviours</p>
+<ul>
+<li><p>Do students who ask a lot of questions also spend little time texting?</p></li>
+<li><p>Do students who participate more, generally texting less?</p></li>
+<li><p>Is coming late or leaving early associated with texting in class?</p></li>
+</ul>
+<p>These questions have nothing to do with students performance.</p>
+<p>But can all be answered using simple R.7 commands.</p>
+<p>It very much depend what is general thrust and motivation of the data analysis. Same data may serve different purposes. We started with predicting what behaviors help getting higher grade in professor Moody’s class. But we can imagine a different study – which is addressing student behavior in professor Moody’s class. Yet another study could address the impact of behavioral attributes on students scores (not grades). All these analysis can be done using or free style exploration and R.7.</p>
+<p><em>What we discover, and lets be very clear about it is not yet guaranteed to be statistically valid. </em></p>
+<p>For this we need statistical evaluation, The p-values, the z-tests etc. Later we will also find statistical functions which can greatly help in data exploration.</p>
+<p>Free style exploration role is to generate leads known otherwise as conjectures or hypotheses.</p>
+<p>Here is the set of recommendations from former student who cracked that year’s professor Moody’s puzzle (or did she?)</p>
+<pre><code>“Judging by plots and means calculated earlier, there are several factors, besides score, that affect students’ grades:
+•   Sleeping in class increases grade
+•   Texting in class decreases grades a little
+•   Being active(participating) in class all the time significantly increases the  grade, BUT:
+•   Being active(participating) in class just occasionally decreases the grade even more, than not participating at all.
+•   Being active only occasionally significantly decreases the grades.
+•   Texting does not significantly affect grades .
+So for students in order to succeed in professor Moody’s class, my advice will be(besides getting high score):
+•   VERY IMPORTANT: Participate all the time., or do not participate at all!!!
+•   Sleep in class(especially if you do not participate anyway)
+•   While texting might bring down your grade a little bit, the difference is very small”
+</code></pre>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+</div>
 </div>
 <div id="newcolumn" class="section level2" number="2.3">
 <h2><span class="header-section-number">2.3</span> Data Frames &amp; New Column.</h2>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 <hr />
+<p>Now we have to introduce the core data structure of R – the data frame and show we can expand it with extra attributes.</p>
+<p>Defining new attributes can very often be critical in data exploration and help to find patterns and relationships which otherwise would not be visible.</p>
+<p>For example, may be participation matters but only to Pass/Fail grades? In other words students who Pass (A or B or C) always have participation above a certain threshold? Perhaps students who always text never pass the class? And students who always ask questions never fail? Such rules can only be discovered if we define a new Pass/Fail attribute, additional to grade attribute.</p>
+<p>Similarly intervals of participation or score may discover important relationships which would not emerge with just numerical values of such attributes. May be High scores correlate with High participation? To establish it one would have first to define categorical attributes with named intervals of their numerical counterparts.</p>
 <div id="create-column" class="section level3" number="2.3.1">
 <h3><span class="header-section-number">2.3.1</span> Create Column</h3>
 <ul>
@@ -430,65 +721,6 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1u
 <!-- mdy.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category. -->
 <!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
 <!-- ``` -->
-<!-- --- -->
-<!-- ## Finding Patterns using plots. -->
-<!-- See slide 14 -->
-<!-- ### Good Example  -->
-<!-- - Let’s look at the frequency of students grades excluding those who "never" and "always" use smartphones in class. -->
-<!-- ```{r} -->
-<!-- freq_rare_user<-subset(mdy, ON_SMARTPHONE!="never" & ON_SMARTPHONE!="always") # We created a subset based on two constraint -->
-<!-- freq_rare_usertable= table(freq_rare_user$ON_SMARTPHONE,freq_rare_user$GRADE) # We created a table for frequency. -->
-<!-- freq_rare_usertable -->
-<!-- barplot(freq_rare_usertable, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(freq_rare_usertable)) #plot -->
-<!-- ``` -->
-<!-- - We can see that students with higher grades use more phone. -->
-<!-- - While very less students who "rarely" use phone in class get A grade. -->
-<!-- ##### (Disclaimer: Findings are based on this dataset only, and the claims may or may-not be valid in real world case. Please consider it for academic purpose only.) -->
-<!-- ### Bad Example 1 -->
-<!-- - Let’s look at the barplot of the Grade factored by student who always use their smartphone in class. -->
-<!-- ```{r} -->
-<!-- user<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) # We applied tapply on created a subset based on 1 constraint -->
-<!-- user[is.na(user)]<-0 -->
-<!-- always_user<-user[0:1,] -->
-<!-- always_user -->
-<!-- # We created a table for frequency. -->
-<!-- barplot(always_user, main = "Number of students 'always' on smartphone vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(always_user)) #plot -->
-<!-- ``` -->
-<!-- --- -->
-<!-- ### Bad Example 2 -->
-<!-- - Lets look at grade distribution for people who are "sometimes" or "never" late for class. -->
-<!-- ```{r} -->
-<!-- not_always_late<-subset(mdy, LATE_IN_CLASS != "Yes") -->
-<!-- # not_always_late<-subset(mdy,LATE_IN_CLASS == "Sometimes" & LATE_IN_CLASS == "Never") -->
-<!-- nal_table<-table(not_always_late$LATE_IN_CLASS,not_always_late$GRADE) -->
-<!-- nal_table -->
-<!-- barplot(nal_table, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(nal_table)) #plot -->
-<!-- ``` -->
-<!-- --- -->
-<!-- ## Cut -->
-<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
-<!-- ```{r} -->
-<!-- # We access the Score column from moody dataset. -->
-<!-- score0 <- cut(mdy$SCORE,10) -->
-<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
-<!-- table(score0) #lets check the distribution of people in each partition. -->
-<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
-<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
-<!-- table(score1) -->
-<!-- # Example using pretty - Cutting the numerical data into categories. -->
-<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
-<!-- table(score2) -->
-<!-- ``` -->
-<!-- --- -->
-<!-- ### Some helpful functions -->
-<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
-<!-- ```{r} -->
-<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
-<!-- ``` -->
-<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
-<!-- ```{r} -->
-<!-- seq(2,10,2) -->
-<!-- ``` -->
 
 </div>
 </div>
@@ -499,7 +731,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1u
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="permtest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="stateval.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -549,6 +781,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

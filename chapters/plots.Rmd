@@ -129,3 +129,12 @@ mosaicplot(moody$grade~moody$texting,xlab = 'Grade',ylab = 'Texting habit', main
 
 ```
 
+
+```{r child="./chapters/freestyle.Rmd"}
+
+```
+
+```{r child="./chapters/datatransformation.Rmd"}
+
+```
+

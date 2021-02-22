@@ -1,4 +1,4 @@
-# Permutation Test {#permtest}
+## Permutation Test {#permtest}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 
@@ -10,7 +10,7 @@ tutorial::go_interactive(greedy = FALSE)
 ```
 
 
-## Permutation Test One Step {#permonestep}
+### Permutation Test One Step {#permonestep}
 
 - Permutation test in one step  is the most direct way to see randomness close by. One step permutation function shows one single data shuffle. By shuffling the data one destroys associations which exist between values of the data frame. This make data frame random. 
 
@@ -43,7 +43,7 @@ cat("The mean difference of original data: ", D) # Difference of mean value of o
 
 ---
 
-## Permutation Function {#permfunction}
+### Permutation Function {#permfunction}
 
 - The permutation function is used to run multiple iteration of the one-step permutation studied above, to get a complete relational understanding between the components involved in any hypothesis. 
 
@@ -129,7 +129,7 @@ Permutation(traffic, "TUNNEL", "VOLUME_PER_MINUTE",1000,"Holland", "Lincoln")
 - Note: You can find the permutation function code here: [Permutation()](https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R)
 
 
-## Exercise - How p-value is affected by difference of means and standard deviations {#aniceexample}
+### Exercise - How p-value is affected by difference of means and standard deviations {#aniceexample}
 
 - Here, you can generate your own data by changing parameters of the rnorm() function. 
 

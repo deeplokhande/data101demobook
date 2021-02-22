@@ -1,0 +1,13 @@
+# Simple Statistical Evaluation {#stateval}
+
+The biggest enemy of your findings is randomness. In order to convince your audience that you have found something you need to address the question “how do you know your result is simply sheer luck, it is random?”
+
+This is where you need statistics and simple hypothesis testing. 
+
+## z-test *
+
+```{r child="./chapters/permutationtest.Rmd"}
+
+```
+
+## Multiple Hypothesis - Bonferroni Correction.

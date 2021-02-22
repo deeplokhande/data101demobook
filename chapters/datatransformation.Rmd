@@ -7,6 +7,15 @@ knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
 ---
+Now we have to introduce the core data structure of R – the data frame and show we can expand it with extra attributes.
+
+Defining new attributes can very often be critical in data exploration and help to find patterns and relationships which otherwise would not be visible.
+
+For example, may be participation matters but only to Pass/Fail grades? In other words students who Pass (A or B or C) always have participation above a certain threshold?  Perhaps students who always text never pass the class?  And students who always ask questions never fail?  Such rules can only be discovered if we define a new  Pass/Fail attribute, additional to grade attribute.
+
+
+Similarly intervals of participation or score may discover important relationships which would not emerge with just numerical values of such attributes. May be High scores correlate with High participation? To establish it one would have first to define categorical attributes with named intervals of their numerical counterparts.
+
 
 ### Create Column
 * Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
@@ -125,99 +134,3 @@ moody$badcol <- badcol #Throws Compatibility error.
 <!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
 <!-- ``` -->
 
-
-<!-- --- -->
-
-<!-- ## Finding Patterns using plots. -->
-
-<!-- See slide 14 -->
-
-<!-- ### Good Example  -->
-
-<!-- - Let’s look at the frequency of students grades excluding those who "never" and "always" use smartphones in class. -->
-
-<!-- ```{r} -->
-<!-- freq_rare_user<-subset(mdy, ON_SMARTPHONE!="never" & ON_SMARTPHONE!="always") # We created a subset based on two constraint -->
-<!-- freq_rare_usertable= table(freq_rare_user$ON_SMARTPHONE,freq_rare_user$GRADE) # We created a table for frequency. -->
-<!-- freq_rare_usertable -->
-<!-- barplot(freq_rare_usertable, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(freq_rare_usertable)) #plot -->
-<!-- ``` -->
-
-<!-- - We can see that students with higher grades use more phone. -->
-<!-- - While very less students who "rarely" use phone in class get A grade. -->
-
-<!-- ##### (Disclaimer: Findings are based on this dataset only, and the claims may or may-not be valid in real world case. Please consider it for academic purpose only.) -->
-
-<!-- ### Bad Example 1 -->
-
-<!-- - Let’s look at the barplot of the Grade factored by student who always use their smartphone in class. -->
-
-<!-- ```{r} -->
-<!-- user<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) # We applied tapply on created a subset based on 1 constraint -->
-<!-- user[is.na(user)]<-0 -->
-<!-- always_user<-user[0:1,] -->
-<!-- always_user -->
-<!-- # We created a table for frequency. -->
-
-<!-- barplot(always_user, main = "Number of students 'always' on smartphone vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(always_user)) #plot -->
-<!-- ``` -->
-
-
-
-
-<!-- --- -->
-
-<!-- ### Bad Example 2 -->
-
-<!-- - Lets look at grade distribution for people who are "sometimes" or "never" late for class. -->
-
-<!-- ```{r} -->
-
-<!-- not_always_late<-subset(mdy, LATE_IN_CLASS != "Yes") -->
-<!-- # not_always_late<-subset(mdy,LATE_IN_CLASS == "Sometimes" & LATE_IN_CLASS == "Never") -->
-<!-- nal_table<-table(not_always_late$LATE_IN_CLASS,not_always_late$GRADE) -->
-<!-- nal_table -->
-<!-- barplot(nal_table, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(nal_table)) #plot -->
-<!-- ``` -->
-
-
-
-<!-- --- -->
-
-<!-- ## Cut -->
-
-<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
-
-<!-- ```{r} -->
-
-<!-- # We access the Score column from moody dataset. -->
-<!-- score0 <- cut(mdy$SCORE,10) -->
-
-<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
-<!-- table(score0) #lets check the distribution of people in each partition. -->
-
-<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
-<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
-<!-- table(score1) -->
-
-<!-- # Example using pretty - Cutting the numerical data into categories. -->
-<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
-<!-- table(score2) -->
-
-<!-- ``` -->
-
-
-<!-- --- -->
-
-<!-- ### Some helpful functions -->
-<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
-
-<!-- ```{r} -->
-<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
-<!-- ``` -->
-
-<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
-
-<!-- ```{r} -->
-<!-- seq(2,10,2) -->
-<!-- ``` -->

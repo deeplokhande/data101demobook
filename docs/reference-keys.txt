@@ -1,4 +1,5 @@
 tab:unnamed-chunk-3
+tab:unnamed-chunk-11
 intro
 rsetup
 dataexp
@@ -8,9 +9,13 @@ bar-plot
 box-plot
 mosiac-plot
 freestyle
+Moodyexplaination
 newcolumn
 create-column
+stateval
+z-test
 permtest
 permonestep
 permfunction
 aniceexample
+multiple-hypothesis---bonferroni-correction.

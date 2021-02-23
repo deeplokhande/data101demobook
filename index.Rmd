@@ -1,5 +1,6 @@
 --- 
 title: "DATA 101 Shortest Textbook"
+subtitle: "How To Accomplish More With Less"
 author: 
     name: "Tomasz Imielinski"
     email: "timielinski@gmail.com"
@@ -26,11 +27,11 @@ tutorial::go_interactive( greedy = FALSE)
 ```
 
 
-This is a textbook based on the DATA 101 course thought by Prof. Tomasz Imielinski at Computer Science Department at Rutgers University, New Brunswick.
+This is a textbook based on the [DATA 101](http://data101.cs.rutgers.edu/) course thought by Prof. Tomasz Imielinski at Computer Science Department at Rutgers University, New Brunswick.
 
 Data 101 is an introductory course for beginners from any field of study, interested in the field of Data Science. 
 
-Acknowledgment: We thank the contributions of [Deep Lokhande](deeplokhande.github.io) for structuring and coding this book.
+Acknowledgment: We thank the significant contributions of [Deep Lokhande](deeplokhande.github.io) towards building this book.
 
 Note: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 

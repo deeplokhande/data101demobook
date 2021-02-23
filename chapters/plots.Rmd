@@ -1,13 +1,18 @@
 # Data Exploration {#dataexp}
 
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+```{r ,include=FALSE}
+tutorial::go_interactive( greedy = FALSE)
+
+```
 
 
 ## Plots {#plots}
 
 
 ```{r,echo=FALSE}
-moody<-read.csv("./files/dataset/moody2020b.csv") #static Load
-# moody<-read.csv("") #web load
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 # head(moody)
 
 knitr::kable(
@@ -35,9 +40,10 @@ knitr::kable(
 
 
 Lets look at example of scatter plot using Moody.
-```{r}
+```{r,tut=TRUE}
 # Let's look at a 2 attribute scatter plot.
-
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 plot(moody$participation,moody$score,ylab="score",xlab="participation",main=" Participation vs Score",col="red")
 
 
@@ -55,7 +61,9 @@ plot(moody$participation,moody$score,ylab="score",xlab="participation",main=" Pa
 
 
 
-```{r}
+```{r, tut=TRUE}
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 colors<- c('red','blue','cyan','yellow','green') # Assigning different colors to bars
 
 #lets make a table for the grades of students and counts of students for each Grade. 
@@ -86,7 +94,9 @@ main="Barplot for student grade distribution",border="black")
 
 
 
-```{r}
+```{r,tut=TRUE}
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 #Suppose you want to find the distribution of students score per Grade. We use box plot for getting that. 
 boxplot(score~grade,data=moody,xlab="Grade",ylab="Score", main="Boxplot of grade vs score",col=colors,border="black")
 
@@ -120,7 +130,9 @@ boxplot(score~grade,data=moody,xlab="Grade",ylab="Score", main="Boxplot of grade
 -For example, if you want to plot the number of individuals per letter grade using a smartphone, you want to look at mosiac plot.
 
 
-```{r}
+```{r,tut=TRUE}
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 
 #suppose you want to find numbers of students with a particular grade based on their texting habits. Use Mosiac-plot.
 

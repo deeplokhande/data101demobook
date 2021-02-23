@@ -21,14 +21,13 @@ Similarly intervals of participation or score may discover important relationshi
 * Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
 * For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
 ```{r ,tut=TRUE, ex="create_a",type="pre-exercise-code"}
-# mdy <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
-moody<-read.csv("../files/dataset/moody2020b.csv")
-# View(mdy)
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 ```
 
 ```{r ,tut=TRUE, ex="create_a",type="sample-code"}
 #colage column has 3 category and divides on the basis of age.
-pf <- cut(moody$SCORE,breaks=c(0,50,100),labels=c("F","P"))
+pf <- cut(moody$score,breaks=c(0,50,100),labels=c("F","P"))
 # length(colage) #Number of rows in new column.
 # nrow(mdy) #Number of Rows in dataframe
 

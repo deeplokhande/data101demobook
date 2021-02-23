@@ -3,9 +3,9 @@ title: "DATA 101 Shortest Textbook"
 author: 
     name: "Tomasz Imielinski"
     email: "timielinski@gmail.com"
-subauthor: 
-    name: "Deep Lokhande"
-    email: "deep.lokhande@rutgers.edu"
+# subauthor: 
+#     name: "Deep Lokhande"
+#     email: "deep.lokhande@rutgers.edu"
 # date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -29,6 +29,8 @@ tutorial::go_interactive( greedy = FALSE)
 This is a textbook based on the DATA 101 course thought by Prof. Tomasz Imielinski at Computer Science Department at Rutgers University, New Brunswick.
 
 Data 101 is an introductory course for beginners from any field of study, interested in the field of Data Science. 
+
+Acknowledgment: We thank the contributions of [Deep Lokhande](deeplokhande.github.io) for structuring and coding this book.
 
 Note: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 

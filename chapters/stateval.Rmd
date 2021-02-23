@@ -5,7 +5,7 @@ The biggest enemy of your findings is randomness. In order to convince your audi
 This is where you need statistics and simple hypothesis testing. 
 
 
-#### Some Basics First:
+#### *Some Basics First:
 
 - _Mean_
 \begin{equation}
@@ -17,7 +17,7 @@ N is size of set.}
 - _Standard Deviation_
 
 
-## z-test *
+## *z-test 
 
 A z-test is any statistical test used in hypothesis testing with an underlying normal distribution.
 In other words, when the distribution of the test statistic under the null hypothesis can be approximated by a normal distribution, z-test can be used.
@@ -29,4 +29,4 @@ z-score is measured in terms of standard deviation from mean.
 
 ```
 
-## Multiple Hypothesis - Bonferroni Correction.*
+## *Multiple Hypothesis - Bonferroni Correction.

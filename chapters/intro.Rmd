@@ -47,7 +47,7 @@ In the following sections we will address these questions and go through the pro
 - We will start with making plots, follow with free style data exploration – which allows us to form the leads, that is hypotheses. Then we will follow with simple statistical tests which will allow  us to validate these hypothesis and defend our findings against randomness claims. - We will learn how to calculate p-values and how to use them to defend our findings. 
 - We will use as few R commands as possible and reach our goal in shortest possible path.  In fact we will demonstrate how using just 7 R commands we can perform  quite sophisticated data exploration.
 
-## Setting Up R. * {#rsetup}
+## Setting Up R* 
 
 - How to download and install R studio? 
 - How to upload a data set?

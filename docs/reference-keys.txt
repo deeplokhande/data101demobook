@@ -1,7 +1,6 @@
-tab:unnamed-chunk-3
-tab:unnamed-chunk-11
+tab:unnamed-chunk-4
 intro
-rsetup
+setting-up-r
 dataexp
 plots
 scatter-plot

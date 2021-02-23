@@ -33,6 +33,8 @@ Data 101 is an introductory course for beginners from any field of study, intere
 
 Acknowledgment: We thank the significant contributions of [Deep Lokhande](deeplokhande.github.io) towards building this book.
 
+This book is created using Rmarkdown from Rstudio (Similar to jupyter notebook) and the book is compiled using bookdown package.
+
 Note: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 
 

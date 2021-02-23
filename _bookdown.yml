@@ -1,6 +1,11 @@
 book_filename: "bookdemo"
+output_dir: "docs"
 delete_merged_file: true
-rmd_files: ["index.Rmd","01-intro.Rmd","Recitation3.Rmd"]
+rmd_files: [
+  "index.Rmd",
+  "./chapters/intro.Rmd",
+  "./chapters/plots.Rmd",
+  "./chapters/stateval.Rmd"]
 language:
   ui:
     chapter_name: "Chapter "

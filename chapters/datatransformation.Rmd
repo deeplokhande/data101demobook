@@ -1,0 +1,175 @@
+## Data Frames & New Column. {#newcolumn}
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy = FALSE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+---
+Now we have to introduce the core data structure of R – the data frame and show we can expand it with extra attributes.
+
+Defining new attributes can very often be critical in data exploration and help to find patterns and relationships which otherwise would not be visible.
+
+For example, may be participation matters but only to Pass/Fail grades? In other words students who Pass (A or B or C) always have participation above a certain threshold?  Perhaps students who always text never pass the class?  And students who always ask questions never fail?  Such rules can only be discovered if we define a new  Pass/Fail attribute, additional to grade attribute.
+
+
+Similarly intervals of participation or score may discover important relationships which would not emerge with just numerical values of such attributes. May be High scores correlate with High participation? To establish it one would have first to define categorical attributes with named intervals of their numerical counterparts.
+
+
+### Create Column
+* Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
+* For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
+```{r ,tut=TRUE, ex="create_a",type="pre-exercise-code"}
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
+```
+
+```{r ,tut=TRUE, ex="create_a",type="sample-code"}
+#colage column has 3 category and divides on the basis of age.
+pf <- cut(moody$score,breaks=c(0,50,100),labels=c("F","P"))
+# length(colage) #Number of rows in new column.
+# nrow(mdy) #Number of Rows in dataframe
+
+# To add this new column colage in dataframe mdy.
+names(moody) # Initially dataframe has 5 columns
+moody$passfail <- pf #Put syntax dataFrameName$columnHeaderName <- newColumn
+names(moody) # Now dataframe has 8 columns
+```
+
+```{r ,tut=TRUE,error=TRUE}
+#What happens when you have column size mismatch.
+badcol <- c(1:10)
+length(badcol)
+
+moody$badcol <- badcol #Throws Compatibility error. 
+```
+
+
+
+
+<!-- --- -->
+
+<!-- ## Table -->
+
+<!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->
+
+<!-- ```{r} -->
+<!-- tableex1<- table(mdy$GRADE) #Use of table  function on the new column. -->
+<!-- tableex1 -->
+<!-- barplot(tableex1,col =c("red","purple","cyan","yellow","green"),xlab = "Labels", ylab = "Frequency",main = "table() example 1") #plot. -->
+<!-- ``` -->
+
+
+<!-- - More use of table() is when you use multiple categorical columns. For example, lets see the count of *grade* vs *asks_questions*. -->
+
+<!-- ```{r} -->
+<!-- tableex2<-table(mdy$GRADE,mdy$ASKS_QUESTIONS) -->
+<!-- tableex2 -->
+<!-- mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2") -->
+<!-- ``` -->
+
+
+
+
+
+
+<!-- --- -->
+
+<!-- ## Subset -->
+
+<!-- - subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters. -->
+
+<!-- - NOTE: To create a subset, not only can you use the subset() function, but also: -->
+<!--     - you can use [ ] operator. Ex: dataFrameName['columnName']  -->
+<!--     - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName -->
+
+<!-- ```{r} -->
+<!-- #Subset of rows -->
+<!-- mdy_never_smartphone<-subset(mdy,ON_SMARTPHONE=="never") -->
+<!-- nrow(mdy) -->
+<!-- nrow(mdy_never_smartphone) -->
+<!-- table(mdy_never_smartphone$ON_SMARTPHONE) # You can see only student never on smartphone are in the subset. -->
+
+<!-- #subset of columns -->
+<!-- mdy_except8<-subset(mdy, select = -c(8)) -->
+<!-- ncol(mdy) -->
+<!-- ncol(mdy_except8) # You can see the number of columns has been reduced by 1, due to subsetting without column 8 -->
+
+<!-- #Subset of Rows and Columns -->
+<!-- mdy_except8_never<-subset(mdy, select = -c(8), ON_SMARTPHONE == "never") -->
+<!-- table(mdy_except8_never$ON_SMARTPHONE) -->
+<!-- dim(mdy) -->
+<!-- dim(mdy_except8_never)# You can see only student never on smartphones without column 8 data are present in the subset. -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- ## tapply -->
+
+<!-- - tapply() function in R Language is used to apply a function over a subset of vectors given by a combination of factors -->
+<!-- - This is a very versatile function, as we'll see from the use case.  -->
+<!-- - Note : There are different aggregate functions that can be used. For example, Mean, Median, Variance, Sum etc. -->
+
+<!-- ```{r} -->
+<!-- # To apply tapply() on capital gains factored on mdydiac sign. -->
+
+<!-- mdy_scoreavg<-tapply(mdy$SCORE,mdy$ON_SMARTPHONE,mean) -->
+<!-- mdy_scoreavg # We can see it calculated mean value of the score by students with respect to their use of phone in class. -->
+
+<!-- barplot(mdy_scoreavg,col = "cyan",xlab = "Labels", ylab = "mean_val",main = "tapply() example 1",las = 2, cex.names = 0.75)#plot -->
+<!-- ``` -->
+
+<!-- - We can also factor it on multiple attributes. -->
+<!-- - Lets factor the grades on on_smartphone as well as grade category. -->
+
+
+<!-- ```{r} -->
+
+<!-- mdy.scoreavg2d<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) -->
+<!-- mdy.scoreavg2d[is.na(mdy.scoreavg2d)]<-0 -->
+<!-- mdy.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category. -->
+<!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- ## Cut -->
+
+<!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
+
+<!-- ```{r} -->
+
+<!-- # We access the Score column from moody dataset. -->
+<!-- score0 <- cut(mdy$SCORE,10) -->
+
+<!-- levels(score0) # Lets make sure that the cut really create how many partitions.  -->
+<!-- table(score0) #lets check the distribution of people in each partition. -->
+
+<!-- # Cut Example using breaks - Cutting data using defined vector.  -->
+<!-- score1 <- cut(mdy$SCORE,breaks=c(0,50,100),labels=c("NC","P")) -->
+<!-- table(score1) -->
+
+<!-- # Example using pretty - Cutting the numerical data into categories. -->
+<!-- score2<- cut(mdy$SCORE,pretty(mdy$SCORE,2),labels=c("NC","P")) -->
+<!-- table(score2) -->
+
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- ### Some helpful functions -->
+<!-- * pretty() function in R Language is used to decide sequence of equally spaced round values. -->
+
+<!-- ```{r} -->
+<!-- pretty(1:50,n=5) #The values are chosen so that they are 1, 2 or 5 times a power of 10. -->
+<!-- ``` -->
+
+<!-- * seq() function in R Language is used to create a sequence of elements in a Vector. It takes the length and difference between values as optional argument. -->
+
+<!-- ```{r} -->
+<!-- seq(2,10,2) -->
+<!-- ``` -->

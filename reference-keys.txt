@@ -1,7 +1,0 @@
-fig:nice-fig
-tab:nice-tab
-prerequisites
-intro
-recitation3-examplerec3
-topics
-create-column

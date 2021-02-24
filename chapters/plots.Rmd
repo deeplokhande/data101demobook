@@ -40,7 +40,7 @@ knitr::kable(
 
 
 Lets look at example of scatter plot using Moody.
-```{r,tut=TRUE}
+```{r,tut=TRUE,height=700}
 # Let's look at a 2 attribute scatter plot.
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
@@ -61,7 +61,7 @@ plot(moody$participation,moody$score,ylab="score",xlab="participation",main=" Pa
 
 
 
-```{r, tut=TRUE}
+```{r, tut=TRUE,height=700}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 colors<- c('red','blue','cyan','yellow','green') # Assigning different colors to bars
@@ -94,9 +94,12 @@ main="Barplot for student grade distribution",border="black")
 
 
 
-```{r,tut=TRUE}
+```{r,tut=TRUE,height=700}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
+colors<- c('red','blue','cyan','yellow','green') # Assigning different colors to bars
+
+
 #Suppose you want to find the distribution of students score per Grade. We use box plot for getting that. 
 boxplot(score~grade,data=moody,xlab="Grade",ylab="Score", main="Boxplot of grade vs score",col=colors,border="black")
 
@@ -130,9 +133,10 @@ boxplot(score~grade,data=moody,xlab="Grade",ylab="Score", main="Boxplot of grade
 -For example, if you want to plot the number of individuals per letter grade using a smartphone, you want to look at mosiac plot.
 
 
-```{r,tut=TRUE}
+```{r,tut=TRUE,height=700}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
+colors<- c('red','blue','cyan','yellow','green') # Assigning different colors to bars
 
 #suppose you want to find numbers of students with a particular grade based on their texting habits. Use Mosiac-plot.
 

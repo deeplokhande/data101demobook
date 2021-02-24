@@ -2,7 +2,7 @@
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
-tutorial::go_interactive(greedy = FALSE)
+tutorial::go_interactive(greedy = FALSE,height=700)
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 

@@ -20,6 +20,8 @@ description: "This is a example of a interactive book for DATA 101 Course though
 
 # {-}
 
+---
+
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
 tutorial::go_interactive( greedy = FALSE)
@@ -31,14 +33,14 @@ This is a textbook based on the [DATA 101](http://data101.cs.rutgers.edu/) cours
 
 Data 101 is an introductory course for beginners from any field of study, interested in the field of Data Science. 
 
-_Acknowledgment_: We thank the significant contributions of **[Deep Lokhande](deeplokhande.github.io)** towards building this book.
+<!-- _Acknowledgment_: We thank the significant contributions of **[Deep Lokhande](deeplokhande.github.io)** towards building this book. -->
 
 This book's pages are created using [Rmarkdown](https://rmarkdown.rstudio.com/) from Rstudio (similar to jupyter notebook) and the book is compiled using ["bookdown"](https://cran.r-project.org/web/packages/bookdown/index.html) package.
 
 Note: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 
 
-
+---
 
 
 

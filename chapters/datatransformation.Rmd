@@ -38,6 +38,10 @@ names(moody) # Now dataframe has 8 columns
 ```
 
 ```{r ,tut=TRUE,error=TRUE}
+
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
+
 #What happens when you have column size mismatch.
 badcol <- c(1:10)
 length(badcol)

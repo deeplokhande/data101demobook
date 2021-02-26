@@ -16,6 +16,14 @@ N is size of set.}
 
 - _Standard Deviation_
 
+\begin{equation}
+
+\sigma = \sqrt{\frac{\sum{(X - \mu)^2}}{N}}\\
+\text{where, X is set of numbers, $\mu$ is average of set of numbers, }\\ \text{ N is size of the set, $\sigma$ is standard deviation}
+
+
+\end{equation}
+
 
 ## *z-test 
 

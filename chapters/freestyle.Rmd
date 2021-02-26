@@ -292,9 +292,9 @@ moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/
 LowestA<-min(moody[moody$grade=='A', ]$score)
 HighestB<-max(moody[moody$grade=='B', ]$score) 
 #This gives us interval <HighestB, LowestA>
-print(LowestA,HighestB)
+print(c(LowestA,HighestB))
 
-q=0.5
+q=0.5 # Please Edit this " q " value and see the changes as mentioned above.
 table(moody[moody$score>LowestA & moody$score<HighestB& moody$participation > q,]$grade)
 
 #Note the same process can be repeated with other adjacent grades. Ex: <B,C> etc.
@@ -335,6 +335,14 @@ HighestB<-max(moody[moody$grade=='B', ]$score)
 moodyAB<-moody[moody$score>LowestA & moody$score<HighestB,]
 M<-min(moodyAB[moodyAB$grade=='A', ]$participation)
 N<-max(moodyAB[moodyAB$grade=='B', ]$participation)
+
+
+#The Value of M 
+M
+
+# The Value of N
+N
+
 ```
 To see if M is perhaps higher than N? , if it is perhaps a threshold L, between   M<L<N was used to decide between the grades of A and B.
 Another way of checking if higher participation was perhaps associated with A, in the scores falling into AB interval, would be to run boxplot for this subset of the data frame
@@ -354,11 +362,13 @@ One of the most important questions in data science addresses difference between
 One probably would not expect higher participation translating directly into higher score.  But the following scatter plot seems to indicate (rather unexpectedly) that the higher the participation the lower the score!   
 This seems very unintuitive.  This is more of a consequence how we generated our data.  For clear intervals, with score clearly mapping into single grade, we make participation low- reflecting the intended grading method which would ignore participation in case student’s score is “clear”.  
 We can change values of parameters q and s
-
 and examine in more detail the relationships between scores and participation.
 ```{r,tut=TRUE}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
+
+
+# Change the values of "q" and "s" below.
 q<-0.1
 s<-70
 mean(moody[moody$participation <q,]$score)

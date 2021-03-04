@@ -1,0 +1,371 @@
+# Revision of R commands {#Revcommands}
+
+<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+```{r ,include=FALSE}
+tutorial::go_interactive()
+
+```
+
+In this chapter we are going to recap at some **basic** and useful functions we have used in R.
+The examples we use here will be helpful in revising few of the functions we studied and would give an baseline of function we would need in the future while programming in R.
+
+List of commands:
+
+1. c()
+2. data.frame()
+3. subset()
+4. table()
+5. tapply()
+6. cut()
+7. summary(), mean(),length(), max(),min(), sd(),nrow(), ncol()
+8. class()
+
+And also all the plot commands present in section \@ref(plots)
+
+---
+
+## c() & data.frame() & class() {#dataframe}
+
+- c() 
+  - The c() function is used for combining arguments.
+  - The default behavior of the c() method is to combine its arguments to form a vector. 
+  - All arguments are coerced (forcibly converted) to a common type which is the type of the returned value.
+  - For example,the non-character values are coerced to character type if one of the elements is a character.
+  - the hierarchy followed is NULL < raw < logical < integer < double < complex < character < list < expression. 
+  
+- dataframe()
+  - A data frame is a table or a two-dimensional array-like structure in which each column contains values of one variable and each row contains one set of values from each column.
+  - Following are the characteristics of a data frame.
+    - The column names should be non-empty.
+    - The row names should be unique.
+    - The data stored in a data frame can be of numeric, factor or character type.
+    - Each column should contain same number of data items.
+    
+- class()
+  - The class() function has multiple uses, but for here, it is used to check the type of object.  
+  
+  
+```{r,error=TRUE}
+
+#Lets create 3 vectors with title, author and year.
+title <- c('Data Smart','Orientalism','False Impressions','Making Software')
+author <- c('Foreman, John','Said, Edward','Archer, Jeffery','Oram, Andy')
+year <- c('2010','2011','2012','1998')
+
+#Lets look at how the created vectors look.
+title
+author
+year
+
+
+#Lets look at a coerced vector.
+
+#vector containing 4 elements
+myVect<-c("Robert", "Ethan", "Bruce",4)
+myVect #You will notice that the last element 4, which is an integer, is coerced into a character.
+
+#class() is used to check the type of an object
+class(myVect)
+
+# Now lets create a dataframe using the above column vectors.
+
+df <- data.frame(title, author, year)
+df # Lets look at how the dataframe looks.
+```
+
+---
+
+## summary(), mean(),length(), max(),min(), sd(),nrow(), ncol(), dim() {#basicfunction}
+
+The functions in this section are very simple yet are always useful to get more information from data.
+
+- summary() function computes summary statistics of data.
+- mean() function is used to find the average of the data.
+- sd() fucntion is used to find the standard deviation of the data.
+- length() function is used to get or set the length of data.
+- max() function is used to get the maximum valued element in the data.
+- min() function is used to get the minimum valued element in the data.
+- nrow() function is used to find the number/count of the rows present in data.
+- ncol() function is used to find the number/count of the columns present in data.
+- dim() function is used to find the dimensions of the data.
+
+Lets look at example of all these functions.
+
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# Lets look at the summary
+summary(moody)
+
+#Lets look at the number of rows in the dataset.
+nrow(moody)
+
+#Lets look at the number of columns in the dataset.
+ncol(moody)
+
+#Lets look at the dimensions i.e. both numbers of rows and columns of the data using just one command
+dim(moody)
+
+#Lets look at the mean of score column.
+mean(moody$score)
+
+#Lets look at the standard deviation of score column
+sd(moody$score)
+
+#Lets look at the length of the grade column 
+length(moody$grade)
+
+#Lets look at the minimum value of score in the score column.
+min(moody$score)
+
+#lets look at the maximum value of the score in the score column
+max(moody$score)
+```
+
+---
+
+## Table {#table}
+
+- table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table.
+- More use of table() is when you use multiple categorical columns. For example, we'll see the count of *grade* vs *asks_questions* in example 2.
+
+```{r,height=700}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+
+tableex1<- table(moody$GRADE) #Use of table  function on the new column.
+tableex1
+barplot(tableex1,col =c("red","purple","cyan","yellow","green"),xlab = "Labels", ylab = "Frequency",main = "table() example 1") #plot.
+
+
+tableex2<-table(moody$GRADE,moody$ASKS_QUESTIONS)
+tableex2
+mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2")
+```
+
+
+---
+
+## Subset {#subset}
+
+- subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters.
+
+- NOTE: To create a subset, not only can you use the subset() function, but also:
+    - you can use [ ] operator. Ex: dataFrameName['columnName'] 
+    - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName
+    
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+
+#Subset of rows
+moody_never_smartphone<-subset(moody,ON_SMARTPHONE=="never")
+nrow(moody)
+nrow(moody_never_smartphone)
+table(moody_never_smartphone$ON_SMARTPHONE) # You can see only student never on smartphone are in the subset.
+
+#Alternate way to subset.
+moody_never_smartphone_alt<-moody[moody$ON_SMARTPHONE=="never", ]
+table(moody_never_smartphone_alt$ON_SMARTPHONE) # You can see a similar table as above.
+
+
+#subset of columns
+moody_except8<-subset(moody, select = -c(8))
+ncol(moody)
+ncol(moody_except8) # You can see the number of columns has been reduced by 1, due to subsetting without column 8
+
+#Subset of Rows and Columns
+moody_except8_never<-subset(moody, select = -c(8), ON_SMARTPHONE == "never")
+table(moody_except8_never$ON_SMARTPHONE)
+dim(moody)
+dim(moody_except8_never)# You can see only student never on smartphones without column 8 data are present in the subset.
+
+
+```
+
+
+---
+
+## tapply {#tapply}
+
+- tapply() function in R Language is used to apply a function over a subset of vectors given by a combination of factors
+- This is a very versatile function, as we'll see from the use case. 
+- Note : There are different aggregate functions that can be used. For example, Mean, Median, Variance, Sum etc.
+-  We can also factor it on multiple attributes.
+
+```{r,height=700}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+
+# To apply tapply() on SCORE factored on ON_SMARTPHONE
+
+moody_scoreavg<-tapply(moody$SCORE,moody$ON_SMARTPHONE,mean)
+moody_scoreavg # We can see it calculated mean value of the score by students with respect to their use of phone in class.
+
+barplot(moody_scoreavg,col = "cyan",xlab = "Labels", ylab = "mean_val",main = "tapply() example 1",las = 2, cex.names = 0.75)#plot
+
+#Lets factor the grades on on_smartphone as well as grade category.
+
+moody.scoreavg2d<-tapply(moody$GRADE,list(moody$ON_SMARTPHONE,moody$GRADE),length)
+moody.scoreavg2d[is.na(moody.scoreavg2d)]<-0
+moody.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category.
+barplot(moody.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(moody.scoreavg2d))
+```
+
+
+---
+
+## Cut {#cut}
+
+- cut() function in R Language is used to divide a **numeric vector** into different ranges
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+
+# We access the Score column from moody dataset.
+score0 <- cut(moody$SCORE,10)
+table(score0) #lets check the distribution of people in each partition.
+
+# Cut Example using breaks - Cutting data using defined vector. 
+score1 <- cut(moody$SCORE,breaks=c(0,50,100),labels=c("F","P"))
+table(score1)
+
+```
+
+
+
+---
+
+### A complex example
+
+
+```{r,height=700}
+
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+
+moody$conditional <-0
+moody[moody$participation<0.50, ]$conditional <- moody[moody$participation<0.50, ]$score -10*moody[moody$participation<0.50, ]$participation
+moody[moody$participation>=0.50, ]$conditional <- moody[moody$participation>=0.50, ]$score +10*moody[moody$participation>=0.50, ]$participation
+
+summary(moody$conditional)
+
+boxplot(moody$conditional,col = c("red"),main="Complex Example")
+
+```
+
+
+
+--- 
+
+## What would R say? {#basicexamples}
+
+In this section we will look at few examples based on the question _"What do you think would R say?"_
+All the questions are based on what we have studied in the sections above.
+
+_INSTRUCTIONS_: Do not run the following examples directly, first ask yourself and note down, what *do you think* would R say?  Only then run them. This is the only way to learn simple commands - and have them memorized so you can write code without having to check every single command. 
+
+
+### Question  
+
+```{r,height=100}
+weather =data.frame(Day=c('weekday', 'weekend'), Conditions =c('sunny','rainy','cloudy', 'snow', 'storm','ice'))
+dim(weather)
+#what would R say?
+```
+
+### Question 
+
+```{r,height=150}
+weather =data.frame(Day=c('weekday', 'weekend'), Conditions =c('sunny','rainy','cloudy', 'snow', 'storm','ice'))
+weather$temperature =c(80, 70, 65, 40, 30,25)
+weather[weather$temperature > 40, ]
+dim(weather)
+#what would R say?
+```
+
+### Question 
+
+```{r,height=150}
+SCORE=c(30,15,66);
+GRADE=c('C', 'F', 'A')
+ON_SMARTPHONE=c('always', 'never', 'sometimes')
+FINALEXAM=c(12,5,20)
+M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
+subset(M, GRADE=='F')
+#what would R say?
+```
+
+### Question 
+
+```{r,height=150}
+SCORE=c(30,15,66);
+GRADE=c('C', 'F', 'A')
+ON_SMARTPHONE=c('always', 'never', 'sometimes')
+FINALEXAM=c(12,5,20)
+M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
+M[FINALEXAM > 5,]
+#what would R say?
+```
+
+### Question 
+
+```{r,height=150}
+SCORE=c(30,15,66)
+GRADE=c('C', 'F', 'A')
+ON_SMARTPHONE=c('always', 'never', 'sometimes')
+FINALEXAM=c(12,5,20)
+M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
+M$QUESTIONS='none'
+M[,5]
+#what would R say?
+
+```
+
+### Question 
+
+```{r,height=150}
+SCORE=c(30,15,66)
+GRADE=c('C', 'F', 'A')
+ON_SMARTPHONE=c('always', 'never', 'sometimes')
+FINALEXAM=c(12,5,20)
+M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
+table(M$SCORE>15, M$GRADE)
+#what would R say?
+
+```
+
+### Question 
+
+```{r,height=100}
+u<-c(1:10)
+w <-c(1,-1,3)
+u[w>0]
+#what would R say?
+```
+
+### Question 
+
+```{r,height=100}
+v <- c(-2,0,2,-5)
+v[v>0]
+#what would R say?
+
+```
+
+### Question 
+
+```{r,height=100}
+c("a",1,T)
+#what would R say?
+```
+
+### Question 
+
+```{r,height=100}
+x<-1:4
+y<-2:9
+x+y
+#what would R say?
+```

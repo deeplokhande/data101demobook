@@ -7,24 +7,106 @@ knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
 
-- Now as you know to make simple, but quite colorful, basic graphs it is time to go one step further and use the plots to explore your data. This is the subject of the process known as data exploration. 
+ Now as you know to make simple, but quite colorful, basic graphs it is time to go one step further and use the plots to explore your data. This is the subject of the process known as data exploration. 
 
-- We will begin with what we call, the free style data exploration. We call it free style, since we are not going to use any sophisticated libraries, but rather just 7 basic of commands of R. And with these 7 commands we will be able to do quite a bit, more than you would ever guess in fact!
- 
-- No statistics yet, and no more sophisticated R programs.These will come later. For now, we are just feeling the data with four plots and  three R instructions:
+ We will begin with what we call, the free style data exploration. We call it free style, since we are not going to use any sophisticated libraries, but rather just seven basic of commands of R. We call this set of commands - R.7. And with these seven commands of R.7 we will be able to do quite a bit of  data exploration. We will be able to slice and dice data any way we want to. 
+
+No statistics yet, and no more sophisticated R programs.These will come later. For now, we are just feeling the data with four plots and  three R instructions:
 _subset(), table() and tapply()_
+
+<!-- ## Table -->
+
+<!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->
+
+<!-- ```{r} -->
+<!-- tableex1<- table(moody$GRADE) #Use of table  function on the new column. -->
+<!-- tableex1 -->
+<!-- barplot(tableex1,col =c("red","purple","cyan","yellow","green"),xlab = "Labels", ylab = "Frequency",main = "table() example 1") #plot. -->
+<!-- ``` -->
+
+
+<!-- - More use of table() is when you use multiple categorical columns. For example, lets see the count of *grade* vs *asks_questions*. -->
+
+<!-- ```{r} -->
+<!-- tableex2<-table(moody$GRADE,moody$ASKS_QUESTIONS) -->
+<!-- tableex2 -->
+<!-- mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2") -->
+<!-- ``` -->
+
+
+
+
+
+
+<!-- --- -->
+
+<!-- ## Subset -->
+
+<!-- - subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters. -->
+
+<!-- - NOTE: To create a subset, not only can you use the subset() function, but also: -->
+<!--     - you can use [ ] operator. Ex: dataFrameName['columnName']  -->
+<!--     - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName -->
+
+<!-- ```{r} -->
+<!-- #Subset of rows -->
+<!-- moody_never_smartphone<-subset(moody,ON_SMARTPHONE=="never") -->
+<!-- nrow(moody) -->
+<!-- nrow(moody_never_smartphone) -->
+<!-- table(moody_never_smartphone$ON_SMARTPHONE) # You can see only student never on smartphone are in the subset. -->
+
+<!-- #subset of columns -->
+<!-- moody_except8<-subset(moody, select = -c(8)) -->
+<!-- ncol(moody) -->
+<!-- ncol(moody_except8) # You can see the number of columns has been reduced by 1, due to subsetting without column 8 -->
+
+<!-- #Subset of Rows and Columns -->
+<!-- moody_except8_never<-subset(moody, select = -c(8), ON_SMARTPHONE == "never") -->
+<!-- table(moody_except8_never$ON_SMARTPHONE) -->
+<!-- dim(moody) -->
+<!-- dim(moody_except8_never)# You can see only student never on smartphones without column 8 data are present in the subset. -->
+<!-- ``` -->
+
+
+<!-- --- -->
+
+<!-- ## tapply -->
+
+<!-- - tapply() function in R Language is used to apply a function over a subset of vectors given by a combination of factors -->
+<!-- - This is a very versatile function, as we'll see from the use case.  -->
+<!-- - Note : There are different aggregate functions that can be used. For example, Mean, Median, Variance, Sum etc. -->
+
+<!-- ```{r} -->
+<!-- # To apply tapply() on capital gains factored on moodydiac sign. -->
+
+<!-- moody_scoreavg<-tapply(moody$SCORE,moody$ON_SMARTPHONE,mean) -->
+<!-- moody_scoreavg # We can see it calculated mean value of the score by students with respect to their use of phone in class. -->
+
+<!-- barplot(moody_scoreavg,col = "cyan",xlab = "Labels", ylab = "mean_val",main = "tapply() example 1",las = 2, cex.names = 0.75)#plot -->
+<!-- ``` -->
+
+<!-- - We can also factor it on multiple attributes. -->
+<!-- - Lets factor the grades on on_smartphone as well as grade category. -->
+
+
+<!-- ```{r} -->
+
+<!-- moody.scoreavg2d<-tapply(moody$GRADE,list(moody$ON_SMARTPHONE,moody$GRADE),length) -->
+<!-- moody.scoreavg2d[is.na(moody.scoreavg2d)]<-0 -->
+<!-- moody.scoreavg2d# We can see it calculated count of the grade of student with respect to their in-class smartphone usage  and grade category. -->
+<!-- barplot(moody.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(moody.scoreavg2d)) -->
+<!-- ``` -->
+
+
 
 <!-- Let's dive into these functions. -->
 
-You will see now that with just 7 commands (4 plots plus 3 commands slicing and dicing data frames) we can achieve **Instant gratification through  data exploration!**
 
-It is amazing how much data exploration can be done, just knowing 7 R commands. You can learn one command a day, or an hour. And be ready to show off your skills and impress your audience even with such small arsenal of tools at your disposal.
+Through this section we will use our usual inital example, of synthetically generate data describing mysterious methods of grading used by an excentric Professor Moody. We have been using different versions of this *data puzzle* over the 6 years of teaching data 101. Data is different but narrative is always the same:
 
-Through this section we will use our "crown" inital example, of synthetically generate data describing mysterious methods of grading used by an excentric Professor Moody. We have been using different versions of this *data puzzle* over the 6 years of teaching data 101. Data is different but narrative is always the same:
 
 #### Professor Moody Puzzle {#Moodyexplaination}
 
-```
 - Professor Moody has been teaching statistics 101 class for many years. His teaching evaluations went considerably south with the chief complaint:  he DOES NOT seem to assign grades fairly.   Students compared their scores among themselves and found quite a bit of discrepancies! But their complaints went nowhere since Professor promptly disappeared after posting the final grades and scores.
 
 - A new brave TA,  managed to get hold of the carefully maintained grading table (spanning multiple years) of professor Moody by ….messing a bit with Moody's computer….well,  let's not explain the details because he would get in trouble. What he found out was a remarkably structured account of how professor Moody assigns his grades.  
@@ -32,7 +114,7 @@ Through this section we will use our "crown" inital example, of synthetically ge
 - Looks like Professor Moody is in fact very alert in class. He is aware of  what students do,  detecting texting during class and remembering exactly who asked many questions in class.  He also keeps the mysterious "participation index" which is a numerical score from 0 to 1. This is probably related to questions asked and answered by students as well as their general attentiveness in class.  Remarkable but a little creepy, isn't it?
 
 - What is the best advice the new TA, can give future students how to get a good grade in Professor Moody's class?  What factors influence the grade besides the score?   Back your recommendation  up with plots and evidence from the attached data.
-```
+
 
 
 The Moody data set is defined here by the following attributes
@@ -60,12 +142,14 @@ This is a good illustration of what data exploration is and can achieve.  It is 
 
 Data exploration can be viewed as an indefinite loop:
 
+
 ```txt
 REPEAT{
 Plot,one or many plots.
 Transform Data.
 } UNTIL GRATIFICATION
 ```
+
 Put yourself in the position of a student in Moody’s class. What does s/he want to know? 
 
 - What should I do in order to pass his class aside from getting the best score possible?
@@ -103,7 +187,6 @@ For example,we want to know if asking questions “matters” for the grade?   T
 To dig deeper into the relationship of categorical variables "questions" and "texting" with "grade" we will use sequence of bar plots over subsets of the Moody data frame. Then we will follow with the mosaic plots.
 
 The following slices represent subsets of the Moody data frame for each of the values of the attribute “questions”
-
 <!-- ```txt -->
 <!-- moody[moody$questions==’always’,] -->
 
@@ -127,7 +210,7 @@ Let's look at the example of the above process for students who always ask quest
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 barplot(table(moody[moody$questions=='always',]$grade),main = 'Frequency of students by Grade who "always" ask questions', ylab ='Frequency', xlab = ' Grade',col=c('red','blue','green','cyan','yellow'))
 
-# Notice that you can modify these barplots graphs and replace the value of moody$questions attributes from "always" to "sometimes" or "never" and see impact these new slices have on the grade distribution. Just change to code above and run it. You can also change the moody$questions attribute and replace it with the moody$texting attribute and its different values. Thus you can run 6 different barplots using the code above and see how Grade distributon is affected for each of these 6 cases.
+#Notice that you can modify these barplots graphs and replace the value of moody$questions attributes from "always" to "sometimes" or "never" and see impact these new slices have on the grade distribution. Just change to code above and run it. You can also change the moody$questions attribute and replace it with the moody$texting attribute and its different values. Thus you can run 6 different barplots using the code above and see how Grade distributon is affected for each of these 6 cases.
 ```
 
 We can also run two mosaic plots of GRADE vs "questions" or "texting" respectively - and be able to asses the same - do these attributes matter for the grade?
@@ -147,6 +230,7 @@ We can see that asking many questions (frequently and always) really matters for
 But this may have nothing to do with Professor Moody rewarding students with the bonus for asking questions. It may be simply the case that such students are more involved and study harder (or are more interested in the topic) and simply get higher scores. We need to dig deeper and see which of the two is the case. Moody’s just gives his personal bonus to students who ask a lot of questions or no such bonus is given – such students simply score higher.
 
 We can accomplish this using again one of the seven R commands – the tapply.
+
 <!-- `tapply(moody$score, moody$questions, mean)` -->
 ```{r,,tut=TRUE,echo=FALSE}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
@@ -165,11 +249,15 @@ barplot(tapply(moody$score, moody$questions, mean), xlab = 'question categories'
 ```
 
 
+
 What is the conclusion? 
 
 Does asking questions often imply higher score? Or it does not affect the score but affects the grade through the grading rules of Professor Moody.
 
 Similarilly, does asking questions often imply higher score? Or it does not affect the score but affects the grade through the grading rules of Professor Moody.
+
+
+
 
 
 ```{r,tut=TRUE}
@@ -203,7 +291,7 @@ We define intervals of score as clear, if  there is only one grade associated wi
 <!-- - <HighestB, LowestA> -->
 
 
-TThen we can examine how participation influences grades in these grey areas of score. Our hypothesis is that higher participation would probably offer better odds for higher grade.
+Then we can examine how participation influences grades in these grey areas of score. Our hypothesis is that higher participation would probably offer better odds for higher grade.
 We can run the following command for different values of q. 
 
 Let q be a threshold of particpation which we want to test. May be if particpation is higher than q, higer grade (from the two possible grades in the grey area of score) is given, while if partcipation is lower than q, it works againts a student, who then gets lower grade?
@@ -228,7 +316,6 @@ table(moody[moody$score>LowestA & moody$score<HighestB& moody$participation > q,
 
 #Note the same process can be repeated with other adjacent grades. Ex: <B,C> etc.
 ```
-
 Please verify that for higher values of  0<q<1, the table operation show higher percentages of better grades.
 
 Is there a critical value of q which clearly separates, say A's from B's?  It seems to be q=0.6 - but it is not a clear cut deterministic. Rather, higher value of particpation threshold, q increases probability (frequency) of getting As. 
@@ -246,10 +333,10 @@ This what we embedded in our data generation method:  particpation increases the
 We have indeed defined border areas in score value. In this border areas of score, participation plays a role.
 Student whose’s score falls into  the grey area may get one of two grades, A or B, B or C, C or D and D or F, depending on the score.For example score of 72 may result in A or B. It is more likely to be A if student’s participation is high (higher the better the odds of getting A). If student’s participation is low,  it is much more likely to result in lower grade, for the score of 72, it would be B.
 
-Therefore we have discovered more or less the rule which guided generation of the Moody's data set and provided students with actionable intellignece how to increase chances of getting higher grade.
+Therefore we have discovered more or less the rule which guided generation of the Moody's data set and provided students with actionable intelligence how to increase chances of getting higher grade.
 
 
-**Relationship between participation, score and grade**
+Relationship between participation, score and grade
 
 In the process of slicing, dicing and plotting the data we would also discover other interesting relationships still using just 7 commands.
 
@@ -281,6 +368,7 @@ s<-70
 mean(moody[moody$participation <q,]$score)
 mean(moody[moody$score <s,]$participation)
 ```
+
 Exploring Behaviors of Students in professor Moody’s class. 
 One may even drop the grade entirely from the picture and simply inquire about behavioral characteristics of Professor Moody’s students.
 We already know what is the distribution of each type of behavior
@@ -290,68 +378,6 @@ moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/
 table(moody$questions);
 table(moody$texting)
 ```
-
-<!-- ```{r,tut=TRUE} -->
-<!-- # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load -->
-<!-- moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load -->
-
-<!-- LowestA<-min(moody[moody$grade=='A', ]$score) -->
-<!-- HighestB<-max(moody[moody$grade=='B', ]$score) -->
-
-<!-- moodyAB<-moody[moody$score>LowestA & moody$score<HighestB,] -->
-<!-- M<-min(moodyAB[moodyAB$grade=='A', ]$participation) -->
-<!-- N<-max(moodyAB[moodyAB$grade=='B', ]$participation) -->
-
-
-<!-- #The Value of M  -->
-<!-- M -->
-
-<!-- # The Value of N -->
-<!-- N -->
-
-<!-- ``` -->
-<!-- To see if M is perhaps higher than N? , if it is perhaps a threshold L, between   M<L<N was used to decide between the grades of A and B. -->
-<!-- Another way of checking if higher participation was perhaps associated with A, in the scores falling into AB interval, would be to run boxplot for this subset of the data frame -->
-<!-- ```{r,tut=TRUE} -->
-<!-- # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load -->
-<!-- moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load -->
-<!-- LowestA<-min(moody[moody$grade=='A', ]$score) -->
-<!-- HighestB<-max(moody[moody$grade=='B', ]$score) -->
-
-<!-- moodyAB<-moody[moody$score>LowestA & moody$score<HighestB,] -->
-<!-- boxplot(moodyAB$participation ~ moodyAB$grade,xlab = 'Grade',ylab = 'Participation', main = "Participation vs Grade",col=c('red','blue','green','cyan','yellow'),border="black")  -->
-<!-- ``` -->
-<!-- and see  the two boxplots for  A and for B.  If the one for A had higher median this would be an indication that participation mattered there. -->
-
-<!-- One of the most important questions in data science addresses difference between correlation and causation.  What is the relationship of participation and score?   -->
-
-<!-- One probably would not expect higher participation translating directly into higher score.  But the following scatter plot seems to indicate (rather unexpectedly) that the higher the participation the lower the score!    -->
-<!-- This seems very unintuitive.  This is more of a consequence how we generated our data.  For clear intervals, with score clearly mapping into single grade, we make participation low- reflecting the intended grading method which would ignore participation in case student’s score is “clear”.   -->
-<!-- We can change values of parameters q and s -->
-<!-- and examine in more detail the relationships between scores and participation. -->
-<!-- ```{r,tut=TRUE} -->
-<!-- # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load -->
-<!-- moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load -->
-
-
-<!-- # Change the values of "q" and "s" below. -->
-<!-- q<-0.1 -->
-<!-- s<-70 -->
-<!-- mean(moody[moody$participation <q,]$score) -->
-<!-- mean(moody[moody$score <s,]$participation) -->
-<!-- ``` -->
-<!-- Exploring Behaviors of Students in professor Moody’s class.  -->
-<!-- One may even drop the grade entirely from the picture and simply inquire about behavioral characteristics of Professor Moody’s students. -->
-<!-- We already know what is the distribution of each type of behavior -->
-<!-- ```{r,tut=TRUE} -->
-<!-- # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load -->
-<!-- moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load -->
-<!-- table(moody$questions); -->
-<!-- table(moody$texting) -->
-<!-- ``` -->
-
-
-
 But lets ask for associations between behaviours
 
 - Do  students who ask a lot of questions also spend little time texting?
@@ -387,5 +413,3 @@ So for students in order to succeed in professor Moody’s class, my advice will
 •	While texting might bring down your grade a little bit, the difference is very small”
 
 ```
-
-

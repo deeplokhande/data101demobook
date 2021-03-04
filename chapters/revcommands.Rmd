@@ -234,7 +234,6 @@ table(score1)
 ```
 
 
-
 ---
 
 ### A complex example
@@ -254,7 +253,6 @@ summary(moody$conditional)
 boxplot(moody$conditional,col = c("red"),main="Complex Example")
 
 ```
-
 
 
 --- 
@@ -368,4 +366,5 @@ x<-1:4
 y<-2:9
 x+y
 #what would R say?
+<<<<<<< HEAD
 ```

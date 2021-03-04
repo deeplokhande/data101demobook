@@ -366,5 +366,4 @@ x<-1:4
 y<-2:9
 x+y
 #what would R say?
-<<<<<<< HEAD
 ```

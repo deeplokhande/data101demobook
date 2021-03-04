@@ -179,6 +179,7 @@ d<-data.frame(Cat,Val)
 Observed_Difference<-mean(d[d$Cat=='GroupA',2])-mean(d[d$Cat=='GroupB',2])
 
 #This will calculate the mean of the second column (having 10 random values for each group), and the mean of groupB values is subtracted from the mean of groupA values, which will give you the value of the difference of the mean.
+Observed_Difference
 
 
 Permutation(d, "Cat", "Val",10000, "GroupA", "GroupB")

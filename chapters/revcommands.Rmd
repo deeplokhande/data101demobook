@@ -1,9 +1,9 @@
 # Revision of R commands {#Revcommands}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+
 ```{r ,include=FALSE}
 tutorial::go_interactive()
-
 ```
 
 In this chapter we are going to recap at some **basic** and useful functions we have used in R.
@@ -271,6 +271,11 @@ _INSTRUCTIONS_: Do not run the following examples directly, first ask yourself a
 weather =data.frame(Day=c('weekday', 'weekend'), Conditions =c('sunny','rainy','cloudy', 'snow', 'storm','ice'))
 dim(weather)
 #what would R say?
+
+# A) 6 6
+# B) 2 6
+# C) 6 2
+# D) Error
 ```
 
 ### Question 
@@ -278,9 +283,14 @@ dim(weather)
 ```{r,height=150}
 weather =data.frame(Day=c('weekday', 'weekend'), Conditions =c('sunny','rainy','cloudy', 'snow', 'storm','ice'))
 weather$temperature =c(80, 70, 65, 40, 30,25)
-weather[weather$temperature > 40, ]
+weather[weather$temperature > 40,]
 dim(weather)
 #what would R say?
+
+# A) 6 3
+# B) subset of the dataframe with temperature > 40.
+# C) Both A and B
+# D) Error
 ```
 
 ### Question 
@@ -293,6 +303,12 @@ FINALEXAM=c(12,5,20)
 M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
 subset(M, GRADE=='F')
 #what would R say?
+
+# A) Subset of dataframe based on Grade equal to F
+# B) Subset of the dataframe based on Grade not equal to F
+# C) the complete dataframe
+# D) Error
+
 ```
 
 ### Question 
@@ -305,6 +321,10 @@ FINALEXAM=c(12,5,20)
 M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
 M[FINALEXAM > 5,]
 #what would R say?
+
+# A) Subset of dataframe with finalexam values greater than equal to 6
+# B) Subset of dataframe with finalexam values greater than equal to 5
+# C) Subset of dataframe with finalexam values less than 5.
 ```
 
 ### Question 
@@ -319,6 +339,10 @@ M$QUESTIONS='none'
 M[,5]
 #what would R say?
 
+# A) Output the content of all the columns
+# B) Output word "none" for 3 times 
+# C) Output word "none" for 5 times
+# D) Error
 ```
 
 ### Question 
@@ -332,6 +356,12 @@ M=data.frame(SCORE, GRADE, ON_SMARTPHONE, FINALEXAM)
 table(M$SCORE>15, M$GRADE)
 #what would R say?
 
+# A) Output the table of count of Score greater than 15 vs Grade
+# B) Output the table of count of score greater than 15 only
+# C) Output the table of count of grades only
+# D) Output the table of grade distribution vs all score.
+
+
 ```
 
 ### Question 
@@ -341,6 +371,11 @@ u<-c(1:10)
 w <-c(1,-1,3)
 u[w>0]
 #what would R say?
+
+# A)  1  3  4  6  7  9 10 
+# B)  1  2  3  4  5  6  7  8  9  10
+# C)  1  3  1  3  1  3  1  3  1  3 
+# D) Error
 ```
 
 ### Question 
@@ -350,6 +385,10 @@ v <- c(-2,0,2,-5)
 v[v>0]
 #what would R say?
 
+# A) 2
+# B) 0 2
+# C) FALSE FALSE  TRUE FALSE
+# D) Error
 ```
 
 ### Question 
@@ -357,6 +396,12 @@ v[v>0]
 ```{r,height=100}
 c("a",1,T)
 #what would R say?
+
+# A) NaN  1  NaN
+# B) "a"  1  T
+# C) "a"  "1"  "TRUE"
+# D) "a"  "1"  "T"
+
 ```
 
 ### Question 
@@ -366,4 +411,52 @@ x<-1:4
 y<-2:9
 x+y
 #what would R say?
+
+# A) 3  5  7  9  7  9 11 13
+# B) 1  2  3  4  2  3  4  5  6  7  8  9
+# C) 3  5  7  9
+# D) Error
 ```
+
+### Question 
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+cut(moody$SCORE, breaks=c(0,25,70,100),labels=c("low", "medium", "high"))
+#What would R say?
+
+# A. 5 intervals of attribute score
+# B. 3 intervals (0,25) (25,70) (75,100)
+# C. 3 categorical values "low", "medium" and "high" for different score intervals
+# D. 3 separate datasets with similar score values
+
+```
+
+### Question
+
+```{r}
+v1<- c(1,2,3,4)
+v2<- c(1,2,3,4)
+v3<- c(1,2,3,4)
+
+df<-data.frame(v1,v2,v3)
+#1
+df[df>2]  
+
+#2
+df$v1 > 2 
+
+#3
+v1>2
+
+# A. 1) values of v1 variable which are larger than 2 || 2) error || 3) TRUE where the value is greater than 2 and False where the value is less than 2.
+
+# B. 1) values of v1, v2 and v3 which are larger than 2. || 2) values of v1 variable which are larger than 2 || 3) TRUE where the value is greater than 2 and False where the value is less than 2.
+
+# C. 1) error || 2) values of v1 variable which are larger than 2 || 3) values of v1 variable which are larger than 2
+
+# D. 1) error || 2) TRUE where the value is greater than 2 and False where the value is less than 2. || 3) values of v1 variable which are larger than 2
+
+```
+

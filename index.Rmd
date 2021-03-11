@@ -28,8 +28,8 @@ tutorial::go_interactive( greedy = FALSE)
 
 ```
 
-<span style="color: red;background-color: lightgrey;font-size: 25px;">NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.</span>
-<!-- **$\color{red}{\text{{NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.}}}$** -->
+<!-- <span style="color: red;background-color: lightgrey;font-size: 25px;">NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.</span> -->
+<!-- <!-- **$\color{red}{\text{{NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.}}}$** -->
 
 
 This is a textbook based on the [DATA 101](http://data101.cs.rutgers.edu/) course thought by Prof. Tomasz Imielinski at Computer Science Department at Rutgers University, New Brunswick.

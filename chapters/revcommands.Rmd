@@ -75,6 +75,12 @@ df # Lets look at how the dataframe looks.
 
 ---
 
+## Types and user-defined data coercion.*
+
+
+
+---
+
 ## summary(), mean(),length(), max(),min(), sd(),nrow(), ncol(), dim() {#basicfunction}
 
 The functions in this section are very simple yet are always useful to get more information from data.
@@ -143,6 +149,31 @@ tableex2
 mosaicplot(tableex2,col =c("red","purple","cyan","yellow","green"),main = "table() example 2")
 ```
 
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+table(moody[moody$ASKS_QUESTIONS!='always',]$GRADE)
+#What will R say?
+
+# A. error
+# B. distribution of grades for students who always ask questions
+# C. distribution of grades for students who do not always ask questions 
+```
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+table(moody[moody$ASKS_QUESTIONS==list('always','never'),]$GRADE)
+#What will R say?
+
+# A. error.
+# B. distribution of grades for students who always or never ask questions.  
+# C. distribution of grades for students who do not ask questions always or never. 
+```
+
 
 ---
 
@@ -184,6 +215,39 @@ dim(moody_except8_never)# You can see only student never on smartphones without 
 ```
 
 
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+moody[moody$SCORE>=90,3]
+# What will R say?
+
+
+# A. Get subset of all columns which contains students who scored more than equal to 90
+# B. error
+# C. get all score values which are more than equal to 90
+# D. get subset of only the grades of students with score greater than equal to 90
+
+
+```
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+moody[moody$SCORE>=80.0 & moody$GRADE =='B',] 
+# What will R say?
+
+# A. subset of moody data frame who got B grade.
+# B. error.
+# C. subset of moody data frame with score greater than 80.
+# D. subset of moody data frame with score more than 80 and got B grade.
+
+
+```
+
+
 ---
 
 ## tapply {#tapply}
@@ -213,6 +277,35 @@ barplot(moody.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() ex
 ```
 
 
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+tapply(moody, GRADE, SCORE, min)
+# What will R say?
+
+# A. minimum score for each grade
+# B. minimum grade for each score
+# C. minimum grade only 
+# D. Error.
+
+
+```
+### Question What would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+tapply(moody$ASK_QUESTIONS, moody$GRADE, mean)
+# What will R say?
+
+# A. mean grade for each values of ask_question attribute
+# B. mean value of ask_questions attribute for each grade
+# C. mean category of ask_questions only 
+# D. error.
+```
+
 ---
 
 ## Cut {#cut}
@@ -233,6 +326,57 @@ table(score1)
 
 ```
 
+
+### QuestionWhat would R say?
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+cut(moody$SCORE, breaks=c(0,25,70,100),labels=c("low", "medium", "high"))
+#What would R say?
+
+# A. 5 intervals of attribute score
+# B. 3 intervals (0,25) (25,70) (75,100)
+# C. 3 categorical values "low", "medium" and "high" for different score intervals
+# D. 3 separate datasets with similar score values
+
+```
+
+
+### QuestionWhat would R say?
+
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+output<-cut(moody$SCORE, 5)
+summary(output)
+#What would R say?
+
+# A. 5 intervals of attribute score of unequal count of elements
+# B. 5 intervals of attribute score of equal count of elements
+# C. 5 categorical values for different score intervals
+# D. 5 separate dataset with similar score values
+
+```
+
+
+### QuestionWhat would R say?
+
+
+```{r}
+moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
+
+output<-cut(moody$ASKS_QUESTIONS, 2)
+summary(output)
+#What would R say?
+
+# A. 2 intervals of attribute ask_questions of unequal count of elements in each interval
+# B. 2 intervals of attribute ask_questions of equal count of elements in each interval
+# C. 2 categorical values for different ask_questions intervals
+# D. Error.
+
+```
 
 ---
 
@@ -418,20 +562,7 @@ x+y
 # D) Error
 ```
 
-### Question 
 
-```{r}
-moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
-
-cut(moody$SCORE, breaks=c(0,25,70,100),labels=c("low", "medium", "high"))
-#What would R say?
-
-# A. 5 intervals of attribute score
-# B. 3 intervals (0,25) (25,70) (75,100)
-# C. 3 categorical values "low", "medium" and "high" for different score intervals
-# D. 3 separate datasets with similar score values
-
-```
 
 ### Question
 

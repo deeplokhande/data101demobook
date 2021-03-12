@@ -21,11 +21,21 @@ aniceexample
 multiple-hypothesis---bonferroni-correction.
 Revcommands
 dataframe
+types-and-user-defined-data-coercion.
 basicfunction
 table
+question-what-would-r-say
+question-what-would-r-say-1
 subset
+question-what-would-r-say-2
+question-what-would-r-say-3
 tapply
+question-what-would-r-say-4
+question-what-would-r-say-5
 cut
+questionwhat-would-r-say
+questionwhat-would-r-say-1
+questionwhat-would-r-say-2
 a-complex-example
 basicexamples
 question
@@ -39,4 +49,3 @@ question-7
 question-8
 question-9
 question-10
-question-11

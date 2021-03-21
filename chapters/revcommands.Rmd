@@ -71,11 +71,90 @@ class(myVect)
 
 df <- data.frame(title, author, year)
 df # Lets look at how the dataframe looks.
+
 ```
 
 ---
 
 ## Types and user-defined data coercion.*
+
+
+## Factor Function: factor() {#factorfunc}
+
+Factors are the data objects which are used to categorize the data and store it as levels. 
+They can store both strings and numbers. 
+They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. 
+Factor data objects are useful in data analysis for statistical modeling.
+
+The factor function is used to encode a vector as a factor.
+
+Lets look at first checking if a data object is of factor type using the function _is.factor(x)_
+
+```{r}
+# Create a vector as input.
+gender <- c("male","male","female","female","male","female","male")
+
+gender
+
+#Check if data object is factor.
+is.factor(gender)
+
+```
+
+Now lets convert the above vector to a factor data object.
+To do this we will use the function _factor(x)_.
+
+
+```{r}
+# Create a vector as input.
+gender <- c("male","male","female","female","male","female","male")
+
+# Apply the factor function.
+factor_gender <- factor(gender)
+
+factor_gender
+is.factor(factor_gender)
+
+```
+Notice that for the factor data objects, the attribute _Levels_ is also created. This is an extremely important feature of the factor data object.
+
+
+Lets look at how the factor data object looks when included in a dataframe.
+
+```{r}
+# Create the vectors for data frame.
+height <- c(132,151,162,139,166,147,122)
+weight <- c(48,49,66,53,67,52,40)
+gender_not_factor <- c("male","male","female","female","male","female","male")
+
+# COnvert the gender_not_factor vector to a factor data object.
+gender <- factor(gender_not_factor)
+
+# Create the data frame.
+input_data <- data.frame(height,weight,gender)
+print(input_data)
+
+# Test if the gender column is a factor.
+print(is.factor(input_data$gender))
+
+# Print the gender column so see the levels.
+print(input_data$gender)
+```
+Note: Sometimes depending on your version of R and packages, you might find that while inserting categorical vector into the data frame using the _data.frame()_ function, without converting the categorical vector to factor, it automatically gets converted into a factor column. But to avoid confusion, it is a better technique to convert the categorical vector into factor using _factor()_ function and then insert it in the data frame.
+
+```{r}
+wine <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/541WINE.csv")
+plot(wine$QUALITY,wine$PRICE)
+#we want to see the distribution of price of each quality, but it gives us a scatter plot, which makes it hard for us to see the distribution.
+is.factor(wine$QUALITY)
+#the result is false, which means quality is a numeric value rather than a factor
+
+factor_quality <- factor(wine$QUALITY)
+#convert quality values into factors
+plot(factor_quality,wine$PRICE)
+#now we can generate the box plot and see the distribution clearly.
+```
+
 
 
 

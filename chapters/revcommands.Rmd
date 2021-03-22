@@ -50,22 +50,18 @@ And also all the plot commands present in section \@ref(plots)
 #Lets create 3 vectors with title, author and year.
 title <- c('Data Smart','Orientalism','False Impressions','Making Software')
 author <- c('Foreman, John','Said, Edward','Archer, Jeffery','Oram, Andy')
-year <- c('2010','2011','2012','1998')
+year <- c(2010,2011,2012,1998)
 
 #Lets look at how the created vectors look.
 title
 author
 year
 
+# Also lets look at their types using the class function.
+class(title)
+class(author)
+class(year)
 
-#Lets look at a coerced vector.
-
-#vector containing 4 elements
-myVect<-c("Robert", "Ethan", "Bruce",4)
-myVect #You will notice that the last element 4, which is an integer, is coerced into a character.
-
-#class() is used to check the type of an object
-class(myVect)
 
 # Now lets create a dataframe using the above column vectors.
 
@@ -75,8 +71,6 @@ df # Lets look at how the dataframe looks.
 ```
 
 ---
-
-## Types and user-defined data coercion.*
 
 
 ## Factor Function: factor() {#factorfunc}
@@ -142,7 +136,39 @@ print(input_data$gender)
 ```
 Note: Sometimes depending on your version of R and packages, you might find that while inserting categorical vector into the data frame using the _data.frame()_ function, without converting the categorical vector to factor, it automatically gets converted into a factor column. But to avoid confusion, it is a better technique to convert the categorical vector into factor using _factor()_ function and then insert it in the data frame.
 
+
+- Lets look at an example where the use of factor data object turns out to be useful.
+  - We have a categorical vector that we want to coerce as numeric for use in some model/application.
+  - Lets look at what happens when we just have a categorical vector, and we try to coerce it to numeric vector.
+  - We see that the outcome of the _as.numeric()_ function on a normal categorical vector is coercion to "NA" of all elements.
+  - But when we convert the same categorical vector to factor, then after coercion to numeric type, we get a numeric vector of elements corresponding the the index of the labels of the factor data object.
+  
 ```{r}
+gender_not_factor <- c("male","male","female","female","male","female","male")
+gender_not_factor
+
+# Coerce into numeric vector without converting to factor
+as.numeric(gender_not_factor)
+
+
+# COnvert the gender_not_factor vector to a factor data object.
+gender <- factor(gender_not_factor)
+gender
+
+# Coerce into numeric vector after converting to factor data object.
+as.numeric(gender)
+
+```
+
+
+- Lets look at another example where factor is useful.
+
+  - We want to see the distribution of price of each quality for the wine dataset. 
+  - Upon plotting, it gives us a scatter plot, which makes it hard for us to see the distribution.
+  - Thus we convert the quality vector which is numeric initially, to factor and the plot it again.
+
+
+```{r,height=600}
 wine <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/541WINE.csv")
 plot(wine$QUALITY,wine$PRICE)
 #we want to see the distribution of price of each quality, but it gives us a scatter plot, which makes it hard for us to see the distribution.
@@ -155,6 +181,116 @@ plot(factor_quality,wine$PRICE)
 #now we can generate the box plot and see the distribution clearly.
 ```
 
+
+---
+
+## Coercing Values in data frames
+
+Before coercing data into data frames, lets look at small examples.
+
+Lets look at a coerced vector.
+
+
+```{r}
+
+#Lets look at a coerced vector.
+
+#vector containing 4 elements
+myVect<-c("Robert", "Ethan", 6, 4)
+myVect
+
+#You will notice that the last two elements , which are an integers, are coerced into a character type.
+
+#class() is used to check the type of an object
+class(myVect)
+
+
+```
+
+We see that when a vector has elements of mixed data types, they gets coerced into a type with precedence over other types. 
+For example in the above case there were character elements and numeric elements types in the vector. But character type has precedence over numeric type and hence the whole vector is coerced into character type.
+
+
+We can check the types of vectors using a specific type of _is_ function: _is.character(), is.double(), is.integer(), is.logical(),etc_. There are many other types under the _is_ function, for checking if the data object given is a dataframe, factor, etc. 
+
+Lets look at the examples.
+```{r}
+
+#vector containing 4 elements
+myVect<-c("Robert", "Ethan", 6, 4)
+myVect
+
+# Check if vector is of Character type.
+is.character(myVect)
+
+# Check if vector is of numeric type.
+is.numeric(myVect)
+
+# Use TRUE and FALSE (or T and F) to create logical vectors
+log_vec <- c(TRUE, FALSE, T, F)
+
+# Check if vector is of logical type.
+is.logical(log_vec)
+
+```
+
+
+We saw how to check the type of the data. But if you want to convert a column into your choice of data type, you can use the specific type of _as_ function: _as.character(), as.double(), as.integer(), as.logical(),etc._ Again as we saw above about the _is_ function types, there are also many other types of the _as_ function.
+
+Lets look at the example of coercing a vector into character type. 
+<!-- Note: although the above myVect is a character vector, you can still use the function. -->
+```{r}
+
+#vector containing 4 elements
+myVect<-c(2, 3, 6, 4, TRUE, FALSE)
+myVect
+
+# First lets look at the class of the vector
+class(myVect)
+
+# Coerce the vector to Character type. 
+as.character(myVect) 
+
+# You can see that the elements of the numeric vector are coerced into character type.
+```
+
+Lets look at an example of coercing a mixed type vector into numeric type.
+
+```{r}
+
+myvec<-c("Robert", "22", 45)
+myvec
+
+# First lets look at the class of the vector
+class(myvec)
+
+# Coerce the character vector to numeric type. 
+as.numeric(myvec) 
+
+# You can see that the elements of the mixed vector are coerced into numeric type.
+
+
+
+myvec2 <- c(TRUE, FALSE, F, T, T)
+myvec2
+
+# First lets look at the class of the vector
+class(myvec2)
+
+# Coerce the logical vector to numeric type. 
+as.numeric(myvec2) 
+
+# You can see that the elements of the mixed vector are coerced into numeric type.
+
+```
+
+We can see in the above example, while converting the character type vector to numeric if we encounter, numbers in character type, they get converted to numeric type. But the characters in character type, are not not converted, and instead we get a warning saying _"NAs introduced by coercion"_. 
+Also, while converting a logical vector to numeric vector, we see that "TRUE" or "T" is coerced as _1_ and "FALSE" or "F" is coerced as _0_.
+
+
+Now lets look at how to coerce data into dataframe.
+
+Suppose in the Moody dataset, I want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, ..., F=5.
 
 
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 3 Data Frames &amp; New Column. | DATA 101 Shortest Textbook</title>
+  <title>Chapter 5 Data Frames &amp; Transformation. | DATA 101 Shortest Textbook</title>
   <meta name="description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 3 Data Frames &amp; New Column. | DATA 101 Shortest Textbook" />
+  <meta property="og:title" content="Chapter 5 Data Frames &amp; Transformation. | DATA 101 Shortest Textbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 3 Data Frames &amp; New Column. | DATA 101 Shortest Textbook" />
+  <meta name="twitter:title" content="Chapter 5 Data Frames &amp; Transformation. | DATA 101 Shortest Textbook" />
   
   <meta name="twitter:description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="dataexp.html"/>
-<link rel="next" href="permtest.html"/>
+<link rel="prev" href="revcommands.html"/>
+
 <script src="libs/header-attrs-2.6/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -131,10 +131,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">DATA 101 Book Demo</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>FRONTMATTER</a></li>
+<li><a href="index.html#section"></a></li>
 <li class="chapter" data-level="1" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#rsetup"><i class="fa fa-check"></i><b>1.1</b> Setting Up R. *</a></li>
+<li class="chapter" data-level="1.1" data-path="intro.html"><a href="intro.html#setting-up-r"><i class="fa fa-check"></i><b>1.1</b> Setting Up R</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="dataexp.html"><a href="dataexp.html"><i class="fa fa-check"></i><b>2</b> Data Exploration</a>
 <ul>
@@ -145,17 +145,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.1.3" data-path="dataexp.html"><a href="dataexp.html#box-plot"><i class="fa fa-check"></i><b>2.1.3</b> Box Plot</a></li>
 <li class="chapter" data-level="2.1.4" data-path="dataexp.html"><a href="dataexp.html#mosiac-plot"><i class="fa fa-check"></i><b>2.1.4</b> Mosiac Plot</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="dataexp.html"><a href="dataexp.html#freestyle"><i class="fa fa-check"></i><b>2.2</b> Free Style data exploration with just seven R commands</a></li>
+<li class="chapter" data-level="2.2" data-path="dataexp.html"><a href="dataexp.html#freestyle"><i class="fa fa-check"></i><b>2.2</b> Free Style data exploration with just seven R commands " R.7 "</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="newcolumn.html"><a href="newcolumn.html"><i class="fa fa-check"></i><b>3</b> Data Frames &amp; New Column.</a>
+<li class="chapter" data-level="3" data-path="stateval.html"><a href="stateval.html"><i class="fa fa-check"></i><b>3</b> Simple Statistical Evaluation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="newcolumn.html"><a href="newcolumn.html#create-column"><i class="fa fa-check"></i><b>3.1</b> Create Column</a></li>
+<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#z-test"><i class="fa fa-check"></i><b>3.1</b> *z-test</a></li>
+<li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="stateval.html"><a href="stateval.html#permonestep"><i class="fa fa-check"></i><b>3.2.1</b> Permutation Test One Step</a></li>
+<li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
+<li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="permtest.html"><a href="permtest.html"><i class="fa fa-check"></i><b>4</b> Permutation Test</a>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> *Multiple Hypothesis - Bonferroni Correction.</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="revcommands.html"><a href="revcommands.html"><i class="fa fa-check"></i><b>4</b> Revision of R commands</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="permtest.html"><a href="permtest.html#permonestep"><i class="fa fa-check"></i><b>4.1</b> Permutation Test One Step</a></li>
-<li class="chapter" data-level="4.2" data-path="permtest.html"><a href="permtest.html#permfunction"><i class="fa fa-check"></i><b>4.2</b> Permutation Function</a></li>
-<li class="chapter" data-level="4.3" data-path="permtest.html"><a href="permtest.html#aniceexample"><i class="fa fa-check"></i><b>4.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
+<li class="chapter" data-level="4.1" data-path="revcommands.html"><a href="revcommands.html#dataframe"><i class="fa fa-check"></i><b>4.1</b> c() &amp; data.frame() &amp; class()</a></li>
+<li class="chapter" data-level="4.2" data-path="revcommands.html"><a href="revcommands.html#basicfunction"><i class="fa fa-check"></i><b>4.2</b> summary(), mean(),length(), max(),min(), sd(),nrow(), ncol(), dim()</a></li>
+<li class="chapter" data-level="4.3" data-path="revcommands.html"><a href="revcommands.html#table"><i class="fa fa-check"></i><b>4.3</b> Table</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say"><i class="fa fa-check"></i><b>4.3.1</b> Question What would R say?</a></li>
+<li class="chapter" data-level="4.3.2" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say-1"><i class="fa fa-check"></i><b>4.3.2</b> Question What would R say?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="revcommands.html"><a href="revcommands.html#subset"><i class="fa fa-check"></i><b>4.4</b> Subset</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say-2"><i class="fa fa-check"></i><b>4.4.1</b> Question What would R say?</a></li>
+<li class="chapter" data-level="4.4.2" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say-3"><i class="fa fa-check"></i><b>4.4.2</b> Question What would R say?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="revcommands.html"><a href="revcommands.html#tapply"><i class="fa fa-check"></i><b>4.5</b> tapply</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say-4"><i class="fa fa-check"></i><b>4.5.1</b> Question What would R say?</a></li>
+<li class="chapter" data-level="4.5.2" data-path="revcommands.html"><a href="revcommands.html#question-what-would-r-say-5"><i class="fa fa-check"></i><b>4.5.2</b> Question What would R say?</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="revcommands.html"><a href="revcommands.html#cut"><i class="fa fa-check"></i><b>4.6</b> Cut</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="revcommands.html"><a href="revcommands.html#questionwhat-would-r-say"><i class="fa fa-check"></i><b>4.6.1</b> QuestionWhat would R say?</a></li>
+<li class="chapter" data-level="4.6.2" data-path="revcommands.html"><a href="revcommands.html#questionwhat-would-r-say-1"><i class="fa fa-check"></i><b>4.6.2</b> QuestionWhat would R say?</a></li>
+<li class="chapter" data-level="4.6.3" data-path="revcommands.html"><a href="revcommands.html#questionwhat-would-r-say-2"><i class="fa fa-check"></i><b>4.6.3</b> QuestionWhat would R say?</a></li>
+<li class="chapter" data-level="4.6.4" data-path="revcommands.html"><a href="revcommands.html#a-complex-example"><i class="fa fa-check"></i><b>4.6.4</b> A complex example</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="revcommands.html"><a href="revcommands.html#basicexamples"><i class="fa fa-check"></i><b>4.7</b> What would R say?</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="revcommands.html"><a href="revcommands.html#question"><i class="fa fa-check"></i><b>4.7.1</b> Question</a></li>
+<li class="chapter" data-level="4.7.2" data-path="revcommands.html"><a href="revcommands.html#question-1"><i class="fa fa-check"></i><b>4.7.2</b> Question</a></li>
+<li class="chapter" data-level="4.7.3" data-path="revcommands.html"><a href="revcommands.html#question-2"><i class="fa fa-check"></i><b>4.7.3</b> Question</a></li>
+<li class="chapter" data-level="4.7.4" data-path="revcommands.html"><a href="revcommands.html#question-3"><i class="fa fa-check"></i><b>4.7.4</b> Question</a></li>
+<li class="chapter" data-level="4.7.5" data-path="revcommands.html"><a href="revcommands.html#question-4"><i class="fa fa-check"></i><b>4.7.5</b> Question</a></li>
+<li class="chapter" data-level="4.7.6" data-path="revcommands.html"><a href="revcommands.html#question-5"><i class="fa fa-check"></i><b>4.7.6</b> Question</a></li>
+<li class="chapter" data-level="4.7.7" data-path="revcommands.html"><a href="revcommands.html#question-6"><i class="fa fa-check"></i><b>4.7.7</b> Question</a></li>
+<li class="chapter" data-level="4.7.8" data-path="revcommands.html"><a href="revcommands.html#question-7"><i class="fa fa-check"></i><b>4.7.8</b> Question</a></li>
+<li class="chapter" data-level="4.7.9" data-path="revcommands.html"><a href="revcommands.html#question-8"><i class="fa fa-check"></i><b>4.7.9</b> Question</a></li>
+<li class="chapter" data-level="4.7.10" data-path="revcommands.html"><a href="revcommands.html#question-9"><i class="fa fa-check"></i><b>4.7.10</b> Question</a></li>
+<li class="chapter" data-level="4.7.11" data-path="revcommands.html"><a href="revcommands.html#question-10"><i class="fa fa-check"></i><b>4.7.11</b> Question</a></li>
+<li class="chapter" data-level="4.7.12" data-path="revcommands.html"><a href="revcommands.html#question-11"><i class="fa fa-check"></i><b>4.7.12</b> Question</a></li>
+<li class="chapter" data-level="4.7.13" data-path="revcommands.html"><a href="revcommands.html#question-12"><i class="fa fa-check"></i><b>4.7.13</b> Question</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="newcolumn.html"><a href="newcolumn.html"><i class="fa fa-check"></i><b>5</b> Data Frames &amp; Transformation.</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="newcolumn.html"><a href="newcolumn.html#create-column"><i class="fa fa-check"></i><b>5.1</b> Create Column</a></li>
+<li class="chapter" data-level="5.2" data-path="newcolumn.html"><a href="newcolumn.html#factorfunc"><i class="fa fa-check"></i><b>5.2</b> Factor Function: factor()</a></li>
+<li class="chapter" data-level="5.3" data-path="newcolumn.html"><a href="newcolumn.html#coerce"><i class="fa fa-check"></i><b>5.3</b> Coercing Values in data frames</a></li>
+<li class="chapter" data-level="5.4" data-path="newcolumn.html"><a href="newcolumn.html#merge"><i class="fa fa-check"></i><b>5.4</b> Merging Two Relational Data Frames.*</a></li>
+<li class="chapter" data-level="5.5" data-path="newcolumn.html"><a href="newcolumn.html#sliceanddice"><i class="fa fa-check"></i><b>5.5</b> Slicing and Dicing.</a>
+<ul>
+<li class="chapter" data-level="5.5.1" data-path="newcolumn.html"><a href="newcolumn.html#dicing"><i class="fa fa-check"></i><b>5.5.1</b> Subsetting on Columns ( DICING )</a></li>
+<li class="chapter" data-level="5.5.2" data-path="newcolumn.html"><a href="newcolumn.html#Slicing"><i class="fa fa-check"></i><b>5.5.2</b> Subsetting on Rows ( SLICING )</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="newcolumn.html"><a href="newcolumn.html#psuedo-equivalent-of-groupby"><i class="fa fa-check"></i><b>5.6</b> Psuedo equivalent of GroupBy *</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -177,22 +234,243 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="newcolumn" class="section level1" number="3">
-<h1><span class="header-section-number">Chapter 3</span> Data Frames &amp; New Column.</h1>
+<div id="newcolumn" class="section level1" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Data Frames &amp; Transformation.</h1>
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 <hr />
-<div id="create-column" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> Create Column</h2>
+<p>Now we have to introduce the core data structure of R – the data frame and show we can expand it with extra attributes.</p>
+<p>Defining new attributes can very often be critical in data exploration and help to find patterns and relationships which otherwise would not be visible.</p>
+<p>For example, may be participation matters but only to Pass/Fail grades? In other words students who Pass (A or B or C) always have participation above a certain threshold? Perhaps students who always text never pass the class? And students who always ask questions never fail? Such rules can only be discovered if we define a new Pass/Fail attribute, additional to grade attribute.</p>
+<p>Similarly intervals of participation or score may discover important relationships which would not emerge with just numerical values of such attributes. May be High scores correlate with High participation? To establish it one would have first to define categorical attributes with named intervals of their numerical counterparts.</p>
+<hr />
+<div id="create-column" class="section level2" number="5.1">
+<h2><span class="header-section-number">5.1</span> Create Column</h2>
 <ul>
-<li>Lets put a column I have created using age to partition it into 3 category. I’ll tell you how to partition more in upcoming sections.</li>
-<li>For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IiMgbWR5IDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxX3Rlc3QvbWFpbi9NT09EWS0yMDE5LmNzdlwiKVxubW9vZHk8LXJlYWQuY3N2KFwiLi4vZmlsZXMvZGF0YXNldC9tb29keTIwMjBiLmNzdlwiKVxuIyBWaWV3KG1keSkiLCJzYW1wbGUiOiIjY29sYWdlIGNvbHVtbiBoYXMgMyBjYXRlZ29yeSBhbmQgZGl2aWRlcyBvbiB0aGUgYmFzaXMgb2YgYWdlLlxucGYgPC0gY3V0KG1vb2R5JFNDT1JFLGJyZWFrcz1jKDAsNTAsMTAwKSxsYWJlbHM9YyhcIkZcIixcIlBcIikpXG4jIGxlbmd0aChjb2xhZ2UpICNOdW1iZXIgb2Ygcm93cyBpbiBuZXcgY29sdW1uLlxuIyBucm93KG1keSkgI051bWJlciBvZiBSb3dzIGluIGRhdGFmcmFtZVxuXG4jIFRvIGFkZCB0aGlzIG5ldyBjb2x1bW4gY29sYWdlIGluIGRhdGFmcmFtZSBtZHkuXG5uYW1lcyhtb29keSkgIyBJbml0aWFsbHkgZGF0YWZyYW1lIGhhcyA1IGNvbHVtbnNcbm1vb2R5JHBhc3NmYWlsIDwtIHBmICNQdXQgc3ludGF4IGRhdGFGcmFtZU5hbWUkY29sdW1uSGVhZGVyTmFtZSA8LSBuZXdDb2x1bW5cbm5hbWVzKG1vb2R5KSAjIE5vdyBkYXRhZnJhbWUgaGFzIDggY29sdW1ucyJ9
-</div></li>
+<li>Lets put a column I have created using score.</li>
+<li>Suppose I am given a new column " pf " with same number of rows as that of the dataframe with the categories (“P” , “F”).</li>
 </ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1uIHNpemUgbWlzbWF0Y2guXG5iYWRjb2wgPC0gYygxOjEwKVxubGVuZ3RoKGJhZGNvbClcblxubW9vZHkkYmFkY29sIDwtIGJhZGNvbCAjVGhyb3dzIENvbXBhdGliaWxpdHkgZXJyb3IuICJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkXG5cbiMgcGYgY29sdW1uIGhhcyAyIGNhdGVnb3J5IGFuZCBkaXZpZGVzIG9uIHRoZSBiYXNpcyBvZiBzY29yZS5cbnBmIDwtIGN1dChtb29keSRzY29yZSxicmVha3M9YygwLDUwLDEwMCksbGFiZWxzPWMoXCJGXCIsXCJQXCIpKVxuIyBsZW5ndGgocGYpICMgTnVtYmVyIG9mIHJvd3MgaW4gbmV3IGNvbHVtbi5cbiMgbnJvdyhtb29keSkgIyBOdW1iZXIgb2YgUm93cyBpbiBkYXRhZnJhbWVcblxuIyBUbyBhZGQgdGhpcyBuZXcgY29sdW1uIHBmIGluIGRhdGFmcmFtZSBtb29keS5cbm5hbWVzKG1vb2R5KSAjIEluaXRpYWxseSBkYXRhZnJhbWUgaGFzIDUgY29sdW1uc1xubW9vZHkkcGFzc2ZhaWwgPC0gcGYgI1B1dCBzeW50YXggZGF0YUZyYW1lTmFtZSRjb2x1bW5IZWFkZXJOYW1lIDwtIG5ld0NvbHVtblxubmFtZXMobW9vZHkpICMgTm93IGRhdGFmcmFtZSBoYXMgNiBjb2x1bW5zIn0=
 </div>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1vb2R5PC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3N0YXRpYyBMb2FkXG5tb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkXG5cbiNXaGF0IGhhcHBlbnMgd2hlbiB5b3UgaGF2ZSBjb2x1bW4gc2l6ZSBtaXNtYXRjaC5cbmJhZGNvbCA8LSBjKDE6MTApXG5sZW5ndGgoYmFkY29sKVxuXG5tb29keSRiYWRjb2wgPC0gYmFkY29sICNUaHJvd3MgQ29tcGF0aWJpbGl0eSBlcnJvci4gIn0=
+</div>
+<hr />
+</div>
+<div id="factorfunc" class="section level2" number="5.2">
+<h2><span class="header-section-number">5.2</span> Factor Function: factor()</h2>
+<p>Factors are the data objects which are used to categorize the data and store it as levels.
+They can store both strings and numbers.
+They are useful in the columns which have a limited number of unique values. Like “Male,”Female" and True, False etc.
+Factor data objects are useful in data analysis for statistical modeling.</p>
+<p>The factor function is used to encode a vector as a factor.</p>
+<p>Lets look at first checking if a data object is of factor type using the function <em>is.factor(x)</em></p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciBhcyBpbnB1dC5cbmdlbmRlciA8LSBjKFwibWFsZVwiLFwibWFsZVwiLFwiZmVtYWxlXCIsXCJmZW1hbGVcIixcIm1hbGVcIixcImZlbWFsZVwiLFwibWFsZVwiKVxuXG5nZW5kZXJcblxuI0NoZWNrIGlmIGRhdGEgb2JqZWN0IGlzIGZhY3Rvci5cbmlzLmZhY3RvcihnZW5kZXIpIn0=
+</div>
+<p>Now lets convert the above vector to a factor data object.
+To do this we will use the function <em>factor(x)</em>.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciBhcyBpbnB1dC5cbmdlbmRlciA8LSBjKFwibWFsZVwiLFwibWFsZVwiLFwiZmVtYWxlXCIsXCJmZW1hbGVcIixcIm1hbGVcIixcImZlbWFsZVwiLFwibWFsZVwiKVxuXG4jIEFwcGx5IHRoZSBmYWN0b3IgZnVuY3Rpb24uXG5mYWN0b3JfZ2VuZGVyIDwtIGZhY3RvcihnZW5kZXIpXG5cbmZhY3Rvcl9nZW5kZXJcbmlzLmZhY3RvcihmYWN0b3JfZ2VuZGVyKSJ9
+</div>
+<p>Notice that for the factor data objects, the attribute <em>Levels</em> is also created. This is an extremely important feature of the factor data object.</p>
+<p>Lets look at how the factor data object looks when included in a dataframe.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSB0aGUgdmVjdG9ycyBmb3IgZGF0YSBmcmFtZS5cbmhlaWdodCA8LSBjKDEzMiwxNTEsMTYyLDEzOSwxNjYsMTQ3LDEyMilcbndlaWdodCA8LSBjKDQ4LDQ5LDY2LDUzLDY3LDUyLDQwKVxuZ2VuZGVyX25vdF9mYWN0b3IgPC0gYyhcIm1hbGVcIixcIm1hbGVcIixcImZlbWFsZVwiLFwiZmVtYWxlXCIsXCJtYWxlXCIsXCJmZW1hbGVcIixcIm1hbGVcIilcblxuIyBDT252ZXJ0IHRoZSBnZW5kZXJfbm90X2ZhY3RvciB2ZWN0b3IgdG8gYSBmYWN0b3IgZGF0YSBvYmplY3QuXG5nZW5kZXIgPC0gZmFjdG9yKGdlbmRlcl9ub3RfZmFjdG9yKVxuXG4jIENyZWF0ZSB0aGUgZGF0YSBmcmFtZS5cbmlucHV0X2RhdGEgPC0gZGF0YS5mcmFtZShoZWlnaHQsd2VpZ2h0LGdlbmRlcilcbnByaW50KGlucHV0X2RhdGEpXG5cbiMgVGVzdCBpZiB0aGUgZ2VuZGVyIGNvbHVtbiBpcyBhIGZhY3Rvci5cbnByaW50KGlzLmZhY3RvcihpbnB1dF9kYXRhJGdlbmRlcikpXG5cbiMgUHJpbnQgdGhlIGdlbmRlciBjb2x1bW4gc28gc2VlIHRoZSBsZXZlbHMuXG5wcmludChpbnB1dF9kYXRhJGdlbmRlcikifQ==
+</div>
+<p>Note: Sometimes depending on your version of R and packages, you might find that while inserting categorical vector into the data frame using the <em>data.frame()</em> function, without converting the categorical vector to factor, it automatically gets converted into a factor column. But to avoid confusion, it is a better technique to convert the categorical vector into factor using <em>factor()</em> function and then insert it in the data frame.</p>
+<ul>
+<li>Lets look at an example where the use of factor data object turns out to be useful.
+<ul>
+<li>We have a categorical vector that we want to coerce as numeric for use in some model/application.</li>
+<li>Lets look at what happens when we just have a categorical vector, and we try to coerce it to numeric vector.</li>
+<li>We see that the outcome of the <em>as.numeric()</em> function on a normal categorical vector is coercion to “NA” of all elements.</li>
+<li>But when we convert the same categorical vector to factor, then after coercion to numeric type, we get a numeric vector of elements corresponding the the index of the labels of the factor data object.</li>
+</ul></li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJnZW5kZXJfbm90X2ZhY3RvciA8LSBjKFwibWFsZVwiLFwibWFsZVwiLFwiZmVtYWxlXCIsXCJmZW1hbGVcIixcIm1hbGVcIixcImZlbWFsZVwiLFwibWFsZVwiKVxuZ2VuZGVyX25vdF9mYWN0b3JcblxuIyBDb2VyY2UgaW50byBudW1lcmljIHZlY3RvciB3aXRob3V0IGNvbnZlcnRpbmcgdG8gZmFjdG9yXG5hcy5udW1lcmljKGdlbmRlcl9ub3RfZmFjdG9yKVxuXG5cbiMgQ09udmVydCB0aGUgZ2VuZGVyX25vdF9mYWN0b3IgdmVjdG9yIHRvIGEgZmFjdG9yIGRhdGEgb2JqZWN0LlxuZ2VuZGVyIDwtIGZhY3RvcihnZW5kZXJfbm90X2ZhY3RvcilcbmdlbmRlclxuXG4jIENvZXJjZSBpbnRvIG51bWVyaWMgdmVjdG9yIGFmdGVyIGNvbnZlcnRpbmcgdG8gZmFjdG9yIGRhdGEgb2JqZWN0LlxuYXMubnVtZXJpYyhnZW5kZXIpIn0=
+</div>
+<ul>
+<li><p>Lets look at another example where factor is useful.</p>
+<ul>
+<li>We want to see the distribution of price of each quality for the wine dataset.</li>
+<li>Upon plotting, it gives us a scatter plot, which makes it hard for us to see the distribution.</li>
+<li>Thus we convert the quality vector which is numeric initially, to factor and the plot it again.</li>
+</ul></li>
+</ul>
+<div data-datacamp-exercise="" data-height="600" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ3aW5lIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0LzU0MVdJTkUuY3N2XCIpXG5wbG90KHdpbmUkUVVBTElUWSx3aW5lJFBSSUNFKVxuI3dlIHdhbnQgdG8gc2VlIHRoZSBkaXN0cmlidXRpb24gb2YgcHJpY2Ugb2YgZWFjaCBxdWFsaXR5LCBidXQgaXQgZ2l2ZXMgdXMgYSBzY2F0dGVyIHBsb3QsIHdoaWNoIG1ha2VzIGl0IGhhcmQgZm9yIHVzIHRvIHNlZSB0aGUgZGlzdHJpYnV0aW9uLlxuaXMuZmFjdG9yKHdpbmUkUVVBTElUWSlcbiN0aGUgcmVzdWx0IGlzIGZhbHNlLCB3aGljaCBtZWFucyBxdWFsaXR5IGlzIGEgbnVtZXJpYyB2YWx1ZSByYXRoZXIgdGhhbiBhIGZhY3RvclxuXG5mYWN0b3JfcXVhbGl0eSA8LSBmYWN0b3Iod2luZSRRVUFMSVRZKVxuI2NvbnZlcnQgcXVhbGl0eSB2YWx1ZXMgaW50byBmYWN0b3JzXG5wbG90KGZhY3Rvcl9xdWFsaXR5LHdpbmUkUFJJQ0UpXG4jbm93IHdlIGNhbiBnZW5lcmF0ZSB0aGUgYm94IHBsb3QgYW5kIHNlZSB0aGUgZGlzdHJpYnV0aW9uIGNsZWFybHkuIn0=
+</div>
+<hr />
+</div>
+<div id="coerce" class="section level2" number="5.3">
+<h2><span class="header-section-number">5.3</span> Coercing Values in data frames</h2>
+<p>Before coercing data into data frames, lets look at small examples.</p>
+<p>Lets look at a coerced vector.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjTGV0cyBsb29rIGF0IGEgY29lcmNlZCB2ZWN0b3IuXG5cbiN2ZWN0b3IgY29udGFpbmluZyA0IGVsZW1lbnRzXG5teVZlY3Q8LWMoXCJSb2JlcnRcIiwgXCJFdGhhblwiLCA2LCA0KVxubXlWZWN0XG5cbiNZb3Ugd2lsbCBub3RpY2UgdGhhdCB0aGUgbGFzdCB0d28gZWxlbWVudHMgLCB3aGljaCBhcmUgYW4gaW50ZWdlcnMsIGFyZSBjb2VyY2VkIGludG8gYSBjaGFyYWN0ZXIgdHlwZS5cblxuI2NsYXNzKCkgaXMgdXNlZCB0byBjaGVjayB0aGUgdHlwZSBvZiBhbiBvYmplY3RcbmNsYXNzKG15VmVjdCkifQ==
+</div>
+<p>We see that when a vector has elements of mixed data types, they gets coerced into a type with precedence over other types.
+For example in the above case there were character elements and numeric elements types in the vector. But character type has precedence over numeric type and hence the whole vector is coerced into character type.</p>
+<p>We can check the types of vectors using a specific type of <em>is</em> function: <em>is.character(), is.double(), is.integer(), is.logical(),etc</em>. There are many other types under the <em>is</em> function, for checking if the data object given is a dataframe, factor, etc.</p>
+Lets look at the examples.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjdmVjdG9yIGNvbnRhaW5pbmcgNCBlbGVtZW50c1xubXlWZWN0PC1jKFwiUm9iZXJ0XCIsIFwiRXRoYW5cIiwgNiwgNClcbm15VmVjdFxuXG4jIENoZWNrIGlmIHZlY3RvciBpcyBvZiBDaGFyYWN0ZXIgdHlwZS5cbmlzLmNoYXJhY3RlcihteVZlY3QpXG5cbiMgQ2hlY2sgaWYgdmVjdG9yIGlzIG9mIG51bWVyaWMgdHlwZS5cbmlzLm51bWVyaWMobXlWZWN0KVxuXG4jIFVzZSBUUlVFIGFuZCBGQUxTRSAob3IgVCBhbmQgRikgdG8gY3JlYXRlIGxvZ2ljYWwgdmVjdG9yc1xubG9nX3ZlYyA8LSBjKFRSVUUsIEZBTFNFLCBULCBGKVxuXG4jIENoZWNrIGlmIHZlY3RvciBpcyBvZiBsb2dpY2FsIHR5cGUuXG5pcy5sb2dpY2FsKGxvZ192ZWMpIn0=
+</div>
+<p>We saw how to check the type of the data. But if you want to convert a column into your choice of data type, you can use the specific type of <em>as</em> function: <em>as.character(), as.double(), as.integer(), as.logical(),etc.</em> Again as we saw above about the <em>is</em> function types, there are also many other types of the <em>as</em> function.</p>
+Lets look at the example of coercing a vector into character type.
+<!-- Note: although the above myVect is a character vector, you can still use the function. -->
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjdmVjdG9yIGNvbnRhaW5pbmcgNCBlbGVtZW50c1xubXlWZWN0PC1jKDIsIDMsIDYsIDQsIFRSVUUsIEZBTFNFKVxubXlWZWN0XG5cbiMgRmlyc3QgbGV0cyBsb29rIGF0IHRoZSBjbGFzcyBvZiB0aGUgdmVjdG9yXG5jbGFzcyhteVZlY3QpXG5cbiMgQ29lcmNlIHRoZSB2ZWN0b3IgdG8gQ2hhcmFjdGVyIHR5cGUuIFxuYXMuY2hhcmFjdGVyKG15VmVjdCkgXG5cbiMgWW91IGNhbiBzZWUgdGhhdCB0aGUgZWxlbWVudHMgb2YgdGhlIG51bWVyaWMgdmVjdG9yIGFyZSBjb2VyY2VkIGludG8gY2hhcmFjdGVyIHR5cGUuIn0=
+</div>
+<p>Lets look at an example of coercing a mixed type vector into numeric type.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteXZlYzwtYyhcIlJvYmVydFwiLCBcIjIyXCIsIDQ1KVxubXl2ZWNcblxuIyBGaXJzdCBsZXRzIGxvb2sgYXQgdGhlIGNsYXNzIG9mIHRoZSB2ZWN0b3JcbmNsYXNzKG15dmVjKVxuXG4jIENvZXJjZSB0aGUgY2hhcmFjdGVyIHZlY3RvciB0byBudW1lcmljIHR5cGUuIFxuYXMubnVtZXJpYyhteXZlYykgXG5cbiMgWW91IGNhbiBzZWUgdGhhdCB0aGUgZWxlbWVudHMgb2YgdGhlIG1peGVkIHZlY3RvciBhcmUgY29lcmNlZCBpbnRvIG51bWVyaWMgdHlwZS5cblxuXG5cbm15dmVjMiA8LSBjKFRSVUUsIEZBTFNFLCBGLCBULCBUKVxubXl2ZWMyXG5cbiMgRmlyc3QgbGV0cyBsb29rIGF0IHRoZSBjbGFzcyBvZiB0aGUgdmVjdG9yXG5jbGFzcyhteXZlYzIpXG5cbiMgQ29lcmNlIHRoZSBsb2dpY2FsIHZlY3RvciB0byBudW1lcmljIHR5cGUuIFxuYXMubnVtZXJpYyhteXZlYzIpIFxuXG4jIFlvdSBjYW4gc2VlIHRoYXQgdGhlIGVsZW1lbnRzIG9mIHRoZSBtaXhlZCB2ZWN0b3IgYXJlIGNvZXJjZWQgaW50byBudW1lcmljIHR5cGUuIn0=
+</div>
+<p>We can see in the above example, while converting the character type vector to numeric if we encounter, numbers in character type, they get converted to numeric type. But the characters in character type, are not not converted, and instead we get a warning saying <em>“NAs introduced by coercion”</em>.
+Also, while converting a logical vector to numeric vector, we see that “TRUE” or “T” is coerced as <em>1</em> and “FALSE” or “F” is coerced as <em>0</em>.</p>
+<p>Now lets look at how to coerce data column and rewrite it into the dataframe.</p>
+<ul>
+<li>Suppose in the Moody dataset, you want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, …, F=5.
+<ul>
+<li>First, you will convert the grade column vector to factor using the <em>factor()</em> function.</li>
+<li>Then, convert the grade column with the command <em>as.numeric()</em> to numeric column.</li>
+</ul></li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBDb252ZXJ0IHRoZSBjYXRlZ29yaWNhbCBjb2x1bW4gZ3JhZGUgdG8gZmFjdG9yIGRhdGEgY29sdW1uLlxubW9vZHkkZ3JhZGU8LWZhY3Rvcihtb29keSRncmFkZSlcbmhlYWQobW9vZHkkZ3JhZGUpXG5cbiMgTm93IGNvbnZlcnQgdGhlIGxldmVscyB0byBudW1lcmljIHVzaW5nIHRoZSBhcy5udW1lcmljIGZ1bmN0aW9uXG5tb29keSRncmFkZSA8LSBmYWN0b3IoYXMubnVtZXJpYyhtb29keSRncmFkZSkpXG5oZWFkKG1vb2R5JGdyYWRlKSJ9
+</div>
+<ul>
+<li><p>We can see that the outcome of the above code, gives us a moody dataframe with grade column as a numeric column converted from the previous categorical column.
+We can also see that the we used the as.numeric() function inside the factor function while converting from categorical to numeric, to maintain the levels information of the grade column.</p></li>
+<li><p>Now, suppose you also want to change the labels of the grade column.</p>
+<ul>
+<li>Lets change the grades from capital letters to small letters, i.e. A -&gt; a, B -&gt; b, and so on.</li>
+<li>To do this, we can provide our user defined labels vector to the labels attribute of the <em>factor()</em> function.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBDb252ZXJ0IHRoZSBjYXRlZ29yaWNhbCBjb2x1bW4gZ3JhZGUgdG8gZmFjdG9yIGRhdGEgY29sdW1uIHdpdGggdXNlciBkZWZpbmVkIGxhYmVscy5cbm1vb2R5JGdyYWRlIDwtIGZhY3Rvcihtb29keSRncmFkZSxsYWJlbHMgPSBjKFwiYVwiLFwiYlwiLFwiY1wiLFwiZFwiLFwiZlwiKSlcbmhlYWQobW9vZHkkZ3JhZGUpIn0=
+</div></li>
+</ul></li>
+</ul>
+<p>We can see that the capital letter are now transformed to small letters.</p>
+<hr />
+</div>
+<div id="merge" class="section level2" number="5.4">
+<h2><span class="header-section-number">5.4</span> Merging Two Relational Data Frames.*</h2>
+<p>Often, we have data from multiple sources/multiple databases, files etc. To perform analysis, we need to merge these dataframes together with one or more common key variables.</p>
+<hr />
+</div>
+<div id="sliceanddice" class="section level2" number="5.5">
+<h2><span class="header-section-number">5.5</span> Slicing and Dicing.</h2>
+<p>R was made especially for data analysis and graphics. SQL was made especially for databases. They are allies in this field of data science.</p>
+<p>The data structure in R that most closely matches a SQL table is a data frame. The terms rows and columns are used in both.</p>
+<p>There is an R package called <code>sqldf</code> that allows you to use SQL commands to extract data from an R data frame. We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter <a href="revcommands.html#revcommands">4</a>.</p>
+<p>In R we have seen how subsetting of rows and columns happen using the subset function in earlier chapters <a href="revcommands.html#subset">4.4</a>.
+Please review this section before proceeding ahead.</p>
+<div id="dicing" class="section level3" number="5.5.1">
+<h3><span class="header-section-number">5.5.1</span> Subsetting on Columns ( DICING )</h3>
+<p>So lets start with dicing the dataframe. In other words, lets look at subsetting operations on columns.</p>
+<p>Columns in SQL are also called “fields”. In R it is commonly called “variables”.</p>
+<p>In SQL the subset of columns is determined by <code>SELECT</code> statement.</p>
+<p>We can do these type of SQL operation in R using the normal subsetting method, either using the <em>subset()</em> function or using the square brackets <code>[ ]</code>.</p>
+<p><em>NOTE</em>: In most of the examples below, to avoid printing of the complete dataset after any operations, we have used the <em>head()</em> function to truncate the output to only top 6 rows. However you can always remove the function or change the limit or output records to your choice by passing additional attribute <code>n = user_defined_limit</code> to the <em>head()</em> function.</p>
+<p>Just to recap subsetting on columns,</p>
+<ol style="list-style-type: decimal">
+<li><em>Subset single column.</em></li>
+</ol>
+<p><strong>Remember:</strong> You can either use the column names or the column location index, to dice the dataframe.</p>
+Suppose we want to subset the moody dataset only the grade column.
+Lets look at this example.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBMZXRzIHN1YnNldCB0aGUgZ3JhZGUgY29sdW1uIGZvcm0gdGhlIG1vb2R5IGRhdGFzZXQgYW5kIGxvb2sgYXQgaXRzIGZpcnN0IGZldyBlbGVtZW50cy4uXG5oZWFkKG1vb2R5WywnZ3JhZGUnLGRyb3A9Rl0pXG5cbiMgV2l0aG91dCBgZHJvcD1GYCBpbiB0aGUgYXR0cmlidXRlLCB5b3Ugd2lsbCBnZXQgb25seSB0aGUgdmFsdWVzIG9mIHRoZSBjb2x1bW4uXG5oZWFkKG1vb2R5WywnZ3JhZGUnXSkifQ==
+</div>
+<p>We can see that only one column is selected form the dataframe. The <code>drop = F</code> attribute is provided to keep the dataframe structure. You can also see the effect of not using the <code>drop = F</code> attribute in the above example.
+<strong>Note</strong>: In some cases, where you want to use the subsetted column with other function, e.g. <code>mean(subsetted_column)</code> you must not use the <code>drop=F</code> attribute, since it will result in error.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Subset multiple column.</em></li>
+</ol>
+<p>Suppose you want to subset multiple columns by name, you can create a vector or the column names you want to subset and then include it wile subsetting.</p>
+Lets look at the example.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBoZXJlIHdlIGNyZWF0ZSBhIHZlY3RvciBvZiBjb2x1bW4gbmFtZSB0aGF0IHdlIHdhbnQgdG8gc3Vic2V0LlxuY29sdW1uTmFtZXM8LSBjKFwiZ3JhZGVcIixcInNjb3JlXCIpXG5cbiMgSW5jbHVkaW5nIHRoZSBhYm92ZSB2ZWN0b3Igd2lsZSBzdWJzZXR0aW5nLlxuaGVhZChtb29keVssY29sdW1uTmFtZXNdKSJ9
+</div>
+<p>We can see that only the two column of “grade” and “score” are kept in the subset.
+Similarly, we can include the multiple column names and get subset.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>You can get all the columns in the subset, by keeping the space after the comma blank. This gives the complete set of columns.</li>
+</ol>
+Suppose you did some slicing on the dataframe and want to keep all the columns in the output, you can just keep the space after the comma blank while subsetting.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBoZXJlIHdlIGNhbiBzZWUgdGhhdCB3ZSBzbGljZWQgdGhlIGRhdGFmcmFtZSB0byBvbmx5IGtlZXAgdGhlIHJlY29yZHMgb2Ygc3R1ZGVudHMgd2l0aCBncmFkZSBcIkFcIi4gXG5oZWFkKG1vb2R5W21vb2R5JGdyYWRlPT1cIkFcIiwgXSlcblxuXG4jIFdlICB3aWxsIGxvb2sgYXQgc2xpY2luZyBpbiB0aGUgc3Vic2VxdWVudCBzZWN0aW9ucy4ifQ==
+</div>
+</div>
+<div id="Slicing" class="section level3" number="5.5.2">
+<h3><span class="header-section-number">5.5.2</span> Subsetting on Rows ( SLICING )</h3>
+<p>Now that we have seen dicing Or subsetting on columns, which is similar to the <code>select</code> statement of SQL,
+we will now look at slicing on the dataframe. Or in other words subsetting on rows.</p>
+<p>There are many statements of SQL that does subsetting on rows, i.e. <code>SELECT, WHERE, AND, OR, IN, LIKE, LIMIT</code>, and many more.
+We will look at few of them, by implementing them using the basic R functions.</p>
+<ol style="list-style-type: decimal">
+<li><em>Subsetting based on single condition.</em></li>
+</ol>
+<p>We will look at a subsetting condition based on value.</p>
+<p>For subsetting based on value, you can use the relational operators e.g. <em>&gt; , &lt; , &gt;= , &lt;= , == , etc</em> between the attribute name and the value.</p>
+<p>Lets look at this in the following example.</p>
+<p>Suppose you want to keep all the observations of where score of students are greater than 80.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBoZXJlIHdlIGNhbiBzZWUgdGhhdCB3ZSBzbGljZWQgdGhlIGRhdGFmcmFtZSB0byBvbmx5IGtlZXAgdGhlIHJlY29yZHMgb2Ygc3R1ZGVudHMgd2l0aCBzY29yZSBncmVhdGVyIHRoYW4gODAuIFxuaGVhZChtb29keVttb29keSRzY29yZT44MCwgXSkifQ==
+</div>
+<p>We can see from the above result, the subset has only records of students having score greater than 80.
+This example is similar to using <code>where</code> statement in SQL.</p>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Subsetting based on multiple conditions.</em></li>
+</ol>
+<p>Similar to the above example, suppose you want to subset based on multiple conditions.</p>
+<p>To do this, we will use the logical operators e.g. <code>AND (" &amp; ") , OR (" | ") , NOT (" ! ")</code> between the various conditions.</p>
+<p>Lets look at an example for this type of subsetting.</p>
+<p>Suppose you want to slice the records of the moody dataset, based on two conditions:
+- Students with grade equal to " A "
+- AND
+- Students with score greater than 90.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBoZXJlIHdlIGNhbiBzZWUgdGhhdCB3ZSBzbGljZWQgdGhlIGRhdGFmcmFtZSB0byBvbmx5IGtlZXAgdGhlIHJlY29yZHMgb2Ygc3R1ZGVudHMgd2l0aCBzY29yZSBncmVhdGVyIHRoYW4gOTAgQU5EIHdpdGggZ3JhZGUgZXF1YWwgdG8gXCJBXCIgLiBcbmhlYWQobW9vZHlbbW9vZHkkc2NvcmU+OTAgJiBtb29keSRncmFkZSA9PSBjKFwiQVwiKSwgXSkifQ==
+</div>
+<p>We can see that the records of students with score greater than 90 and grade equal to A are kept, rest all records are removed.</p>
+<p>This example is similar to using the <code>AND, OR, NOT</code> clause in SQL.</p>
+<ol start="3" style="list-style-type: decimal">
+<li><em>Subset based on multiple values.</em></li>
+</ol>
+<p>We will look at subsetting the dataframe based on one condition with multiple values.</p>
+<p>Suppose you want to subset the moody dataset, based on the students grade, but you want to keep students records with grade equal to both “B” and “C”</p>
+<p>Well you can use multiple conditions as seen above with an AND clause between the two conditions with different values on the same variable/columns, but there is a simple and useful way to do this with just one conditional statement.</p>
+<p>We will make use of a vector of all the values that we want to use, and then assign this vector to the condition statement.</p>
+<p>Lets look at this in the following example.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBsZXRzIGNyZWF0ZSBhIHZlY3RvciBvZiB2YWx1ZXMgcmVxdWlyZWQgaW4gdGhlIGNvbmRpdGlvbmFsIHN0YXRlbWVudFxuY29uZFZhbHVlczwtIGMoXCJCXCIsXCJDXCIpXG5cbiMgaGVyZSB3ZSBjYW4gc2VlIHRoYXQgd2Ugc2xpY2VkIHRoZSBkYXRhZnJhbWUgdG8gb25seSBrZWVwIHRoZSByZWNvcmRzIG9mIHN0dWRlbnRzIHdpdGggZ3JhZGUgZXF1YWwgdG8gXCJCXCIgb3IgXCJDXCIgLiBcbmhlYWQobW9vZHlbbW9vZHkkZ3JhZGUgPT0gY29uZFZhbHVlcywgXSlcbnVuaXF1ZShtb29keVttb29keSRncmFkZSA9PSBjb25kVmFsdWVzLCBdJGdyYWRlKVxuXG4jIHdlIGNhbiBhbHNvIGRpcmVjdGx5IHdyaXRlIHRoZSB2ZWN0b3Igd2l0aG91dCBhc3NpZ25pbmcgYSB2YXJpYWJsZS5cbmhlYWQobW9vZHlbbW9vZHkkZ3JhZGUgPT0gYyhcIkJcIixcIkNcIiksXSlcbnVuaXF1ZShtb29keVttb29keSRncmFkZSA9PSBjKFwiQlwiLFwiQ1wiKSxdJGdyYWRlKSJ9
+</div>
+<p>We can see that the output has only records of students with grades B or C.
+And both the methods, result in same output.
+This example is similar to the <code>IN</code> operator of the SQL</p>
+<ol start="4" style="list-style-type: decimal">
+<li><em>Subset based on a partial/complete text/character.</em></li>
+</ol>
+<p>We will look at subsetting the dataset based on a specific pattern of text/characters.</p>
+<p>This type of subsetting proves useful in text columns where each record has one or more than one sentence, and you want to search for a particular keyword or pattern.</p>
+<p>Most simple example would be of a survey dateset, where each record in the dataset consists of text paragraph, answering the questions asked in the survey, and you want to figure out the count of particular keywords in each response.</p>
+<p>Lets look at an example based on the Happiness dataset.
+We would like to find the subset of countries with the letters " and " in their name. eg. Iceland, Uganda, Poland, etc.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJoYXBweTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvSEFQUElORVNTMjAxNy5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBTdWJzZXQgdXNpbmcgdGhlIGdyZXAgZnVuY3Rpb24gdG8gZmluZCB0aGUgcGF0dGVybiBcImFuZFwiIGluIHRoZSBuYW1lcyBvZiB0aGUgY291bnRyaWVzXG5oZWFkKGhhcHB5W2dyZXAoXCJhbmRcIixoYXBweSRDT1VOVFJZLGlnbm9yZS5jYXNlID0gVCksXSlcbnVuaXF1ZShoYXBweVtncmVwKFwiYW5kXCIsaGFwcHkkQ09VTlRSWSxpZ25vcmUuY2FzZSA9IFQpLF0kQ09VTlRSWSkifQ==
+</div>
+<p>We can see the output has subset of the happy dataset with records of only those countries with the pattern “and” in its name.
+To do this we have used the <em>grep()</em> function, which is a really important function for finding patterns in text and data.
+We don’t need to study this <em>grep()</em> function in detail, but one can find very good resources explaining it online.
+This example is similar to the <code>LIKE</code> operator in SQL.</p>
+</div>
+</div>
+<div id="psuedo-equivalent-of-groupby" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Psuedo equivalent of GroupBy *</h2>
 <!-- --- -->
 <!-- ## Table -->
 <!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->
@@ -249,40 +527,6 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1u
 <!-- barplot(mdy.scoreavg2d,col=c("red","cyan","orange","blue"),main = "tapply() example 2",beside = TRUE,legend=rownames(mdy.scoreavg2d)) -->
 <!-- ``` -->
 <!-- --- -->
-<!-- ## Finding Patterns using plots. -->
-<!-- See slide 14 -->
-<!-- ### Good Example  -->
-<!-- - Let’s look at the frequency of students grades excluding those who "never" and "always" use smartphones in class. -->
-<!-- ```{r} -->
-<!-- freq_rare_user<-subset(mdy, ON_SMARTPHONE!="never" & ON_SMARTPHONE!="always") # We created a subset based on two constraint -->
-<!-- freq_rare_usertable= table(freq_rare_user$ON_SMARTPHONE,freq_rare_user$GRADE) # We created a table for frequency. -->
-<!-- freq_rare_usertable -->
-<!-- barplot(freq_rare_usertable, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(freq_rare_usertable)) #plot -->
-<!-- ``` -->
-<!-- - We can see that students with higher grades use more phone. -->
-<!-- - While very less students who "rarely" use phone in class get A grade. -->
-<!-- ##### (Disclaimer: Findings are based on this dataset only, and the claims may or may-not be valid in real world case. Please consider it for academic purpose only.) -->
-<!-- ### Bad Example 1 -->
-<!-- - Let’s look at the barplot of the Grade factored by student who always use their smartphone in class. -->
-<!-- ```{r} -->
-<!-- user<-tapply(mdy$GRADE,list(mdy$ON_SMARTPHONE,mdy$GRADE),length) # We applied tapply on created a subset based on 1 constraint -->
-<!-- user[is.na(user)]<-0 -->
-<!-- always_user<-user[0:1,] -->
-<!-- always_user -->
-<!-- # We created a table for frequency. -->
-<!-- barplot(always_user, main = "Number of students 'always' on smartphone vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(always_user)) #plot -->
-<!-- ``` -->
-<!-- --- -->
-<!-- ### Bad Example 2 -->
-<!-- - Lets look at grade distribution for people who are "sometimes" or "never" late for class. -->
-<!-- ```{r} -->
-<!-- not_always_late<-subset(mdy, LATE_IN_CLASS != "Yes") -->
-<!-- # not_always_late<-subset(mdy,LATE_IN_CLASS == "Sometimes" & LATE_IN_CLASS == "Never") -->
-<!-- nal_table<-table(not_always_late$LATE_IN_CLASS,not_always_late$GRADE) -->
-<!-- nal_table -->
-<!-- barplot(nal_table, main = "Number of students vs Grade", col = c("red","cyan") ,ylab = "Number of Students", xlab = "Grades", las = 2, cex.names = 0.75,beside = TRUE,legend=rownames(nal_table)) #plot -->
-<!-- ``` -->
-<!-- --- -->
 <!-- ## Cut -->
 <!-- - cut() function in R Language is used to divide a **numeric vector** into different ranges -->
 <!-- ```{r} -->
@@ -315,8 +559,8 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjV2hhdCBoYXBwZW5zIHdoZW4geW91IGhhdmUgY29sdW1u
           </div>
         </div>
       </div>
-<a href="dataexp.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="permtest.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="revcommands.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -366,6 +610,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

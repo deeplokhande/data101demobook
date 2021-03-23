@@ -1,4 +1,4 @@
-# Revision of R commands {#Revcommands}
+# Revision of R commands {#revcommands}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 
@@ -69,230 +69,6 @@ df <- data.frame(title, author, year)
 df # Lets look at how the dataframe looks.
 
 ```
-
----
-
-
-## Factor Function: factor() {#factorfunc}
-
-Factors are the data objects which are used to categorize the data and store it as levels. 
-They can store both strings and numbers. 
-They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. 
-Factor data objects are useful in data analysis for statistical modeling.
-
-The factor function is used to encode a vector as a factor.
-
-Lets look at first checking if a data object is of factor type using the function _is.factor(x)_
-
-```{r}
-# Create a vector as input.
-gender <- c("male","male","female","female","male","female","male")
-
-gender
-
-#Check if data object is factor.
-is.factor(gender)
-
-```
-
-Now lets convert the above vector to a factor data object.
-To do this we will use the function _factor(x)_.
-
-
-```{r}
-# Create a vector as input.
-gender <- c("male","male","female","female","male","female","male")
-
-# Apply the factor function.
-factor_gender <- factor(gender)
-
-factor_gender
-is.factor(factor_gender)
-
-```
-Notice that for the factor data objects, the attribute _Levels_ is also created. This is an extremely important feature of the factor data object.
-
-
-Lets look at how the factor data object looks when included in a dataframe.
-
-```{r}
-# Create the vectors for data frame.
-height <- c(132,151,162,139,166,147,122)
-weight <- c(48,49,66,53,67,52,40)
-gender_not_factor <- c("male","male","female","female","male","female","male")
-
-# COnvert the gender_not_factor vector to a factor data object.
-gender <- factor(gender_not_factor)
-
-# Create the data frame.
-input_data <- data.frame(height,weight,gender)
-print(input_data)
-
-# Test if the gender column is a factor.
-print(is.factor(input_data$gender))
-
-# Print the gender column so see the levels.
-print(input_data$gender)
-```
-Note: Sometimes depending on your version of R and packages, you might find that while inserting categorical vector into the data frame using the _data.frame()_ function, without converting the categorical vector to factor, it automatically gets converted into a factor column. But to avoid confusion, it is a better technique to convert the categorical vector into factor using _factor()_ function and then insert it in the data frame.
-
-
-- Lets look at an example where the use of factor data object turns out to be useful.
-  - We have a categorical vector that we want to coerce as numeric for use in some model/application.
-  - Lets look at what happens when we just have a categorical vector, and we try to coerce it to numeric vector.
-  - We see that the outcome of the _as.numeric()_ function on a normal categorical vector is coercion to "NA" of all elements.
-  - But when we convert the same categorical vector to factor, then after coercion to numeric type, we get a numeric vector of elements corresponding the the index of the labels of the factor data object.
-  
-```{r}
-gender_not_factor <- c("male","male","female","female","male","female","male")
-gender_not_factor
-
-# Coerce into numeric vector without converting to factor
-as.numeric(gender_not_factor)
-
-
-# COnvert the gender_not_factor vector to a factor data object.
-gender <- factor(gender_not_factor)
-gender
-
-# Coerce into numeric vector after converting to factor data object.
-as.numeric(gender)
-
-```
-
-
-- Lets look at another example where factor is useful.
-
-  - We want to see the distribution of price of each quality for the wine dataset. 
-  - Upon plotting, it gives us a scatter plot, which makes it hard for us to see the distribution.
-  - Thus we convert the quality vector which is numeric initially, to factor and the plot it again.
-
-
-```{r,height=600}
-wine <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/541WINE.csv")
-plot(wine$QUALITY,wine$PRICE)
-#we want to see the distribution of price of each quality, but it gives us a scatter plot, which makes it hard for us to see the distribution.
-is.factor(wine$QUALITY)
-#the result is false, which means quality is a numeric value rather than a factor
-
-factor_quality <- factor(wine$QUALITY)
-#convert quality values into factors
-plot(factor_quality,wine$PRICE)
-#now we can generate the box plot and see the distribution clearly.
-```
-
-
----
-
-## Coercing Values in data frames
-
-Before coercing data into data frames, lets look at small examples.
-
-Lets look at a coerced vector.
-
-
-```{r}
-
-#Lets look at a coerced vector.
-
-#vector containing 4 elements
-myVect<-c("Robert", "Ethan", 6, 4)
-myVect
-
-#You will notice that the last two elements , which are an integers, are coerced into a character type.
-
-#class() is used to check the type of an object
-class(myVect)
-
-
-```
-
-We see that when a vector has elements of mixed data types, they gets coerced into a type with precedence over other types. 
-For example in the above case there were character elements and numeric elements types in the vector. But character type has precedence over numeric type and hence the whole vector is coerced into character type.
-
-
-We can check the types of vectors using a specific type of _is_ function: _is.character(), is.double(), is.integer(), is.logical(),etc_. There are many other types under the _is_ function, for checking if the data object given is a dataframe, factor, etc. 
-
-Lets look at the examples.
-```{r}
-
-#vector containing 4 elements
-myVect<-c("Robert", "Ethan", 6, 4)
-myVect
-
-# Check if vector is of Character type.
-is.character(myVect)
-
-# Check if vector is of numeric type.
-is.numeric(myVect)
-
-# Use TRUE and FALSE (or T and F) to create logical vectors
-log_vec <- c(TRUE, FALSE, T, F)
-
-# Check if vector is of logical type.
-is.logical(log_vec)
-
-```
-
-
-We saw how to check the type of the data. But if you want to convert a column into your choice of data type, you can use the specific type of _as_ function: _as.character(), as.double(), as.integer(), as.logical(),etc._ Again as we saw above about the _is_ function types, there are also many other types of the _as_ function.
-
-Lets look at the example of coercing a vector into character type. 
-<!-- Note: although the above myVect is a character vector, you can still use the function. -->
-```{r}
-
-#vector containing 4 elements
-myVect<-c(2, 3, 6, 4, TRUE, FALSE)
-myVect
-
-# First lets look at the class of the vector
-class(myVect)
-
-# Coerce the vector to Character type. 
-as.character(myVect) 
-
-# You can see that the elements of the numeric vector are coerced into character type.
-```
-
-Lets look at an example of coercing a mixed type vector into numeric type.
-
-```{r}
-
-myvec<-c("Robert", "22", 45)
-myvec
-
-# First lets look at the class of the vector
-class(myvec)
-
-# Coerce the character vector to numeric type. 
-as.numeric(myvec) 
-
-# You can see that the elements of the mixed vector are coerced into numeric type.
-
-
-
-myvec2 <- c(TRUE, FALSE, F, T, T)
-myvec2
-
-# First lets look at the class of the vector
-class(myvec2)
-
-# Coerce the logical vector to numeric type. 
-as.numeric(myvec2) 
-
-# You can see that the elements of the mixed vector are coerced into numeric type.
-
-```
-
-We can see in the above example, while converting the character type vector to numeric if we encounter, numbers in character type, they get converted to numeric type. But the characters in character type, are not not converted, and instead we get a warning saying _"NAs introduced by coercion"_. 
-Also, while converting a logical vector to numeric vector, we see that "TRUE" or "T" is coerced as _1_ and "FALSE" or "F" is coerced as _0_.
-
-
-Now lets look at how to coerce data into dataframe.
-
-Suppose in the Moody dataset, I want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, ..., F=5.
-
-
 
 ---
 
@@ -396,9 +172,13 @@ table(moody[moody$ASKS_QUESTIONS==list('always','never'),]$GRADE)
 
 - subset() function in R programming is used to create a subset of vectors, matrices or data frames based on the conditions provided in the parameters.
 
+
 - NOTE: To create a subset, not only can you use the subset() function, but also:
-    - you can use [ ] operator. Ex: dataFrameName['columnName'] 
+    - You can use [ ] operator. Ex: dataFrameName['columnName'] 
     - Even \$ operator is a subset operator. Ex: dataFrameName\$columnName
+    
+- Also, subsetting in R (commonly called “subscripting”) is done with square brackets.  When subscripting a data frame there will be two places inside the square brackets separated by a comma.
+- The first part inside the square brackets corresponds to rows.  The second part corresponds to columns.
     
 ```{r}
 moody <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101_test/main/MOODY-2019.csv")
@@ -592,6 +372,8 @@ summary(output)
 # D. Error.
 
 ```
+
+
 
 ---
 
@@ -790,19 +572,51 @@ df<-data.frame(v1,v2,v3)
 #1
 df[df>2]  
 
-#2
-df$v1 > 2 
+# A. values of v1 variable which are larger than 2 
 
-#3
-v1>2
+# B. values of v1, v2 and v3 which are larger than 2. 
 
-# A. 1) values of v1 variable which are larger than 2 || 2) error || 3) TRUE where the value is greater than 2 and False where the value is less than 2.
-
-# B. 1) values of v1, v2 and v3 which are larger than 2. || 2) values of v1 variable which are larger than 2 || 3) TRUE where the value is greater than 2 and False where the value is less than 2.
-
-# C. 1) error || 2) values of v1 variable which are larger than 2 || 3) values of v1 variable which are larger than 2
-
-# D. 1) error || 2) TRUE where the value is greater than 2 and False where the value is less than 2. || 3) values of v1 variable which are larger than 2
+# C. error 
 
 ```
+
+### Question
+
+```{r}
+v1<- c(1,2,3,4)
+v2<- c(1,2,3,4)
+v3<- c(1,2,3,4)
+
+df<-data.frame(v1,v2,v3)
+
+df$v1 > 2 
+
+# A. error 
+
+# B. values of v1 variable which are larger than 2.
+
+# C. TRUE where the value is greater than 2 and False where the value is less than 2. 
+
+```
+
+### Question
+
+```{r}
+v1<- c(1,2,3,4)
+v2<- c(1,2,3,4)
+v3<- c(1,2,3,4)
+
+df<-data.frame(v1,v2,v3)
+
+v1>2
+
+# A. TRUE where the value is greater than 2 and False where the value is less than 2.
+
+# B. values of v1 variable which are larger than 2
+
+# C. error
+
+```
+
+
 

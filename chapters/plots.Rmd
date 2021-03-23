@@ -150,7 +150,7 @@ mosaicplot(moody$grade~moody$texting,xlab = 'Grade',ylab = 'Texting habit', main
 
 ```
 
-```{r child="./chapters/datatransformation.Rmd"}
+<!-- ```{r child="./chapters/datatransformation.Rmd"} -->
 
-```
+<!-- ``` -->
 

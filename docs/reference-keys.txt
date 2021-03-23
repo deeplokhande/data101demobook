@@ -9,8 +9,6 @@ box-plot
 mosiac-plot
 freestyle
 Moodyexplaination
-newcolumn
-create-column
 stateval
 some-basics-first
 z-test
@@ -19,9 +17,8 @@ permonestep
 permfunction
 aniceexample
 multiple-hypothesis---bonferroni-correction.
-Revcommands
+revcommands
 dataframe
-types-and-user-defined-data-coercion.
 basicfunction
 table
 question-what-would-r-say
@@ -49,3 +46,14 @@ question-7
 question-8
 question-9
 question-10
+question-11
+question-12
+newcolumn
+create-column
+factorfunc
+coerce
+merge
+sliceanddice
+dicing
+Slicing
+psuedo-equivalent-of-groupby

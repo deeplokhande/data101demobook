@@ -6,7 +6,8 @@ rmd_files: [
   "./chapters/intro.Rmd",
   "./chapters/plots.Rmd",
   "./chapters/stateval.Rmd",
-  "./chapters/revcommands.Rmd"]
+  "./chapters/revcommands.Rmd",
+  "./chapters/datatransformation.Rmd"]
 language:
   ui:
     chapter_name: "Chapter "

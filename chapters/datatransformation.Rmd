@@ -1,12 +1,13 @@
-## Data Frames & New Column. {#newcolumn}
+# Data Frames & Transformation. {#newcolumn}
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
-tutorial::go_interactive(greedy = FALSE)
+tutorial::go_interactive()
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
 ---
+
 Now we have to introduce the core data structure of R – the data frame and show we can expand it with extra attributes.
 
 Defining new attributes can very often be critical in data exploration and help to find patterns and relationships which otherwise would not be visible.
@@ -16,28 +17,27 @@ For example, may be participation matters but only to Pass/Fail grades? In other
 
 Similarly intervals of participation or score may discover important relationships which would not emerge with just numerical values of such attributes. May be High scores correlate with High participation? To establish it one would have first to define categorical attributes with named intervals of their numerical counterparts.
 
+---
 
-### Create Column
-* Lets put a column I have created using age to partition it into 3 category. I'll tell you how to partition more in upcoming sections.
-* For now suppose I am given a new column " colage " with same number of rows as that of the data.frame.
-```{r ,tut=TRUE, ex="create_a",type="pre-exercise-code"}
-# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+## Create Column
+* Lets put a column I have created using score. 
+* Suppose I am given a new column " pf " with same number of rows as that of the dataframe with the categories ("P" , "F").
+
+```{r}
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
-```
 
-```{r ,tut=TRUE, ex="create_a",type="sample-code"}
-#colage column has 3 category and divides on the basis of age.
+# pf column has 2 category and divides on the basis of score.
 pf <- cut(moody$score,breaks=c(0,50,100),labels=c("F","P"))
-# length(colage) #Number of rows in new column.
-# nrow(mdy) #Number of Rows in dataframe
+# length(pf) # Number of rows in new column.
+# nrow(moody) # Number of Rows in dataframe
 
-# To add this new column colage in dataframe mdy.
+# To add this new column pf in dataframe moody.
 names(moody) # Initially dataframe has 5 columns
 moody$passfail <- pf #Put syntax dataFrameName$columnHeaderName <- newColumn
-names(moody) # Now dataframe has 8 columns
+names(moody) # Now dataframe has 6 columns
 ```
 
-```{r ,tut=TRUE,error=TRUE}
+```{r ,error=TRUE}
 
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
@@ -48,6 +48,489 @@ length(badcol)
 
 moody$badcol <- badcol #Throws Compatibility error. 
 ```
+
+---
+
+
+## Factor Function: factor() {#factorfunc}
+
+Factors are the data objects which are used to categorize the data and store it as levels. 
+They can store both strings and numbers. 
+They are useful in the columns which have a limited number of unique values. Like "Male, "Female" and True, False etc. 
+Factor data objects are useful in data analysis for statistical modeling.
+
+The factor function is used to encode a vector as a factor.
+
+Lets look at first checking if a data object is of factor type using the function _is.factor(x)_
+
+```{r}
+# Create a vector as input.
+gender <- c("male","male","female","female","male","female","male")
+
+gender
+
+#Check if data object is factor.
+is.factor(gender)
+
+```
+
+Now lets convert the above vector to a factor data object.
+To do this we will use the function _factor(x)_.
+
+
+```{r}
+# Create a vector as input.
+gender <- c("male","male","female","female","male","female","male")
+
+# Apply the factor function.
+factor_gender <- factor(gender)
+
+factor_gender
+is.factor(factor_gender)
+
+```
+Notice that for the factor data objects, the attribute _Levels_ is also created. This is an extremely important feature of the factor data object.
+
+
+Lets look at how the factor data object looks when included in a dataframe.
+
+```{r}
+# Create the vectors for data frame.
+height <- c(132,151,162,139,166,147,122)
+weight <- c(48,49,66,53,67,52,40)
+gender_not_factor <- c("male","male","female","female","male","female","male")
+
+# COnvert the gender_not_factor vector to a factor data object.
+gender <- factor(gender_not_factor)
+
+# Create the data frame.
+input_data <- data.frame(height,weight,gender)
+print(input_data)
+
+# Test if the gender column is a factor.
+print(is.factor(input_data$gender))
+
+# Print the gender column so see the levels.
+print(input_data$gender)
+```
+Note: Sometimes depending on your version of R and packages, you might find that while inserting categorical vector into the data frame using the _data.frame()_ function, without converting the categorical vector to factor, it automatically gets converted into a factor column. But to avoid confusion, it is a better technique to convert the categorical vector into factor using _factor()_ function and then insert it in the data frame.
+
+
+- Lets look at an example where the use of factor data object turns out to be useful.
+  - We have a categorical vector that we want to coerce as numeric for use in some model/application.
+  - Lets look at what happens when we just have a categorical vector, and we try to coerce it to numeric vector.
+  - We see that the outcome of the _as.numeric()_ function on a normal categorical vector is coercion to "NA" of all elements.
+  - But when we convert the same categorical vector to factor, then after coercion to numeric type, we get a numeric vector of elements corresponding the the index of the labels of the factor data object.
+  
+```{r}
+gender_not_factor <- c("male","male","female","female","male","female","male")
+gender_not_factor
+
+# Coerce into numeric vector without converting to factor
+as.numeric(gender_not_factor)
+
+
+# COnvert the gender_not_factor vector to a factor data object.
+gender <- factor(gender_not_factor)
+gender
+
+# Coerce into numeric vector after converting to factor data object.
+as.numeric(gender)
+
+```
+
+
+- Lets look at another example where factor is useful.
+
+  - We want to see the distribution of price of each quality for the wine dataset. 
+  - Upon plotting, it gives us a scatter plot, which makes it hard for us to see the distribution.
+  - Thus we convert the quality vector which is numeric initially, to factor and the plot it again.
+
+
+```{r,height=600}
+wine <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/541WINE.csv")
+plot(wine$QUALITY,wine$PRICE)
+#we want to see the distribution of price of each quality, but it gives us a scatter plot, which makes it hard for us to see the distribution.
+is.factor(wine$QUALITY)
+#the result is false, which means quality is a numeric value rather than a factor
+
+factor_quality <- factor(wine$QUALITY)
+#convert quality values into factors
+plot(factor_quality,wine$PRICE)
+#now we can generate the box plot and see the distribution clearly.
+```
+
+
+---
+
+## Coercing Values in data frames {#coerce}
+
+Before coercing data into data frames, lets look at small examples.
+
+Lets look at a coerced vector.
+
+
+```{r}
+
+#Lets look at a coerced vector.
+
+#vector containing 4 elements
+myVect<-c("Robert", "Ethan", 6, 4)
+myVect
+
+#You will notice that the last two elements , which are an integers, are coerced into a character type.
+
+#class() is used to check the type of an object
+class(myVect)
+
+
+```
+
+We see that when a vector has elements of mixed data types, they gets coerced into a type with precedence over other types. 
+For example in the above case there were character elements and numeric elements types in the vector. But character type has precedence over numeric type and hence the whole vector is coerced into character type.
+
+
+We can check the types of vectors using a specific type of _is_ function: _is.character(), is.double(), is.integer(), is.logical(),etc_. There are many other types under the _is_ function, for checking if the data object given is a dataframe, factor, etc. 
+
+Lets look at the examples.
+```{r}
+
+#vector containing 4 elements
+myVect<-c("Robert", "Ethan", 6, 4)
+myVect
+
+# Check if vector is of Character type.
+is.character(myVect)
+
+# Check if vector is of numeric type.
+is.numeric(myVect)
+
+# Use TRUE and FALSE (or T and F) to create logical vectors
+log_vec <- c(TRUE, FALSE, T, F)
+
+# Check if vector is of logical type.
+is.logical(log_vec)
+
+```
+
+
+We saw how to check the type of the data. But if you want to convert a column into your choice of data type, you can use the specific type of _as_ function: _as.character(), as.double(), as.integer(), as.logical(),etc._ Again as we saw above about the _is_ function types, there are also many other types of the _as_ function.
+
+Lets look at the example of coercing a vector into character type. 
+<!-- Note: although the above myVect is a character vector, you can still use the function. -->
+```{r}
+
+#vector containing 4 elements
+myVect<-c(2, 3, 6, 4, TRUE, FALSE)
+myVect
+
+# First lets look at the class of the vector
+class(myVect)
+
+# Coerce the vector to Character type. 
+as.character(myVect) 
+
+# You can see that the elements of the numeric vector are coerced into character type.
+```
+
+Lets look at an example of coercing a mixed type vector into numeric type.
+
+```{r}
+
+myvec<-c("Robert", "22", 45)
+myvec
+
+# First lets look at the class of the vector
+class(myvec)
+
+# Coerce the character vector to numeric type. 
+as.numeric(myvec) 
+
+# You can see that the elements of the mixed vector are coerced into numeric type.
+
+
+
+myvec2 <- c(TRUE, FALSE, F, T, T)
+myvec2
+
+# First lets look at the class of the vector
+class(myvec2)
+
+# Coerce the logical vector to numeric type. 
+as.numeric(myvec2) 
+
+# You can see that the elements of the mixed vector are coerced into numeric type.
+
+```
+
+We can see in the above example, while converting the character type vector to numeric if we encounter, numbers in character type, they get converted to numeric type. But the characters in character type, are not not converted, and instead we get a warning saying _"NAs introduced by coercion"_. 
+Also, while converting a logical vector to numeric vector, we see that "TRUE" or "T" is coerced as _1_ and "FALSE" or "F" is coerced as _0_.
+
+
+Now lets look at how to coerce data column and rewrite it into the dataframe.
+
+- Suppose in the Moody dataset, you want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, ..., F=5.
+  - First, you will convert the grade column vector to factor using the _factor()_ function.
+  - Then, convert the grade column with the command _as.numeric()_ to numeric column.
+
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# Convert the categorical column grade to factor data column.
+moody$grade<-factor(moody$grade)
+head(moody$grade)
+
+# Now convert the levels to numeric using the as.numeric function
+moody$grade <- factor(as.numeric(moody$grade))
+head(moody$grade)
+```
+- We can see that the outcome of the above code, gives us a moody dataframe with grade column as a numeric column converted from the previous categorical column.
+We can also see that the we used the as.numeric() function inside the factor function while converting from categorical to numeric, to maintain the levels information of the grade column.
+
+- Now, suppose you also want to change the labels of the grade column. 
+  - Lets change the grades from capital letters to small letters, i.e. A -> a, B -> b, and so on.
+  - To do this, we can provide our user defined labels vector to the labels attribute of the _factor()_ function.
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# Convert the categorical column grade to factor data column with user defined labels.
+moody$grade <- factor(moody$grade,labels = c("a","b","c","d","f"))
+head(moody$grade)
+```
+
+We can see that the capital letter are now transformed to small letters.
+
+---
+
+
+## Merging Two Relational Data Frames.* {#merge} 
+
+Often, we have data from multiple sources/multiple databases, files etc. To perform analysis, we need to merge these dataframes together with one or more common key variables.
+
+
+
+
+
+
+
+---
+
+
+## Slicing and Dicing.{#sliceanddice}
+
+
+R was made especially for data analysis and graphics.  SQL was made especially for databases.  They are allies in this field of data science.
+
+The data structure in R that most closely matches a SQL table is a data frame.  The terms rows and columns are used in both.
+
+There is an R package called `sqldf` that allows you to use SQL commands to extract data from an R data frame.  We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter \@ref(revcommands).
+
+In R we have seen how subsetting of rows and columns happen using the subset function in earlier chapters \@ref(subset).
+Please review this section before proceeding ahead.
+
+### Subsetting on Columns ( DICING ) {#dicing}
+
+So lets start with dicing the dataframe. In other words, lets look at subsetting operations on columns.
+
+Columns in SQL are also called “fields”.  In R it is commonly called “variables”.
+
+In SQL the subset of columns is determined by `SELECT` statement.
+
+We can do these type of SQL operation in R using the normal subsetting method, either using the _subset()_ function or using the square brackets ` [ ] `. 
+
+_NOTE_: In most of the examples below, to avoid printing of the complete dataset after any operations, we have used the _head()_ function to truncate the output to only top 6 rows. However you can always remove the function or change the limit or output records to your choice by passing additional attribute  ` n = user_defined_limit ` to the _head()_ function.
+
+
+Just to recap subsetting on columns,
+
+1. _Subset single column._
+
+**Remember:** You can either use the column names or the column location index, to dice the dataframe.
+
+Suppose we want to subset the moody dataset only the grade column.
+Lets look at this example.
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# Lets subset the grade column form the moody dataset and look at its first few elements..
+head(moody[,'grade',drop=F])
+
+# Without `drop=F` in the attribute, you will get only the values of the column.
+head(moody[,'grade'])
+```
+
+We can see that only one column is selected form the dataframe. The `drop = F` attribute is provided to keep the dataframe structure. You can also see the effect of not using the `drop = F` attribute in the above example.
+**Note**: In some cases, where you want to use the subsetted column with other function, e.g. `mean(subsetted_column)` you must not use the `drop=F` attribute, since it will result in error.
+
+
+2. _Subset multiple column._
+
+Suppose you want to subset multiple columns by name, you can create a vector or the column names you want to subset and then include it wile subsetting.
+
+Lets look at the example.
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# here we create a vector of column name that we want to subset.
+columnNames<- c("grade","score")
+
+# Including the above vector wile subsetting.
+head(moody[,columnNames])
+```
+We can see that only the two column of "grade" and "score" are kept in the subset.
+Similarly, we can include the multiple column names and get subset.
+
+3. You can get all the columns in the subset, by keeping the space after the comma blank. This gives the complete set of columns.
+
+Suppose you did some slicing on the dataframe and want to keep all the columns in the output, you can just keep the space after the comma blank while subsetting.
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# here we can see that we sliced the dataframe to only keep the records of students with grade "A". 
+head(moody[moody$grade=="A", ])
+
+
+# We  will look at slicing in the subsequent sections.
+
+```
+
+
+
+
+
+### Subsetting on Rows ( SLICING ) {#Slicing}
+
+Now that we have seen dicing Or subsetting on columns, which is similar to the `select` statement of SQL,
+we will now look at slicing on the dataframe. Or in other words subsetting on rows.
+
+There are many statements of SQL that does subsetting on rows, i.e. `SELECT, WHERE, AND, OR, IN, LIKE, LIMIT`, and many more.
+We will look at few of them, by implementing them using the basic R functions.
+
+
+1. _Subsetting based on single condition._
+
+We will look at a subsetting condition based on value.
+
+For subsetting based on value, you can use the relational operators e.g. _> , < , >= , <= , == , etc_ between the attribute name and the value.
+
+Lets look at this in the following example.
+
+Suppose you want to keep all the observations of where score of students are greater than 80.
+
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# here we can see that we sliced the dataframe to only keep the records of students with score greater than 80. 
+head(moody[moody$score>80, ])
+
+```
+We can see from the above result, the subset has only records of students having score greater than 80.
+This example is similar to using `where` statement in SQL.
+
+
+2. _Subsetting based on multiple conditions._
+
+Similar to the above example, suppose you want to subset based on multiple conditions.
+
+To do this, we will use the logical operators e.g. ` AND (" & ") , OR (" | ") , NOT (" ! ") ` between the various conditions.
+
+Lets look at an example for this type of subsetting.
+
+Suppose you want to slice the records of the moody dataset, based on two conditions:
+- Students with grade equal to " A " 
+- AND
+- Students with score greater than 90.
+
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# here we can see that we sliced the dataframe to only keep the records of students with score greater than 90 AND with grade equal to "A" . 
+head(moody[moody$score>90 & moody$grade == c("A"), ])
+
+```
+
+We can see that the records of students with score greater than 90 and grade equal to A are kept, rest all records are removed.
+
+This example is similar to using the ` AND, OR, NOT ` clause in SQL.
+
+3. _Subset based on multiple values._
+
+We will look at subsetting the dataframe based on one condition with multiple values.
+
+Suppose you want to subset the moody dataset, based on the students grade, but you want to keep students records with grade equal to both "B" and "C"
+
+Well you can use multiple conditions as seen above with an AND clause between the two conditions with different values on the same variable/columns, but there is a simple and useful way to do this with just one conditional statement.
+
+We will make use of a vector of all the values that we want to use, and then assign this vector to the condition statement.
+
+Lets look at this in the following example.
+
+```{r}
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load dataset
+
+# lets create a vector of values required in the conditional statement
+condValues<- c("B","C")
+
+# here we can see that we sliced the dataframe to only keep the records of students with grade equal to "B" or "C" . 
+head(moody[moody$grade == condValues, ])
+unique(moody[moody$grade == condValues, ]$grade)
+
+# we can also directly write the vector without assigning a variable.
+head(moody[moody$grade == c("B","C"),])
+unique(moody[moody$grade == c("B","C"),]$grade)
+
+
+```
+
+
+We can see that the output has only records of students with grades B or C.
+And both the methods, result in same output.
+This example is similar to the  `IN` operator of the SQL
+
+4. _Subset based on a partial/complete text/character._
+
+We will look at subsetting the dataset based on a specific pattern of text/characters.
+
+This type of subsetting proves useful in text columns where each record has one or more than one sentence, and you want to search for a particular keyword or pattern.
+
+Most simple example would be of a survey dateset, where each record in the dataset consists of text paragraph, answering the questions asked in the survey, and you want to figure out the count of particular keywords in each response.
+
+Lets look at an example based on the Happiness dataset.
+We would like to find the subset of countries with the letters " and " in their name. eg. Iceland, Uganda, Poland, etc.
+
+```{r}
+happy<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv") #web load dataset
+
+# Subset using the grep function to find the pattern "and" in the names of the countries
+head(happy[grep("and",happy$COUNTRY,ignore.case = T),])
+unique(happy[grep("and",happy$COUNTRY,ignore.case = T),]$COUNTRY)
+```
+
+We can see the output has subset of the happy dataset with records of only those countries with the pattern "and" in its name.
+To do this we have used the _grep()_ function, which is a really important function for finding patterns in text and data.
+We don't need to study this _grep()_ function in detail, but one can find very good resources explaining it online.
+This example is similar to the `LIKE` operator in SQL.
+
+
+
+
+## Psuedo equivalent of GroupBy *
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -32,7 +32,7 @@ Through this section we will use our usual initial example, of synthetically gen
 
 
 The Moody data set is defined here by the following attributes
-```{r,include=FALSE}
+```{r,echo=FALSE}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 knitr::kable(

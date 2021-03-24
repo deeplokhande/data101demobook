@@ -381,15 +381,13 @@ merge(moody_df,student_df,by = "STUDENTID")
 
 As we can see, the output remains the same. But we understand that we can define any other common column as the index column based on which the merging can occur.
 
-There are also arguments like `by.x and by.y` which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.
-
+**IMPORTANT NOTE:** There are also arguments like `by.x and by.y` which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.
 This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.
-
 For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the `studentid` column where the indexing column name is `studentid`, but in the second dataset the indexing column even though with same student id's as entries but with the column name of `stu-id`.
-
 Now while merging, you can face error since the _merge()_ function will have trouble finding the two index columns to match since they are named differently in the two datasets. 
-
 Here you can provide the argument ` by.x = "studentid" , by.y = "stu-id" ` in the function while merging.
+
+Another example *
 
 
 
@@ -474,7 +472,7 @@ R was made especially for data analysis and graphics.  SQL was made especially f
 
 The data structure in R that most closely matches a SQL table is a data frame.  The terms rows and columns are used in both.
 
-There is an R package called `sqldf` that allows you to use SQL commands to extract data from an R data frame.  We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter \@ref(revcommands).
+There is an R package called `sqldf` that allows you to use SQL commands to extract data from an R data frame.  We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter \@ref(revision).
 
 In R we have seen how subsetting of rows and columns happen using the subset function in earlier chapters \@ref(subset).
 Please review this section before proceeding ahead.
@@ -665,7 +663,14 @@ This example is similar to the `LIKE` operator in SQL.
 
 
 
-## Psuedo equivalent of GroupBy *
+## Group By *
+
+<!-- The reason we call this section as Psuedo Equivalent of Group By is the fact that there are no direct functions that combine select ans Group -->
+
+Now that we have done Slicing and Dicing, we will like to apply some functions and gain measured information form the subsets.
+
+This section will involve use of the _table()_ and _tapply()_ function more to apply the functions like `mean, count, sum, etc` on the subsets categorical or numerical columns.
+
 
 
 

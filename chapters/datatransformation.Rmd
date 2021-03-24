@@ -342,12 +342,8 @@ knitr::kable(
 
 ```
 
-
-<<<<<<< HEAD
 _NOTE:_ We can see from the above snippets of the above the top 3 records in both dataset have same `STUDENTID`, but the 4th records in both datasets are of different students. The most important element while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various merge options and attributes.
-=======
-_NOTE:_ We can see from the above snippets of the above the top 3 records in both dataset have same `STUDENTID`. but the 4th records in both datasets are of different students. The most important while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various mrege options and attributes.
->>>>>>> fa1954414df5ed906db35951a564b4f335cea28d
+
 
 1. _Inner Join_
 

@@ -2,7 +2,7 @@
 
 <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
 ```{r ,include=FALSE}
-tutorial::go_interactive()
+tutorial::go_interactive(greedy=TRUE)
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
@@ -303,14 +303,165 @@ We can see that the capital letter are now transformed to small letters.
 ---
 
 
-## Merging Two Relational Data Frames.* {#merge} 
+## Merging Two Relational Data Frames. {#merge} 
 
 Often, we have data from multiple sources/multiple databases, files etc. To perform analysis, we need to merge these dataframes together with one or more common key variables.
 
+In R the  _merge()_ function allows merging two data frames by common columns or row names. This function allows you to perform different SQL joins, like `left join, inner join, right join or full join`, among others.
+
+We will look at merging datasets in R with this function, along with examples.
+
+Consider the following 2 datasets.
+
+First is a smaller just 4 record data subset of the Moody dataset.  
+```{r tut=FALSE,echo=FALSE}
+library(knitr)
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv") #web load
+knitr::kable(
+  head(moody), caption = 'Small subset of Moody Dataset',
+  booktabs = TRUE
+)
+
+```
+
+Second is another dataset of students with respective GPA and Majors.
+
+```{r tut=FALSE,echo=F}
+# moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
+library(knitr)
+moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv") #web load
+```
+
+
+```{r tut=FALSE,echo=F}
+knitr::kable(
+  head(moody), caption = 'Small dataset of students information',
+  booktabs = TRUE
+)
+
+```
+
+
+_NOTE:_ We can see from the above snippets of the above the top 3 records in both dataset have same `STUDENTID`, but the 4th records in both datasets are of different students. The most important element while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various merge options and attributes.
+
+1. _Inner Join_
+
+This is the most usual type of join of datasets that you can perform. It consists of merging two dataframes in one that contains _common_ elements of both.
+
+In order to merge the two datasets, you just have to pass them to the _merge()_ function without the need of changing other arguments. Inner join merge is the default merge of the _merge()_ function.
+
+```{r}
+#Local Import
+# moody_df<-read.csv("../files/dataset/SmallMoody.csv")
+# student_df<-read.csv("../files/dataset/SmallSt.csv")
+
+# Import Datasets.
+moody_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv")
+student_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv")
+
+# Use the merge function, without any attributes.
+merge(moody_df,student_df)
+```
+We can see that there are only 3 record in the output. The reason being that, the studentid of the fourth record in both the dataset did not match. And thus the merge function did not know which datasets record to be kept and which not.
+
+Also the reason the merge function tried to match and merge the two datasets, is by using the first columns from both the datasets, which in both case was the _"STUDENTID"_ column. 
+
+We can also do the same process, and get he same outcome, by defining the index column by yourself.
+Lets look at this in the example below.
+
+```{r}
+# Import Datasets.
+moody_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv")
+student_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv")
+
+# Use the merge function, with the " by "  attribute.
+merge(moody_df,student_df,by = "STUDENTID")
+```
+
+As we can see, the output remains the same. But we understand that we can define any other common column as the index column based on which the merging can occur.
+
+There are also arguments like `by.x and by.y` which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.
+
+This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.
+
+For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the `studentid` column where the indexing column name is `studentid`, but in the second dataset the indexing column even though with same student id's as entries but with the column name of `stu-id`.
+
+Now while merging, you can face error since the _merge()_ function will have trouble finding the two index columns to match since they are named differently in the two datasets. 
+
+Here you can provide the argument ` by.x = "studentid" , by.y = "stu-id" ` in the function while merging.
 
 
 
+2. _Full Join_
 
+Full Join is also known as the `outer join` or the full outer join.
+It merges all the columns of both datasets into one. 
+
+For those records with non-intersecting index elements, Full join keeps both the records, and fills the missing values with NA , i.e. Not Available(NA) keyword.
+
+In order to create this type of full join of the two dataframes in R, we need to set the argument `all` to `TRUE or T`.
+Lets look at this in the example below.
+
+
+```{r}
+# Import Datasets.
+moody_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv")
+student_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv")
+
+# Use the merge function, with the " all "  attribute.
+merge(moody_df,student_df,all = TRUE)
+```
+
+We can see that the first record of the output with `studentid = 10001 ` was present in the second dataset only, thus the values corresponding to the columns of the first dataset are set to `NA`. 
+Similarly, the same occurs with the record with `studentid = 16792  `, which was only present in the first dataset, and thus has `NA` in the place of columns of second dataset.
+
+
+3. _Left Join_
+
+The left join in R involves matching all the rows in the first data frame with the corresponding records on the second dataframe. 
+
+To create this left join, you just have to set the argument ` all.x` to ` TRUE or T`.
+
+Recall while doing the full join, we set the argument `all` to ` TRUE or T`. Similarly, since we consider `x` as the first dataset or the left dataset, we will set the argument of `all.x` where the `.x` is the key to select the first dataset.
+
+We have seen in the snippets above, the student with ` studentid = 16792` is only present in the first dataset but not the second. 
+
+So lets see the result of merging using the left join in the example below.
+
+
+```{r}
+# Import Datasets.
+moody_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv")
+student_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv")
+
+# Use the merge function, with the " all "  attribute.
+merge(moody_df,student_df,all.x = TRUE)
+```
+We can see that the record of student with `studentid = 16792` has `NA` as the entry in the columns merged from the right dataset. Also, the record of student with `studentid = 10001` is completely excluded, since it belongs to the second dataset.
+
+4. _Right Join_
+
+The right join merge involves joining all the rows in the second data frame with the corresponding records on the first dataframe.
+
+The right join is opposite to that of left join.
+
+In consequence, here, you will need to set the argument ` all.y` to `TRUE or T`, since we consider the right dataset or the second dataset as `y`.
+
+We have seen in the snippet above, that the student with `studenid = 10001` is only present in the second dataset but not the first. 
+
+So lets see the result of merging using the right join in the example below.
+
+```{r}
+# Import Datasets.
+moody_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv")
+student_df <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv")
+
+
+# Use the merge function, with the " all "  attribute.
+merge(moody_df,student_df,all.y = TRUE)
+```
+We can see that the record of student with `studentid = 10001` has `NA` as the entry in the columns merged from the left dataset. Also, the record of student with `studentid = 16792` is completely excluded, since it belongs to the first dataset.
 
 
 ---

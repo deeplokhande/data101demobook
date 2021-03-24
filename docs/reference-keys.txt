@@ -1,4 +1,7 @@
 tab:unnamed-chunk-6
+tab:unnamed-chunk-73
+tab:unnamed-chunk-57
+tab:unnamed-chunk-59
 intro
 setting-up-r
 dataexp

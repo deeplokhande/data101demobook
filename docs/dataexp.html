@@ -206,7 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.1" data-path="newcolumn.html"><a href="newcolumn.html#create-column"><i class="fa fa-check"></i><b>5.1</b> Create Column</a></li>
 <li class="chapter" data-level="5.2" data-path="newcolumn.html"><a href="newcolumn.html#factorfunc"><i class="fa fa-check"></i><b>5.2</b> Factor Function: factor()</a></li>
 <li class="chapter" data-level="5.3" data-path="newcolumn.html"><a href="newcolumn.html#coerce"><i class="fa fa-check"></i><b>5.3</b> Coercing Values in data frames</a></li>
-<li class="chapter" data-level="5.4" data-path="newcolumn.html"><a href="newcolumn.html#merge"><i class="fa fa-check"></i><b>5.4</b> Merging Two Relational Data Frames.*</a></li>
+<li class="chapter" data-level="5.4" data-path="newcolumn.html"><a href="newcolumn.html#merge"><i class="fa fa-check"></i><b>5.4</b> Merging Two Relational Data Frames.</a></li>
 <li class="chapter" data-level="5.5" data-path="newcolumn.html"><a href="newcolumn.html#sliceanddice"><i class="fa fa-check"></i><b>5.5</b> Slicing and Dicing.</a>
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="newcolumn.html"><a href="newcolumn.html#dicing"><i class="fa fa-check"></i><b>5.5.1</b> Subsetting on Columns ( DICING )</a></li>
@@ -417,6 +417,90 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1vb2R5PC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFz
 <li><p>What is the best advice the new TA, can give future students how to get a good grade in Professor Moody’s class? What factors influence the grade besides the score? Back your recommendation up with plots and evidence from the attached data.</p></li>
 </ul>
 <p>The Moody data set is defined here by the following attributes</p>
+<table>
+<caption><span id="tab:unnamed-chunk-73">Table 2.2: </span>Snippet of Moody Dataset</caption>
+<thead>
+<tr class="header">
+<th align="right">score</th>
+<th align="left">grade</th>
+<th align="left">texting</th>
+<th align="left">questions</th>
+<th align="right">participation</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">26.89</td>
+<td align="left">F</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.41</td>
+</tr>
+<tr class="even">
+<td align="right">71.57</td>
+<td align="left">B</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="odd">
+<td align="right">90.11</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">never</td>
+<td align="right">0.27</td>
+</tr>
+<tr class="even">
+<td align="right">31.52</td>
+<td align="left">D</td>
+<td align="left">sometimes</td>
+<td align="left">rarely</td>
+<td align="right">0.68</td>
+</tr>
+<tr class="odd">
+<td align="right">95.94</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.09</td>
+</tr>
+<tr class="even">
+<td align="right">45.72</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">rarely</td>
+<td align="right">0.19</td>
+</tr>
+<tr class="odd">
+<td align="right">90.82</td>
+<td align="left">A</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.25</td>
+</tr>
+<tr class="even">
+<td align="right">75.52</td>
+<td align="left">B</td>
+<td align="left">sometimes</td>
+<td align="left">never</td>
+<td align="right">0.28</td>
+</tr>
+<tr class="odd">
+<td align="right">52.31</td>
+<td align="left">C</td>
+<td align="left">never</td>
+<td align="left">never</td>
+<td align="right">0.67</td>
+</tr>
+<tr class="even">
+<td align="right">39.57</td>
+<td align="left">D</td>
+<td align="left">always</td>
+<td align="left">always</td>
+<td align="right">0.40</td>
+</tr>
+</tbody>
+</table>
 <p>Moody[score, grade, participation, questions, texting]
 Score and grade are self explanatory. Participation is supposedly measuring students participation in class. We do not know whether higher participation would necessarily be positive, since Professor Moody’s mood changes from year to year and he may be annoyed by students who are too active and bother him too much. Who knows? We have to find out.</p>
 <p>Attribute “questions” has several values “always”, “frequently”, “sometimes” and “never”. So does the attribute “texting”. In our data set there are students who are are always texting and who never ask any questions. Oh, yes, and some students participation index is almost zero. Guess what grade are they getting? F, you probably guess. Well, but about their score.It should matter probably. At least to some degree!</p>

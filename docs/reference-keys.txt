@@ -20,7 +20,7 @@ permonestep
 permfunction
 aniceexample
 multiple-hypothesis---bonferroni-correction.
-revcommands
+revision
 dataframe
 basicfunction
 table

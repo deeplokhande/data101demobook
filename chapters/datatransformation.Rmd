@@ -317,9 +317,9 @@ First is a smaller just 4 record data subset of the Moody dataset.
 ```{r tut=FALSE,echo=FALSE}
 library(knitr)
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
-moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv") #web load
+moodysm<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv") #web load
 knitr::kable(
-  head(moody), caption = 'Small subset of Moody Dataset',
+  head(moodysm), caption = 'Small subset of Moody Dataset',
   booktabs = TRUE
 )
 
@@ -330,13 +330,9 @@ Second is another dataset of students with respective GPA and Majors.
 ```{r tut=FALSE,echo=F}
 # moody<-read.csv("../files/dataset/moody2020b.csv") #static Load
 library(knitr)
-moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv") #web load
-```
-
-
-```{r tut=FALSE,echo=F}
+moodyst<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv") #web load
 knitr::kable(
-  head(moody), caption = 'Small dataset of students information',
+  head(moodyst), caption = 'Small dataset of students information',
   booktabs = TRUE
 )
 
@@ -387,8 +383,46 @@ For example, suppose in the two dataset that we have considered above, the first
 Now while merging, you can face error since the _merge()_ function will have trouble finding the two index columns to match since they are named differently in the two datasets. 
 Here you can provide the argument ` by.x = "studentid" , by.y = "stu-id" ` in the function while merging.
 
-Another example *
+**Another example,** Suppose you have the happiness index dataset,
 
+```{r tut=FALSE,echo=F}
+library(knitr)
+happy<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv") #web load
+knitr::kable(
+  head(happy), caption = 'Happiness Index Dataset for all countries',
+  booktabs = TRUE
+)
+
+```
+
+where you have the survey data of people of various countries with records of information about ` AGE, COUNTRY, GENDER, IMMIGRANT, INCOME, and HAPPINESS`.
+
+You can do analysis on the above dataset per country, per age group,etc. 
+
+But if you want to do analysis based on per continent, then you will have to create lists of all the countries in each continent, and then subset using the appropriate subset method/s from section below \@ref(sliceanddice).
+
+Alternate method will be acquiring another dataset, with information of each country and its respective continent, and do merge, which we can then use to subset easily.
+
+Lets look at an example of this process below.
+
+```{r}
+# Import the Happiness index dataset.
+happy<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv")
+head(happy)
+
+# Now lets load the simple dataset of country and continents.
+continents<-read.csv("../files/dataset/country-continents.csv")
+head(continents)
+
+# Now we can use the merge function to include the continents of each country in the happiness dataset against each other.
+happy.c<-merge(happy,continents)
+head(happy.c)
+
+happy.c[sample(nrow(happy.c),10),]
+
+
+```
+We can see from the output of the above example, the new dataframe created in `happy.c` after applying _merge()_ function on the Happiness index dataset and the country-continents dataset, the `CONTINENT` column is added from the country-continents dataset into the happyness index dataset. And each country in the `happy.c` dataframe has now the value of its respective continent in the the `CONTINENT` column.
 
 
 2. _Full Join_
@@ -669,7 +703,12 @@ This example is similar to the `LIKE` operator in SQL.
 
 Now that we have done Slicing and Dicing, we will like to apply some functions and gain measured information form the subsets.
 
-This section will involve use of the _table()_ and _tapply()_ function more to apply the functions like `mean, count, sum, etc` on the subsets categorical or numerical columns.
+Although there is no straightforward, direct/ one step function to perform the function as that of the ` GROUP BY` from SQL, but we can get the required functionality, by combining various functions step by step from the R.7 commands list \@ref(freestyle) and the things we learned in this \@ref(datatransformation) section and the revision \@ref(revision) section.
+
+This section will involve use of the _table(), tapply()_ function to apply the functions like `mean, count, sum, etc` on the subsets categorical or numerical columns. More importantly, we will look at a very useful example, which will tie together all that we have learned until now.
+
+
+
 
 
 

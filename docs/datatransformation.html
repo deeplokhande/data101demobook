@@ -212,7 +212,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.1" data-path="datatransformation.html"><a href="datatransformation.html#dicing"><i class="fa fa-check"></i><b>5.5.1</b> Subsetting on Columns ( DICING )</a></li>
 <li class="chapter" data-level="5.5.2" data-path="datatransformation.html"><a href="datatransformation.html#Slicing"><i class="fa fa-check"></i><b>5.5.2</b> Subsetting on Rows ( SLICING )</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="datatransformation.html"><a href="datatransformation.html#psuedo-equivalent-of-groupby"><i class="fa fa-check"></i><b>5.6</b> Psuedo equivalent of GroupBy *</a></li>
+<li class="chapter" data-level="5.6" data-path="datatransformation.html"><a href="datatransformation.html#group-by"><i class="fa fa-check"></i><b>5.6</b> Group By *</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -412,7 +412,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </table>
 <p>Second is another dataset of students with respective GPA and Majors.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-59">Table 5.2: </span>Small dataset of students information</caption>
+<caption><span id="tab:unnamed-chunk-58">Table 5.2: </span>Small dataset of students information</caption>
 <thead>
 <tr class="header">
 <th align="right">STUDENTID</th>
@@ -460,11 +460,91 @@ Lets look at this in the example below.</p>
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsTW9vZHkuY3N2XCIpXG5zdHVkZW50X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsU3QuY3N2XCIpXG5cbiMgVXNlIHRoZSBtZXJnZSBmdW5jdGlvbiwgd2l0aCB0aGUgXCIgYnkgXCIgIGF0dHJpYnV0ZS5cbm1lcmdlKG1vb2R5X2RmLHN0dWRlbnRfZGYsYnkgPSBcIlNUVURFTlRJRFwiKSJ9
 </div>
 <p>As we can see, the output remains the same. But we understand that we can define any other common column as the index column based on which the merging can occur.</p>
-<p>There are also arguments like <code>by.x and by.y</code> which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.</p>
-<p>This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.</p>
-<p>For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the <code>studentid</code> column where the indexing column name is <code>studentid</code>, but in the second dataset the indexing column even though with same student id’s as entries but with the column name of <code>stu-id</code>.</p>
-<p>Now while merging, you can face error since the <em>merge()</em> function will have trouble finding the two index columns to match since they are named differently in the two datasets.</p>
-<p>Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</code> in the function while merging.</p>
+<p><strong>IMPORTANT NOTE:</strong> There are also arguments like <code>by.x and by.y</code> which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.
+This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.
+For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the <code>studentid</code> column where the indexing column name is <code>studentid</code>, but in the second dataset the indexing column even though with same student id’s as entries but with the column name of <code>stu-id</code>.
+Now while merging, you can face error since the <em>merge()</em> function will have trouble finding the two index columns to match since they are named differently in the two datasets.
+Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</code> in the function while merging.</p>
+<p><strong>Another example,</strong> Suppose you have the happiness index dataset,</p>
+<table>
+<caption><span id="tab:unnamed-chunk-61">Table 5.3: </span>Happiness Index Dataset for all countries</caption>
+<thead>
+<tr class="header">
+<th align="right">IDN</th>
+<th align="right">AGE</th>
+<th align="left">COUNTRY</th>
+<th align="left">GENDER</th>
+<th align="right">IMMIGRANT</th>
+<th align="right">INCOME</th>
+<th align="right">HAPPINESS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">88364</td>
+<td align="right">29</td>
+<td align="left">Kyrgyzstan</td>
+<td align="left">Male</td>
+<td align="right">0</td>
+<td align="right">103305</td>
+<td align="right">8.35</td>
+</tr>
+<tr class="even">
+<td align="right">37692</td>
+<td align="right">41</td>
+<td align="left">Afghanistan</td>
+<td align="left">Male</td>
+<td align="right">0</td>
+<td align="right">51682</td>
+<td align="right">4.44</td>
+</tr>
+<tr class="odd">
+<td align="right">57856</td>
+<td align="right">20</td>
+<td align="left">Azerbaijan</td>
+<td align="left">Female</td>
+<td align="right">0</td>
+<td align="right">72381</td>
+<td align="right">6.24</td>
+</tr>
+<tr class="even">
+<td align="right">49453</td>
+<td align="right">62</td>
+<td align="left">South Korea</td>
+<td align="left">Female</td>
+<td align="right">0</td>
+<td align="right">65658</td>
+<td align="right">5.66</td>
+</tr>
+<tr class="odd">
+<td align="right">93485</td>
+<td align="right">63</td>
+<td align="left">Jordan</td>
+<td align="left">Female</td>
+<td align="right">1</td>
+<td align="right">109581</td>
+<td align="right">3.17</td>
+</tr>
+<tr class="even">
+<td align="right">97976</td>
+<td align="right">36</td>
+<td align="left">Congo-Kinshasa</td>
+<td align="left">Female</td>
+<td align="right">0</td>
+<td align="right">112432</td>
+<td align="right">9.43</td>
+</tr>
+</tbody>
+</table>
+<p>where you have the survey data of people of various countries with records of information about <code>AGE, COUNTRY, GENDER, IMMIGRANT, INCOME, and HAPPINESS</code>.</p>
+<p>You can do analysis on the above dataset per country, per age group,etc.</p>
+<p>But if you want to do analysis based on per continent, then you will have to create lists of all the countries in each continent, and then subset using the appropriate subset method/s from section below <a href="datatransformation.html#sliceanddice">5.5</a>.</p>
+<p>Alternate method will be acquiring another dataset, with information of each country and its respective continent, and do merge, which we can then use to subset easily.</p>
+<p>Lets look at an example of this process below.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCB0aGUgSGFwcGluZXNzIGluZGV4IGRhdGFzZXQuXG5oYXBweTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvSEFQUElORVNTMjAxNy5jc3ZcIilcbmhlYWQoaGFwcHkpXG5cbiMgTm93IGxldHMgbG9hZCB0aGUgc2ltcGxlIGRhdGFzZXQgb2YgY291bnRyeSBhbmQgY29udGluZW50cy5cbmNvbnRpbmVudHM8LXJlYWQuY3N2KFwiLi4vZmlsZXMvZGF0YXNldC9jb3VudHJ5LWNvbnRpbmVudHMuY3N2XCIpXG5oZWFkKGNvbnRpbmVudHMpXG5cbiMgTm93IHdlIGNhbiB1c2UgdGhlIG1lcmdlIGZ1bmN0aW9uIHRvIGluY2x1ZGUgdGhlIGNvbnRpbmVudHMgb2YgZWFjaCBjb3VudHJ5IGluIHRoZSBoYXBwaW5lc3MgZGF0YXNldCBhZ2FpbnN0IGVhY2ggb3RoZXIuXG5oYXBweS5jPC1tZXJnZShoYXBweSxjb250aW5lbnRzKVxuaGVhZChoYXBweS5jKVxuXG5oYXBweS5jW3NhbXBsZShucm93KGhhcHB5LmMpLDEwKSxdIn0=
+</div>
+<p>We can see from the output of the above example, the new dataframe created in <code>happy.c</code> after applying <em>merge()</em> function on the Happiness index dataset and the country-continents dataset, the <code>CONTINENT</code> column is added from the country-continents dataset into the happyness index dataset. And each country in the <code>happy.c</code> dataframe has now the value of its respective continent in the the <code>CONTINENT</code> column.</p>
 <ol start="2" style="list-style-type: decimal">
 <li><em>Full Join</em></li>
 </ol>
@@ -508,7 +588,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJl
 <h2><span class="header-section-number">5.5</span> Slicing and Dicing.</h2>
 <p>R was made especially for data analysis and graphics. SQL was made especially for databases. They are allies in this field of data science.</p>
 <p>The data structure in R that most closely matches a SQL table is a data frame. The terms rows and columns are used in both.</p>
-<p>There is an R package called <code>sqldf</code> that allows you to use SQL commands to extract data from an R data frame. We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter <a href="#revcommands"><strong>??</strong></a>.</p>
+<p>There is an R package called <code>sqldf</code> that allows you to use SQL commands to extract data from an R data frame. We will not use this package in the examples but look at a way the operations in SQL translate to basic R commands that we have studied in previous chapter <a href="revision.html#revision">4</a>.</p>
 <p>In R we have seen how subsetting of rows and columns happen using the subset function in earlier chapters <a href="revision.html#subset">4.4</a>.
 Please review this section before proceeding ahead.</p>
 <div id="dicing" class="section level3" number="5.5.1">
@@ -612,8 +692,12 @@ We don’t need to study this <em>grep()</em> function in detail, but one can fi
 This example is similar to the <code>LIKE</code> operator in SQL.</p>
 </div>
 </div>
-<div id="psuedo-equivalent-of-groupby" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Psuedo equivalent of GroupBy *</h2>
+<div id="group-by" class="section level2" number="5.6">
+<h2><span class="header-section-number">5.6</span> Group By *</h2>
+<!-- The reason we call this section as Psuedo Equivalent of Group By is the fact that there are no direct functions that combine select ans Group -->
+<p>Now that we have done Slicing and Dicing, we will like to apply some functions and gain measured information form the subsets.</p>
+<p>Although there is no straightforward, direct/ one step function to perform the function as that of the <code>GROUP BY</code> from SQL, but we can get the required functionality, by combining various functions step by step from the R.7 commands list <a href="dataexp.html#freestyle">2.2</a> and the things we learned in this <a href="datatransformation.html#datatransformation">5</a> section and the revision <a href="revision.html#revision">4</a> section.</p>
+<p>This section will involve use of the <em>table(), tapply()</em> function to apply the functions like <code>mean, count, sum, etc</code> on the subsets categorical or numerical columns. More importantly, we will look at a very useful example, which will tie together all that we have learned until now.</p>
 <!-- --- -->
 <!-- ## Table -->
 <!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->

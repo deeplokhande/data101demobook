@@ -1,7 +1,8 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-73
+tab:unnamed-chunk-74
 tab:unnamed-chunk-57
-tab:unnamed-chunk-59
+tab:unnamed-chunk-58
+tab:unnamed-chunk-61
 intro
 setting-up-r
 dataexp
@@ -59,4 +60,4 @@ merge
 sliceanddice
 dicing
 Slicing
-psuedo-equivalent-of-groupby
+group-by

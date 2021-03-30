@@ -204,15 +204,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5" data-path="datatransformation.html"><a href="datatransformation.html"><i class="fa fa-check"></i><b>5</b> Data Frames &amp; Transformation.</a>
 <ul>
 <li class="chapter" data-level="5.1" data-path="datatransformation.html"><a href="datatransformation.html#create-column"><i class="fa fa-check"></i><b>5.1</b> Create Column</a></li>
-<li class="chapter" data-level="5.2" data-path="datatransformation.html"><a href="datatransformation.html#factorfunc"><i class="fa fa-check"></i><b>5.2</b> Factor Function: factor()</a></li>
+<li class="chapter" data-level="5.2" data-path="datatransformation.html"><a href="datatransformation.html#factor"><i class="fa fa-check"></i><b>5.2</b> Factor Function: factor()</a></li>
 <li class="chapter" data-level="5.3" data-path="datatransformation.html"><a href="datatransformation.html#coerce"><i class="fa fa-check"></i><b>5.3</b> Coercing Values in data frames</a></li>
-<li class="chapter" data-level="5.4" data-path="datatransformation.html"><a href="datatransformation.html#merge"><i class="fa fa-check"></i><b>5.4</b> Merging Two Relational Data Frames.</a></li>
+<li class="chapter" data-level="5.4" data-path="datatransformation.html"><a href="datatransformation.html#merge"><i class="fa fa-check"></i><b>5.4</b> Merging Two Relational Data Frames.</a>
+<ul>
+<li class="chapter" data-level="5.4.1" data-path="datatransformation.html"><a href="datatransformation.html#inner-join"><i class="fa fa-check"></i><b>5.4.1</b> Inner Join</a></li>
+<li class="chapter" data-level="5.4.2" data-path="datatransformation.html"><a href="datatransformation.html#full-join"><i class="fa fa-check"></i><b>5.4.2</b> Full Join</a></li>
+<li class="chapter" data-level="5.4.3" data-path="datatransformation.html"><a href="datatransformation.html#left-join"><i class="fa fa-check"></i><b>5.4.3</b> Left Join</a></li>
+<li class="chapter" data-level="5.4.4" data-path="datatransformation.html"><a href="datatransformation.html#right-join"><i class="fa fa-check"></i><b>5.4.4</b> Right Join</a></li>
+</ul></li>
 <li class="chapter" data-level="5.5" data-path="datatransformation.html"><a href="datatransformation.html#sliceanddice"><i class="fa fa-check"></i><b>5.5</b> Slicing and Dicing.</a>
 <ul>
 <li class="chapter" data-level="5.5.1" data-path="datatransformation.html"><a href="datatransformation.html#dicing"><i class="fa fa-check"></i><b>5.5.1</b> Subsetting on Columns ( DICING )</a></li>
-<li class="chapter" data-level="5.5.2" data-path="datatransformation.html"><a href="datatransformation.html#Slicing"><i class="fa fa-check"></i><b>5.5.2</b> Subsetting on Rows ( SLICING )</a></li>
+<li class="chapter" data-level="5.5.2" data-path="datatransformation.html"><a href="datatransformation.html#slicing"><i class="fa fa-check"></i><b>5.5.2</b> Subsetting on Rows ( SLICING )</a></li>
 </ul></li>
-<li class="chapter" data-level="5.6" data-path="datatransformation.html"><a href="datatransformation.html#group-by"><i class="fa fa-check"></i><b>5.6</b> Group By *</a></li>
+<li class="chapter" data-level="5.6" data-path="datatransformation.html"><a href="datatransformation.html#group-by"><i class="fa fa-check"></i><b>5.6</b> Group By</a></li>
+<li class="chapter" data-level="5.7" data-path="datatransformation.html"><a href="datatransformation.html#handling-date-and-time-in-dataframes."><i class="fa fa-check"></i><b>5.7</b> Handling Date and Time in dataframes.</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -257,14 +264,16 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1vb2R5PC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFz
 </div>
 <hr />
 </div>
-<div id="factorfunc" class="section level2" number="5.2">
+<div id="factor" class="section level2" number="5.2">
 <h2><span class="header-section-number">5.2</span> Factor Function: factor()</h2>
-<p>Factors are the data objects which are used to categorize the data and store it as levels.
-They can store both strings and numbers.
-They are useful in the columns which have a limited number of unique values. Like “Male,”Female" and True, False etc.
-Factor data objects are useful in data analysis for statistical modeling.</p>
-<p>The factor function is used to encode a vector as a factor.</p>
-<p>Lets look at first checking if a data object is of factor type using the function <em>is.factor(x)</em></p>
+<ul>
+<li><p>Factors are the data objects which are used to categorize the data and store it as levels.</p></li>
+<li><p>They can store both strings and numbers.</p></li>
+<li><p>They are useful in the columns which have a limited number of unique values. Like “Male,”Female" and True, False etc.</p></li>
+<li><p>Factor data objects are useful in data analysis for statistical modeling.</p></li>
+<li><p>The factor function is used to encode a vector as a factor.</p></li>
+</ul>
+<p>Lets look at first example, checking if a data object is of factor type using the function <em>is.factor(x)</em></p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIENyZWF0ZSBhIHZlY3RvciBhcyBpbnB1dC5cbmdlbmRlciA8LSBjKFwibWFsZVwiLFwibWFsZVwiLFwiZmVtYWxlXCIsXCJmZW1hbGVcIixcIm1hbGVcIixcImZlbWFsZVwiLFwibWFsZVwiKVxuXG5nZW5kZXJcblxuI0NoZWNrIGlmIGRhdGEgb2JqZWN0IGlzIGZhY3Rvci5cbmlzLmZhY3RvcihnZW5kZXIpIn0=
 </div>
@@ -307,32 +316,40 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJ3aW5lIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0
 <div id="coerce" class="section level2" number="5.3">
 <h2><span class="header-section-number">5.3</span> Coercing Values in data frames</h2>
 <p>Before coercing data into data frames, lets look at small examples.</p>
-<p>Lets look at a coerced vector.</p>
+<ul>
+<li>Lets look at a coerced vector.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjTGV0cyBsb29rIGF0IGEgY29lcmNlZCB2ZWN0b3IuXG5cbiN2ZWN0b3IgY29udGFpbmluZyA0IGVsZW1lbnRzXG5teVZlY3Q8LWMoXCJSb2JlcnRcIiwgXCJFdGhhblwiLCA2LCA0KVxubXlWZWN0XG5cbiNZb3Ugd2lsbCBub3RpY2UgdGhhdCB0aGUgbGFzdCB0d28gZWxlbWVudHMgLCB3aGljaCBhcmUgYW4gaW50ZWdlcnMsIGFyZSBjb2VyY2VkIGludG8gYSBjaGFyYWN0ZXIgdHlwZS5cblxuI2NsYXNzKCkgaXMgdXNlZCB0byBjaGVjayB0aGUgdHlwZSBvZiBhbiBvYmplY3RcbmNsYXNzKG15VmVjdCkifQ==
 </div>
 <p>We see that when a vector has elements of mixed data types, they gets coerced into a type with precedence over other types.
 For example in the above case there were character elements and numeric elements types in the vector. But character type has precedence over numeric type and hence the whole vector is coerced into character type.</p>
 <p>We can check the types of vectors using a specific type of <em>is</em> function: <em>is.character(), is.double(), is.integer(), is.logical(),etc</em>. There are many other types under the <em>is</em> function, for checking if the data object given is a dataframe, factor, etc.</p>
-Lets look at the examples.
+<ul>
+<li>Lets look at the examples.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjdmVjdG9yIGNvbnRhaW5pbmcgNCBlbGVtZW50c1xubXlWZWN0PC1jKFwiUm9iZXJ0XCIsIFwiRXRoYW5cIiwgNiwgNClcbm15VmVjdFxuXG4jIENoZWNrIGlmIHZlY3RvciBpcyBvZiBDaGFyYWN0ZXIgdHlwZS5cbmlzLmNoYXJhY3RlcihteVZlY3QpXG5cbiMgQ2hlY2sgaWYgdmVjdG9yIGlzIG9mIG51bWVyaWMgdHlwZS5cbmlzLm51bWVyaWMobXlWZWN0KVxuXG4jIFVzZSBUUlVFIGFuZCBGQUxTRSAob3IgVCBhbmQgRikgdG8gY3JlYXRlIGxvZ2ljYWwgdmVjdG9yc1xubG9nX3ZlYyA8LSBjKFRSVUUsIEZBTFNFLCBULCBGKVxuXG4jIENoZWNrIGlmIHZlY3RvciBpcyBvZiBsb2dpY2FsIHR5cGUuXG5pcy5sb2dpY2FsKGxvZ192ZWMpIn0=
 </div>
 <p>We saw how to check the type of the data. But if you want to convert a column into your choice of data type, you can use the specific type of <em>as</em> function: <em>as.character(), as.double(), as.integer(), as.logical(),etc.</em> Again as we saw above about the <em>is</em> function types, there are also many other types of the <em>as</em> function.</p>
-Lets look at the example of coercing a vector into character type.
+<ul>
+<li>Lets look at the example of coercing a vector into character type.</li>
+</ul>
 <!-- Note: although the above myVect is a character vector, you can still use the function. -->
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjdmVjdG9yIGNvbnRhaW5pbmcgNCBlbGVtZW50c1xubXlWZWN0PC1jKDIsIDMsIDYsIDQsIFRSVUUsIEZBTFNFKVxubXlWZWN0XG5cbiMgRmlyc3QgbGV0cyBsb29rIGF0IHRoZSBjbGFzcyBvZiB0aGUgdmVjdG9yXG5jbGFzcyhteVZlY3QpXG5cbiMgQ29lcmNlIHRoZSB2ZWN0b3IgdG8gQ2hhcmFjdGVyIHR5cGUuIFxuYXMuY2hhcmFjdGVyKG15VmVjdCkgXG5cbiMgWW91IGNhbiBzZWUgdGhhdCB0aGUgZWxlbWVudHMgb2YgdGhlIG51bWVyaWMgdmVjdG9yIGFyZSBjb2VyY2VkIGludG8gY2hhcmFjdGVyIHR5cGUuIn0=
 </div>
-<p>Lets look at an example of coercing a mixed type vector into numeric type.</p>
+<ul>
+<li>Lets look at an example of coercing a mixed type vector into numeric type.</li>
+</ul>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJteXZlYzwtYyhcIlJvYmVydFwiLCBcIjIyXCIsIDQ1KVxubXl2ZWNcblxuIyBGaXJzdCBsZXRzIGxvb2sgYXQgdGhlIGNsYXNzIG9mIHRoZSB2ZWN0b3JcbmNsYXNzKG15dmVjKVxuXG4jIENvZXJjZSB0aGUgY2hhcmFjdGVyIHZlY3RvciB0byBudW1lcmljIHR5cGUuIFxuYXMubnVtZXJpYyhteXZlYykgXG5cbiMgWW91IGNhbiBzZWUgdGhhdCB0aGUgZWxlbWVudHMgb2YgdGhlIG1peGVkIHZlY3RvciBhcmUgY29lcmNlZCBpbnRvIG51bWVyaWMgdHlwZS5cblxuXG5cbm15dmVjMiA8LSBjKFRSVUUsIEZBTFNFLCBGLCBULCBUKVxubXl2ZWMyXG5cbiMgRmlyc3QgbGV0cyBsb29rIGF0IHRoZSBjbGFzcyBvZiB0aGUgdmVjdG9yXG5jbGFzcyhteXZlYzIpXG5cbiMgQ29lcmNlIHRoZSBsb2dpY2FsIHZlY3RvciB0byBudW1lcmljIHR5cGUuIFxuYXMubnVtZXJpYyhteXZlYzIpIFxuXG4jIFlvdSBjYW4gc2VlIHRoYXQgdGhlIGVsZW1lbnRzIG9mIHRoZSBtaXhlZCB2ZWN0b3IgYXJlIGNvZXJjZWQgaW50byBudW1lcmljIHR5cGUuIn0=
 </div>
 <p>We can see in the above example, while converting the character type vector to numeric if we encounter, numbers in character type, they get converted to numeric type. But the characters in character type, are not not converted, and instead we get a warning saying <em>“NAs introduced by coercion”</em>.
 Also, while converting a logical vector to numeric vector, we see that “TRUE” or “T” is coerced as <em>1</em> and “FALSE” or “F” is coerced as <em>0</em>.</p>
-<p>Now lets look at how to coerce data column and rewrite it into the dataframe.</p>
 <ul>
-<li>Suppose in the Moody dataset, you want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, …, F=5.
+<li><p>Now lets look at how to coerce data column and rewrite it into the dataframe.</p></li>
+<li><p>Suppose in the Moody dataset, you want to change the categorical vector of letter grade to numeric grades between 1 to 5, where A=1, B=2, …, F=5.</p>
 <ul>
 <li>First, you will convert the grade column vector to factor using the <em>factor()</em> function.</li>
 <li>Then, convert the grade column with the command <em>as.numeric()</em> to numeric column.</li>
@@ -444,13 +461,12 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </tbody>
 </table>
 <p><em>NOTE:</em> We can see from the above snippets of the above the top 3 records in both dataset have same <code>STUDENTID</code>, but the 4th records in both datasets are of different students. The most important element while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various merge options and attributes.</p>
-<ol style="list-style-type: decimal">
-<li><em>Inner Join</em></li>
-</ol>
+<div id="inner-join" class="section level3" number="5.4.1">
+<h3><span class="header-section-number">5.4.1</span> Inner Join</h3>
 <p>This is the most usual type of join of datasets that you can perform. It consists of merging two dataframes in one that contains <em>common</em> elements of both.</p>
 <p>In order to merge the two datasets, you just have to pass them to the <em>merge()</em> function without the need of changing other arguments. Inner join merge is the default merge of the <em>merge()</em> function.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjTG9jYWwgSW1wb3J0XG4jIG1vb2R5X2RmPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvU21hbGxNb29keS5jc3ZcIilcbiMgc3R1ZGVudF9kZjwtcmVhZC5jc3YoXCIuLi9maWxlcy9kYXRhc2V0L1NtYWxsU3QuY3N2XCIpXG5cbiMgSW1wb3J0IERhdGFzZXRzLlxubW9vZHlfZGYgPC0gcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvU21hbGxNb29keS5jc3ZcIilcbnN0dWRlbnRfZGYgPC0gcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvU21hbGxTdC5jc3ZcIilcblxuIyBVc2UgdGhlIG1lcmdlIGZ1bmN0aW9uLCB3aXRob3V0IGFueSBhdHRyaWJ1dGVzLlxubWVyZ2UobW9vZHlfZGYsc3R1ZGVudF9kZikifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsTW9vZHkuY3N2XCIpXG5zdHVkZW50X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsU3QuY3N2XCIpXG5cbiMgVXNlIHRoZSBtZXJnZSBmdW5jdGlvbiwgd2l0aG91dCBhbnkgYXR0cmlidXRlcy5cbm1lcmdlKG1vb2R5X2RmLHN0dWRlbnRfZGYpIn0=
 </div>
 <p>We can see that there are only 3 record in the output. The reason being that, the studentid of the fourth record in both the dataset did not match. And thus the merge function did not know which datasets record to be kept and which not.</p>
 <p>Also the reason the merge function tried to match and merge the two datasets, is by using the first columns from both the datasets, which in both case was the <em>“STUDENTID”</em> column.</p>
@@ -461,11 +477,13 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJl
 </div>
 <p>As we can see, the output remains the same. But we understand that we can define any other common column as the index column based on which the merging can occur.</p>
 <p><strong>IMPORTANT NOTE:</strong> There are also arguments like <code>by.x and by.y</code> which correspond to indexing based on one of the column from the left(first) or right(second) datasets respectively.
-This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.
-For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the <code>studentid</code> column where the indexing column name is <code>studentid</code>, but in the second dataset the indexing column even though with same student id’s as entries but with the column name of <code>stu-id</code>.
-Now while merging, you can face error since the <em>merge()</em> function will have trouble finding the two index columns to match since they are named differently in the two datasets.
+This could come extremely handy, when the two datasets you want to merge, have different column name for the index column.</p>
+<p>For example, suppose in the two dataset that we have considered above, the first dataset had students records indexed by the <code>studentid</code> column where the indexing column name is <code>studentid</code>, but in the second dataset the indexing column even though with same student id’s as entries but with the column name of <code>stu-id</code>.</p>
+<p>Now while merging, you can face error since the <em>merge()</em> function will have trouble finding the two index columns to match since they are named differently in the two datasets.
 Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</code> in the function while merging.</p>
-<p><strong>Another example,</strong> Suppose you have the happiness index dataset,</p>
+<div id="another-example" class="section level4" number="5.4.1.1">
+<h4><span class="header-section-number">5.4.1.1</span> Another example</h4>
+<p>Suppose you have the happiness index dataset,</p>
 <table>
 <caption><span id="tab:unnamed-chunk-61">Table 5.3: </span>Happiness Index Dataset for all countries</caption>
 <thead>
@@ -542,12 +560,13 @@ Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</co
 <p>Alternate method will be acquiring another dataset, with information of each country and its respective continent, and do merge, which we can then use to subset easily.</p>
 <p>Lets look at an example of this process below.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCB0aGUgSGFwcGluZXNzIGluZGV4IGRhdGFzZXQuXG5oYXBweTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvSEFQUElORVNTMjAxNy5jc3ZcIilcbmhlYWQoaGFwcHkpXG5cbiMgTm93IGxldHMgbG9hZCB0aGUgc2ltcGxlIGRhdGFzZXQgb2YgY291bnRyeSBhbmQgY29udGluZW50cy5cbmNvbnRpbmVudHM8LXJlYWQuY3N2KFwiLi4vZmlsZXMvZGF0YXNldC9jb3VudHJ5LWNvbnRpbmVudHMuY3N2XCIpXG5oZWFkKGNvbnRpbmVudHMpXG5cbiMgTm93IHdlIGNhbiB1c2UgdGhlIG1lcmdlIGZ1bmN0aW9uIHRvIGluY2x1ZGUgdGhlIGNvbnRpbmVudHMgb2YgZWFjaCBjb3VudHJ5IGluIHRoZSBoYXBwaW5lc3MgZGF0YXNldCBhZ2FpbnN0IGVhY2ggb3RoZXIuXG5oYXBweS5jPC1tZXJnZShoYXBweSxjb250aW5lbnRzKVxuaGVhZChoYXBweS5jKVxuXG5oYXBweS5jW3NhbXBsZShucm93KGhhcHB5LmMpLDEwKSxdIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCB0aGUgSGFwcGluZXNzIGluZGV4IGRhdGFzZXQuXG5oYXBweTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvSEFQUElORVNTMjAxNy5jc3ZcIilcbmhlYWQoaGFwcHkpXG5cbiMgTm93IGxldHMgbG9hZCB0aGUgc2ltcGxlIGRhdGFzZXQgb2YgY291bnRyeSBhbmQgY29udGluZW50cy5cbmNvbnRpbmVudHM8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2NvdW50cnktY29udGluZW50cy5jc3ZcIilcbmhlYWQoY29udGluZW50cylcblxuIyBOb3cgd2UgY2FuIHVzZSB0aGUgbWVyZ2UgZnVuY3Rpb24gdG8gaW5jbHVkZSB0aGUgY29udGluZW50cyBvZiBlYWNoIGNvdW50cnkgaW4gdGhlIGhhcHBpbmVzcyBkYXRhc2V0IGFnYWluc3QgZWFjaCBvdGhlci5cbmhhcHB5LmM8LW1lcmdlKGhhcHB5LGNvbnRpbmVudHMpXG5oZWFkKGhhcHB5LmMpXG5cbmhhcHB5LmNbc2FtcGxlKG5yb3coaGFwcHkuYyksMTApLF0ifQ==
 </div>
 <p>We can see from the output of the above example, the new dataframe created in <code>happy.c</code> after applying <em>merge()</em> function on the Happiness index dataset and the country-continents dataset, the <code>CONTINENT</code> column is added from the country-continents dataset into the happyness index dataset. And each country in the <code>happy.c</code> dataframe has now the value of its respective continent in the the <code>CONTINENT</code> column.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><em>Full Join</em></li>
-</ol>
+</div>
+</div>
+<div id="full-join" class="section level3" number="5.4.2">
+<h3><span class="header-section-number">5.4.2</span> Full Join</h3>
 <p>Full Join is also known as the <code>outer join</code> or the full outer join.
 It merges all the columns of both datasets into one.</p>
 <p>For those records with non-intersecting index elements, Full join keeps both the records, and fills the missing values with NA , i.e. Not Available(NA) keyword.</p>
@@ -558,9 +577,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJl
 </div>
 <p>We can see that the first record of the output with <code>studentid = 10001</code> was present in the second dataset only, thus the values corresponding to the columns of the first dataset are set to <code>NA</code>.
 Similarly, the same occurs with the record with <code>studentid = 16792</code>, which was only present in the first dataset, and thus has <code>NA</code> in the place of columns of second dataset.</p>
-<ol start="3" style="list-style-type: decimal">
-<li><em>Left Join</em></li>
-</ol>
+</div>
+<div id="left-join" class="section level3" number="5.4.3">
+<h3><span class="header-section-number">5.4.3</span> Left Join</h3>
 <p>The left join in R involves matching all the rows in the first data frame with the corresponding records on the second dataframe.</p>
 <p>To create this left join, you just have to set the argument <code>all.x</code> to <code>TRUE or T</code>.</p>
 <p>Recall while doing the full join, we set the argument <code>all</code> to <code>TRUE or T</code>. Similarly, since we consider <code>x</code> as the first dataset or the left dataset, we will set the argument of <code>all.x</code> where the <code>.x</code> is the key to select the first dataset.</p>
@@ -570,9 +589,9 @@ Similarly, the same occurs with the record with <code>studentid = 16792</code>, 
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsTW9vZHkuY3N2XCIpXG5zdHVkZW50X2RmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1NtYWxsU3QuY3N2XCIpXG5cbiMgVXNlIHRoZSBtZXJnZSBmdW5jdGlvbiwgd2l0aCB0aGUgXCIgYWxsIFwiICBhdHRyaWJ1dGUuXG5tZXJnZShtb29keV9kZixzdHVkZW50X2RmLGFsbC54ID0gVFJVRSkifQ==
 </div>
 <p>We can see that the record of student with <code>studentid = 16792</code> has <code>NA</code> as the entry in the columns merged from the right dataset. Also, the record of student with <code>studentid = 10001</code> is completely excluded, since it belongs to the second dataset.</p>
-<ol start="4" style="list-style-type: decimal">
-<li><em>Right Join</em></li>
-</ol>
+</div>
+<div id="right-join" class="section level3" number="5.4.4">
+<h3><span class="header-section-number">5.4.4</span> Right Join</h3>
 <p>The right join merge involves joining all the rows in the second data frame with the corresponding records on the first dataframe.</p>
 <p>The right join is opposite to that of left join.</p>
 <p>In consequence, here, you will need to set the argument <code>all.y</code> to <code>TRUE or T</code>, since we consider the right dataset or the second dataset as <code>y</code>.</p>
@@ -583,6 +602,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIEltcG9ydCBEYXRhc2V0cy5cbm1vb2R5X2RmIDwtIHJl
 </div>
 <p>We can see that the record of student with <code>studentid = 10001</code> has <code>NA</code> as the entry in the columns merged from the left dataset. Also, the record of student with <code>studentid = 16792</code> is completely excluded, since it belongs to the first dataset.</p>
 <hr />
+</div>
 </div>
 <div id="sliceanddice" class="section level2" number="5.5">
 <h2><span class="header-section-number">5.5</span> Slicing and Dicing.</h2>
@@ -599,9 +619,8 @@ Please review this section before proceeding ahead.</p>
 <p>We can do these type of SQL operation in R using the normal subsetting method, either using the <em>subset()</em> function or using the square brackets <code>[ ]</code>.</p>
 <p><em>NOTE</em>: In most of the examples below, to avoid printing of the complete dataset after any operations, we have used the <em>head()</em> function to truncate the output to only top 6 rows. However you can always remove the function or change the limit or output records to your choice by passing additional attribute <code>n = user_defined_limit</code> to the <em>head()</em> function.</p>
 <p>Just to recap subsetting on columns,</p>
-<ol style="list-style-type: decimal">
-<li><em>Subset single column.</em></li>
-</ol>
+<div id="subset-single-column." class="section level4" number="5.5.1.1">
+<h4><span class="header-section-number">5.5.1.1</span> Subset single column.</h4>
 <p><strong>Remember:</strong> You can either use the column names or the column location index, to dice the dataframe.</p>
 Suppose we want to subset the moody dataset only the grade column.
 Lets look at this example.
@@ -609,10 +628,10 @@ Lets look at this example.
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBMZXRzIHN1YnNldCB0aGUgZ3JhZGUgY29sdW1uIGZvcm0gdGhlIG1vb2R5IGRhdGFzZXQgYW5kIGxvb2sgYXQgaXRzIGZpcnN0IGZldyBlbGVtZW50cy4uXG5oZWFkKG1vb2R5WywnZ3JhZGUnLGRyb3A9Rl0pXG5cbiMgV2l0aG91dCBgZHJvcD1GYCBpbiB0aGUgYXR0cmlidXRlLCB5b3Ugd2lsbCBnZXQgb25seSB0aGUgdmFsdWVzIG9mIHRoZSBjb2x1bW4uXG5oZWFkKG1vb2R5WywnZ3JhZGUnXSkifQ==
 </div>
 <p>We can see that only one column is selected form the dataframe. The <code>drop = F</code> attribute is provided to keep the dataframe structure. You can also see the effect of not using the <code>drop = F</code> attribute in the above example.
-<strong>Note</strong>: In some cases, where you want to use the subsetted column with other function, e.g. <code>mean(subsetted_column)</code> you must not use the <code>drop=F</code> attribute, since it will result in error.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><em>Subset multiple column.</em></li>
-</ol>
+<strong>Note</strong>: In some cases, where you want to use the subsetted column with other function, e.g. <code>mean(subsetted_column)</code> you must not use the <code>drop=F</code> attribute, otherwise it will result in error.</p>
+</div>
+<div id="subset-multiple-column." class="section level4" number="5.5.1.2">
+<h4><span class="header-section-number">5.5.1.2</span> Subset multiple column.</h4>
 <p>Suppose you want to subset multiple columns by name, you can create a vector or the column names you want to subset and then include it wile subsetting.</p>
 Lets look at the example.
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
@@ -620,23 +639,24 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </div>
 <p>We can see that only the two column of “grade” and “score” are kept in the subset.
 Similarly, we can include the multiple column names and get subset.</p>
-<ol start="3" style="list-style-type: decimal">
-<li>You can get all the columns in the subset, by keeping the space after the comma blank. This gives the complete set of columns.</li>
-</ol>
+</div>
+<div id="subset-on-all-columns" class="section level4" number="5.5.1.3">
+<h4><span class="header-section-number">5.5.1.3</span> Subset on all columns</h4>
+<p>You can get all the columns in the subset, by keeping the space after the comma blank. This gives the complete set of columns.</p>
 Suppose you did some slicing on the dataframe and want to keep all the columns in the output, you can just keep the space after the comma blank while subsetting.
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuIyBoZXJlIHdlIGNhbiBzZWUgdGhhdCB3ZSBzbGljZWQgdGhlIGRhdGFmcmFtZSB0byBvbmx5IGtlZXAgdGhlIHJlY29yZHMgb2Ygc3R1ZGVudHMgd2l0aCBncmFkZSBcIkFcIi4gXG5oZWFkKG1vb2R5W21vb2R5JGdyYWRlPT1cIkFcIiwgXSlcblxuXG4jIFdlICB3aWxsIGxvb2sgYXQgc2xpY2luZyBpbiB0aGUgc3Vic2VxdWVudCBzZWN0aW9ucy4ifQ==
 </div>
 </div>
-<div id="Slicing" class="section level3" number="5.5.2">
+</div>
+<div id="slicing" class="section level3" number="5.5.2">
 <h3><span class="header-section-number">5.5.2</span> Subsetting on Rows ( SLICING )</h3>
 <p>Now that we have seen dicing Or subsetting on columns, which is similar to the <code>select</code> statement of SQL,
 we will now look at slicing on the dataframe. Or in other words subsetting on rows.</p>
 <p>There are many statements of SQL that does subsetting on rows, i.e. <code>SELECT, WHERE, AND, OR, IN, LIKE, LIMIT</code>, and many more.
 We will look at few of them, by implementing them using the basic R functions.</p>
-<ol style="list-style-type: decimal">
-<li><em>Subsetting based on single condition.</em></li>
-</ol>
+<div id="subsetting-based-on-single-condition." class="section level4" number="5.5.2.1">
+<h4><span class="header-section-number">5.5.2.1</span> Subsetting based on single condition.</h4>
 <p>We will look at a subsetting condition based on value.</p>
 <p>For subsetting based on value, you can use the relational operators e.g. <em>&gt; , &lt; , &gt;= , &lt;= , == , etc</em> between the attribute name and the value.</p>
 <p>Lets look at this in the following example.</p>
@@ -646,9 +666,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </div>
 <p>We can see from the above result, the subset has only records of students having score greater than 80.
 This example is similar to using <code>where</code> statement in SQL.</p>
-<ol start="2" style="list-style-type: decimal">
-<li><em>Subsetting based on multiple conditions.</em></li>
-</ol>
+</div>
+<div id="subsetting-based-on-multiple-conditions." class="section level4" number="5.5.2.2">
+<h4><span class="header-section-number">5.5.2.2</span> Subsetting based on multiple conditions.</h4>
 <p>Similar to the above example, suppose you want to subset based on multiple conditions.</p>
 <p>To do this, we will use the logical operators e.g. <code>AND (" &amp; ") , OR (" | ") , NOT (" ! ")</code> between the various conditions.</p>
 <p>Lets look at an example for this type of subsetting.</p>
@@ -661,9 +681,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </div>
 <p>We can see that the records of students with score greater than 90 and grade equal to A are kept, rest all records are removed.</p>
 <p>This example is similar to using the <code>AND, OR, NOT</code> clause in SQL.</p>
-<ol start="3" style="list-style-type: decimal">
-<li><em>Subset based on multiple values.</em></li>
-</ol>
+</div>
+<div id="subset-based-on-multiple-values." class="section level4" number="5.5.2.3">
+<h4><span class="header-section-number">5.5.2.3</span> Subset based on multiple values.</h4>
 <p>We will look at subsetting the dataframe based on one condition with multiple values.</p>
 <p>Suppose you want to subset the moody dataset, based on the students grade, but you want to keep students records with grade equal to both “B” and “C”</p>
 <p>Well you can use multiple conditions as seen above with an AND clause between the two conditions with different values on the same variable/columns, but there is a simple and useful way to do this with just one conditional statement.</p>
@@ -675,9 +695,9 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 <p>We can see that the output has only records of students with grades B or C.
 And both the methods, result in same output.
 This example is similar to the <code>IN</code> operator of the SQL</p>
-<ol start="4" style="list-style-type: decimal">
-<li><em>Subset based on a partial/complete text/character.</em></li>
-</ol>
+</div>
+<div id="subset-based-on-a-partialcomplete-textcharacter." class="section level4" number="5.5.2.4">
+<h4><span class="header-section-number">5.5.2.4</span> Subset based on a partial/complete text/character.</h4>
 <p>We will look at subsetting the dataset based on a specific pattern of text/characters.</p>
 <p>This type of subsetting proves useful in text columns where each record has one or more than one sentence, and you want to search for a particular keyword or pattern.</p>
 <p>Most simple example would be of a survey dateset, where each record in the dataset consists of text paragraph, answering the questions asked in the survey, and you want to figure out the count of particular keywords in each response.</p>
@@ -692,12 +712,146 @@ We don’t need to study this <em>grep()</em> function in detail, but one can fi
 This example is similar to the <code>LIKE</code> operator in SQL.</p>
 </div>
 </div>
+</div>
 <div id="group-by" class="section level2" number="5.6">
-<h2><span class="header-section-number">5.6</span> Group By *</h2>
+<h2><span class="header-section-number">5.6</span> Group By</h2>
 <!-- The reason we call this section as Psuedo Equivalent of Group By is the fact that there are no direct functions that combine select ans Group -->
 <p>Now that we have done Slicing and Dicing, we will like to apply some functions and gain measured information form the subsets.</p>
-<p>Although there is no straightforward, direct/ one step function to perform the function as that of the <code>GROUP BY</code> from SQL, but we can get the required functionality, by combining various functions step by step from the R.7 commands list <a href="dataexp.html#freestyle">2.2</a> and the things we learned in this <a href="datatransformation.html#datatransformation">5</a> section and the revision <a href="revision.html#revision">4</a> section.</p>
-<p>This section will involve use of the <em>table(), tapply()</em> function to apply the functions like <code>mean, count, sum, etc</code> on the subsets categorical or numerical columns. More importantly, we will look at a very useful example, which will tie together all that we have learned until now.</p>
+<p>Although there is no straightforward, direct/ one step function to perform the function as that of the <code>GROUP BY</code> from SQL, but we can get the required functionality, by combining various functions step by step from the R.7 commands list <a href="dataexp.html#freestyle">2.2</a> and the things we learned in this section <a href="datatransformation.html#datatransformation">5</a> and the revision section <a href="revision.html#revision">4</a>.</p>
+<p>This section will involve use of the <em>table(), tapply()</em> function to apply the functions like <code>mean, count, sum, etc</code> on the subsets categorical or numerical columns. More importantly, we will look at a very useful example below, which will tie together all that we have learned until now.</p>
+<p>Suppose you want to get the statistics/numbers of average scores per grade and frequency of students per grade, and then use this table afterwards.</p>
+<p>So the SQL query will look something like <code>SELECT grade, avg(score) as averagescore,  count(*)  as student_number FROM moody GROUP BY grade</code>.</p>
+<p>To implement this above query functionality in R we would fisrt need to use the tapply function to find get the average score per grade and frequency per grade, and then combine it. Lets look at this process in the code below.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIikgI3dlYiBsb2FkIGRhdGFzZXRcblxuXG4jIENyZWF0ZSBhIHRhYmxlIG9mIGZyZXF1ZW5jeSBvZiBzdHVkZW50cyBwZXIgZ3JhZGUuXG5ncmFkZS5jb3VudCA8LSB0YXBwbHkobW9vZHkkZ3JhZGUsbW9vZHkkZ3JhZGUsbGVuZ3RoKVxuXG4jIENyZWF0ZSBhIHRhYmxlIG9mIGF2ZXJhZ2Ugb2Ygc3R1ZGVudHMgc2NvcmUgcGVyIGdyYWRlLlxuZ3JhZGUubWVhbiA8LSB0YXBwbHkobW9vZHkkc2NvcmUsbW9vZHkkZ3JhZGUsbWVhbilcblxuIyBXZSBub3cgY29tYmluZSB0aGUgdHdvIHRhYmxlcyB0b2dldGhlciB1c2luZyBjYmluZCBhbmQgc3RvcmUgaXQgYXMgZGF0YS5mcmFtZSBmb3Igc2ltcGxlIHBvc3QtcHJvY2Vzc2luZy5cbm91dDwtYXMuZGF0YS5mcmFtZShjYmluZChncmFkZS5jb3VudCxncmFkZS5tZWFuKSlcbm91dCJ9
+</div>
+<p>We can see the combined table of both the average scores and frequency per grade.</p>
+<p>Now suppose we want to go one step ahead and want to order the <code>out</code> table from the example above, based on decreasing value of frequency of students per grade.</p>
+<p>To do this, we introduce the <em>order()</em> function.</p>
+<ul>
+<li><strong>Order() Function</strong>
+<ul>
+<li>The order() function returns a permutation of the order of the elements of a vector.</li>
+<li>You can decide by passing the argument to order the elements in ascending or descending order.</li>
+</ul></li>
+</ul>
+An important thing to note, is that for our use for the example we discussed above, we will use the order function as a subset parameter. Lets look at this in the example below.
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIilcbmdyYWRlLmNvdW50IDwtIHRhcHBseShtb29keSRncmFkZSxtb29keSRncmFkZSxsZW5ndGgpXG5ncmFkZS5tZWFuIDwtIHRhcHBseShtb29keSRzY29yZSxtb29keSRncmFkZSxtZWFuKVxub3V0PC1hcy5kYXRhLmZyYW1lKGNiaW5kKGdyYWRlLmNvdW50LGdyYWRlLm1lYW4pKVxuXG5vdXRcblxuIyBOb3cgbGV0cyBvcmRlciB0aGUgb3V0IGRhdGEsIGJhc2VkIG9uIHRoZSBncmFkZS5jb3VudCBjb2x1bW4sIGluIGFzY2VuZGluZyBvcmRlci5cbm91dFtvcmRlcihvdXRbLCdncmFkZS5jb3VudCddKSxdXG5cbiMgSWYgeW91IHdhbnQgdGhlIG91dHB1dCBpbiBkZXNjZW5kaW5nIG9yZGVyIGp1c3QgcGFzcyAnVFJVRScgb3IgJ1QnIHRoZSAgZGVjcmVhc2luZyBhcmd1bWVudCBvZiB0aGUgb3JkZXIgZnVuY3Rpb24uXG5vdXRbb3JkZXIob3V0WywnZ3JhZGUuY291bnQnXSxkZWNyZWFzaW5nID0gVCksXSJ9
+</div>
+<p>We saw how we can use implement ordering in R. This is similar to using the <code>ORDER BY</code> statement of SQL.</p>
+<p>Another thing we can do is subsetting on the output.
+Suppose you want to keep only those grade records in the <code>out</code> data with frequency of students greater than 150 for particular grade.</p>
+<p>To do this we will use the technique studied in the slicing section <a href="datatransformation.html#slicing">5.5.2</a>.
+Lets look at the working of the above example.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvbW9vZHkyMDIwYi5jc3ZcIilcbmdyYWRlLmNvdW50IDwtIHRhcHBseShtb29keSRncmFkZSxtb29keSRncmFkZSxsZW5ndGgpXG5ncmFkZS5tZWFuIDwtIHRhcHBseShtb29keSRzY29yZSxtb29keSRncmFkZSxtZWFuKVxub3V0PC1hcy5kYXRhLmZyYW1lKGNiaW5kKGdyYWRlLmNvdW50LGdyYWRlLm1lYW4pKVxuXG5vdXRcblxuIyBUbyBrZWVwIHRoZSByZWNvcmRzIHdoZXJlIGZyZXF1ZW5jeSBvZiBzdHVkZW50cyBpbiBwYXJ0aWN1bGFyIGdyYWRlIGlzIGdyZWF0ZXIgdGhhbiAxNTAuXG5vdXRbb3V0JGdyYWRlLmNvdW50PjE1MCxdIn0=
+</div>
+<p>We see that the <code>B</code> Grade had only 108 students in the record, it is removed from the <code>out</code> dataframe.</p>
+</div>
+<div id="handling-date-and-time-in-dataframes." class="section level2" number="5.7">
+<h2><span class="header-section-number">5.7</span> Handling Date and Time in dataframes.</h2>
+<p>one of the most common issue that a novice or even an experienced R user can face is of handling date and time information available into the dataset, and importing it to use as a variable that is appropriate ans usable during analysis.</p>
+<p>Also getting R to agree that your data contains the dates and times can be tricky sometimes. We will see an example where the usual R data import fails to read date and time as actually date and time.</p>
+<p>To simplify this issue, we use a package called <code>lubridate</code>, which makes it easier to work with dates and times and converts them into POSIXct format. POSIXct is a class of data recognized by R as being a date or date and time. Lubridate’s functions handle wide variety of formats and separators, which simplifies the parsing process.</p>
+<p>Lets look how easy it is to use it and convert date and time input to be used in analysis.
+First we will look at converting date in character format to POSIXct.</p>
+<ul>
+<li>First we will convert <code>"20200317"</code>which is in year-month-date format. To convert this we will use the <code>ymd()</code> function of the <code>lubridate</code> package.</li>
+<li>Second we will convert <code>"03-17-2020"</code>which is in month-date-year format. To convert this we will use the <code>mdy()</code> function of the <code>lubridate</code> package.</li>
+<li>Third we will convert <code>"17/03/2020"</code>which is in date-month-year format. To convert this we will use the <code>dmy()</code> function of the <code>lubridate</code> package.</li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGx1YnJpZGF0ZSkgIyBpbmNsdWRlIHRoZSBsdWJyaWRhdGUgbGlicmFyeS5cblxuIyBGaXJzdCB3ZSB1c2UgdGhlIHltZCgpIGZ1bmN0aW9uLlxueW1kKFwiMjAyMDAzMTdcIilcblxuIyBTZWNvbmQgd2UgdXNlIHRoZSBtZHkoKSBmdW5jdGlvbi5cbm1keShcIjAzLTE3LTIwMjBcIilcblxuIyBUaGlyZCB3ZSB1c2UgdGhlIGRteSgpIGZ1bmN0aW9uLlxuZG15KFwiMTcvMDMvMjAyMFwiKSJ9
+</div>
+<p>We can see the output of all the 3 function is the same, this means that the functions used have successfully converted all the input character type dates into the standardized POSIXct data type.</p>
+<p>Now lets look at converting time in character format to POSIXct.</p>
+<ul>
+<li>First we will convert <code>"18:20"</code> which is in hour-minutes format. To convert this we ill use the <code>hm()</code> function of the <code>lubridate</code> package.</li>
+<li>Second we will convert <code>"18:20:30"</code> which is in hour-minute-second format. To convert this we ill use the <code>hms()</code> function of the <code>lubridate</code> package.</li>
+</ul>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGx1YnJpZGF0ZSkgIyBpbmNsdWRlIHRoZSBsdWJyaWRhdGUgbGlicmFyeS5cblxuIyBGaXJzdCB3ZSB3aWxsIHVzZSB0aGUgaG0oKSBmdW5jdGlvbi5cbmhtKFwiMTg6MjBcIilcblxuIyBTZWNvbmQgd2Ugd2lsbCB1c2UgdGhlIGhtcygpIGZ1bmN0aW9uLlxuaG1zKFwiMTg6MjA6MzBcIikifQ==
+</div>
+<p>We can see that the output of the 2 functions above are in POSIXct format and has the information of hours minutes and seconds annotated properly.</p>
+<p>There are various other functions in the lubridate package like for various use case, but we will not cover them since they are not useful here. To learn more about it you can visit the official <code>lubridate</code> package vignette linked here: <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html">lubridate</a></p>
+<p>Now coming back to the main example of avoiding issues/errors while importing date and time attributes present in dataset. For this we will look at the <code>AirQualityUCI</code> dataset. And here is the snippet of the dataset below.</p>
+<table>
+<caption><span id="tab:unnamed-chunk-78">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.</caption>
+<thead>
+<tr class="header">
+<th align="left">Date</th>
+<th align="left">Time</th>
+<th align="right">CO</th>
+<th align="right">Tin.Oxide</th>
+<th align="right">Non.Metanic.HydroCarbons</th>
+<th align="right">Benzene</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">3/10/2004</td>
+<td align="left">18:00:00</td>
+<td align="right">2.6</td>
+<td align="right">1360</td>
+<td align="right">150</td>
+<td align="right">11.9</td>
+</tr>
+<tr class="even">
+<td align="left">3/10/2004</td>
+<td align="left">19:00:00</td>
+<td align="right">2.0</td>
+<td align="right">1292</td>
+<td align="right">112</td>
+<td align="right">9.4</td>
+</tr>
+<tr class="odd">
+<td align="left">3/10/2004</td>
+<td align="left">20:00:00</td>
+<td align="right">2.2</td>
+<td align="right">1402</td>
+<td align="right">88</td>
+<td align="right">9.0</td>
+</tr>
+<tr class="even">
+<td align="left">3/10/2004</td>
+<td align="left">21:00:00</td>
+<td align="right">2.2</td>
+<td align="right">1376</td>
+<td align="right">80</td>
+<td align="right">9.2</td>
+</tr>
+<tr class="odd">
+<td align="left">3/10/2004</td>
+<td align="left">22:00:00</td>
+<td align="right">1.6</td>
+<td align="right">1272</td>
+<td align="right">51</td>
+<td align="right">6.5</td>
+</tr>
+<tr class="even">
+<td align="left">3/10/2004</td>
+<td align="left">23:00:00</td>
+<td align="right">1.2</td>
+<td align="right">1197</td>
+<td align="right">38</td>
+<td align="right">4.7</td>
+</tr>
+</tbody>
+</table>
+<p>You will see from the dataset that the date and time columns are imported correctly. But in fact, and as we will see in the code below, the date column is of type <code>character</code> and the time is also of type <code>character</code>.</p>
+<p>Now to convert these columns into POSIXct supported date time columns we will use the lubridate functions.
+And then we will count the number of records in the dataset per <em>year</em> using the <code>year()</code> function.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhcTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvQWlyUXVhbGl0eVVDSS5jc3ZcIikgI3dlYiBsb2FkXG5hcTwtYXFbLDE6Nl0gIyBSZWR1Y2luZyB0aGUgbnVtYmVyIG9mIGNvbHVtbnMuXG5cbmhlYWQoYXEpXG5cbiMgTGV0cyBsb29rIGF0IHRoZSB0eXBlIG9mIHRoZSBEYXRlIGNvbHVtbiBhZnRlciBpbXBvcnRpbmcgdGhlIGRhdGFzZXQuXG5jbGFzcyhhcSREYXRlKSAjIERhdGUgQ29sdW1uXG5cbiMgTm93IGxldHMgdXNlIHRoZSBtZHkoKSBmdW5jdGlvbiB3aGljaCBjb252ZXJ0cyB0aGUgbW9udGgtZGF5LXllYXIgZm9ybWF0IHRvIFBPU0lYY3QgZm9ybWF0LlxuYXEkRGF0ZTwtbWR5KGFxJERhdGUpXG5oZWFkKGFxKVxuXG4jIE5vdyBsZXRzIGNoZWNrIHRoZSB0eXBlIG9mIHRoZSBEYXRlIGNvbHVtbiBhZ2Fpbi5cbmNsYXNzKGFxJERhdGUpXG5cblxuIyBMZXRzIGNyZWF0ZSBhIGZyZXF1ZW5jeSB0YWJsZSBmb3IgdGhlIGZyZXF1ZW5jeSBvZiByZWNvcmRzIHBlciB5ZWFyIHVzaW5nIHRoZSB0YWJsZSgpIGFuZCB5ZWFyKCkgZnVuY3Rpb25cbnRhYmxlKHllYXIoYXEkRGF0ZSkpIn0=
+</div>
+<p>We can see that the original type of the date column was <code>"character"</code> but then after using the lubridate’s function, we converted it to a suitable POSIXct format of <code>"Date"</code>. Then we were easily able to subset the dataset based on the year, and get the frequency count of the records per year, as seen from the table for the years <code>2004 and 2005</code>.</p>
+<p>Similarly, we can also convert the time column and probably use it later in analysis process.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJhcTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvQWlyUXVhbGl0eVVDSS5jc3ZcIikgI3dlYiBsb2FkXG5hcTwtYXFbLDE6Nl0gIyBSZWR1Y2luZyB0aGUgbnVtYmVyIG9mIGNvbHVtbnMuXG5cbmhlYWQoYXEpXG5cbiMgTGV0cyBsb29rIGF0IHRoZSB0eXBlIG9mIHRoZSBUaW1lIGNvbHVtbiBhZnRlciBpbXBvcnRpbmcgdGhlIGRhdGFzZXQuXG5jbGFzcyhhcSRUaW1lKSAjIFRpbWUgQ29sdW1uXG5cbiMgU2ltaWxhcmx5IGZvciB0aGUgdGltZSBjb2x1bW4gbGV0cyB1c2UgdGhlIGhtcygpIGZ1bmN0aW9uLlxuYXEkVGltZTwtaG1zKGFxJFRpbWUpXG5cbiMgTm93IGxldHMgY2hlY2sgdGhlIHR5cGUgb2YgdGhlIFRpbWUgY29sdW1uIGFnYWluLlxuY2xhc3MoYXEkVGltZSkifQ==
+</div>
+<p>We can see that the original type of the time column was <code>"character"</code> but then after using the lubridate’s function, we converted it to a suitable POSIXct format of <code>"Period"</code> which is used to represent time information.</p>
+<p><strong>EOC</strong></p>
 <!-- --- -->
 <!-- ## Table -->
 <!-- - table() function in R Language is used to create a categorical representation of data with variable name and the frequency in the form of a table. -->

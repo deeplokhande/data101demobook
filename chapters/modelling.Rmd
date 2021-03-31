@@ -1,0 +1,8 @@
+# Data Modelling and Prediction.* {#modelling}
+
+<script src="files/js/dcl.js"></script>
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+

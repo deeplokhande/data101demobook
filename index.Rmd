@@ -22,7 +22,10 @@ description: "This is a example of a interactive book for DATA 101 Course though
 
 ---
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<!-- <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script> -->
+<script src="files/js/dcl.js"></script>
+
+
 ```{r ,include=FALSE}
 tutorial::go_interactive( greedy = FALSE)
 
@@ -40,7 +43,9 @@ Data 101 is an introductory course for beginners from any field of study, intere
 
 This book's pages are created using [Rmarkdown](https://rmarkdown.rstudio.com/) from Rstudio (similar to jupyter notebook) and the book is compiled using ["bookdown"](https://cran.r-project.org/web/packages/bookdown/index.html) package.
 
-- Note: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
+The most important aspect of this interactive book are the interactive code chunks for running code, which are powered by a minimal version of Datacamp's learning interface called `Datacamp Light`. For more info visit [Datacamp Light](https://github.com/datacamp/datacamp-light)
+
+- Note1: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 
 - Note2: This book uses Datacamp Light for supporting runnable code chunks. In case the code chunks do not connect to run-time session, please copy the code and run in RStudio. Also, please report if facing this issue to the instructor via [email](mailto:timielinski@gmail.com).
 

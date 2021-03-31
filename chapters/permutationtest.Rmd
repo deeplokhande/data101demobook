@@ -1,6 +1,6 @@
 ## Permutation Test {#permtest}
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script src="files/js/dcl.js"></script>
 
 
 Permutation test allows us to observe randomness directly, with naked eye, without the lenses of statistical tests such as z-tests etc. We shuffle data randomly like a deck of cards. There may be many such shuffles - 10,000, 100,000 etc. The goal is always to see how often we can obtained the observed difference of means (since we are testing either one sided or two sided hypothesis), by purely random shuffles of our data. These permutations (shuffles) destroy all relationships which may pre-exist in our data. We are hoping to show that our observed difference of means can be obtained very rarely in completely random fashion. Then we "experimentally" show that our result is unlikely to randomly occur under null hypothesis. Then we can reject the null hypothesis.

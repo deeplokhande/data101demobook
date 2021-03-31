@@ -1,6 +1,6 @@
 # Revision of R commands {#revision}
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script src="files/js/dcl.js"></script>
 
 ```{r ,include=FALSE}
 tutorial::go_interactive()

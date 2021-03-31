@@ -1,6 +1,6 @@
 ## Free Style data exploration with just seven R commands " R.7 " {#freestyle}
 
-<script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script>
+<script src="files/js/dcl.js"></script>
 ```{r ,include=FALSE}
 tutorial::go_interactive(greedy = FALSE,height=700)
 knitr::opts_chunk$set(echo = TRUE,error=TRUE)

@@ -1,5 +1,5 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-83
+tab:unnamed-chunk-95
 tab:unnamed-chunk-57
 tab:unnamed-chunk-58
 tab:unnamed-chunk-61
@@ -75,4 +75,11 @@ subset-based-on-multiple-values.
 subset-based-on-a-partialcomplete-textcharacter.
 group-by
 handling-date-and-time-in-dataframes.
-modelling
+modeling
+decisiontree
+use-of-rpart
+rpartplot
+rpartcontrol
+rpartpredict
+splitdata
+crossvalidation

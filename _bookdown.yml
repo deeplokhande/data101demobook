@@ -8,7 +8,9 @@ rmd_files: [
   "./chapters/stateval.Rmd",
   "./chapters/revcommands.Rmd",
   "./chapters/datatransformation.Rmd",
-  "./chapters/modelling.Rmd"]
+  "./chapters/modeling.Rmd"]
+# rmd_subdir: "./chapters"
+
 language:
   ui:
     chapter_name: "Chapter "

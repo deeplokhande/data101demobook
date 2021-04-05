@@ -1,0 +1,3 @@
+svg("../files/img/modeling/rcontrolsplit.svg")
+rpart.plot(tree,extra = 2)
+dev.off()

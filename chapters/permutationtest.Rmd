@@ -11,7 +11,7 @@ The less often our result appear in the histogram of permutation test results, t
 What is surprising to many newcomers, is that permutation test will give different p-values (not dramatically different, but still different) in each run of permutation test. This is the case because permutation test in random itself. It is not like z-test which will give the same result when run again for the same hypothesis and same data set. Also p-value computed by permutation test will be, in general, different than p-value computed by z-test. Not very different but different. Again, it is the case because permutation test provides only approximation of p-value. Great advantage of permutation test is that it is universal and robust. One can test different relationships between two variables than just difference of means. For example we can use permutation test to validate whether traffic in Lincoln tunnel is more than twice the traffic in Holland tunnel or even provide different weights for different days of the week.
 
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 tutorial::go_interactive(greedy = FALSE)
 ```
@@ -110,8 +110,8 @@ Permutation(traffic, "TUNNEL", "VOLUME_PER_MINUTE",1000,"Holland", "Lincoln")
 
 - See how changing the mean and sd in rnorm distributions affects the p-value! 
 Again you can do it *directly in the code* and observe the results immediately.
-It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.  The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random sfuffles of permutation function.  
-- Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value. In general, the higher the standar deviation, the more widely data is centered around the mean. Thus even for the same two means, and two different value of deviations, we can see larger value of deviation to lead to higher p-value. Since we are less certian of the role of the "mean"  if standard deviation is higher. Therefore, the chance of randomly obtaining the observed result, is higher.
+It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and Lincoln tunnels respectively.  The larger the difference between the means of rnorm() function the smaller the p-value - since it is less and less likely that observed difference of means would come frequently, due to random shuffles of permutation function.  
+- Now keep the same means and change the variances. See how changing the variances in rnorm() will affect the p-value and try to explain the effect that standard deviations have on the p-value. In general, the higher the standard deviation, the more widely data is centered around the mean. Thus even for the same two means, and two different value of deviations, we can see larger value of deviation to lead to higher p-value. Since we are less certain of the role of the "mean"  if standard deviation is higher. Therefore, the chance of randomly obtaining the observed result, is higher.
 
 
 

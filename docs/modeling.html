@@ -331,7 +331,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3Yo
 <span id="cb4-13"><a href="modeling.html#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use of the rpart.plot() function  to visualize the decision tree.</span></span>
 <span id="cb4-14"><a href="modeling.html#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="fu">rpart.plot</span>(tree)</span></code></pre></div>
 <div class="figure">
-<img src="../files/img/modeling/rpartplot1.svg" alt="" />
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling/rpartplot1.svg" alt="" />
 <p class="caption">Output Plot of <em>rpart.plot()</em> function</p>
 </div>
 <p>We can see that after plotting the tree using rpart.plot() function, the tree is more readable and provides better information about the splitting conditions, and the probability of outcomes. Each leaf node has information about</p>
@@ -359,7 +359,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3Yo
 <span id="cb5-13"><a href="modeling.html#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Use of the prp function  to visualize the decision tree.</span></span>
 <span id="cb5-14"><a href="modeling.html#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="fu">prp</span>(tree)</span></code></pre></div>
 <div class="figure">
-<img src="../files/img/modeling/prp1.svg" alt="" />
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling/prp1.svg" alt="" />
 <p class="caption">Output Plot of <em>prp()</em> function</p>
 </div>
 <p>We can see that the output of the prp() function is a very minimalist tree, without any colors with minimum required information. There are other arguments that can be passed to the prp() function to increase the aesthetic look and the information provided. To learn those extra arguments visit this guide <a href="https://www.rdocumentation.org/packages/rpart.plot/versions/3.0.9/topics/prp">prp()</a></p>
@@ -401,7 +401,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3Yo
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIGxpYnJhcnkocnBhcnQpXG5tb29keSA8LSByZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9NT09EWS0yMDE5LmNzdlwiKVxuXG4jIFVzZSBvZiB0aGUgcnBhcnQoKSBmdW5jdGlvbiB3aXRoIHRoZSBjb250cm9sIHBhcmFtZXRlciBtaW5zcGxpdD0yMDBcbnRyZWUgPC0gcnBhcnQoR1JBREUgfiAuLCBkYXRhID0gbW9vZHlbLC1jKDEpXSxtZXRob2QgPSBcImNsYXNzXCIsY29udHJvbD1ycGFydC5jb250cm9sKG1pbnNwbGl0ID0gMjAwKSlcblxuIyBDaGVjayB0aGUgY291bnQgb2Ygb2JzZXJ2YXRpb24gYXQgZWFjaCBzcGxpdCB0ZXN0LiBUbyBkbyB0aGlzIHdlIGZpbmQgdGhlIGNvdW50IGF0IGVhY2ggbm9uLWxlYWYvbm9uLXRlcm1pbmFsIG5vZGUuXG50cmVlJGZyYW1lW3RyZWUkZnJhbWUkdmFyIT1cIjxsZWFmPlwiLGMoXCJ2YXJcIixcIm5cIildXG5cbiMgbGlicmFyeShycGFydC5wbG90KVxuIyBycGFydC5wbG90KHRyZWUsZXh0cmEgPSAyKSJ9
 </div>
 <div class="figure">
-<img src="../files/img/modeling/rcontrolsplit.svg" alt="" />
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling/rcontrolsplit.svg" alt="" />
 <p class="caption">Output tree plot of after setting minsplit=200 in rpart.control() function</p>
 </div>
 <p>We can see from the output of <code>tree$splits</code> and the tree plot, that at each split the total amount of observations are above 200. Also, in comparison to the tree without control, the tree with control has lower height, and lesser count of splits.</p>
@@ -410,7 +410,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIGxpYnJhcnkocnBhcnQpXG5tb29keSA8LSByZWFkLmNz
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvTU9PRFktMjAxOS5jc3ZcIilcblxuIyBVc2Ugb2YgdGhlIHJwYXJ0KCkgZnVuY3Rpb24gd2l0aCB0aGUgY29udHJvbCBwYXJhbWV0ZXIgbWluc3BsaXQ9MjAwXG50cmVlIDwtIHJwYXJ0KEdSQURFIH4gLiwgZGF0YSA9IG1vb2R5WywtYygxKV0sbWV0aG9kID0gXCJjbGFzc1wiLGNvbnRyb2w9cnBhcnQuY29udHJvbChtaW5idWNrZXQgPSAxMDApKVxuXG4jIENoZWNrIHRoZSBjb3VudCBvZiBvYnNlcnZhdGlvbiBpbiBlYWNoIGxlYWYgbm9kZS5cbnRyZWUkZnJhbWVbdHJlZSRmcmFtZSR2YXI9PVwiPGxlYWY+XCIsYyhcInZhclwiLFwiblwiKV1cblxuIyBsaWJyYXJ5KHJwYXJ0LnBsb3QpXG4jIHJwYXJ0LnBsb3QodHJlZSxleHRyYSA9IDIpIn0=
 </div>
 <div class="figure">
-<img src="../files/img/modeling/rcontrolbucket.svg" alt="" />
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling/rcontrolbucket.svg" alt="" />
 <p class="caption">Output tree plot of after setting minbucket=100 in rpart.control() function</p>
 </div>
 <p>We can see for the output and the tree plot, that the count of observations in each leaf node is greater than 100. Also, the tree height has shortened, suggesting that the control method was able to shorten the tree size.</p>
@@ -419,7 +419,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3Yo
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubW9vZHkgPC0gcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvTU9PRFktMjAxOS5jc3ZcIilcblxuIyBVc2Ugb2YgdGhlIHJwYXJ0KCkgZnVuY3Rpb24gd2l0aCB0aGUgY29udHJvbCBwYXJhbWV0ZXIgY3A9MC4wMDVcbnRyZWUgPC0gcnBhcnQoR1JBREUgfiAuLCBkYXRhID0gbW9vZHlbLC1jKDEpXSxtZXRob2QgPSBcImNsYXNzXCIsY29udHJvbD1ycGFydC5jb250cm9sKGNwID0gMC4wMDUpKVxuXG4jIENoZWNrIHRoZSBhY2N1cmFjeSBpbmNyZWFzZSBmYWN0b3IgYXQgZWFjaCBzcGxpdC5cbnRyZWUkY3B0YWJsZVxuXG4jIGxpYnJhcnkocnBhcnQucGxvdCkpXG4jIHJwYXJ0LnBsb3QodHJlZSkifQ==
 </div>
 <div class="figure">
-<img src="../files/img/modeling/rcontrolcp.svg" alt="" />
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling/rcontrolcp.svg" alt="" />
 <p class="caption">Output tree plot of after setting cp=0.005 in rpart.control() function</p>
 </div>
 <p>We can see for the output and the tree plot, that the tree size has increased, with increase in number of splits, and leaf nodes. Also we can see that the minimum CP value in the output is 0.005.</p>

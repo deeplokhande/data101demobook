@@ -312,11 +312,79 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For more info on the <em>lm()</em> function visit <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">lm()</a></p>
 <p>Lets look at the example on the RealEstate dataset.</p>
 <p>A snippet of the Realestate Dataset is given below.</p>
-<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open URL &#39;https://raw.githubusercontent.com/
-## deeplokhande/data101demobook/main/files/dataset/RealEstate.csv&#39;: HTTP status was
-## &#39;404 Not Found&#39;</code></pre>
-<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
-<pre><code>## Error in head(realestate, 10): object &#39;realestate&#39; not found</code></pre>
+<table>
+<caption><span id="tab:unnamed-chunk-96">Table 8.1: </span>Snippet of Real Estate Dataset</caption>
+<thead>
+<tr class="header">
+<th align="right">Price</th>
+<th align="right">Bedrooms</th>
+<th align="right">Bathrooms</th>
+<th align="right">Size</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">795000</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">2371</td>
+</tr>
+<tr class="even">
+<td align="right">399000</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">2818</td>
+</tr>
+<tr class="odd">
+<td align="right">545000</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3032</td>
+</tr>
+<tr class="even">
+<td align="right">909000</td>
+<td align="right">4</td>
+<td align="right">4</td>
+<td align="right">3540</td>
+</tr>
+<tr class="odd">
+<td align="right">109900</td>
+<td align="right">3</td>
+<td align="right">1</td>
+<td align="right">1249</td>
+</tr>
+<tr class="even">
+<td align="right">324900</td>
+<td align="right">3</td>
+<td align="right">3</td>
+<td align="right">1800</td>
+</tr>
+<tr class="odd">
+<td align="right">192900</td>
+<td align="right">4</td>
+<td align="right">2</td>
+<td align="right">1603</td>
+</tr>
+<tr class="even">
+<td align="right">215000</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">1450</td>
+</tr>
+<tr class="odd">
+<td align="right">999000</td>
+<td align="right">4</td>
+<td align="right">3</td>
+<td align="right">3360</td>
+</tr>
+<tr class="even">
+<td align="right">319000</td>
+<td align="right">3</td>
+<td align="right">2</td>
+<td align="right">1323</td>
+</tr>
+</tbody>
+</table>
 <p>Now we can build a simple linear regression model to predict the Price attribute based on the various other attributes present in the dataset, as shown above.</p>
 <p>Since we will be predicting only one attribute values, this model will be called simple linear regression model.</p>
 <p>For the first example we will predict the price value of house using only <em>size</em> attribute as the predictor.</p>

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 1 Introduction | DATA 101 Shortest Textbook</title>
+  <title>Chapter 8 Data Modelling and Prediction techniques for Regression. | DATA 101 Shortest Textbook</title>
   <meta name="description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 1 Introduction | DATA 101 Shortest Textbook" />
+  <meta property="og:title" content="Chapter 8 Data Modelling and Prediction techniques for Regression. | DATA 101 Shortest Textbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 1 Introduction | DATA 101 Shortest Textbook" />
+  <meta name="twitter:title" content="Chapter 8 Data Modelling and Prediction techniques for Regression. | DATA 101 Shortest Textbook" />
   
   <meta name="twitter:description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="index.html"/>
-<link rel="next" href="dataexp.html"/>
+<link rel="prev" href="pred1blog.html"/>
+<link rel="next" href="models.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -271,104 +271,121 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="intro" class="section level1" number="1">
-<h1><span class="header-section-number">Chapter 1</span> Introduction</h1>
+<div id="regression" class="section level1" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Data Modelling and Prediction techniques for Regression.</h1>
 <script src="files/js/dcl.js"></script>
-<!-- You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods). -->
-<!-- Figures and tables with captions will be placed in `figure` and `table` environments, respectively. -->
-<!-- ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'} -->
-<!-- par(mar = c(4, 4, .1, .1)) -->
-<!-- plot(pressure, type = 'b', pch = 19) -->
-<!-- ``` -->
-<!-- Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab). -->
-<!-- ```{r nice-tab, tidy=FALSE} -->
-<!-- knitr::kable( -->
-<!--   head(iris, 20), caption = 'Here is a nice table!', -->
-<!--   booktabs = TRUE -->
-<!-- ) -->
-<!-- ``` -->
-<!-- You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015]. -->
-<p>The objective of this textbook is to provide you the shortest path to exploring your data, visualizing it, forming hypotheses and validating and defending them. Given a data set, you want to be able to make any plot you wish, find plots which show something actionable and interesting, explore data by slicing and dicing it and finally present your results in statistically convincing manner, perhaps in colorful and visually appealing way.</p>
-<p>Questions which you will have to anticipate and you will have to answer are
-- How do you know that your findings are not random?
-- And fundamental of all questions:
-- <strong>So what?</strong></p>
-<p>Even the most impressing looking results may come up randomly. And you will be asked this question along with the question <em>“what was your p-value and how did you compute it”</em></p>
-<p>And even if you convince your audience that your results are not random, you will have to be ready to explain why should you audience care about the results you reported. In other words, is there any actionable value in your results? Or they are just simply interesting, good to know, but no one really needs to care much about them otherwise? Hopefully it is the former not the latter.</p>
-<p>In the following sections we will address these questions and go through the process of data exploration, validation, and presentation.</p>
-<ul>
-<li>We will start with making plots, follow with free style data exploration – which allows us to form the leads, that is hypotheses. Then we will follow with simple statistical tests which will allow us to validate these hypothesis and defend our findings against randomness claims. - We will learn how to calculate p-values and how to use them to defend our findings.</li>
-<li>We will use as few R commands as possible and reach our goal in shortest possible path. In fact we will demonstrate how using just 7 R commands we can perform quite sophisticated data exploration.</li>
-</ul>
-<div id="setting-up-r" class="section level2" number="1.1">
-<h2><span class="header-section-number">1.1</span> Setting Up R</h2>
-<ul>
-<li><p><strong>Important Instructions</strong></p>
-<ul>
-<li>Installation of R is required before installing RStudio
-<ul>
-<li>“R” is a programming language, and,</li>
-<li>“RStudio” is an Integrated Development Environment (IDE) which provides you a platform to code in R.</li>
-</ul></li>
-</ul></li>
-<li><p><strong>How to download and install R &amp; RStudio?</strong></p>
-<ul>
-<li><p><em>Downloading and installing R.</em></p>
-<ul>
-<li>For Windows Users.
-<ul>
-<li>Click on the link provided below or copy paste it on your favourite browser and go to the website.
-<ul>
-<li><a href="https://cran.r-project.org/bin/windows/base/">https://cran.r-project.org/bin/windows/base/</a></li>
-</ul></li>
-<li>Click on the link at top left where it says “Download R 4.0.3 for windows” or the latest at the time of your installation.</li>
-<li>Open the downloaded file and follow the instructions as it is.</li>
-</ul></li>
-<li>For MAC Users.
-<ul>
-<li>Click on the link provided below or copy paste it on your favourite browser and go to the website.
-<ul>
-<li><a href="https://cloud.r-project.org/bin/macosx/">https://cloud.r-project.org/bin/macosx/</a></li>
-</ul></li>
-<li>Under “Latest release”, click on “R-4.0.3.pkg” or the latest at the time of your installation.</li>
-<li>Open the downloaded file and follow the instructions as it is.</li>
-</ul></li>
-</ul></li>
-<li><p><em>Downloading and installing RStudio.</em></p>
-<ul>
-<li>For Windows Users.
-<ul>
-<li>Click on the link below or copy paste it in your favourite browser.
-<ul>
-<li><a href="https://rstudio.com/products/rstudio/download/">https://rstudio.com/products/rstudio/download/</a></li>
-</ul></li>
-<li>Scroll down almost till the end of the web page until you find a section named “All Installers”.</li>
-<li>Click on the download link beside “Windows 10/8/7” to download the windows version of RStudio.</li>
-<li>Install RStudio by clicking on the downloaded file and following the instructions as it is.</li>
-</ul></li>
-<li>For MAC Users.
-<ul>
-<li>Click on the link below or copy paste it in your favourite browser.
-<ul>
-<li><a href="https://rstudio.com/products/rstudio/download/">https://rstudio.com/products/rstudio/download/</a></li>
-</ul></li>
-<li>Scroll down almost till the end of the web page until you find a section named “All Installers”.</li>
-<li>Click on the link beside “macOS 10.13+” to start your download the MAC version of RStudio.</li>
-<li>Install RStudio by clicking on the downloaded file and following the instructions as it is.</li>
-</ul></li>
-</ul></li>
-</ul></li>
-</ul>
+<p>In the previous chapter <a href="classification.html#classification">6</a> we studied modeling and prediction techniques for Classification, where we predicted the class of the output variable, using Decision tree based algorithms.</p>
+<p>In this chapter we will study techniques for regression based prediction and model simple algorithms for it. As opposite the the classification where we predict a particular class of the output variable, here we will predict a numerical/continuous value.</p>
+<p>We will look at two methods of performing this regression based modeling and prediction, first simple linear regression and second regression using decision tree.</p>
 <hr />
+<div id="linear-regression." class="section level2" number="8.1">
+<h2><span class="header-section-number">8.1</span> Linear Regression.</h2>
+<p>Linear regression is a linear approach to modeling the relationship between a <em>scalar</em> response and one or more <em>explanatory</em> variables(also known as dependent and independent variables.)</p>
 <ul>
-<li><p><strong>How to upload a data set?</strong></p></li>
-<li><p>To upload the dataset/file present in csv format the read.csv() and read.csv2() functions are frequently used The read.csv() and read.csv2() have different separator symbol: for the former this is a comma, whereas the latter uses a semicolon.</p></li>
-<li><p>Let us look at the example.</p></li>
+<li>Scalar response means the predicted output.
+<ul>
+<li>Usually in linear regression, models are used to predict only one scalar variable. This type of linear regression model known as <em>simple linear regression</em>.</li>
+<li>But in the case of prediction of multiple correlated output variables, this type of prediction using linear regression model is called <em>multivariate linear regression</em>.</li>
+</ul></li>
+<li>Explanatory variables are the predictors on which the output predictions are based on. In the regression setting there can be two type of explanatory variables,
+<ul>
+<li>The dependent variables i.e. they are derived by applying some law/rule or function onto some other variable/s</li>
+<li>The independent variables which are independently sufficient to used are predictors while use in regression.</li>
+</ul></li>
 </ul>
+<p>Since the relationship between the explanatory variables and the output variable is modeled linearly, these models are called as linear models. To do this, we need to find a linear regression equation for the set of input predictors and the output variable.</p>
+<p>But without going into the mathematics of finding this linear regression equation, we will use a tool/function provided in R to model and predict the output variable.</p>
+<hr />
+<div id="lm" class="section level3" number="8.1.1">
+<h3><span class="header-section-number">8.1.1</span> Linear regression using lm() function</h3>
+<p>Syntax for building the regression model using the <em>lm()</em> function is as follows:</p>
+<ul>
+<li><code>lm(formula, data, ...)</code>
+<ul>
+<li><em>formula</em>: here we mention the prediction column and the other related columns(predictors) on which the prediction will be based on.
+<ul>
+<li><code>prediction ~ predictor1 + predictor2 + predictor3 + ...</code></li>
+</ul></li>
+<li><em>data</em>: here we provide the dataset on which the linear regression model is to be trained.</li>
+</ul></li>
+</ul>
+<p>For more info on the <em>lm()</em> function visit <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">lm()</a></p>
+<p>Lets look at the example on the RealEstate dataset.</p>
+<p>A snippet of the Realestate Dataset is given below.</p>
+<pre><code>## Warning in file(file, &quot;rt&quot;): cannot open URL &#39;https://raw.githubusercontent.com/
+## deeplokhande/data101demobook/main/files/dataset/RealEstate.csv&#39;: HTTP status was
+## &#39;404 Not Found&#39;</code></pre>
+<pre><code>## Error in file(file, &quot;rt&quot;): cannot open the connection</code></pre>
+<pre><code>## Error in head(realestate, 10): object &#39;realestate&#39; not found</code></pre>
+<p>Now we can build a simple linear regression model to predict the Price attribute based on the various other attributes present in the dataset, as shown above.</p>
+<p>Since we will be predicting only one attribute values, this model will be called simple linear regression model.</p>
+<p>For the first example we will predict the price value of house using only <em>size</em> attribute as the predictor.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFJlYWQgaW4gdGhlIGRhdGFcbmRmIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L21vb2R5MjAyMGIuY3N2XCIpXG5cbiMgUHJpbnQgb3V0IGBkZmBcbmhlYWQoZGYpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplIG9mIHRoZSBob3VzZS5cbiMgVGh1cyB0aGlzIGlzIGFuIGV4YW1wbGUgb2Ygc2ltcGxlIGxpbmVhciByZWdyZXNzaW9uIHNpbmNlIG9ubHkgb25lIHByZWRpY3RvciBhbmQgb25lIG91dHB1dCB2YWx1ZSBpcyB1c2VkLlxuc2ltcGxlLmZpdCA8LSBsbShQcmljZX5TaXplLGRhdGE9dHJhaW4pXG5cbiMgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkoc2ltcGxlLmZpdClcblxuIyBMaW5lYXIgcmVsYXRpb24gYmV0d2VlbiB0aGUgUHJpY2UgYW5kIFNpemUgYXR0cmlidXRlLlxucGxvdCh0cmFpbiRTaXplLHRyYWluJFByaWNlKVxuYWJsaW5lKHNpbXBsZS5maXQgLCBjb2w9XCJyZWRcIilcblxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2Uuc2ltcGxlIDwtIHByZWRpY3Qoc2ltcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnNpbXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpIn0=
 </div>
-
+<p>We can see that,
+- The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
+- The plot of <em>Size</em> vs <em>Price</em>, and the red line represents the fitted line or the linear model line which will be used for prediction.
+- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6).</p>
+<p>We saw above an example of simple linear regression model, where only one predictor was used for predicting a single output attribute.</p>
+<p>Now we will see an example of <em>multiple linear regression</em> model, where there can be multiple predictors to predict a single output attribute. (Note: Please do not confuse this with the <em>multivariate linear regression</em>.)</p>
+<p>Let look at an example of predicting the <em>Price</em> of the real estate, based on 3 attributes <em>Size, Number of Bedrooms and Number of Bathrooms</em>.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplLCBiYXRocm9vbXMgYW5kIGJlZHJvb21zIG9mIHRoZSBob3VzZS5cbiMgVGh1cyB0aGlzIGlzIGFuIGV4YW1wbGUgb2YgbXVsdGlwbGUgbGluZWFyIHJlZ3Jlc3Npb24gc2luY2UgbXVsdGlwbGUgcHJlZGljdG9yIGFuZCBvbmUgb3V0cHV0IHZhbHVlIGlzIHVzZWQuXG5tdWx0aXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSArIEJhdGhyb29tcyArIEJlZHJvb21zLGRhdGE9dHJhaW4pXG5cbiMgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkobXVsdGlwbGUuZml0KVxuXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5tdWx0aXBsZSA8LSBwcmVkaWN0KG11bHRpcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLm11bHRpcGxlKSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSkifQ==
+</div>
+<p>We can see that,
+- The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
+- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the previous model based on just the <em>Size</em> as predictor, here, when we used 3 predictors, we have more accurate predictions, thus increasing the overall accuracy of the model.</p>
+<hr />
+</div>
+<div id="mse" class="section level3" number="8.1.2">
+<h3><span class="header-section-number">8.1.2</span> Calculating the Error using mse()</h3>
+<p>As was the simple case in the categorical predictions of the classification models, where we could just compare the predicted categories and the actual categories, this type of direct comparison as an accuracy test won’t prove useful now in our numerical predictions scenario.</p>
+<p>Also we don’t want to eyeball everytime we predict, to find the accuracy of our predictions each row by row, so lets see a method to calculate the accuracy of our predictions, using some statistical technique.</p>
+<p>To do this we will use the Mean Squared Error(MSE).
+- The MSE is a measure of the quality of an predictor/estimator
+- It is always non-negative
+- Values closer to zero are better.</p>
+<p>The equation to calculate the MSE is as follows:</p>
+<p><span class="math display">\[\begin{equation}
+MSE=\frac{1}{n} \sum_{i=1}^{n}{(Y_i - \hat{Y_i})^2}
+\\ \text{where $n$ is the number of data points, $Y_i$ are the observed value}\\ \text{and $\hat{Y_i}$ are the predicted values}
+\end{equation}\]</span></p>
+<p>To implement this, we will use the <em>mse()</em> function present in the Metrics Package, so remember to install the Metrics package and use <code>library(Metrics)</code> in the code for local use.</p>
+<p>The syntax for <em>mse()</em> function is very simple:
+- <code>mse(actual,predicted)</code>
+- <em>actual</em>: vector of the actual values of the attribute we want to predict.
+- <em>predicted</em>: vector of the predicted values obtained using our model.</p>
+<p>Now lets look at the MSE of the previous example.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplIG9mIHRoZSBob3VzZS5cbnNpbXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSxkYXRhPXRyYWluKVxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2Uuc2ltcGxlIDwtIHByZWRpY3Qoc2ltcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnNpbXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpXG5cbiMgTGV0cyB1c2UgdGhlIG1zZSgpIGZ1bmN0aW9uIHRvIFxubXNlKHRlc3QkUHJpY2UsUHJlZGljdGVkUHJpY2Uuc2ltcGxlKSJ9
+</div>
+<p>We can see the MSE is too large above 200 billion, and this is huge value could be understandable as we are taking the squared differences of all the records that we predicted.</p>
+<p>The main intention is to get this huge value to as low as possible possibly near zero, which could be difficult but can be achieved upto a relative error by using a better model and training data.</p>
+<hr />
+</div>
+</div>
+<div id="regression-using-rpart" class="section level2" number="8.2">
+<h2><span class="header-section-number">8.2</span> Regression using RPART</h2>
+<p>Since we have already used the rpart library for performing decision tree algorithms also referred as CART(classification and regression tree) algorithms, we will now look at this type algorithm for regression based prediction.</p>
+<p>Remember we have discussed the usage of Rpart in the section <a href="classification.html#rpart">6.2</a> in great detail. Thus for using Rpart for regression based prediction we will need to provide the <em>rpart()</em> functions, <em>method</em> attribute, with the keyword <em>“anova”</em>.</p>
+<p>For more details on the use of Rpart for prediction please refer to section <a href="classification.html#rpart">6.2</a>.</p>
+<p>Lets look at an example of regression based prediction using Rpart for the <em>Price</em> attribute of the Real estate Dataset with <em>Size, Number of Bedrooms and Number of Bathrooms</em> as predictors.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSBvZiB0aGUgcnBhcnQoKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiB0aGUgc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG5ycGFydC5maXQgPC0gcnBhcnQoUHJpY2V+U2l6ZStCYXRocm9vbXMrQmVkcm9vbXMsZGF0YT10cmFpbixtZXRob2QgPSBcImFub3ZhXCIpXG5cbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnJwYXJ0IDwtIHByZWRpY3QocnBhcnQuZml0LHRlc3QpXG4jIFByZWRpY3RlZCBWYWx1ZXNcbmhlYWQoYXMuaW50ZWdlcih1bm5hbWUoUHJlZGljdGVkUHJpY2UucnBhcnQpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKVxuXG4jIExldHMgdXNlIHRoZSBtc2UoKSBmdW5jdGlvbiB0byBcbm1zZSh0ZXN0JFByaWNlLFByZWRpY3RlZFByaWNlLnJwYXJ0KSJ9
+</div>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/rpartanova.svg" alt="" />
+<p class="caption">Output tree plot of rpart() model using for regression using “anova” method</p>
+</div>
+<p>We can see,
+- The output decision tree of the <em>rpart()</em> function
+- The predicted values obtained using the model created by the rpart() function.
+- The MSE of the model on the testing dataset.</p>
+<p>An important point to note while using decision trees for regression purpose, is that since the underlying process of modeling is still a decision tree, the output still represent a set of distinct classes, even though the values of the classes are numeric. Thus we can see that the predicted values are repeated even for varying inputs.</p>
+<p>Hence Decision tree must be used carefully when used for regression based prediction models.</p>
+<hr />
+<p>EOC</p>
 </div>
 </div>
             </section>
@@ -376,8 +393,8 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIFJlYWQgaW4gdGhlIGRhdGFcbmRmIDwtIHJlYWQuY3N2
           </div>
         </div>
       </div>
-<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="dataexp.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="pred1blog.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="models.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

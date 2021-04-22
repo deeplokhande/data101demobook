@@ -35,6 +35,8 @@ In other words, when the distribution of the test statistic under the null hypot
 Outcome of the z-test is the z-score which is a numerical measure to test the mean of a distribution.
 z-score is measured in terms of standard deviation from mean.
 
+**INCLUDE EXAMPLES**
+
 
 ```{r child="./chapters/permutationtest.Rmd"}
 

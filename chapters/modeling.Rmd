@@ -1,4 +1,4 @@
-# Data Modeling and Prediction. {#modeling}
+# Data Modeling and Prediction techniques for Classification. {#classification}
 
 <script src="files/js/dcl.js"></script>
 ```{r ,include=FALSE}
@@ -22,7 +22,7 @@ Also, we won't go into the depth of the internals of the formation/creation of t
 
 ---
 
-## Use of Rpart
+## Use of Rpart {#rpart}
 
 Recursive Partitioning and Regression Tree `RPART` library is a collection of routines which implement Classification and Regression Tree (CART) which is a type of Decision Tree.The resulting model can be represented as a binary tree.
 
@@ -30,7 +30,7 @@ The library associated with this `RPART` is called `rpart`. Install this library
 
 Syntax for building the decision tree using rpart():
 
-- `rpart( _formula_ , _method_, _data_, _control_,...)`
+- `rpart( formula , method, data, control,...)`
   - *formula*: here we mention the prediction column and the other related columns(predictors) on which the prediction will be based on. 
     - `prediction ~ predictor1 + predictor2 + predictor3 + ...`
   - *method*: here we describe the type of decision tree we want. If nothing is provided, the function makes an intelligent guess. We can use "anova" for regression, "class" for classification, etc.

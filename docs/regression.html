@@ -247,9 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>9</b> Additional Modeling techniques.*</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="models.html"><a href="models.html#random-forest"><i class="fa fa-check"></i><b>9.1</b> Random Forest*</a></li>
-<li class="chapter" data-level="9.2" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.2</b> SVM*</a></li>
-<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.3</b> nnet*</a></li>
+<li class="chapter" data-level="9.1" data-path="models.html"><a href="models.html#modelsin4lines"><i class="fa fa-check"></i><b>9.1</b> Four Line Method for creating most type of prediction models in R</a></li>
+<li class="chapter" data-level="9.2" data-path="models.html"><a href="models.html#randomforest"><i class="fa fa-check"></i><b>9.2</b> Random Forest</a></li>
+<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.3</b> SVM*</a></li>
+<li class="chapter" data-level="9.4" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.4</b> nnet*</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -274,8 +275,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="regression" class="section level1" number="8">
 <h1><span class="header-section-number">Chapter 8</span> Data Modelling and Prediction techniques for Regression.</h1>
 <script src="files/js/dcl.js"></script>
-<p>In the previous chapter <a href="classification.html#classification">6</a> we studied modeling and prediction techniques for Classification, where we predicted the class of the output variable, using Decision tree based algorithms.</p>
-<p>In this chapter we will study techniques for regression based prediction and model simple algorithms for it. As opposite the the classification where we predict a particular class of the output variable, here we will predict a numerical/continuous value.</p>
+<p>In chapter <a href="classification.html#classification">6</a> we studied modeling and prediction techniques for Classification, where we predicted the class of the output variable, using Decision tree based algorithms.</p>
+<p>In this chapter we will study techniques for regression based prediction and create models for it. As opposite the the classification where we predict a particular class of the output variable, here we will predict a numerical/continuous value.</p>
 <p>We will look at two methods of performing this regression based modeling and prediction, first simple linear regression and second regression using decision tree.</p>
 <hr />
 <div id="linear-regression." class="section level2" number="8.1">
@@ -389,44 +390,54 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Since we will be predicting only one attribute values, this model will be called simple linear regression model.</p>
 <p>For the first example we will predict the price value of house using only <em>size</em> attribute as the predictor.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplIG9mIHRoZSBob3VzZS5cbiMgVGh1cyB0aGlzIGlzIGFuIGV4YW1wbGUgb2Ygc2ltcGxlIGxpbmVhciByZWdyZXNzaW9uIHNpbmNlIG9ubHkgb25lIHByZWRpY3RvciBhbmQgb25lIG91dHB1dCB2YWx1ZSBpcyB1c2VkLlxuc2ltcGxlLmZpdCA8LSBsbShQcmljZX5TaXplLGRhdGE9dHJhaW4pXG5cbiMgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkoc2ltcGxlLmZpdClcblxuIyBMaW5lYXIgcmVsYXRpb24gYmV0d2VlbiB0aGUgUHJpY2UgYW5kIFNpemUgYXR0cmlidXRlLlxucGxvdCh0cmFpbiRTaXplLHRyYWluJFByaWNlKVxuYWJsaW5lKHNpbXBsZS5maXQgLCBjb2w9XCJyZWRcIilcblxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2Uuc2ltcGxlIDwtIHByZWRpY3Qoc2ltcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnNpbXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSBvZiB0aGUgaG91c2UuXG4jIFRodXMgdGhpcyBpcyBhbiBleGFtcGxlIG9mIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBzaW5jZSBvbmx5IG9uZSBwcmVkaWN0b3IgYW5kIG9uZSBvdXRwdXQgdmFsdWUgaXMgdXNlZC5cbnNpbXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSxkYXRhPXRyYWluKVxuXG4jIHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KHNpbXBsZS5maXQpXG5cbiMgTGluZWFyIHJlbGF0aW9uIGJldHdlZW4gdGhlIFByaWNlIGFuZCBTaXplIGF0dHJpYnV0ZS5cbnBsb3QodHJhaW4kU2l6ZSx0cmFpbiRQcmljZSlcbmFibGluZShzaW1wbGUuZml0ICwgY29sPVwicmVkXCIpXG5cbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnNpbXBsZSA8LSBwcmVkaWN0KHNpbXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5zaW1wbGUpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKSJ9
 </div>
-<p>We can see that,
-- The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
-- The plot of <em>Size</em> vs <em>Price</em>, and the red line represents the fitted line or the linear model line which will be used for prediction.
-- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6).</p>
+<p>We can see that,</p>
+<ul>
+<li>The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.</li>
+<li>The plot of <em>Size</em> vs <em>Price</em>, and the red line represents the fitted line or the linear model line which will be used for prediction.</li>
+<li>The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6).</li>
+</ul>
 <p>We saw above an example of simple linear regression model, where only one predictor was used for predicting a single output attribute.</p>
 <p>Now we will see an example of <em>multiple linear regression</em> model, where there can be multiple predictors to predict a single output attribute. (Note: Please do not confuse this with the <em>multivariate linear regression</em>.)</p>
 <p>Let look at an example of predicting the <em>Price</em> of the real estate, based on 3 attributes <em>Size, Number of Bedrooms and Number of Bathrooms</em>.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplLCBiYXRocm9vbXMgYW5kIGJlZHJvb21zIG9mIHRoZSBob3VzZS5cbiMgVGh1cyB0aGlzIGlzIGFuIGV4YW1wbGUgb2YgbXVsdGlwbGUgbGluZWFyIHJlZ3Jlc3Npb24gc2luY2UgbXVsdGlwbGUgcHJlZGljdG9yIGFuZCBvbmUgb3V0cHV0IHZhbHVlIGlzIHVzZWQuXG5tdWx0aXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSArIEJhdGhyb29tcyArIEJlZHJvb21zLGRhdGE9dHJhaW4pXG5cbiMgc3VtbWFyeSBvZiB0aGUgbW9kZWxcbnN1bW1hcnkobXVsdGlwbGUuZml0KVxuXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5tdWx0aXBsZSA8LSBwcmVkaWN0KG11bHRpcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLm11bHRpcGxlKSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSkifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG4jIFRodXMgdGhpcyBpcyBhbiBleGFtcGxlIG9mIG11bHRpcGxlIGxpbmVhciByZWdyZXNzaW9uIHNpbmNlIG11bHRpcGxlIHByZWRpY3RvciBhbmQgb25lIG91dHB1dCB2YWx1ZSBpcyB1c2VkLlxubXVsdGlwbGUuZml0IDwtIGxtKFByaWNlflNpemUgKyBCYXRocm9vbXMgKyBCZWRyb29tcyxkYXRhPXRyYWluKVxuXG4jIHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG11bHRpcGxlLmZpdClcblxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2UubXVsdGlwbGUgPC0gcHJlZGljdChtdWx0aXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5tdWx0aXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpIn0=
 </div>
-<p>We can see that,
-- The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
-- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the previous model based on just the <em>Size</em> as predictor, here, when we used 3 predictors, we have more accurate predictions, thus increasing the overall accuracy of the model.</p>
+<p>We can see that,</p>
+<ul>
+<li>The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.</li>
+<li>The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the previous model based on just the <em>Size</em> as predictor, here, when we used 3 predictors, we have more accurate predictions, thus increasing the overall accuracy of the model.</li>
+</ul>
 <hr />
 </div>
 <div id="mse" class="section level3" number="8.1.2">
 <h3><span class="header-section-number">8.1.2</span> Calculating the Error using mse()</h3>
 <p>As was the simple case in the categorical predictions of the classification models, where we could just compare the predicted categories and the actual categories, this type of direct comparison as an accuracy test won’t prove useful now in our numerical predictions scenario.</p>
 <p>Also we don’t want to eyeball everytime we predict, to find the accuracy of our predictions each row by row, so lets see a method to calculate the accuracy of our predictions, using some statistical technique.</p>
-<p>To do this we will use the Mean Squared Error(MSE).
-- The MSE is a measure of the quality of an predictor/estimator
-- It is always non-negative
-- Values closer to zero are better.</p>
+<p>To do this we will use the Mean Squared Error(MSE).</p>
+<ul>
+<li>The MSE is a measure of the quality of an predictor/estimator</li>
+<li>It is always non-negative</li>
+<li>Values closer to zero are better.</li>
+</ul>
 <p>The equation to calculate the MSE is as follows:</p>
 <p><span class="math display">\[\begin{equation}
 MSE=\frac{1}{n} \sum_{i=1}^{n}{(Y_i - \hat{Y_i})^2}
 \\ \text{where $n$ is the number of data points, $Y_i$ are the observed value}\\ \text{and $\hat{Y_i}$ are the predicted values}
 \end{equation}\]</span></p>
 <p>To implement this, we will use the <em>mse()</em> function present in the Metrics Package, so remember to install the Metrics package and use <code>library(Metrics)</code> in the code for local use.</p>
-<p>The syntax for <em>mse()</em> function is very simple:
-- <code>mse(actual,predicted)</code>
-- <em>actual</em>: vector of the actual values of the attribute we want to predict.
-- <em>predicted</em>: vector of the predicted values obtained using our model.</p>
+<p>The syntax for <em>mse()</em> function is very simple:</p>
+<ul>
+<li><code>mse(actual,predicted)</code>
+<ul>
+<li><em>actual</em>: vector of the actual values of the attribute we want to predict.</li>
+<li><em>predicted</em>: vector of the predicted values obtained using our model.</li>
+</ul></li>
+</ul>
 <p>Now lets look at the MSE of the previous example.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSB0aGUgbG0oKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiBzaXplIG9mIHRoZSBob3VzZS5cbnNpbXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSxkYXRhPXRyYWluKVxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2Uuc2ltcGxlIDwtIHByZWRpY3Qoc2ltcGxlLmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnNpbXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpXG5cbiMgTGV0cyB1c2UgdGhlIG1zZSgpIGZ1bmN0aW9uIHRvIFxubXNlKHRlc3QkUHJpY2UsUHJlZGljdGVkUHJpY2Uuc2ltcGxlKSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSBvZiB0aGUgaG91c2UuXG5zaW1wbGUuZml0IDwtIGxtKFByaWNlflNpemUsZGF0YT10cmFpbilcbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnNpbXBsZSA8LSBwcmVkaWN0KHNpbXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5zaW1wbGUpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKVxuXG4jIExldHMgdXNlIHRoZSBtc2UoKSBmdW5jdGlvbiB0byBcbm1zZSh0ZXN0JFByaWNlLFByZWRpY3RlZFByaWNlLnNpbXBsZSkifQ==
 </div>
 <p>We can see the MSE is too large above 200 billion, and this is huge value could be understandable as we are taking the squared differences of all the records that we predicted.</p>
 <p>The main intention is to get this huge value to as low as possible possibly near zero, which could be difficult but can be achieved upto a relative error by using a better model and training data.</p>
@@ -440,16 +451,18 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8
 <p>For more details on the use of Rpart for prediction please refer to section <a href="classification.html#rpart">6.2</a>.</p>
 <p>Lets look at an example of regression based prediction using Rpart for the <em>Price</em> attribute of the Real estate Dataset with <em>Size, Number of Bedrooms and Number of Bathrooms</em> as predictors.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG4jIHJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpIFxuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcbnRyYWluIDwtIHJlYWxlc3RhdGVbMTo2MDAsXVxudGVzdCA8LSByZWFsZXN0YXRlWzYwMTo3ODEsXVxuXG4jIFVzZSBvZiB0aGUgcnBhcnQoKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiB0aGUgc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG5ycGFydC5maXQgPC0gcnBhcnQoUHJpY2V+U2l6ZStCYXRocm9vbXMrQmVkcm9vbXMsZGF0YT10cmFpbixtZXRob2QgPSBcImFub3ZhXCIpXG5cbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnJwYXJ0IDwtIHByZWRpY3QocnBhcnQuZml0LHRlc3QpXG4jIFByZWRpY3RlZCBWYWx1ZXNcbmhlYWQoYXMuaW50ZWdlcih1bm5hbWUoUHJlZGljdGVkUHJpY2UucnBhcnQpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKVxuXG4jIExldHMgdXNlIHRoZSBtc2UoKSBmdW5jdGlvbiB0byBcbm1zZSh0ZXN0JFByaWNlLFByZWRpY3RlZFByaWNlLnJwYXJ0KSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2Ugb2YgdGhlIHJwYXJ0KCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gdGhlIHNpemUsIGJhdGhyb29tcyBhbmQgYmVkcm9vbXMgb2YgdGhlIGhvdXNlLlxucnBhcnQuZml0IDwtIHJwYXJ0KFByaWNlflNpemUrQmF0aHJvb21zK0JlZHJvb21zLGRhdGE9dHJhaW4sbWV0aG9kID0gXCJhbm92YVwiKVxuXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5ycGFydCA8LSBwcmVkaWN0KHJwYXJ0LmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnJwYXJ0KSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSlcblxuIyBMZXRzIHVzZSB0aGUgbXNlKCkgZnVuY3Rpb24gdG8gXG5tc2UodGVzdCRQcmljZSxQcmVkaWN0ZWRQcmljZS5ycGFydCkifQ==
 </div>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/rpartanova.svg" alt="" />
 <p class="caption">Output tree plot of rpart() model using for regression using “anova” method</p>
 </div>
-<p>We can see,
-- The output decision tree of the <em>rpart()</em> function
-- The predicted values obtained using the model created by the rpart() function.
-- The MSE of the model on the testing dataset.</p>
+<p>We can see,</p>
+<ul>
+<li>The output decision tree of the <em>rpart()</em> function</li>
+<li>The predicted values obtained using the model created by the rpart() function.</li>
+<li>The MSE of the model on the testing dataset.</li>
+</ul>
 <p>An important point to note while using decision trees for regression purpose, is that since the underlying process of modeling is still a decision tree, the output still represent a set of distinct classes, even though the values of the classes are numeric. Thus we can see that the predicted values are repeated even for varying inputs.</p>
 <p>Hence Decision tree must be used carefully when used for regression based prediction models.</p>
 <hr />

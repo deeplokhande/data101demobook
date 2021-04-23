@@ -93,6 +93,7 @@ lm
 mse
 regression-using-rpart
 models
-random-forest
+modelsin4lines
+randomforest
 svm
 nnet

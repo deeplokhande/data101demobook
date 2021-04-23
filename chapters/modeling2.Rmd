@@ -7,9 +7,9 @@ knitr::opts_chunk$set(echo = TRUE,error=TRUE)
 ```
 
 
-In the previous chapter \@ref(classification) we studied modeling and prediction techniques for Classification, where we predicted the class of the output variable, using Decision tree based algorithms.
+In chapter \@ref(classification) we studied modeling and prediction techniques for Classification, where we predicted the class of the output variable, using Decision tree based algorithms.
 
-In this chapter we will study techniques for regression based prediction and model simple algorithms for it. As opposite the the classification where we predict a particular class of the output variable, here we will predict a numerical/continuous value.
+In this chapter we will study techniques for regression based prediction and create models for it. As opposite the the classification where we predict a particular class of the output variable, here we will predict a numerical/continuous value.
 
 We will look at two methods of performing this regression based modeling and prediction, first simple linear regression and second regression using decision tree.
 
@@ -64,9 +64,8 @@ For the first example we will predict the price value of house using only  *size
 
 ```{r}
 # Load the dataset.
-# realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv") 
+realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-realestate<-read.csv("../files/dataset/RealEstate.csv")
 train <- realestate[1:600,]
 test <- realestate[601:781,]
 
@@ -89,6 +88,7 @@ head(as.integer(unname(PredictedPrice.simple)))
 head(test$Price)
 ```
 We can see that,
+
 - The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
 - The plot of *Size* vs *Price*, and the red line represents the fitted line or the linear model line which will be used for prediction.
 - The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6). 
@@ -102,9 +102,8 @@ Let look at an example of predicting the *Price* of the real estate, based on 3 
 
 ```{r}
 # Load the dataset.
-# realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv") 
+realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-realestate<-read.csv("../files/dataset/RealEstate.csv")
 train <- realestate[1:600,]
 test <- realestate[601:781,]
 
@@ -123,6 +122,7 @@ head(as.integer(unname(PredictedPrice.multiple)))
 head(test$Price)
 ```
 We can see that,
+
 - The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
 - The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the previous model based on just the *Size* as predictor, here, when we used 3 predictors, we have more accurate predictions, thus increasing the overall accuracy of the model.
 
@@ -135,6 +135,7 @@ As was the simple case in the categorical predictions of the classification mode
 Also we don't want to eyeball everytime we predict, to find the accuracy of our predictions each row by row, so lets see a method to calculate the accuracy of our predictions, using some statistical technique.
 
 To do this we will use the Mean Squared Error(MSE).
+
 - The MSE is a measure of the quality of an predictor/estimator
 - It is always non-negative
 - Values closer to zero are better.
@@ -149,6 +150,7 @@ MSE=\frac{1}{n} \sum_{i=1}^{n}{(Y_i - \hat{Y_i})^2}
 To implement this, we will use the *mse()* function present in the Metrics Package, so remember to install the Metrics package and use `library(Metrics)` in the code for local use.
 
 The syntax for *mse()* function is very simple:
+
 - `mse(actual,predicted)`
   - *actual*: vector of the actual values of the attribute we want to predict.
   - *predicted*: vector of the predicted values obtained using our model.
@@ -157,9 +159,8 @@ Now lets look at the MSE of the previous example.
 
 ```{r}
 # Load the dataset.
-# realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv") 
+realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-realestate<-read.csv("../files/dataset/RealEstate.csv")
 train <- realestate[1:600,]
 test <- realestate[601:781,]
 
@@ -196,9 +197,8 @@ Lets look at an example of regression based prediction using Rpart for the *Pric
 library(rpart)
 
 # Load the dataset.
-# realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv") 
+realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-realestate<-read.csv("../files/dataset/RealEstate.csv")
 train <- realestate[1:600,]
 test <- realestate[601:781,]
 
@@ -219,6 +219,7 @@ mse(test$Price,PredictedPrice.rpart)
 ![Output tree plot of rpart() model using for regression using "anova" method](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/rpartanova.svg)
 
 We can see,
+
 - The output decision tree of the *rpart()* function
 - The predicted values obtained using the model created by the rpart() function.
 - The MSE of the model on the testing dataset.
@@ -232,11 +233,73 @@ EOC
 
 # Additional Modeling techniques.* {#models}
 
+In this chapter, we will see some additional machine learning models used in practice, for various purpose.
+
+After studying both classification models and regression models in the previous 2 chapters \@ref(classification) & \@ref(regression) respectively,  we will now look into other generic models used for classification and/or regression purpose.
+
+Below is the list some of the widely used algorithms with their use case(either classification/regression or both) and training and prediction complexities for using particular learning models.
 
 ![Usage and Complexity of various machine learning algorithms. Credits:thekerneltrip.com](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/MLmodelcomplexity.png)
 
+As we can see that many of these algorithms can be used for classification and regression all together, as we saw in the case of the Decision tree models using Rpart in section \@ref(decisiontree), and also some model used for only a particular type of prediction e.g. linear regression.
 
-## Random Forest*
+We will look at few algorithms from the above list:
+
+- Random Forest
+- Support Vector Machine (SVM)
+- Neural Metworks
+- and also Linear Discriminant Analysis (LDA)
+
+## Four Line Method for creating most type of prediction models in R {#modelsin4lines}
+But before we learn about these algorithms, let us see a four line method to build models using any of the above algorithms using R.
+
+We can safely assume that the data going to be used to build the model, has been pre-processed and based on requirements split into the required subsets. To see how to split the data refer to section \@ref(splitdata).
+
+0. The zeroth step now will be obviously to install and load the packages that contain the ML algorithm. To do that on your local machine, use the following code.
+``` text
+# Install the library
+install.packages("package name")
+
+# Load the library in R
+library(package_name)
+```
+1. Once we have the algorithm library loaded, we then proceed to build the model.
+- `pred.model = model_function(formula, data, method*)`
+  - *model_function()*: the function present in the library to build the model. e.g. *rpart()* 
+  - *formula*: here we mention the prediction column and the other related columns(predictors) on which the prediction will be based on. 
+    - `prediction ~ predictor1 + predictor2 + predictor3 + ...`
+  - *data*: here we provide the dataset on which the ML model is to be trained on. Remember never used the test data to build the model.
+  - *method*: (OPTIONAL) Used to denote the method of prediction or underlying algorithm. This parameter could be present in some model_function() but not all.
+2. Prediction using the predict() function on the training data to assess the models performance/accuracy in next step.
+- `pred = predict(pred.model, newdata = train)`
+  - *predict()*: the common function for all models used for prediction.
+  - *pred.model*: output of the step 1.
+  - *newdata*: here we assign the data on which the prediction is to be done.
+3. Evaluate error in Training phase. We use the mse() function for finding the accuracy of the model. To read more in dept about the mse() function refer to section \@ref(mse).
+- `mse(actual, pred)`
+  - *actual*: vector of the actual values of the attribute we want to predict.
+  - *pred*: vector of the predicted values obtained using our model.
+
+Repeat steps 2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.
+
+4. Finally we predict on the testing data using the same predict function as in step 2 but replacing the train data with test data.
+- `pred = predict(pred.model, newdata = test)`
+
+These are the 4 steps to follow while performing any prediction task using ML models in R.
+
+We can also add one more step between step 3 and 4, which is step of performing the cross validation process on the newly built models. 
+
+This can be done either manually, or by using third party libraries. 
+
+One such library is the `rModeling` package, which has function *crossValidation()* which can be used for any type of model_functions(). For more information visit [crossValidation()](https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation)
+
+
+Now that we saw the general structure of the model lets look at few of the algorithms as we promised from the list above.
+
+## Random Forest {#randomforest}
+
+
+
 
 ## SVM*
 

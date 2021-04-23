@@ -247,9 +247,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="9" data-path="models.html"><a href="models.html"><i class="fa fa-check"></i><b>9</b> Additional Modeling techniques.*</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="models.html"><a href="models.html#random-forest"><i class="fa fa-check"></i><b>9.1</b> Random Forest*</a></li>
-<li class="chapter" data-level="9.2" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.2</b> SVM*</a></li>
-<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.3</b> nnet*</a></li>
+<li class="chapter" data-level="9.1" data-path="models.html"><a href="models.html#modelsin4lines"><i class="fa fa-check"></i><b>9.1</b> Four Line Method for creating most type of prediction models in R</a></li>
+<li class="chapter" data-level="9.2" data-path="models.html"><a href="models.html#randomforest"><i class="fa fa-check"></i><b>9.2</b> Random Forest</a></li>
+<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.3</b> SVM*</a></li>
+<li class="chapter" data-level="9.4" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.4</b> nnet*</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -273,18 +274,90 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="models" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Additional Modeling techniques.*</h1>
+<p>In this chapter, we will see some additional machine learning models used in practice, for various purpose.</p>
+<p>After studying both classification models and regression models in the previous 2 chapters <a href="classification.html#classification">6</a> &amp; <a href="regression.html#regression">8</a> respectively, we will now look into other generic models used for classification and/or regression purpose.</p>
+<p>Below is the list some of the widely used algorithms with their use case(either classification/regression or both) and training and prediction complexities for using particular learning models.</p>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/MLmodelcomplexity.png" alt="" />
 <p class="caption">Usage and Complexity of various machine learning algorithms. Credits:thekerneltrip.com</p>
 </div>
-<div id="random-forest" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Random Forest*</h2>
+<p>As we can see that many of these algorithms can be used for classification and regression all together, as we saw in the case of the Decision tree models using Rpart in section <a href="classification.html#decisiontree">6.1</a>, and also some model used for only a particular type of prediction e.g. linear regression.</p>
+<p>We will look at few algorithms from the above list:</p>
+<ul>
+<li>Random Forest</li>
+<li>Support Vector Machine (SVM)</li>
+<li>Neural Metworks</li>
+<li>and also Linear Discriminant Analysis (LDA)</li>
+</ul>
+<div id="modelsin4lines" class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> Four Line Method for creating most type of prediction models in R</h2>
+<p>But before we learn about these algorithms, let us see a four line method to build models using any of the above algorithms using R.</p>
+<p>We can safely assume that the data going to be used to build the model, has been pre-processed and based on requirements split into the required subsets. To see how to split the data refer to section <a href="classification.html#splitdata">6.6</a>.</p>
+<ol start="0" style="list-style-type: decimal">
+<li>The zeroth step now will be obviously to install and load the packages that contain the ML algorithm. To do that on your local machine, use the following code.</li>
+</ol>
+<pre class="text"><code># Install the library
+install.packages(&quot;package name&quot;)
+
+# Load the library in R
+library(package_name)</code></pre>
+<ol style="list-style-type: decimal">
+<li>Once we have the algorithm library loaded, we then proceed to build the model.</li>
+</ol>
+<ul>
+<li><code>pred.model = model_function(formula, data, method*)</code>
+<ul>
+<li><em>model_function()</em>: the function present in the library to build the model. e.g. <em>rpart()</em></li>
+<li><em>formula</em>: here we mention the prediction column and the other related columns(predictors) on which the prediction will be based on.
+<ul>
+<li><code>prediction ~ predictor1 + predictor2 + predictor3 + ...</code></li>
+</ul></li>
+<li><em>data</em>: here we provide the dataset on which the ML model is to be trained on. Remember never used the test data to build the model.</li>
+<li><em>method</em>: (OPTIONAL) Used to denote the method of prediction or underlying algorithm. This parameter could be present in some model_function() but not all.</li>
+</ul></li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li>Prediction using the predict() function on the training data to assess the models performance/accuracy in next step.</li>
+</ol>
+<ul>
+<li><code>pred = predict(pred.model, newdata = train)</code>
+<ul>
+<li><em>predict()</em>: the common function for all models used for prediction.</li>
+<li><em>pred.model</em>: output of the step 1.</li>
+<li><em>newdata</em>: here we assign the data on which the prediction is to be done.</li>
+</ul></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Evaluate error in Training phase. We use the mse() function for finding the accuracy of the model. To read more in dept about the mse() function refer to section <a href="regression.html#mse">8.1.2</a>.</li>
+</ol>
+<ul>
+<li><code>mse(actual, pred)</code>
+<ul>
+<li><em>actual</em>: vector of the actual values of the attribute we want to predict.</li>
+<li><em>pred</em>: vector of the predicted values obtained using our model.</li>
+</ul></li>
+</ul>
+<p>Repeat steps 2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.</p>
+<ol start="4" style="list-style-type: decimal">
+<li>Finally we predict on the testing data using the same predict function as in step 2 but replacing the train data with test data.</li>
+</ol>
+<ul>
+<li><code>pred = predict(pred.model, newdata = test)</code></li>
+</ul>
+<p>These are the 4 steps to follow while performing any prediction task using ML models in R.</p>
+<p>We can also add one more step between step 3 and 4, which is step of performing the cross validation process on the newly built models.</p>
+<p>This can be done either manually, or by using third party libraries.</p>
+<p>One such library is the <code>rModeling</code> package, which has function <em>crossValidation()</em> which can be used for any type of model_functions(). For more information visit <a href="https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation">crossValidation()</a></p>
+<p>Now that we saw the general structure of the model lets look at few of the algorithms as we promised from the list above.</p>
 </div>
-<div id="svm" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> SVM*</h2>
+<div id="randomforest" class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Random Forest</h2>
 </div>
-<div id="nnet" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> nnet*</h2>
+<div id="svm" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> SVM*</h2>
+</div>
+<div id="nnet" class="section level2" number="9.4">
+<h2><span class="header-section-number">9.4</span> nnet*</h2>
 
 </div>
 </div>

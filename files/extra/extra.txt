@@ -1,3 +1,6 @@
 svg("../files/img/modeling/rcontrolsplit.svg")
 rpart.plot(tree,extra = 2)
 dev.off()
+
+
+# housing<-read.csv("../files/dataset/housing_prices.csv",stringsAsFactors = T)

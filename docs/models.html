@@ -49,6 +49,8 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -274,6 +276,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="models" class="section level1" number="9">
 <h1><span class="header-section-number">Chapter 9</span> Additional Modeling techniques.*</h1>
+<script src="files/js/dcl.js"></script>
 <p>In this chapter, we will see some additional machine learning models used in practice, for various purpose.</p>
 <p>After studying both classification models and regression models in the previous 2 chapters <a href="classification.html#classification">6</a> &amp; <a href="regression.html#regression">8</a> respectively, we will now look into other generic models used for classification and/or regression purpose.</p>
 <p>Below is the list some of the widely used algorithms with their use case(either classification/regression or both) and training and prediction complexities for using particular learning models.</p>
@@ -289,6 +292,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Neural Metworks</li>
 <li>and also Linear Discriminant Analysis (LDA)</li>
 </ul>
+<hr />
 <div id="modelsin4lines" class="section level2" number="9.1">
 <h2><span class="header-section-number">9.1</span> Four Line Method for creating most type of prediction models in R</h2>
 <p>But before we learn about these algorithms, let us see a four line method to build models using any of the above algorithms using R.</p>
@@ -337,7 +341,7 @@ library(package_name)</code></pre>
 <li><em>pred</em>: vector of the predicted values obtained using our model.</li>
 </ul></li>
 </ul>
-<p>Repeat steps 2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.</p>
+<p>Repeat steps 0,1,2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.</p>
 <ol start="4" style="list-style-type: decimal">
 <li>Finally we predict on the testing data using the same predict function as in step 2 but replacing the train data with test data.</li>
 </ol>
@@ -348,10 +352,419 @@ library(package_name)</code></pre>
 <p>We can also add one more step between step 3 and 4, which is step of performing the cross validation process on the newly built models.</p>
 <p>This can be done either manually, or by using third party libraries.</p>
 <p>One such library is the <code>rModeling</code> package, which has function <em>crossValidation()</em> which can be used for any type of model_functions(). For more information visit <a href="https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation">crossValidation()</a></p>
-<p>Now that we saw the general structure of the model lets look at few of the algorithms as we promised from the list above.</p>
+<p>Before we proceed to the next section, please look at the snippet of the <em>housing_price.csv</em> dataset, which we will be using for predicting the <em>median_house_values</em> attribute based on various other attributes provided in the dataset, using different prediction models.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-101">Table 9.1: </span>Snippet of Housing Price Dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+longitude
+</th>
+<th style="text-align:right;">
+latitude
+</th>
+<th style="text-align:right;">
+housing_median_age
+</th>
+<th style="text-align:right;">
+total_rooms
+</th>
+<th style="text-align:right;">
+total_bedrooms
+</th>
+<th style="text-align:right;">
+population
+</th>
+<th style="text-align:right;">
+households
+</th>
+<th style="text-align:right;">
+median_income
+</th>
+<th style="text-align:left;">
+ocean_proximity
+</th>
+<th style="text-align:right;">
+median_house_value
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+13120
+</td>
+<td style="text-align:right;">
+-121.29
+</td>
+<td style="text-align:right;">
+38.36
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+2193
+</td>
+<td style="text-align:right;">
+386
+</td>
+<td style="text-align:right;">
+1148
+</td>
+<td style="text-align:right;">
+372
+</td>
+<td style="text-align:right;">
+4.5272
+</td>
+<td style="text-align:left;">
+INLAND
+</td>
+<td style="text-align:right;">
+191700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4048
+</td>
+<td style="text-align:right;">
+-118.51
+</td>
+<td style="text-align:right;">
+34.14
+</td>
+<td style="text-align:right;">
+28
+</td>
+<td style="text-align:right;">
+6748
+</td>
+<td style="text-align:right;">
+904
+</td>
+<td style="text-align:right;">
+2431
+</td>
+<td style="text-align:right;">
+876
+</td>
+<td style="text-align:right;">
+12.8879
+</td>
+<td style="text-align:left;">
+&lt;1H OCEAN
+</td>
+<td style="text-align:right;">
+500001
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5386
+</td>
+<td style="text-align:right;">
+-118.41
+</td>
+<td style="text-align:right;">
+34.03
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:right;">
+3711
+</td>
+<td style="text-align:right;">
+1192
+</td>
+<td style="text-align:right;">
+1764
+</td>
+<td style="text-align:right;">
+1147
+</td>
+<td style="text-align:right;">
+3.1642
+</td>
+<td style="text-align:left;">
+&lt;1H OCEAN
+</td>
+<td style="text-align:right;">
+366700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+15334
+</td>
+<td style="text-align:right;">
+-117.33
+</td>
+<td style="text-align:right;">
+33.22
+</td>
+<td style="text-align:right;">
+21
+</td>
+<td style="text-align:right;">
+2868
+</td>
+<td style="text-align:right;">
+602
+</td>
+<td style="text-align:right;">
+855
+</td>
+<td style="text-align:right;">
+559
+</td>
+<td style="text-align:right;">
+2.7846
+</td>
+<td style="text-align:left;">
+NEAR OCEAN
+</td>
+<td style="text-align:right;">
+91200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8358
+</td>
+<td style="text-align:right;">
+-118.32
+</td>
+<td style="text-align:right;">
+33.96
+</td>
+<td style="text-align:right;">
+47
+</td>
+<td style="text-align:right;">
+1885
+</td>
+<td style="text-align:right;">
+361
+</td>
+<td style="text-align:right;">
+954
+</td>
+<td style="text-align:right;">
+357
+</td>
+<td style="text-align:right;">
+3.8512
+</td>
+<td style="text-align:left;">
+&lt;1H OCEAN
+</td>
+<td style="text-align:right;">
+171300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11474
+</td>
+<td style="text-align:right;">
+-117.99
+</td>
+<td style="text-align:right;">
+33.71
+</td>
+<td style="text-align:right;">
+18
+</td>
+<td style="text-align:right;">
+1994
+</td>
+<td style="text-align:right;">
+578
+</td>
+<td style="text-align:right;">
+3031
+</td>
+<td style="text-align:right;">
+577
+</td>
+<td style="text-align:right;">
+2.7614
+</td>
+<td style="text-align:left;">
+&lt;1H OCEAN
+</td>
+<td style="text-align:right;">
+237500
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11716
+</td>
+<td style="text-align:right;">
+-120.12
+</td>
+<td style="text-align:right;">
+39.18
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:right;">
+2839
+</td>
+<td style="text-align:right;">
+525
+</td>
+<td style="text-align:right;">
+390
+</td>
+<td style="text-align:right;">
+189
+</td>
+<td style="text-align:right;">
+3.5667
+</td>
+<td style="text-align:left;">
+INLAND
+</td>
+<td style="text-align:right;">
+179200
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5809
+</td>
+<td style="text-align:right;">
+-118.26
+</td>
+<td style="text-align:right;">
+34.14
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+1727
+</td>
+<td style="text-align:right;">
+506
+</td>
+<td style="text-align:right;">
+1200
+</td>
+<td style="text-align:right;">
+439
+</td>
+<td style="text-align:right;">
+4.1083
+</td>
+<td style="text-align:left;">
+&lt;1H OCEAN
+</td>
+<td style="text-align:right;">
+210700
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+17442
+</td>
+<td style="text-align:right;">
+-120.45
+</td>
+<td style="text-align:right;">
+34.66
+</td>
+<td style="text-align:right;">
+7
+</td>
+<td style="text-align:right;">
+3329
+</td>
+<td style="text-align:right;">
+504
+</td>
+<td style="text-align:right;">
+1462
+</td>
+<td style="text-align:right;">
+452
+</td>
+<td style="text-align:right;">
+4.7875
+</td>
+<td style="text-align:left;">
+NEAR OCEAN
+</td>
+<td style="text-align:right;">
+198300
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2278
+</td>
+<td style="text-align:right;">
+-119.79
+</td>
+<td style="text-align:right;">
+36.81
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:right;">
+1461
+</td>
+<td style="text-align:right;">
+261
+</td>
+<td style="text-align:right;">
+494
+</td>
+<td style="text-align:right;">
+254
+</td>
+<td style="text-align:right;">
+4.2500
+</td>
+<td style="text-align:left;">
+INLAND
+</td>
+<td style="text-align:right;">
+132200
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>.</p>
+<p>Now that we saw the general structure of the model and took a glace at the dataset we will be using, lets look at few of the algorithms as we promised from the list above.</p>
+<hr />
 </div>
 <div id="randomforest" class="section level2" number="9.2">
 <h2><span class="header-section-number">9.2</span> Random Forest</h2>
+<p>Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time and outputting the value that is the mode of the classes (classification) or mean/average prediction (regression) of the individual trees.</p>
+<p>In simpler terms, the random forest algorithm creates multiple decision trees based on varying attributes and biases, and then predicts the output for each tree, and aggregates this prediction into one final output by some technique like majority count or average/etc.</p>
+<p>The main idea behind Random Forest arise from a method called ensemble learning method.</p>
+<p>Ensemble learning is the method of solving a problem by building multiple ML models and combining them. It is primarily used to improve the performance of classification, prediction, and function approximation models.</p>
+<p>Forests are type of ensemble learning methods, where they act like, pulling together all of decision tree algorithm efforts. Taking the teamwork of many trees thus improving the performance of a single random decision tree.</p>
+<p>Random decision forests correct for decision trees’ habit of overfitting to their training set.</p>
+<p>Now lets look at an example of prediction by the random forest model using the <em>randomForest()</em> function present in the <code>randomForest</code> library package.</p>
+<p>Thus following the 4 step method of prediction for predicting a numerical attribute “median_house_value” using the randomForest() function.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJhbmRvbUZvcmVzdClcbmxpYnJhcnkoTW9kZWxNZXRyaWNzKVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG5ob3VzaW5nPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9ob3VzaW5nX3ByaWNlcy5jc3ZcIixzdHJpbmdzQXNGYWN0b3JzID0gVClcblxuIyBzcGxpdGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhob3VzaW5nKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC43LCAuMykpXG50cmFpbiA8LSBob3VzaW5nW2lkeCA9PSAxLF1cbnRlc3QgPC0gaG91c2luZ1tpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyByYW5kb21Gb3Jlc3QoKSBmdW5jdGlvbi5cbnByZWQubW9kZWwgPC0gcmFuZG9tRm9yZXN0KG1lZGlhbl9ob3VzZV92YWx1ZSB+LiwgZGF0YSA9IHRyYWluKVxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRtZWRpYW5faG91c2VfdmFsdWUscHJlZC50cmFpbilcblxuIyA0LiBQcmVkaWN0IG9uIHRoZSB0ZXN0aW5nIGRhdGEuXG5wcmVkLnRlc3QgPC0gcHJlZGljdChwcmVkLm1vZGVsLG5ld2RhdGEgPSB0ZXN0KVxuXG4jIEFkZGl0aW9uYWxseSBzaW5jZSBoZXJlIHdlIGhhdmUgdGhlIGFjdHVhbC9yZWFsIHByZWRpY3Rpb24gdmFsdWVzIHdlIGNhbiBhbHNvIGNoZWNrIHRoZSBhY2N1cmFjeSBvZiBvdXIgcHJlZGljdGlvbiBvbiB0ZXN0aW5nIGRhdGEuXG5tc2UodGVzdCRtZWRpYW5faG91c2VfdmFsdWUscHJlZC50ZXN0KSJ9
+</div>
 </div>
 <div id="svm" class="section level2" number="9.3">
 <h2><span class="header-section-number">9.3</span> SVM*</h2>

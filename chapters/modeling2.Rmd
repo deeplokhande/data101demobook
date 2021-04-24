@@ -17,14 +17,16 @@ We will look at two methods of performing this regression based modeling and pre
 
 ## Linear Regression.
 
-Linear regression is a linear approach to modeling the relationship between a *scalar* response and one or more *explanatory* variables(also known as dependent and independent variables.)
+Linear regression is a linear approach to modeling the relationship between a *scalar* response ($Y$) and one or more *explanatory* variables($X_i$, where i is the number of explanatory variables).
 
-- Scalar response means the predicted output.
-  - Usually in linear regression, models are used to predict only one scalar variable. This type of linear regression model known as *simple linear regression*.
-  - But in the case of prediction of multiple correlated output variables, this type of prediction using linear regression model is called *multivariate linear regression*.
-- Explanatory variables are the predictors on which the output predictions are based on. In the regression setting there can be two type of explanatory variables, 
-  - The dependent variables i.e. they are derived by applying some law/rule or function onto some other variable/s
-  - The independent variables which are independently sufficient to used are predictors while use in regression.
+- Scalar response means the predicted output. These variables are also known as dependent variables i.e. they are derived by applying some law/rule or function onto some other variable/s
+  - Usually in linear regression, models are used to predict only one scalar variable. But there are two subtype if these models:
+    - First when there is only one explanatory variable and one output variable. This type of linear regression model known as *simple linear regression*.
+    - Second, when there are multiple predictors, i.e. explanatory/dependent variables for the output variable. This type of linear regression model known as *multiple linear regression*.
+  - But in the case of prediction of multiple correlated output variables, we call this type of prediction using linear regression model as *multivariate linear regression*.
+- Explanatory variables are the predictors on which the output predictions are based on. These variables are also known as independent variables and are independently sufficient to be used as predictors in regression models.
+
+![Linear models fitted to various different type of data spread. This illustrates the pitfalls of relying solely on a fitted model to understand the relationship between variables. Credits: Wikipedia.](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/lmvariants.svg)
 
 Since the relationship between the explanatory variables and the output variable is modeled linearly, these models are called as linear models. To do this, we need to find a linear regression equation for the set of input predictors and the output variable. 
 
@@ -63,11 +65,15 @@ Since we will be predicting only one attribute values, this model will be called
 For the first example we will predict the price value of house using only  *size* attribute as the predictor.
 
 ```{r}
+library(ModelMetrics)
+
 # Load the dataset.
 realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-train <- realestate[1:600,]
-test <- realestate[601:781,]
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(realestate), replace = TRUE, prob = c(.7, .3))
+train <- realestate[idx == 1,]
+test <- realestate[idx == 2,]
 
 # Use the lm() function to predict the price based on size of the house.
 # Thus this is an example of simple linear regression since only one predictor and one output value is used.
@@ -91,7 +97,7 @@ We can see that,
 
 - The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.
 - The plot of *Size* vs *Price*, and the red line represents the fitted line or the linear model line which will be used for prediction.
-- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6). 
+- The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close,some time far and few are very far. 
 
 
 We saw above an example of simple linear regression model, where only one predictor was used for predicting a single output attribute.
@@ -101,11 +107,16 @@ Now we will see an example of *multiple linear regression* model, where there ca
 Let look at an example of predicting the *Price* of the real estate, based on 3 attributes *Size, Number of Bedrooms and Number of Bathrooms*.
 
 ```{r}
+library(ModelMetrics)
+
 # Load the dataset.
 realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-train <- realestate[1:600,]
-test <- realestate[601:781,]
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(realestate), replace = TRUE, prob = c(.7, .3))
+train <- realestate[idx == 1,]
+test <- realestate[idx == 2,]
+
 
 # Use the lm() function to predict the price based on size, bathrooms and bedrooms of the house.
 # Thus this is an example of multiple linear regression since multiple predictor and one output value is used.
@@ -158,11 +169,15 @@ The syntax for *mse()* function is very simple:
 Now lets look at the MSE of the previous example.
 
 ```{r}
+library(ModelMetrics)
+
 # Load the dataset.
 realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-train <- realestate[1:600,]
-test <- realestate[601:781,]
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(realestate), replace = TRUE, prob = c(.7, .3))
+train <- realestate[idx == 1,]
+test <- realestate[idx == 2,]
 
 # Use the lm() function to predict the price based on size of the house.
 simple.fit <- lm(Price~Size,data=train)
@@ -195,12 +210,15 @@ Lets look at an example of regression based prediction using Rpart for the *Pric
 
 ```{r}
 library(rpart)
+library(ModelMetrics)
 
 # Load the dataset.
 realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv")
 
-train <- realestate[1:600,]
-test <- realestate[601:781,]
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(realestate), replace = TRUE, prob = c(.7, .3))
+train <- realestate[idx == 1,]
+test <- realestate[idx == 2,]
 
 # Use of the rpart() function to predict the price based on the size, bathrooms and bedrooms of the house.
 rpart.fit <- rpart(Price~Size+Bathrooms+Bedrooms,data=train,method = "anova")
@@ -233,6 +251,9 @@ EOC
 
 # Additional Modeling techniques.* {#models}
 
+<script src="files/js/dcl.js"></script>
+
+
 In this chapter, we will see some additional machine learning models used in practice, for various purpose.
 
 After studying both classification models and regression models in the previous 2 chapters \@ref(classification) & \@ref(regression) respectively,  we will now look into other generic models used for classification and/or regression purpose.
@@ -249,6 +270,8 @@ We will look at few algorithms from the above list:
 - Support Vector Machine (SVM)
 - Neural Metworks
 - and also Linear Discriminant Analysis (LDA)
+
+---
 
 ## Four Line Method for creating most type of prediction models in R {#modelsin4lines}
 But before we learn about these algorithms, let us see a four line method to build models using any of the above algorithms using R.
@@ -280,7 +303,7 @@ library(package_name)
   - *actual*: vector of the actual values of the attribute we want to predict.
   - *pred*: vector of the predicted values obtained using our model.
 
-Repeat steps 2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.
+Repeat steps 0,1,2 and 3 by changing the ML algorithm or manipulating dataset to perform better when used to train using ML model, so as to achieve as low MSE value as possible.
 
 4. Finally we predict on the testing data using the same predict function as in step 2 but replacing the train data with test data.
 - `pred = predict(pred.model, newdata = test)`
@@ -294,9 +317,66 @@ This can be done either manually, or by using third party libraries.
 One such library is the `rModeling` package, which has function *crossValidation()* which can be used for any type of model_functions(). For more information visit [crossValidation()](https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation)
 
 
-Now that we saw the general structure of the model lets look at few of the algorithms as we promised from the list above.
+Before we proceed to the next section, please look at the snippet of the *housing_price.csv* dataset, which we will be using for predicting the *median_house_values* attribute based on various other attributes provided in the dataset, using different prediction models.
+
+```{r,echo=FALSE,error=FALSE,warning=FALSE}
+library(kableExtra)
+housing<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/housing_prices.csv") #web load
+temp<-knitr::kable(housing[sample(nrow(housing),10),], caption = 'Snippet of Housing Price Dataset',booktabs=TRUE) 
+kableExtra::scroll_box(temp,width = "100%")
+```
+.
+
+Now that we saw the general structure of the model and took a glace at the dataset we will be using, lets look at few of the algorithms as we promised from the list above.
+
+---
 
 ## Random Forest {#randomforest}
+
+Random forests or random decision forests are an ensemble learning method for classification, regression and other tasks that operates by constructing a multitude of decision trees at training time and outputting the value that is the mode of the classes (classification) or mean/average prediction (regression) of the individual trees. 
+
+In simpler terms, the random forest  algorithm creates multiple decision trees based on varying attributes and biases, and then predicts the output for each tree, and aggregates this prediction into one final output by some technique like majority count or average/etc.
+
+The main idea behind Random Forest arise from a method called ensemble learning method.
+
+Ensemble learning is the method of solving a problem by building multiple ML models and combining them. It is primarily used to improve the performance of classification, prediction, and function approximation models.
+
+Forests are type of ensemble learning methods, where they act like, pulling together all of decision tree algorithm efforts. Taking the teamwork of many trees thus improving the performance of a single random decision tree.
+
+Random decision forests correct for decision trees' habit of overfitting to their training set.
+
+Now lets look at an example of prediction by the random forest model using the *randomForest()* function present in the `randomForest` library package.
+
+Thus following the 4 step method of prediction for predicting a numerical attribute "median_house_value" using the randomForest() function.
+
+```{r}
+library(randomForest)
+library(ModelMetrics)
+
+# Load the dataset.
+housing<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/housing_prices.csv",stringsAsFactors = T)
+
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(housing), replace = TRUE, prob = c(.7, .3))
+train <- housing[idx == 1,]
+test <- housing[idx == 2,]
+
+# 1. Build prediction model using randomForest() function.
+pred.model <- randomForest(median_house_value ~., data = train)
+
+# 2. Predict using the newly built model on the training dataset.
+pred.train <- predict(pred.model,newdata = train)
+
+# 3. Evaluate error on training using the mse() function.
+mse(train$median_house_value,pred.train)
+
+# 4. Predict on the testing data.
+pred.test <- predict(pred.model,newdata = test)
+
+# Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
+mse(test$median_house_value,pred.test)
+
+```
 
 
 

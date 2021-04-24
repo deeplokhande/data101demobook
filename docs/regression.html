@@ -49,6 +49,8 @@
 
 
 
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 
 
 <style type="text/css">
@@ -281,19 +283,23 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 <div id="linear-regression." class="section level2" number="8.1">
 <h2><span class="header-section-number">8.1</span> Linear Regression.</h2>
-<p>Linear regression is a linear approach to modeling the relationship between a <em>scalar</em> response and one or more <em>explanatory</em> variables(also known as dependent and independent variables.)</p>
+<p>Linear regression is a linear approach to modeling the relationship between a <em>scalar</em> response (<span class="math inline">\(Y\)</span>) and one or more <em>explanatory</em> variables(<span class="math inline">\(X_i\)</span>, where i is the number of explanatory variables).</p>
 <ul>
-<li>Scalar response means the predicted output.
+<li>Scalar response means the predicted output. These variables are also known as dependent variables i.e. they are derived by applying some law/rule or function onto some other variable/s
 <ul>
-<li>Usually in linear regression, models are used to predict only one scalar variable. This type of linear regression model known as <em>simple linear regression</em>.</li>
-<li>But in the case of prediction of multiple correlated output variables, this type of prediction using linear regression model is called <em>multivariate linear regression</em>.</li>
+<li>Usually in linear regression, models are used to predict only one scalar variable. But there are two subtype if these models:
+<ul>
+<li>First when there is only one explanatory variable and one output variable. This type of linear regression model known as <em>simple linear regression</em>.</li>
+<li>Second, when there are multiple predictors, i.e. explanatory/dependent variables for the output variable. This type of linear regression model known as <em>multiple linear regression</em>.</li>
 </ul></li>
-<li>Explanatory variables are the predictors on which the output predictions are based on. In the regression setting there can be two type of explanatory variables,
-<ul>
-<li>The dependent variables i.e. they are derived by applying some law/rule or function onto some other variable/s</li>
-<li>The independent variables which are independently sufficient to used are predictors while use in regression.</li>
+<li>But in the case of prediction of multiple correlated output variables, we call this type of prediction using linear regression model as <em>multivariate linear regression</em>.</li>
 </ul></li>
+<li>Explanatory variables are the predictors on which the output predictions are based on. These variables are also known as independent variables and are independently sufficient to be used as predictors in regression models.</li>
 </ul>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/lmvariants.svg" alt="" />
+<p class="caption">Linear models fitted to various different type of data spread. This illustrates the pitfalls of relying solely on a fitted model to understand the relationship between variables. Credits: Wikipedia.</p>
+</div>
 <p>Since the relationship between the explanatory variables and the output variable is modeled linearly, these models are called as linear models. To do this, we need to find a linear regression equation for the set of input predictors and the output variable.</p>
 <p>But without going into the mathematics of finding this linear regression equation, we will use a tool/function provided in R to model and predict the output variable.</p>
 <hr />
@@ -390,19 +396,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Since we will be predicting only one attribute values, this model will be called simple linear regression model.</p>
 <p>For the first example we will predict the price value of house using only <em>size</em> attribute as the predictor.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSBvZiB0aGUgaG91c2UuXG4jIFRodXMgdGhpcyBpcyBhbiBleGFtcGxlIG9mIHNpbXBsZSBsaW5lYXIgcmVncmVzc2lvbiBzaW5jZSBvbmx5IG9uZSBwcmVkaWN0b3IgYW5kIG9uZSBvdXRwdXQgdmFsdWUgaXMgdXNlZC5cbnNpbXBsZS5maXQgPC0gbG0oUHJpY2V+U2l6ZSxkYXRhPXRyYWluKVxuXG4jIHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KHNpbXBsZS5maXQpXG5cbiMgTGluZWFyIHJlbGF0aW9uIGJldHdlZW4gdGhlIFByaWNlIGFuZCBTaXplIGF0dHJpYnV0ZS5cbnBsb3QodHJhaW4kU2l6ZSx0cmFpbiRQcmljZSlcbmFibGluZShzaW1wbGUuZml0ICwgY29sPVwicmVkXCIpXG5cbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnNpbXBsZSA8LSBwcmVkaWN0KHNpbXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5zaW1wbGUpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxucmVhbGVzdGF0ZTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcblxuIyBzcGxpdGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhyZWFsZXN0YXRlKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC43LCAuMykpXG50cmFpbiA8LSByZWFsZXN0YXRlW2lkeCA9PSAxLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVtpZHggPT0gMixdXG5cbiMgVXNlIHRoZSBsbSgpIGZ1bmN0aW9uIHRvIHByZWRpY3QgdGhlIHByaWNlIGJhc2VkIG9uIHNpemUgb2YgdGhlIGhvdXNlLlxuIyBUaHVzIHRoaXMgaXMgYW4gZXhhbXBsZSBvZiBzaW1wbGUgbGluZWFyIHJlZ3Jlc3Npb24gc2luY2Ugb25seSBvbmUgcHJlZGljdG9yIGFuZCBvbmUgb3V0cHV0IHZhbHVlIGlzIHVzZWQuXG5zaW1wbGUuZml0IDwtIGxtKFByaWNlflNpemUsZGF0YT10cmFpbilcblxuIyBzdW1tYXJ5IG9mIHRoZSBtb2RlbFxuc3VtbWFyeShzaW1wbGUuZml0KVxuXG4jIExpbmVhciByZWxhdGlvbiBiZXR3ZWVuIHRoZSBQcmljZSBhbmQgU2l6ZSBhdHRyaWJ1dGUuXG5wbG90KHRyYWluJFNpemUsdHJhaW4kUHJpY2UpXG5hYmxpbmUoc2ltcGxlLmZpdCAsIGNvbD1cInJlZFwiKVxuXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5zaW1wbGUgPC0gcHJlZGljdChzaW1wbGUuZml0LHRlc3QpXG4jIFByZWRpY3RlZCBWYWx1ZXNcbmhlYWQoYXMuaW50ZWdlcih1bm5hbWUoUHJlZGljdGVkUHJpY2Uuc2ltcGxlKSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSkifQ==
 </div>
 <p>We can see that,</p>
 <ul>
 <li>The summary of the lm model give us information about the parameters of the model, the residuals and coefficients, etc.</li>
 <li>The plot of <em>Size</em> vs <em>Price</em>, and the red line represents the fitted line or the linear model line which will be used for prediction.</li>
-<li>The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close (e.g. index 2),some time far(e.g. index 1,4,5) and few are very far(e.g. 3,6).</li>
+<li>The predicted values are obtained form the predict function using the trained model and the test data. In comparison to the actual values, the predicted values are some times close,some time far and few are very far.</li>
 </ul>
 <p>We saw above an example of simple linear regression model, where only one predictor was used for predicting a single output attribute.</p>
 <p>Now we will see an example of <em>multiple linear regression</em> model, where there can be multiple predictors to predict a single output attribute. (Note: Please do not confuse this with the <em>multivariate linear regression</em>.)</p>
 <p>Let look at an example of predicting the <em>Price</em> of the real estate, based on 3 attributes <em>Size, Number of Bedrooms and Number of Bathrooms</em>.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG4jIFRodXMgdGhpcyBpcyBhbiBleGFtcGxlIG9mIG11bHRpcGxlIGxpbmVhciByZWdyZXNzaW9uIHNpbmNlIG11bHRpcGxlIHByZWRpY3RvciBhbmQgb25lIG91dHB1dCB2YWx1ZSBpcyB1c2VkLlxubXVsdGlwbGUuZml0IDwtIGxtKFByaWNlflNpemUgKyBCYXRocm9vbXMgKyBCZWRyb29tcyxkYXRhPXRyYWluKVxuXG4jIHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG11bHRpcGxlLmZpdClcblxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2UubXVsdGlwbGUgPC0gcHJlZGljdChtdWx0aXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5tdWx0aXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpIn0=
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxucmVhbGVzdGF0ZTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcblxuIyBzcGxpdGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhyZWFsZXN0YXRlKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC43LCAuMykpXG50cmFpbiA8LSByZWFsZXN0YXRlW2lkeCA9PSAxLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVtpZHggPT0gMixdXG5cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG4jIFRodXMgdGhpcyBpcyBhbiBleGFtcGxlIG9mIG11bHRpcGxlIGxpbmVhciByZWdyZXNzaW9uIHNpbmNlIG11bHRpcGxlIHByZWRpY3RvciBhbmQgb25lIG91dHB1dCB2YWx1ZSBpcyB1c2VkLlxubXVsdGlwbGUuZml0IDwtIGxtKFByaWNlflNpemUgKyBCYXRocm9vbXMgKyBCZWRyb29tcyxkYXRhPXRyYWluKVxuXG4jIHN1bW1hcnkgb2YgdGhlIG1vZGVsXG5zdW1tYXJ5KG11bHRpcGxlLmZpdClcblxuIyBQcmVkaWN0aW5nIHZhbHVlcyBvbiB0aGUgdGVzdCBkYXRhc2V0LlxuUHJlZGljdGVkUHJpY2UubXVsdGlwbGUgPC0gcHJlZGljdChtdWx0aXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5tdWx0aXBsZSkpKVxuIyBBY3R1YWwgVmFsdWVzXG5oZWFkKHRlc3QkUHJpY2UpIn0=
 </div>
 <p>We can see that,</p>
 <ul>
@@ -437,7 +443,7 @@ MSE=\frac{1}{n} \sum_{i=1}^{n}{(Y_i - \hat{Y_i})^2}
 </ul>
 <p>Now lets look at the MSE of the previous example.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2UgdGhlIGxtKCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gc2l6ZSBvZiB0aGUgaG91c2UuXG5zaW1wbGUuZml0IDwtIGxtKFByaWNlflNpemUsZGF0YT10cmFpbilcbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnNpbXBsZSA8LSBwcmVkaWN0KHNpbXBsZS5maXQsdGVzdClcbiMgUHJlZGljdGVkIFZhbHVlc1xuaGVhZChhcy5pbnRlZ2VyKHVubmFtZShQcmVkaWN0ZWRQcmljZS5zaW1wbGUpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKVxuXG4jIExldHMgdXNlIHRoZSBtc2UoKSBmdW5jdGlvbiB0byBcbm1zZSh0ZXN0JFByaWNlLFByZWRpY3RlZFByaWNlLnNpbXBsZSkifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxucmVhbGVzdGF0ZTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvUmVhbEVzdGF0ZS5jc3ZcIilcblxuIyBzcGxpdGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhyZWFsZXN0YXRlKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC43LCAuMykpXG50cmFpbiA8LSByZWFsZXN0YXRlW2lkeCA9PSAxLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVtpZHggPT0gMixdXG5cbiMgVXNlIHRoZSBsbSgpIGZ1bmN0aW9uIHRvIHByZWRpY3QgdGhlIHByaWNlIGJhc2VkIG9uIHNpemUgb2YgdGhlIGhvdXNlLlxuc2ltcGxlLmZpdCA8LSBsbShQcmljZX5TaXplLGRhdGE9dHJhaW4pXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5zaW1wbGUgPC0gcHJlZGljdChzaW1wbGUuZml0LHRlc3QpXG4jIFByZWRpY3RlZCBWYWx1ZXNcbmhlYWQoYXMuaW50ZWdlcih1bm5hbWUoUHJlZGljdGVkUHJpY2Uuc2ltcGxlKSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSlcblxuIyBMZXRzIHVzZSB0aGUgbXNlKCkgZnVuY3Rpb24gdG8gXG5tc2UodGVzdCRQcmljZSxQcmVkaWN0ZWRQcmljZS5zaW1wbGUpIn0=
 </div>
 <p>We can see the MSE is too large above 200 billion, and this is huge value could be understandable as we are taking the squared differences of all the records that we predicted.</p>
 <p>The main intention is to get this huge value to as low as possible possibly near zero, which could be difficult but can be achieved upto a relative error by using a better model and training data.</p>
@@ -451,7 +457,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1y
 <p>For more details on the use of Rpart for prediction please refer to section <a href="classification.html#rpart">6.2</a>.</p>
 <p>Lets look at an example of regression based prediction using Rpart for the <em>Price</em> attribute of the Real estate Dataset with <em>Size, Number of Bedrooms and Number of Bathrooms</em> as predictors.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG5yZWFsZXN0YXRlPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9SZWFsRXN0YXRlLmNzdlwiKVxuXG50cmFpbiA8LSByZWFsZXN0YXRlWzE6NjAwLF1cbnRlc3QgPC0gcmVhbGVzdGF0ZVs2MDE6NzgxLF1cblxuIyBVc2Ugb2YgdGhlIHJwYXJ0KCkgZnVuY3Rpb24gdG8gcHJlZGljdCB0aGUgcHJpY2UgYmFzZWQgb24gdGhlIHNpemUsIGJhdGhyb29tcyBhbmQgYmVkcm9vbXMgb2YgdGhlIGhvdXNlLlxucnBhcnQuZml0IDwtIHJwYXJ0KFByaWNlflNpemUrQmF0aHJvb21zK0JlZHJvb21zLGRhdGE9dHJhaW4sbWV0aG9kID0gXCJhbm92YVwiKVxuXG4jIFByZWRpY3RpbmcgdmFsdWVzIG9uIHRoZSB0ZXN0IGRhdGFzZXQuXG5QcmVkaWN0ZWRQcmljZS5ycGFydCA8LSBwcmVkaWN0KHJwYXJ0LmZpdCx0ZXN0KVxuIyBQcmVkaWN0ZWQgVmFsdWVzXG5oZWFkKGFzLmludGVnZXIodW5uYW1lKFByZWRpY3RlZFByaWNlLnJwYXJ0KSkpXG4jIEFjdHVhbCBWYWx1ZXNcbmhlYWQodGVzdCRQcmljZSlcblxuIyBMZXRzIHVzZSB0aGUgbXNlKCkgZnVuY3Rpb24gdG8gXG5tc2UodGVzdCRQcmljZSxQcmVkaWN0ZWRQcmljZS5ycGFydCkifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJwYXJ0KVxubGlicmFyeShNb2RlbE1ldHJpY3MpXG5cbiMgTG9hZCB0aGUgZGF0YXNldC5cbnJlYWxlc3RhdGU8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L1JlYWxFc3RhdGUuY3N2XCIpXG5cbiMgc3BsaXRpbmcgdGhlIGRhdGFzZXQgaW50byB0cmFpbmluZyBhbmQgdGVzdGluZy5cbmlkeCA8LSBzYW1wbGUoIDE6Miwgc2l6ZSA9IG5yb3cocmVhbGVzdGF0ZSksIHJlcGxhY2UgPSBUUlVFLCBwcm9iID0gYyguNywgLjMpKVxudHJhaW4gPC0gcmVhbGVzdGF0ZVtpZHggPT0gMSxdXG50ZXN0IDwtIHJlYWxlc3RhdGVbaWR4ID09IDIsXVxuXG4jIFVzZSBvZiB0aGUgcnBhcnQoKSBmdW5jdGlvbiB0byBwcmVkaWN0IHRoZSBwcmljZSBiYXNlZCBvbiB0aGUgc2l6ZSwgYmF0aHJvb21zIGFuZCBiZWRyb29tcyBvZiB0aGUgaG91c2UuXG5ycGFydC5maXQgPC0gcnBhcnQoUHJpY2V+U2l6ZStCYXRocm9vbXMrQmVkcm9vbXMsZGF0YT10cmFpbixtZXRob2QgPSBcImFub3ZhXCIpXG5cbiMgUHJlZGljdGluZyB2YWx1ZXMgb24gdGhlIHRlc3QgZGF0YXNldC5cblByZWRpY3RlZFByaWNlLnJwYXJ0IDwtIHByZWRpY3QocnBhcnQuZml0LHRlc3QpXG4jIFByZWRpY3RlZCBWYWx1ZXNcbmhlYWQoYXMuaW50ZWdlcih1bm5hbWUoUHJlZGljdGVkUHJpY2UucnBhcnQpKSlcbiMgQWN0dWFsIFZhbHVlc1xuaGVhZCh0ZXN0JFByaWNlKVxuXG4jIExldHMgdXNlIHRoZSBtc2UoKSBmdW5jdGlvbiB0byBcbm1zZSh0ZXN0JFByaWNlLFByZWRpY3RlZFByaWNlLnJwYXJ0KSJ9
 </div>
 <div class="figure">
 <img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/rpartanova.svg" alt="" />

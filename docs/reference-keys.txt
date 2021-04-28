@@ -1,5 +1,5 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-105
+tab:unnamed-chunk-106
 tab:unnamed-chunk-57
 tab:unnamed-chunk-58
 tab:unnamed-chunk-61
@@ -94,7 +94,7 @@ lm
 mse
 regression-using-rpart
 models
-modelsin4lines
+model4step
 randomforest
 svm
 nnet

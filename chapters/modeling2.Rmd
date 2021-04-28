@@ -317,12 +317,12 @@ This can be done either manually, or by using third party libraries.
 One such library is the `rModeling` package, which has function *crossValidation()* which can be used for any type of model_functions(). For more information visit [crossValidation()](https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation)
 
 
-Before we proceed to the next section, please look at the snippet of the *housing_price.csv* dataset, which we will be using for predicting the *median_house_values* attribute based on various other attributes provided in the dataset, using different prediction models.
+Before we proceed to the next section, please look at the snippet of the *earnings.csv* dataset, which we will be using for predicting the *Earnings* attribute based on various other attributes provided in the dataset, using different prediction models.
 
 ```{r,echo=FALSE,error=FALSE,warning=FALSE}
 library(kableExtra)
-housing<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/housing_prices.csv") #web load
-temp<-knitr::kable(housing[sample(nrow(housing),10),], caption = 'Snippet of Housing Price Dataset',booktabs=TRUE) 
+earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv") #web load
+temp<-knitr::kable(earningdata[sample(nrow(earningdata),10),], caption = 'Snippet of Earnings Dataset',booktabs=TRUE) 
 kableExtra::scroll_box(temp,width = "100%")
 ```
 .
@@ -345,43 +345,131 @@ Forests are type of ensemble learning methods, where they act like, pulling toge
 
 Random decision forests correct for decision trees' habit of overfitting to their training set.
 
-Now lets look at an example of prediction by the random forest model using the *randomForest()* function present in the `randomForest` library package.
+Now lets look at an example of prediction by the random forest model using the *randomForest()* function present in the `randomForest` library package. For more information about the *randomForest()* function and its attributes visit [randomforest()](https://www.rdocumentation.org/packages/randomForest/versions/4.6-14/topics/randomForest)
 
-Thus following the 4 step method of prediction for predicting a numerical attribute "median_house_value" using the randomForest() function.
+Thus following the 4 step method of prediction for predicting a numerical attribute "Earnings" using the randomForest() function.
 
 ```{r}
 library(randomForest)
 library(ModelMetrics)
 
 # Load the dataset.
-housing<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/housing_prices.csv",stringsAsFactors = T)
+earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv",stringsAsFactors = T)
 
-# spliting the dataset into training and testing.
-idx <- sample( 1:2, size = nrow(housing), replace = TRUE, prob = c(.7, .3))
-train <- housing[idx == 1,]
-test <- housing[idx == 2,]
+# splitting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(earningdata), replace = TRUE, prob = c(.8, .2))
+train <- earningdata[idx == 1,]
+test <- earningdata[idx == 2,]
 
 # 1. Build prediction model using randomForest() function.
-pred.model <- randomForest(median_house_value ~., data = train)
+pred.model <- randomForest(Earnings ~., data = train)
+
+# Lets see the summary of the randomForest model.
+pred.model
 
 # 2. Predict using the newly built model on the training dataset.
 pred.train <- predict(pred.model,newdata = train)
 
 # 3. Evaluate error on training using the mse() function.
-mse(train$median_house_value,pred.train)
+mse(train$Earnings,pred.train)
 
 # 4. Predict on the testing data.
 pred.test <- predict(pred.model,newdata = test)
 
 # Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
-mse(test$median_house_value,pred.test)
+mse(test$Earnings,pred.test)
 
 ```
+We can see,
+
+- the summary of the output randomForest model with details of:
+  - Formula used.
+  - Type of random forest
+  - Number of trees created in the forest
+  - Number of variables used at each split.
+  - And some performance parameter.
+- The mean squared error of the predicted values using training sub-dataset.
+- The mean squared error of the predicted values using the testing sub-dataset.
 
 
+---
+
+## SVM {#svm}
+
+Support-Vector Machines (SVMs, also support-vector networks) are supervised learning models with associated learning algorithms that analyze data for classification(mostly) and regression(also works in some cases) analysis.
+
+The goal of the SVM is to find a hyperplane in an N-dimensional space (where N corresponds with the number of features) that distinctly classifies/regresses the data points. The accuracy of the results directly correlates with the hyperplane that we choose. We should find a plane that has the maximum distance between data points of both classes.
+
+Intuitively, a good separation is achieved by the hyperplane that has the largest distance to the nearest training-data point of any class (so-called functional margin), since in general the larger the margin, the lower the generalization error of the classifier.
+
+![Support Vector Machine Linear classification hyperplane(line) example. Credits: Support Vector Machines Wikipedia](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/svm2.png)
+
+Note that the dimension of the hyperplane depends on the number of features. If the number of input features is two, then the hyperplane is just a line. If the number of input features is three, then the hyperplane becomes a two-dimensional plane. It becomes difficult to draw on a graph a model when the number of features exceeds three.
+
+In addition to performing linear classification, SVMs can efficiently perform a non-linear classification using what is called the kernel trick, implicitly mapping their inputs into high-dimensional feature spaces.
+
+![Example of the kernal trick for non-linear classifier. Credits: Support Vector Machines Wikipedia](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/Kernel_Machine.svg)
+
+Why is this called a support vector machine? *Support vectors* are *data points* closest to the hyperplane. They directly influence the position and orientation of the hyperplane and minimizes the margin of the classifier. Deleting the support vectors will change the position of the hyperplane. These points thus help to build our SVM model.
+
+SVM is great because it gives quite accurate results with minimum computation power.
+
+Lets look at the example of Support vector machine algorithm in use for predicting the *Earnings* attribute of the Earnings dataset. 
+
+We will use the *svm()* function from the *e1071* package. For more information about this function and its attributes visit [svm()](https://www.rdocumentation.org/packages/e1071/versions/1.7-6/topics/svm)
 
 
-## SVM*
+Thus following the 4 step model for prediction and using the "*svm()*" function as the model function. 
 
-## nnet*
+```{r}
+library(e1071)
+library(ModelMetrics)
+
+# Load the dataset.
+# earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv",stringsAsFactors = T)
+
+earningdata<-read.csv("../files/dataset/earnings.csv",stringsAsFactors = T)
+
+
+# splitting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(earningdata), replace = TRUE, prob = c(.8, .2))
+train <- earningdata[idx == 1,]
+test <- earningdata[idx == 2,]
+
+# 1. Build prediction model using svm() function.
+pred.model <- svm(Earnings ~., data = train)
+
+# Lets see the summary of the svm model.
+pred.model
+
+# 2. Predict using the newly built model on the training dataset.
+pred.train <- predict(pred.model,newdata = train)
+
+# 3. Evaluate error on training using the mse() function.
+mse(train$Earnings,pred.train)
+
+# 4. Predict on the testing data.
+pred.test <- predict(pred.model,newdata = test)
+
+# Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
+mse(test$Earnings,pred.test)
+
+```
+We can see,
+
+- the summary of the output svm model with details of:
+  - Formula used.
+  - Type of SVM model
+  - The SVM Kernel Used
+  - And some performance parameter.
+  - Also, the Number of Support Vectors.
+- The mean squared error of the predicted values using training sub-dataset.
+- The mean squared error of the predicted values using the testing sub-dataset.
+
+
+---
+
+## Neural Network.* {#nnet}
+
+
 

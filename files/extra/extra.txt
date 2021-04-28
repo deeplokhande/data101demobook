@@ -4,3 +4,29 @@ dev.off()
 
 
 # housing<-read.csv("../files/dataset/housing_prices.csv",stringsAsFactors = T)
+
+library(randomForest)
+library(ModelMetrics)
+
+# Load the dataset.
+housing<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/housing_prices.csv",stringsAsFactors = T)
+
+# spliting the dataset into training and testing.
+idx <- sample( 1:2, size = nrow(housing), replace = TRUE, prob = c(.7, .3))
+train <- housing[idx == 1,]
+test <- housing[idx == 2,]
+
+# 1. Build prediction model using randomForest() function.
+pred.model <- randomForest(median_house_value ~., data = train)
+
+# 2. Predict using the newly built model on the training dataset.
+pred.train <- predict(pred.model,newdata = train)
+
+# 3. Evaluate error on training using the mse() function.
+mse(train$median_house_value,pred.train)
+
+# 4. Predict on the testing data.
+pred.test <- predict(pred.model,newdata = test)
+
+# Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
+mse(test$median_house_value,pred.test)

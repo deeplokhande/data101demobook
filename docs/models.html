@@ -251,8 +251,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.1" data-path="models.html"><a href="models.html#modelsin4lines"><i class="fa fa-check"></i><b>9.1</b> Four Line Method for creating most type of prediction models in R</a></li>
 <li class="chapter" data-level="9.2" data-path="models.html"><a href="models.html#randomforest"><i class="fa fa-check"></i><b>9.2</b> Random Forest</a></li>
-<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.3</b> SVM*</a></li>
-<li class="chapter" data-level="9.4" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.4</b> nnet*</a></li>
+<li class="chapter" data-level="9.3" data-path="models.html"><a href="models.html#svm"><i class="fa fa-check"></i><b>9.3</b> SVM</a></li>
+<li class="chapter" data-level="9.4" data-path="models.html"><a href="models.html#nnet"><i class="fa fa-check"></i><b>9.4</b> Neural Network.*</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -352,117 +352,70 @@ library(package_name)</code></pre>
 <p>We can also add one more step between step 3 and 4, which is step of performing the cross validation process on the newly built models.</p>
 <p>This can be done either manually, or by using third party libraries.</p>
 <p>One such library is the <code>rModeling</code> package, which has function <em>crossValidation()</em> which can be used for any type of model_functions(). For more information visit <a href="https://www.rdocumentation.org/packages/rModeling/versions/0.0.3/topics/crossValidation">crossValidation()</a></p>
-<p>Before we proceed to the next section, please look at the snippet of the <em>housing_price.csv</em> dataset, which we will be using for predicting the <em>median_house_values</em> attribute based on various other attributes provided in the dataset, using different prediction models.</p>
+<p>Before we proceed to the next section, please look at the snippet of the <em>earnings.csv</em> dataset, which we will be using for predicting the <em>Earnings</em> attribute based on various other attributes provided in the dataset, using different prediction models.</p>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-101">Table 9.1: </span>Snippet of Housing Price Dataset
+<span id="tab:unnamed-chunk-101">Table 9.1: </span>Snippet of Earnings Dataset
 </caption>
 <thead>
 <tr>
 <th style="text-align:left;">
 </th>
 <th style="text-align:right;">
-longitude
+GPA
 </th>
 <th style="text-align:right;">
-latitude
+Number_Of_Professional_Connections
 </th>
 <th style="text-align:right;">
-housing_median_age
-</th>
-<th style="text-align:right;">
-total_rooms
-</th>
-<th style="text-align:right;">
-total_bedrooms
-</th>
-<th style="text-align:right;">
-population
-</th>
-<th style="text-align:right;">
-households
-</th>
-<th style="text-align:right;">
-median_income
+Earnings
 </th>
 <th style="text-align:left;">
-ocean_proximity
+Major
 </th>
 <th style="text-align:right;">
-median_house_value
+Graduation_Year
+</th>
+<th style="text-align:right;">
+Height
+</th>
+<th style="text-align:right;">
+Number_Of_Credits
+</th>
+<th style="text-align:right;">
+Number_Of_Parking_Tickets
 </th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-13120
-</td>
-<td style="text-align:right;">
--121.29
-</td>
-<td style="text-align:right;">
-38.36
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
-2193
-</td>
-<td style="text-align:right;">
-386
-</td>
-<td style="text-align:right;">
-1148
-</td>
-<td style="text-align:right;">
-372
-</td>
-<td style="text-align:right;">
-4.5272
-</td>
-<td style="text-align:left;">
-INLAND
-</td>
-<td style="text-align:right;">
-191700
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
 4048
 </td>
 <td style="text-align:right;">
--118.51
+2.08
 </td>
 <td style="text-align:right;">
-34.14
+43
 </td>
 <td style="text-align:right;">
-28
-</td>
-<td style="text-align:right;">
-6748
-</td>
-<td style="text-align:right;">
-904
-</td>
-<td style="text-align:right;">
-2431
-</td>
-<td style="text-align:right;">
-876
-</td>
-<td style="text-align:right;">
-12.8879
+13218.15
 </td>
 <td style="text-align:left;">
-&lt;1H OCEAN
+Vocational
 </td>
 <td style="text-align:right;">
-500001
+1981
+</td>
+<td style="text-align:right;">
+66.70
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
@@ -470,69 +423,28 @@ INLAND
 5386
 </td>
 <td style="text-align:right;">
--118.41
+2.80
 </td>
 <td style="text-align:right;">
-34.03
+3
 </td>
 <td style="text-align:right;">
-24
-</td>
-<td style="text-align:right;">
-3711
-</td>
-<td style="text-align:right;">
-1192
-</td>
-<td style="text-align:right;">
-1764
-</td>
-<td style="text-align:right;">
-1147
-</td>
-<td style="text-align:right;">
-3.1642
+13276.10
 </td>
 <td style="text-align:left;">
-&lt;1H OCEAN
+Vocational
 </td>
 <td style="text-align:right;">
-366700
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-15334
+1973
 </td>
 <td style="text-align:right;">
--117.33
+70.23
 </td>
 <td style="text-align:right;">
-33.22
+121
 </td>
 <td style="text-align:right;">
-21
-</td>
-<td style="text-align:right;">
-2868
-</td>
-<td style="text-align:right;">
-602
-</td>
-<td style="text-align:right;">
-855
-</td>
-<td style="text-align:right;">
-559
-</td>
-<td style="text-align:right;">
-2.7846
-</td>
-<td style="text-align:left;">
-NEAR OCEAN
-</td>
-<td style="text-align:right;">
-91200
+2
 </td>
 </tr>
 <tr>
@@ -540,104 +452,28 @@ NEAR OCEAN
 8358
 </td>
 <td style="text-align:right;">
--118.32
+1.84
 </td>
 <td style="text-align:right;">
-33.96
+4
 </td>
 <td style="text-align:right;">
-47
-</td>
-<td style="text-align:right;">
-1885
-</td>
-<td style="text-align:right;">
-361
-</td>
-<td style="text-align:right;">
-954
-</td>
-<td style="text-align:right;">
-357
-</td>
-<td style="text-align:right;">
-3.8512
+10184.00
 </td>
 <td style="text-align:left;">
-&lt;1H OCEAN
+Buisness
 </td>
 <td style="text-align:right;">
-171300
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11474
+2006
 </td>
 <td style="text-align:right;">
--117.99
+68.29
 </td>
 <td style="text-align:right;">
-33.71
+123
 </td>
 <td style="text-align:right;">
-18
-</td>
-<td style="text-align:right;">
-1994
-</td>
-<td style="text-align:right;">
-578
-</td>
-<td style="text-align:right;">
-3031
-</td>
-<td style="text-align:right;">
-577
-</td>
-<td style="text-align:right;">
-2.7614
-</td>
-<td style="text-align:left;">
-&lt;1H OCEAN
-</td>
-<td style="text-align:right;">
-237500
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-11716
-</td>
-<td style="text-align:right;">
--120.12
-</td>
-<td style="text-align:right;">
-39.18
-</td>
-<td style="text-align:right;">
-17
-</td>
-<td style="text-align:right;">
-2839
-</td>
-<td style="text-align:right;">
-525
-</td>
-<td style="text-align:right;">
-390
-</td>
-<td style="text-align:right;">
-189
-</td>
-<td style="text-align:right;">
-3.5667
-</td>
-<td style="text-align:left;">
-INLAND
-</td>
-<td style="text-align:right;">
-179200
+0
 </td>
 </tr>
 <tr>
@@ -645,69 +481,86 @@ INLAND
 5809
 </td>
 <td style="text-align:right;">
--118.26
+2.59
 </td>
 <td style="text-align:right;">
-34.14
+41
+</td>
+<td style="text-align:right;">
+13259.27
+</td>
+<td style="text-align:left;">
+Vocational
+</td>
+<td style="text-align:right;">
+1975
+</td>
+<td style="text-align:right;">
+67.94
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1058
+</td>
+<td style="text-align:right;">
+2.58
 </td>
 <td style="text-align:right;">
 6
 </td>
 <td style="text-align:right;">
-1727
-</td>
-<td style="text-align:right;">
-506
-</td>
-<td style="text-align:right;">
-1200
-</td>
-<td style="text-align:right;">
-439
-</td>
-<td style="text-align:right;">
-4.1083
+9747.72
 </td>
 <td style="text-align:left;">
-&lt;1H OCEAN
+STEM
 </td>
 <td style="text-align:right;">
-210700
+2013
+</td>
+<td style="text-align:right;">
+67.53
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-17442
+7265
 </td>
 <td style="text-align:right;">
--120.45
+2.53
 </td>
 <td style="text-align:right;">
-34.66
+6
 </td>
 <td style="text-align:right;">
-7
-</td>
-<td style="text-align:right;">
-3329
-</td>
-<td style="text-align:right;">
-504
-</td>
-<td style="text-align:right;">
-1462
-</td>
-<td style="text-align:right;">
-452
-</td>
-<td style="text-align:right;">
-4.7875
+11762.66
 </td>
 <td style="text-align:left;">
-NEAR OCEAN
+Professional
 </td>
 <td style="text-align:right;">
-198300
+1976
+</td>
+<td style="text-align:right;">
+68.59
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+1
 </td>
 </tr>
 <tr>
@@ -715,34 +568,115 @@ NEAR OCEAN
 2278
 </td>
 <td style="text-align:right;">
--119.79
+2.37
 </td>
 <td style="text-align:right;">
-36.81
+29
 </td>
 <td style="text-align:right;">
-33
-</td>
-<td style="text-align:right;">
-1461
-</td>
-<td style="text-align:right;">
-261
-</td>
-<td style="text-align:right;">
-494
-</td>
-<td style="text-align:right;">
-254
-</td>
-<td style="text-align:right;">
-4.2500
+10232.22
 </td>
 <td style="text-align:left;">
-INLAND
+Humanities
 </td>
 <td style="text-align:right;">
-132200
+1994
+</td>
+<td style="text-align:right;">
+69.12
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+2
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7634
+</td>
+<td style="text-align:right;">
+2.86
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:right;">
+11700.17
+</td>
+<td style="text-align:left;">
+Professional
+</td>
+<td style="text-align:right;">
+1990
+</td>
+<td style="text-align:right;">
+71.87
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+988
+</td>
+<td style="text-align:right;">
+1.78
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:right;">
+9833.52
+</td>
+<td style="text-align:left;">
+STEM
+</td>
+<td style="text-align:right;">
+2015
+</td>
+<td style="text-align:right;">
+66.66
+</td>
+<td style="text-align:right;">
+122
+</td>
+<td style="text-align:right;">
+0
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3092
+</td>
+<td style="text-align:right;">
+2.53
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:right;">
+10254.51
+</td>
+<td style="text-align:left;">
+Humanities
+</td>
+<td style="text-align:right;">
+1977
+</td>
+<td style="text-align:right;">
+67.51
+</td>
+<td style="text-align:right;">
+123
+</td>
+<td style="text-align:right;">
+0
 </td>
 </tr>
 </tbody>
@@ -760,17 +694,66 @@ INLAND
 <p>Ensemble learning is the method of solving a problem by building multiple ML models and combining them. It is primarily used to improve the performance of classification, prediction, and function approximation models.</p>
 <p>Forests are type of ensemble learning methods, where they act like, pulling together all of decision tree algorithm efforts. Taking the teamwork of many trees thus improving the performance of a single random decision tree.</p>
 <p>Random decision forests correct for decision trees’ habit of overfitting to their training set.</p>
-<p>Now lets look at an example of prediction by the random forest model using the <em>randomForest()</em> function present in the <code>randomForest</code> library package.</p>
-<p>Thus following the 4 step method of prediction for predicting a numerical attribute “median_house_value” using the randomForest() function.</p>
+<p>Now lets look at an example of prediction by the random forest model using the <em>randomForest()</em> function present in the <code>randomForest</code> library package. For more information about the <em>randomForest()</em> function and its attributes visit <a href="https://www.rdocumentation.org/packages/randomForest/versions/4.6-14/topics/randomForest">randomforest()</a></p>
+<p>Thus following the 4 step method of prediction for predicting a numerical attribute “Earnings” using the randomForest() function.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJhbmRvbUZvcmVzdClcbmxpYnJhcnkoTW9kZWxNZXRyaWNzKVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG5ob3VzaW5nPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9ob3VzaW5nX3ByaWNlcy5jc3ZcIixzdHJpbmdzQXNGYWN0b3JzID0gVClcblxuIyBzcGxpdGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhob3VzaW5nKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC43LCAuMykpXG50cmFpbiA8LSBob3VzaW5nW2lkeCA9PSAxLF1cbnRlc3QgPC0gaG91c2luZ1tpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyByYW5kb21Gb3Jlc3QoKSBmdW5jdGlvbi5cbnByZWQubW9kZWwgPC0gcmFuZG9tRm9yZXN0KG1lZGlhbl9ob3VzZV92YWx1ZSB+LiwgZGF0YSA9IHRyYWluKVxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRtZWRpYW5faG91c2VfdmFsdWUscHJlZC50cmFpbilcblxuIyA0LiBQcmVkaWN0IG9uIHRoZSB0ZXN0aW5nIGRhdGEuXG5wcmVkLnRlc3QgPC0gcHJlZGljdChwcmVkLm1vZGVsLG5ld2RhdGEgPSB0ZXN0KVxuXG4jIEFkZGl0aW9uYWxseSBzaW5jZSBoZXJlIHdlIGhhdmUgdGhlIGFjdHVhbC9yZWFsIHByZWRpY3Rpb24gdmFsdWVzIHdlIGNhbiBhbHNvIGNoZWNrIHRoZSBhY2N1cmFjeSBvZiBvdXIgcHJlZGljdGlvbiBvbiB0ZXN0aW5nIGRhdGEuXG5tc2UodGVzdCRtZWRpYW5faG91c2VfdmFsdWUscHJlZC50ZXN0KSJ9
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJhbmRvbUZvcmVzdClcbmxpYnJhcnkoTW9kZWxNZXRyaWNzKVxuXG4jIExvYWQgdGhlIGRhdGFzZXQuXG5lYXJuaW5nZGF0YTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20vZGVlcGxva2hhbmRlL2RhdGExMDFkZW1vYm9vay9tYWluL2ZpbGVzL2RhdGFzZXQvZWFybmluZ3MuY3N2XCIsc3RyaW5nc0FzRmFjdG9ycyA9IFQpXG5cbiMgc3BsaXR0aW5nIHRoZSBkYXRhc2V0IGludG8gdHJhaW5pbmcgYW5kIHRlc3RpbmcuXG5pZHggPC0gc2FtcGxlKCAxOjIsIHNpemUgPSBucm93KGVhcm5pbmdkYXRhKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC44LCAuMikpXG50cmFpbiA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMSxdXG50ZXN0IDwtIGVhcm5pbmdkYXRhW2lkeCA9PSAyLF1cblxuIyAxLiBCdWlsZCBwcmVkaWN0aW9uIG1vZGVsIHVzaW5nIHJhbmRvbUZvcmVzdCgpIGZ1bmN0aW9uLlxucHJlZC5tb2RlbCA8LSByYW5kb21Gb3Jlc3QoRWFybmluZ3Mgfi4sIGRhdGEgPSB0cmFpbilcblxuIyBMZXRzIHNlZSB0aGUgc3VtbWFyeSBvZiB0aGUgcmFuZG9tRm9yZXN0IG1vZGVsLlxucHJlZC5tb2RlbFxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRFYXJuaW5ncyxwcmVkLnRyYWluKVxuXG4jIDQuIFByZWRpY3Qgb24gdGhlIHRlc3RpbmcgZGF0YS5cbnByZWQudGVzdCA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRlc3QpXG5cbiMgQWRkaXRpb25hbGx5IHNpbmNlIGhlcmUgd2UgaGF2ZSB0aGUgYWN0dWFsL3JlYWwgcHJlZGljdGlvbiB2YWx1ZXMgd2UgY2FuIGFsc28gY2hlY2sgdGhlIGFjY3VyYWN5IG9mIG91ciBwcmVkaWN0aW9uIG9uIHRlc3RpbmcgZGF0YS5cbm1zZSh0ZXN0JEVhcm5pbmdzLHByZWQudGVzdCkifQ==
 </div>
+<p>We can see,</p>
+<ul>
+<li>the summary of the output randomForest model with details of:
+<ul>
+<li>Formula used.</li>
+<li>Type of random forest</li>
+<li>Number of trees created in the forest</li>
+<li>Number of variables used at each split.</li>
+<li>And some performance parameter.</li>
+</ul></li>
+<li>The mean squared error of the predicted values using training sub-dataset.</li>
+<li>The mean squared error of the predicted values using the testing sub-dataset.</li>
+</ul>
+<hr />
 </div>
 <div id="svm" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> SVM*</h2>
+<h2><span class="header-section-number">9.3</span> SVM</h2>
+<p>Support-Vector Machines (SVMs, also support-vector networks) are supervised learning models with associated learning algorithms that analyze data for classification(mostly) and regression(also works in some cases) analysis.</p>
+<p>The goal of the SVM is to find a hyperplane in an N-dimensional space (where N corresponds with the number of features) that distinctly classifies/regresses the data points. The accuracy of the results directly correlates with the hyperplane that we choose. We should find a plane that has the maximum distance between data points of both classes.</p>
+<p>Intuitively, a good separation is achieved by the hyperplane that has the largest distance to the nearest training-data point of any class (so-called functional margin), since in general the larger the margin, the lower the generalization error of the classifier.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/svm2.png" alt="" />
+<p class="caption">Support Vector Machine Linear classification hyperplane(line) example. Credits: Support Vector Machines Wikipedia</p>
+</div>
+<p>Note that the dimension of the hyperplane depends on the number of features. If the number of input features is two, then the hyperplane is just a line. If the number of input features is three, then the hyperplane becomes a two-dimensional plane. It becomes difficult to draw on a graph a model when the number of features exceeds three.</p>
+<p>In addition to performing linear classification, SVMs can efficiently perform a non-linear classification using what is called the kernel trick, implicitly mapping their inputs into high-dimensional feature spaces.</p>
+<div class="figure">
+<img src="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/modeling2/Kernel_Machine.svg" alt="" />
+<p class="caption">Example of the kernal trick for non-linear classifier. Credits: Support Vector Machines Wikipedia</p>
+</div>
+<p>Why is this called a support vector machine? <em>Support vectors</em> are <em>data points</em> closest to the hyperplane. They directly influence the position and orientation of the hyperplane and minimizes the margin of the classifier. Deleting the support vectors will change the position of the hyperplane. These points thus help to build our SVM model.</p>
+<p>SVM is great because it gives quite accurate results with minimum computation power.</p>
+<p>Lets look at the example of Support vector machine algorithm in use for predicting the <em>Earnings</em> attribute of the Earnings dataset.</p>
+<p>We will use the <em>svm()</em> function from the <em>e1071</em> package. For more information about this function and its attributes visit <a href="https://www.rdocumentation.org/packages/e1071/versions/1.7-6/topics/svm">svm()</a></p>
+<p>Thus following the 4 step model for prediction and using the “<em>svm()</em>” function as the model function.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJpY3MpXG5cbiMgTG9hZCB0aGUgZGF0YXNldC5cbiMgZWFybmluZ2RhdGE8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG5lYXJuaW5nZGF0YTwtcmVhZC5jc3YoXCIuLi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG5cbiMgc3BsaXR0aW5nIHRoZSBkYXRhc2V0IGludG8gdHJhaW5pbmcgYW5kIHRlc3RpbmcuXG5pZHggPC0gc2FtcGxlKCAxOjIsIHNpemUgPSBucm93KGVhcm5pbmdkYXRhKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC44LCAuMikpXG50cmFpbiA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMSxdXG50ZXN0IDwtIGVhcm5pbmdkYXRhW2lkeCA9PSAyLF1cblxuIyAxLiBCdWlsZCBwcmVkaWN0aW9uIG1vZGVsIHVzaW5nIHN2bSgpIGZ1bmN0aW9uLlxucHJlZC5tb2RlbCA8LSBzdm0oRWFybmluZ3Mgfi4sIGRhdGEgPSB0cmFpbilcblxuIyBMZXRzIHNlZSB0aGUgc3VtbWFyeSBvZiB0aGUgc3ZtIG1vZGVsLlxucHJlZC5tb2RlbFxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRFYXJuaW5ncyxwcmVkLnRyYWluKVxuXG4jIDQuIFByZWRpY3Qgb24gdGhlIHRlc3RpbmcgZGF0YS5cbnByZWQudGVzdCA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRlc3QpXG5cbiMgQWRkaXRpb25hbGx5IHNpbmNlIGhlcmUgd2UgaGF2ZSB0aGUgYWN0dWFsL3JlYWwgcHJlZGljdGlvbiB2YWx1ZXMgd2UgY2FuIGFsc28gY2hlY2sgdGhlIGFjY3VyYWN5IG9mIG91ciBwcmVkaWN0aW9uIG9uIHRlc3RpbmcgZGF0YS5cbm1zZSh0ZXN0JEVhcm5pbmdzLHByZWQudGVzdCkifQ==
+</div>
+<p>We can see,</p>
+<ul>
+<li>the summary of the output svm model with details of:
+<ul>
+<li>Formula used.</li>
+<li>Type of SVM model</li>
+<li>The SVM Kernel Used</li>
+<li>And some performance parameter.</li>
+<li>Also, the Number of Support Vectors.</li>
+</ul></li>
+<li>The mean squared error of the predicted values using training sub-dataset.</li>
+<li>The mean squared error of the predicted values using the testing sub-dataset.</li>
+</ul>
+<hr />
 </div>
 <div id="nnet" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> nnet*</h2>
+<h2><span class="header-section-number">9.4</span> Neural Network.*</h2>
 
 </div>
 </div>

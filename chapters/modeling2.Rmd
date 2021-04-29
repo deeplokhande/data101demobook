@@ -429,9 +429,7 @@ library(e1071)
 library(ModelMetrics)
 
 # Load the dataset.
-# earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv",stringsAsFactors = T)
-
-earningdata<-read.csv("../files/dataset/earnings.csv",stringsAsFactors = T)
+earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv",stringsAsFactors = T)
 
 
 # splitting the dataset into training and testing.
@@ -498,9 +496,10 @@ To do this we will use the 4 step method of prediction and use the *nnet()* func
 
 Let look at the *nnet()* function and its parameters.
 
-- `nnet(formula,data,size,...)`
+- `nnet(formula,data,size,linout,...)`
   - *formula* and *data* are the same as mentions in Step 1 of section \@ref(model4step).
   - *size*: denotes the number of units in the hidden layer.
+  - *linout*: Assign TRUE is predicting numerical value. Default is FALSE, for predicting categorical value.
   - *rang*: set the initial random weights on each edge.
   - *maxit*: maximum number of iterations.
   - *decay*: weight decay parameter. Can also be understood as learning rate.
@@ -521,19 +520,19 @@ train <- earningdata[idx == 1,]
 test <- earningdata[idx == 2,]
 
 # 1. Build prediction model using nnet() function.
-pred.model <- nnet(Earnings ~., data = train,size = 15,decay = 5000,maxit = 500)
+pred.model <- nnet(Earnings/20000 ~., data = train, size = 50, decay=5e-5,maxit = 500,linout = T)
 
 # Lets see the summary of the nnet model.
 pred.model
 
 # 2. Predict using the newly built model on the training dataset.
-pred.train <- predict(pred.model,newdata = train)
+pred.train <- predict(pred.model,newdata = train)*20000
 
 # 3. Evaluate error on training using the mse() function.
 mse(train$Earnings,pred.train)
 
 # 4. Predict on the testing data.
-pred.test <- predict(pred.model,newdata = test)
+pred.test <- predict(pred.model,newdata = test)*20000
 
 # Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
 mse(test$Earnings,pred.test)
@@ -550,6 +549,16 @@ We can see from the output,
   - Network Options.
 - The mean squared error of the predicted values using training sub-dataset.
 - The mean squared error of the predicted values using the testing sub-dataset.
+
+---
+
+After Comparing all these models, we can see that the MSE values for the 3 models are SVM > Random Forest > Neural Network. This suggest one trend that, to get as best result as possible, one must invest most time in choosing the right model,and use the model with cleaned dataset for training. 
+
+Eventually, since we use R language here, the code for model creation just boils down to few lines of code, 4 steps to be more accurate. But since we might find one model works better than other, we must choose the best fit model.
+
+Also, we saw the trend of time required for training of the models studied above was SVM > RandomForest > Neural Net. This also suggest a proportional relationship with the time required for a particular model to train and in turn producing the best possible results.
+
+Although one can say that, we can just use Neural Networks all the time, well this statement is true to some extent, but depending on the resources, the complexity of the data, and the complexity of the model itself, one needs to make some trade-offs. One should not try to throw a ball just few meters with a cannon, using mere hands will do the job. In essence, do not try to overuse the neural net model for the sake of adding 2 mumbers, simple addition will suffice. Studying these tradeoffs and more models in depth though is out of this course scope.
 
 ---
 

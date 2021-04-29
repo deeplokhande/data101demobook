@@ -151,7 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="stateval.html"><a href="stateval.html"><i class="fa fa-check"></i><b>3</b> Simple Statistical Evaluation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#z-test"><i class="fa fa-check"></i><b>3.1</b> *z-test</a></li>
+<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+</ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="stateval.html"><a href="stateval.html#permonestep"><i class="fa fa-check"></i><b>3.2.1</b> Permutation Test One Step</a></li>
@@ -356,7 +359,7 @@ library(package_name)</code></pre>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-101">Table 9.1: </span>Snippet of Earnings Dataset
+<span id="tab:unnamed-chunk-103">Table 9.1: </span>Snippet of Earnings Dataset
 </caption>
 <thead>
 <tr>
@@ -740,7 +743,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KHJhbmRvbUZvcmVzdClcbmxpYnJhcnkoTW9k
 <p>We will use the <em>svm()</em> function from the <em>e1071</em> package. For more information about this function and its attributes visit <strong><a href="https://www.rdocumentation.org/packages/e1071/versions/1.7-6/topics/svm">svm()</a></strong></p>
 <p>Thus following the 4 step model for prediction and using the “<em>svm()</em>” function as the model function.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJpY3MpXG5cbiMgTG9hZCB0aGUgZGF0YXNldC5cbiMgZWFybmluZ2RhdGE8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG5lYXJuaW5nZGF0YTwtcmVhZC5jc3YoXCIuLi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG5cbiMgc3BsaXR0aW5nIHRoZSBkYXRhc2V0IGludG8gdHJhaW5pbmcgYW5kIHRlc3RpbmcuXG5pZHggPC0gc2FtcGxlKCAxOjIsIHNpemUgPSBucm93KGVhcm5pbmdkYXRhKSwgcmVwbGFjZSA9IFRSVUUsIHByb2IgPSBjKC44LCAuMikpXG50cmFpbiA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMSxdXG50ZXN0IDwtIGVhcm5pbmdkYXRhW2lkeCA9PSAyLF1cblxuIyAxLiBCdWlsZCBwcmVkaWN0aW9uIG1vZGVsIHVzaW5nIHN2bSgpIGZ1bmN0aW9uLlxucHJlZC5tb2RlbCA8LSBzdm0oRWFybmluZ3Mgfi4sIGRhdGEgPSB0cmFpbilcblxuIyBMZXRzIHNlZSB0aGUgc3VtbWFyeSBvZiB0aGUgc3ZtIG1vZGVsLlxucHJlZC5tb2RlbFxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRFYXJuaW5ncyxwcmVkLnRyYWluKVxuXG4jIDQuIFByZWRpY3Qgb24gdGhlIHRlc3RpbmcgZGF0YS5cbnByZWQudGVzdCA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRlc3QpXG5cbiMgQWRkaXRpb25hbGx5IHNpbmNlIGhlcmUgd2UgaGF2ZSB0aGUgYWN0dWFsL3JlYWwgcHJlZGljdGlvbiB2YWx1ZXMgd2UgY2FuIGFsc28gY2hlY2sgdGhlIGFjY3VyYWN5IG9mIG91ciBwcmVkaWN0aW9uIG9uIHRlc3RpbmcgZGF0YS5cbm1zZSh0ZXN0JEVhcm5pbmdzLHByZWQudGVzdCkifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJpY3MpXG5cbiMgTG9hZCB0aGUgZGF0YXNldC5cbmVhcm5pbmdkYXRhPC1yZWFkLmNzdihcImh0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9lYXJuaW5ncy5jc3ZcIixzdHJpbmdzQXNGYWN0b3JzID0gVClcblxuXG4jIHNwbGl0dGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhlYXJuaW5nZGF0YSksIHJlcGxhY2UgPSBUUlVFLCBwcm9iID0gYyguOCwgLjIpKVxudHJhaW4gPC0gZWFybmluZ2RhdGFbaWR4ID09IDEsXVxudGVzdCA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyBzdm0oKSBmdW5jdGlvbi5cbnByZWQubW9kZWwgPC0gc3ZtKEVhcm5pbmdzIH4uLCBkYXRhID0gdHJhaW4pXG5cbiMgTGV0cyBzZWUgdGhlIHN1bW1hcnkgb2YgdGhlIHN2bSBtb2RlbC5cbnByZWQubW9kZWxcblxuIyAyLiBQcmVkaWN0IHVzaW5nIHRoZSBuZXdseSBidWlsdCBtb2RlbCBvbiB0aGUgdHJhaW5pbmcgZGF0YXNldC5cbnByZWQudHJhaW4gPC0gcHJlZGljdChwcmVkLm1vZGVsLG5ld2RhdGEgPSB0cmFpbilcblxuIyAzLiBFdmFsdWF0ZSBlcnJvciBvbiB0cmFpbmluZyB1c2luZyB0aGUgbXNlKCkgZnVuY3Rpb24uXG5tc2UodHJhaW4kRWFybmluZ3MscHJlZC50cmFpbilcblxuIyA0LiBQcmVkaWN0IG9uIHRoZSB0ZXN0aW5nIGRhdGEuXG5wcmVkLnRlc3QgPC0gcHJlZGljdChwcmVkLm1vZGVsLG5ld2RhdGEgPSB0ZXN0KVxuXG4jIEFkZGl0aW9uYWxseSBzaW5jZSBoZXJlIHdlIGhhdmUgdGhlIGFjdHVhbC9yZWFsIHByZWRpY3Rpb24gdmFsdWVzIHdlIGNhbiBhbHNvIGNoZWNrIHRoZSBhY2N1cmFjeSBvZiBvdXIgcHJlZGljdGlvbiBvbiB0ZXN0aW5nIGRhdGEuXG5tc2UodGVzdCRFYXJuaW5ncyxwcmVkLnRlc3QpIn0=
 </div>
 <p>We can see,</p>
 <ul>
@@ -775,10 +778,11 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJp
 <p>To do this we will use the 4 step method of prediction and use the <em>nnet()</em> function from the “nnet” package as the model_function.</p>
 <p>Let look at the <em>nnet()</em> function and its parameters.</p>
 <ul>
-<li><code>nnet(formula,data,size,...)</code>
+<li><code>nnet(formula,data,size,linout,...)</code>
 <ul>
 <li><em>formula</em> and <em>data</em> are the same as mentions in Step 1 of section <a href="models.html#model4step">9.1</a>.</li>
 <li><em>size</em>: denotes the number of units in the hidden layer.</li>
+<li><em>linout</em>: Assign TRUE is predicting numerical value. Default is FALSE, for predicting categorical value.</li>
 <li><em>rang</em>: set the initial random weights on each edge.</li>
 <li><em>maxit</em>: maximum number of iterations.</li>
 <li><em>decay</em>: weight decay parameter. Can also be understood as learning rate.</li>
@@ -787,7 +791,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJp
 </ul>
 <p>Now lets use the <em>nnet()</em> function for predction.</p>
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
-eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KG5uZXQpXG5saWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxuZWFybmluZ2RhdGE8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG4jIHNwbGl0dGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhlYXJuaW5nZGF0YSksIHJlcGxhY2UgPSBUUlVFLCBwcm9iID0gYyguOCwgLjIpKVxudHJhaW4gPC0gZWFybmluZ2RhdGFbaWR4ID09IDEsXVxudGVzdCA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyBubmV0KCkgZnVuY3Rpb24uXG5wcmVkLm1vZGVsIDwtIG5uZXQoRWFybmluZ3Mgfi4sIGRhdGEgPSB0cmFpbixzaXplID0gMTUsZGVjYXkgPSA1MDAwLG1heGl0ID0gNTAwKVxuXG4jIExldHMgc2VlIHRoZSBzdW1tYXJ5IG9mIHRoZSBubmV0IG1vZGVsLlxucHJlZC5tb2RlbFxuXG4jIDIuIFByZWRpY3QgdXNpbmcgdGhlIG5ld2x5IGJ1aWx0IG1vZGVsIG9uIHRoZSB0cmFpbmluZyBkYXRhc2V0LlxucHJlZC50cmFpbiA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRyYWluKVxuXG4jIDMuIEV2YWx1YXRlIGVycm9yIG9uIHRyYWluaW5nIHVzaW5nIHRoZSBtc2UoKSBmdW5jdGlvbi5cbm1zZSh0cmFpbiRFYXJuaW5ncyxwcmVkLnRyYWluKVxuXG4jIDQuIFByZWRpY3Qgb24gdGhlIHRlc3RpbmcgZGF0YS5cbnByZWQudGVzdCA8LSBwcmVkaWN0KHByZWQubW9kZWwsbmV3ZGF0YSA9IHRlc3QpXG5cbiMgQWRkaXRpb25hbGx5IHNpbmNlIGhlcmUgd2UgaGF2ZSB0aGUgYWN0dWFsL3JlYWwgcHJlZGljdGlvbiB2YWx1ZXMgd2UgY2FuIGFsc28gY2hlY2sgdGhlIGFjY3VyYWN5IG9mIG91ciBwcmVkaWN0aW9uIG9uIHRlc3RpbmcgZGF0YS5cbm1zZSh0ZXN0JEVhcm5pbmdzLHByZWQudGVzdCkifQ==
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KG5uZXQpXG5saWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxuZWFybmluZ2RhdGE8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG4jIHNwbGl0dGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhlYXJuaW5nZGF0YSksIHJlcGxhY2UgPSBUUlVFLCBwcm9iID0gYyguOCwgLjIpKVxudHJhaW4gPC0gZWFybmluZ2RhdGFbaWR4ID09IDEsXVxudGVzdCA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyBubmV0KCkgZnVuY3Rpb24uXG5wcmVkLm1vZGVsIDwtIG5uZXQoRWFybmluZ3MvMjAwMDAgfi4sIGRhdGEgPSB0cmFpbiwgc2l6ZSA9IDUwLCBkZWNheT01ZS01LG1heGl0ID0gNTAwLGxpbm91dCA9IFQpXG5cbiMgTGV0cyBzZWUgdGhlIHN1bW1hcnkgb2YgdGhlIG5uZXQgbW9kZWwuXG5wcmVkLm1vZGVsXG5cbiMgMi4gUHJlZGljdCB1c2luZyB0aGUgbmV3bHkgYnVpbHQgbW9kZWwgb24gdGhlIHRyYWluaW5nIGRhdGFzZXQuXG5wcmVkLnRyYWluIDwtIHByZWRpY3QocHJlZC5tb2RlbCxuZXdkYXRhID0gdHJhaW4pKjIwMDAwXG5cbiMgMy4gRXZhbHVhdGUgZXJyb3Igb24gdHJhaW5pbmcgdXNpbmcgdGhlIG1zZSgpIGZ1bmN0aW9uLlxubXNlKHRyYWluJEVhcm5pbmdzLHByZWQudHJhaW4pXG5cbiMgNC4gUHJlZGljdCBvbiB0aGUgdGVzdGluZyBkYXRhLlxucHJlZC50ZXN0IDwtIHByZWRpY3QocHJlZC5tb2RlbCxuZXdkYXRhID0gdGVzdCkqMjAwMDBcblxuIyBBZGRpdGlvbmFsbHkgc2luY2UgaGVyZSB3ZSBoYXZlIHRoZSBhY3R1YWwvcmVhbCBwcmVkaWN0aW9uIHZhbHVlcyB3ZSBjYW4gYWxzbyBjaGVjayB0aGUgYWNjdXJhY3kgb2Ygb3VyIHByZWRpY3Rpb24gb24gdGVzdGluZyBkYXRhLlxubXNlKHRlc3QkRWFybmluZ3MscHJlZC50ZXN0KSJ9
 </div>
 <p>We can see from the output,</p>
 <ul>
@@ -806,6 +810,11 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KG5uZXQpXG5saWJyYXJ5KE1vZGVsTWV0cmlj
 <li>The mean squared error of the predicted values using training sub-dataset.</li>
 <li>The mean squared error of the predicted values using the testing sub-dataset.</li>
 </ul>
+<hr />
+<p>After Comparing all these models, we can see that the MSE values for the 3 models are SVM &gt; Random Forest &gt; Neural Network. This suggest one trend that, to get as best result as possible, one must invest most time in choosing the right model,and use the model with cleaned dataset for training.</p>
+<p>Eventually, since we use R language here, the code for model creation just boils down to few lines of code, 4 steps to be more accurate. But since we might find one model works better than other, we must choose the best fit model.</p>
+<p>Also, we saw the trend of time required for training of the models studied above was SVM &gt; RandomForest &gt; Neural Net. This also suggest a proportional relationship with the time required for a particular model to train and in turn producing the best possible results.</p>
+<p>Although one can say that, we can just use Neural Networks all the time, well this statement is true to some extent, but depending on the resources, the complexity of the data, and the complexity of the model itself, one needs to make some trade-offs. One should not try to throw a ball just few meters with a cannon, using mere hands will do the job. In essence, do not try to overuse the neural net model for the sake of adding 2 mumbers, simple addition will suffice. Studying these tradeoffs and more models in depth though is out of this course scope.</p>
 <hr />
 <p><strong>EOC</strong></p>
 

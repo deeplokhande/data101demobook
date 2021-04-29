@@ -151,7 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="stateval.html"><a href="stateval.html"><i class="fa fa-check"></i><b>3</b> Simple Statistical Evaluation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#z-test"><i class="fa fa-check"></i><b>3.1</b> *z-test</a></li>
+<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+</ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="stateval.html"><a href="stateval.html#permonestep"><i class="fa fa-check"></i><b>3.2.1</b> Permutation Test One Step</a></li>
@@ -414,7 +417,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 <p>Consider the following 2 datasets.</p>
 <p>First is a smaller just 4 record data subset of the Moody dataset.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-57">Table 5.1: </span>Small subset of Moody Dataset</caption>
+<caption><span id="tab:unnamed-chunk-59">Table 5.1: </span>Small subset of Moody Dataset</caption>
 <thead>
 <tr class="header">
 <th align="right">STUDENTID</th>
@@ -462,7 +465,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 </table>
 <p>Second is another dataset of students with respective GPA and Majors.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-58">Table 5.2: </span>Small dataset of students information</caption>
+<caption><span id="tab:unnamed-chunk-60">Table 5.2: </span>Small dataset of students information</caption>
 <thead>
 <tr class="header">
 <th align="right">STUDENTID</th>
@@ -518,7 +521,7 @@ Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</co
 <h4><span class="header-section-number">5.4.1.1</span> Another example</h4>
 <p>Suppose you have the happiness index dataset,</p>
 <table>
-<caption><span id="tab:unnamed-chunk-61">Table 5.3: </span>Happiness Index Dataset for all countries</caption>
+<caption><span id="tab:unnamed-chunk-63">Table 5.3: </span>Happiness Index Dataset for all countries</caption>
 <thead>
 <tr class="header">
 <th align="right">IDN</th>
@@ -811,7 +814,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGx1YnJpZGF0ZSkgIyBpbmNsdWRlIHRoZSBs
 <p>There are various other functions in the lubridate package like for various use case, but we will not cover them since they are not useful here. To learn more about it you can visit the official <code>lubridate</code> package vignette linked here: <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html">lubridate</a></p>
 <p>Now coming back to the main example of avoiding issues/errors while importing date and time attributes present in dataset. For this we will look at the <code>AirQualityUCI</code> dataset. And here is the snippet of the dataset below.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-78">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.</caption>
+<caption><span id="tab:unnamed-chunk-80">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.</caption>
 <thead>
 <tr class="header">
 <th align="left">Date</th>

@@ -103,6 +103,8 @@ Permutation(traffic, "TUNNEL", "VOLUME_PER_MINUTE",1000,"Holland", "Lincoln")
 
 - Note: You can find the permutation function code here: [Permutation()](https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R)
 
+- **NOTE**: The red line in the output plots of the permutation test function is not the p-value, but it is just the difference of the value of means of the two categories under test. 
+
 
 ### Exercise - How p-value is affected by difference of means and standard deviations {#aniceexample}
 

@@ -151,7 +151,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3" data-path="stateval.html"><a href="stateval.html"><i class="fa fa-check"></i><b>3</b> Simple Statistical Evaluation</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#z-test"><i class="fa fa-check"></i><b>3.1</b> *z-test</a></li>
+<li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+</ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
 <li class="chapter" data-level="3.2.1" data-path="stateval.html"><a href="stateval.html#permonestep"><i class="fa fa-check"></i><b>3.2.1</b> Permutation Test One Step</a></li>
@@ -278,7 +281,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number">Chapter 3</span> Simple Statistical Evaluation</h1>
 <script src="files/js/dcl.js"></script>
 <p>The biggest enemy of your findings is randomness. In order to convince your audience that you have found something you need to address the question “how do you know your result is simply sheer luck, it is random?”</p>
-<p>This is where you need statistics and simple hypothesis testing.</p>
+<p>This is where you need statistical tests for use in hypothesis testing.</p>
 <div id="some-basics-first" class="section level4" number="3.0.0.1">
 <h4><span class="header-section-number">3.0.0.1</span> *Some Basics First:</h4>
 <ul>
@@ -298,17 +301,85 @@ N is size of set.}
 
 \end{equation}\]</span></p>
 </div>
-<div id="z-test" class="section level2" number="3.1">
-<h2><span class="header-section-number">3.1</span> *z-test</h2>
-<p>A z-test is any statistical test used in hypothesis testing with an underlying normal distribution.
-In other words, when the distribution of the test statistic under the null hypothesis can be approximated by a normal distribution, z-test can be used.
-Outcome of the z-test is the z-score which is a numerical measure to test the mean of a distribution.
+<div id="ztest" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> Z-test</h2>
+<p>A z-test is any statistical test used in hypothesis testing with an underlying normal distribution.</p>
+<p>In other words, when the distribution of the test statistic under the null hypothesis can be approximated by a normal distribution, z-test can be used.</p>
+<p>Outcome of the z-test is the z-score which is a numerical measure to test the mean of a distribution.
 z-score is measured in terms of standard deviation from mean.</p>
-<p><strong>INCLUDE EXAMPLES</strong></p>
+<div id="steps-for-hypothesis-testing-using-z-test." class="section level3" number="3.1.1">
+<h3><span class="header-section-number">3.1.1</span> Steps for hypothesis testing using Z-test.</h3>
+<p>Running a Z-test requires 5 steps:</p>
+<ol style="list-style-type: decimal">
+<li>State the null hypothesis and the alternate hypothesis
+<ul>
+<li>Select a null hypothesis and an alternate hypothesis which will be tested using the z-test.</li>
+</ul></li>
+<li>Choose an Alpha <span class="math inline">\(\alpha\)</span> level.
+<ul>
+<li>Usually this is selected to be small, such that the area under the normal distribution curve is accumulated most in the range between the alpha level.</li>
+<li>Thus mostly in statistical testing, <span class="math inline">\(\alpha = 0.05\)</span> is selected.</li>
+</ul></li>
+<li>Calculate the z-test statistic.
+<ul>
+<li>The z-test statistic is calculated using the z-score formula.
+<span class="math display">\[\begin{equation} z = \frac{x-\mu}{\sigma}\text{ where, $z$ = z-score, $x$ = raw score, $\mu$ = mean and $\sigma$ = standard deviation } \end{equation}\]</span></li>
+</ul></li>
+<li>Calculate the p-value using the z-score
+<ul>
+<li>Once we have the z-score we want to calculate the p-value from it.</li>
+<li>To do this, there are 2 ways,
+<ul>
+<li>First use the z-table available online at <a href="http://www.z-table.com/">z-table.com</a></li>
+<li>Second, use the pnorm() function in R to find the p-value.</li>
+</ul></li>
+</ul></li>
+<li>Compare the p-value with <span class="math inline">\(\alpha\)</span>
+<ul>
+<li>After getting the p-value from step 4, compare it with the <span class="math inline">\(\alpha\)</span> level we selected in step 2.</li>
+<li>This decides if we can reject the null hypothesis or not.
+<ul>
+<li>If the p-value obtained is lower than <span class="math inline">\(\alpha\)</span>, then we can reject the null hypothesis.</li>
+<li>If the p-value is more than <span class="math inline">\(\alpha\)</span>, we fail to reject the null hypothesis due to lack of significant evidence.</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>Some important relation between one-sided and two sided test while using hypothesis testing is as follows:</p>
+<ul>
+<li>First, estimate the expected value <span class="math inline">\(\mu\)</span> of T(statistic) under the null hypothesis, and obtain an estimate <span class="math inline">\(\sigma\)</span> of the standard deviation of T.</li>
+<li>Second, determine the properties of T : one tailed or two tailed.
+<ul>
+<li>For Null hypothesis H0: <span class="math inline">\(\mu \geq \mu_0\)</span> vs alternative hypothesis H1: <span class="math inline">\(\mu &lt; \mu_0\)</span> , it is upper/right-tailed (one tailed).</li>
+<li>For Null hypothesis H0:<span class="math inline">\(\mu \leq \mu_0\)</span> vs alternative hypothesis H1: <span class="math inline">\(\mu &gt; \mu_0\)</span> , it is lower/left-tailed (one tailed).</li>
+<li>For Null hypothesis H0: <span class="math inline">\(\mu = \mu_0\)</span> vs alternative hypothesis H1: <span class="math inline">\(\mu \neq \mu_0\)</span> , it is two-tailed.</li>
+</ul></li>
+<li>Once you calculate the pnorm() in step 4, depending on the properties of two as described above,
+<ul>
+<li>use <code>pnorm(-Z)</code> for right tailed tests,</li>
+<li>use <code>pnorm(Z)</code> for left tailed tests, and</li>
+<li>use <code>2*pnorm(-Z)</code> for two tailed test.</li>
+<li><em>Note</em>: (Here Z = z-score). Also the method mentioned above works similar to that studied in class/recitations, but is simple to understand, and does not require subtracting the pnorm() output from 1.</li>
+</ul></li>
+</ul>
+<p>Now lets look at an example to use this z-test for hypothesis testing.</p>
+<p>We will study the example to statistically find the relation between two tunnels, Holland and Lincoln namely, with respect to the traffic volume per minute in those tunnels.</p>
+<p>Thus stating out Null Hypothsis and Alternate Hypothesis.</p>
+<ul>
+<li>Null Hypothesis H0: Traffic in Lincoln is same as Traffic in Holland tunnel.</li>
+<li>Alternate Hypothesis H1: Traffic in Lincoln is higher than traffic in Holland tunnel.</li>
+</ul>
+<p>Once we have stated our hypothesis, lets see the z-test in practice.</p>
+<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgRGF0YXNldFxuVFJBRkZJQzwtcmVhZC5jc3YoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9UUkFGRklDLmNzdicpXG5zdW1tYXJ5KFRSQUZGSUMpICNnaXZlcyB1cyB0aGUgZGF0YSBzdGF0aXN0aWNzXG5cbiNkYXRhIGNsZWFuIGFuZCBzdWJzZXRcbmxpbmNvbG4uZGF0YSA8LSBzdWJzZXQoVFJBRkZJQywgVFJBRkZJQyRUVU5ORUwgPT0gXCJMaW5jb2xuXCIpXG5ob2xsYW5kLmRhdGEgPC0gc3Vic2V0KFRSQUZGSUMsIFRSQUZGSUMkVFVOTkVMID09IFwiSG9sbGFuZFwiKVxuXG4jIHRyYWZmaWMgYXQgbGluY29sblxuIyBUaGlzIHZhcmlhYmxlIGlzIGEgY29sdW1uIG9mIDE0MDEgcm93cy5cbmxpbmNvbG4udHJhZmZpYyA8LSBsaW5jb2xuLmRhdGEkVk9MVU1FX1BFUl9NSU5VVEVcblxuIyB0cmFmZmljIGF0IGhvbGxhbmRcbiMgVGhpcyB2YXJpYWJsZSBpcyBhIGNvbHVtbiBvZiAxNDAxIHJvd3MuXG5ob2xsYW5kLnRyYWZmaWMgPC0gaG9sbGFuZC5kYXRhJFZPTFVNRV9QRVJfTUlOVVRFXG5cbiMgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHR3byBzYW1wbGVzLlxuIyBUaGUgZmluYWwgdmFsdWUgaXMgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiwgaW4gVm9sdW1lIHBlciBtaW51dGUuXG5zZC5saW5jb2xuIDwtIHNkKGxpbmNvbG4udHJhZmZpYylcbnNkLmhvbGxhbmQgPC0gc2QoaG9sbGFuZC50cmFmZmljKVxuXG4jIG1lYW5zIG9mIHR3byBzYW1wbGVzXG5tZWFuLmxpbmNvbG4gPC0gbWVhbihsaW5jb2xuLnRyYWZmaWMpXG5tZWFuLmhvbGxhbmQgPC0gbWVhbihob2xsYW5kLnRyYWZmaWMpXG5cbiMgbGVuZ3RoIG9mIGxpbmNvbG4gYW5kIGhvbGxhbmRcbmxlbl9saW5jb2xuIDwtIGxlbmd0aChsaW5jb2xuLnRyYWZmaWMpXG5sZW5faG9sbGFuZCA8LSBsZW5ndGgoaG9sbGFuZC50cmFmZmljKVxuXG4jIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0cmFmZmljXG5zZC5saW4uaG9sIDwtIHNxcnQoc2QubGluY29sbl4yL2xlbl9saW5jb2xuICsgc2QuaG9sbGFuZF4yL2xlbl9ob2xsYW5kKVxuXG4jIHogc2NvcmVcbnpldGEgPC0gKG1lYW4ubGluY29sbiAtIG1lYW4uaG9sbGFuZCkvc2QubGluLmhvbFxuemV0YVxuXG4jIGdldCBwXG5wID0gcG5vcm0oLXpldGEpXG5wXG5cbiMgcGxvdCB0aGUgemV0YSB2YWx1ZSBvbiB0aGUgbm9ybWFsIGRpc3RyaWJ1dGlvbiBjdXJ2ZS5cbnBsb3QoeD1zZXEoZnJvbSA9IC0yNSwgdG89IDI1LCBieT0wLjEpLHk9ZG5vcm0oc2VxKGZyb20gPSAtMjUsIHRvPSAyNSwgIGJ5PTAuMSksbWVhbj0wKSx0eXBlPSdsJyx4bGFiID0gJ21lYW4gZGlmZmVyZW5jZScsICB5bGFiPSdwb3NzaWJpbGl0eScpXG5hYmxpbmUodj16ZXRhLCBjb2w9J3JlZCcpIn0=
+</div>
+<p>We can see that form the P-Value obtained is near to 0, which is less than 0.05.</p>
+<p>Hence, we reject the NULL Hypothesis and conclude with high degree of certainty that traffic in Lincoln is higher than traffic Holland.</p>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+<script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
+</div>
 </div>
 <div id="permtest" class="section level2" number="3.2">
 <h2><span class="header-section-number">3.2</span> Permutation Test</h2>
@@ -339,7 +410,8 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InRyYWZmaWM8LXJlYWQuY3N2KCdodHRw
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6InRyYWZmaWM8LXJlYWQuY3N2KCdodHRwczovL3Jhdy5naXRodWJ1c2VyY29udGVudC5jb20va3VuYWwwODk1L1JEYXRhc2V0cy9tYXN0ZXIvVFJBRkZJQy5jc3YnKVxuUGVybXV0YXRpb24gPC0gZnVuY3Rpb24oZGYxLGMxLGMyLG4sdzEsdzIpe1xuICBkZiA8LSBhcy5kYXRhLmZyYW1lKGRmMSlcbiAgRF9udWxsPC1jKClcbiAgVjE8LWRmWyxjMV1cbiAgVjI8LWRmWyxjMl1cbiAgc3ViLnZhbHVlMSA8LSBkZltkZlssIGMxXSA9PSB3MSwgYzJdXG4gIHN1Yi52YWx1ZTIgPC0gZGZbZGZbLCBjMV0gPT0gdzIsIGMyXVxuICBEIDwtICBhYnMobWVhbihzdWIudmFsdWUyLCBuYS5ybT1UUlVFKSAtIG1lYW4oc3ViLnZhbHVlMSwgbmEucm09VFJVRSkpXG4gIG09bGVuZ3RoKFYxKVxuICBsPWxlbmd0aChWMVtWMT09dzJdKVxuICBmb3IoamogaW4gMTpuKXtcbiAgICBudWxsIDwtIHJlcCh3MSxsZW5ndGgoVjEpKVxuICAgIG51bGxbc2FtcGxlKG0sbCldIDwtIHcyXG4gICAgbmYgPC0gZGF0YS5mcmFtZShLZXk9bnVsbCwgVmFsdWU9VjIpXG4gICAgbmFtZXMobmYpIDwtIGMoXCJLZXlcIixcIlZhbHVlXCIpXG4gICAgdzFfbnVsbCA8LSBuZltuZiRLZXkgPT0gdzEsMl1cbiAgICB3Ml9udWxsIDwtIG5mW25mJEtleSA9PSB3MiwyXVxuICAgIERfbnVsbCA8LSBjKERfbnVsbCxtZWFuKHcyX251bGwsIG5hLnJtPVRSVUUpIC0gbWVhbih3MV9udWxsLCBuYS5ybT1UUlVFKSlcbiAgfVxuICBteWhpc3Q8LWhpc3QoRF9udWxsLCBwcm9iPVRSVUUpXG4gIG11bHRpcGxpZXIgPC0gbXloaXN0JGNvdW50cyAvIG15aGlzdCRkZW5zaXR5XG4gIG15ZGVuc2l0eSA8LSBkZW5zaXR5KERfbnVsbCwgYWRqdXN0PTIpXG4gIG15ZGVuc2l0eSR5IDwtIG15ZGVuc2l0eSR5ICogbXVsdGlwbGllclsxXVxuICBwbG90KG15aGlzdClcbiAgbGluZXMobXlkZW5zaXR5LCBjb2w9J2JsdWUnKVxuICBhYmxpbmUodj1ELCBjb2w9J3JlZCcpXG4gIE08LW1lYW4oRF9udWxsPkQpXG4gIHJldHVybihNKVxufSIsInNhbXBsZSI6IlBlcm11dGF0aW9uKHRyYWZmaWMsIFwiVFVOTkVMXCIsIFwiVk9MVU1FX1BFUl9NSU5VVEVcIiwxMDAwLFwiSG9sbGFuZFwiLCBcIkxpbmNvbG5cIikifQ==
 </div>
 <ul>
-<li>Note: You can find the permutation function code here: <a href="https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R">Permutation()</a></li>
+<li><p>Note: You can find the permutation function code here: <a href="https://raw.githubusercontent.com/devanshagr/PermutationTestSecond/master/R/hello.R">Permutation()</a></p></li>
+<li><p><strong>NOTE</strong>: The red line in the output plots of the permutation test function is not the p-value, but it is just the difference of the value of means of the two categories under test.</p></li>
 </ul>
 </div>
 <div id="aniceexample" class="section level3" number="3.2.3">

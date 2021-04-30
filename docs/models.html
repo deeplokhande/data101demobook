@@ -154,6 +154,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+<li class="chapter" data-level="3.1.2" data-path="stateval.html"><a href="stateval.html#z-test-example-1-right-sided"><i class="fa fa-check"></i><b>3.1.2</b> Z-test Example 1 (Right Sided)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="stateval.html"><a href="stateval.html#z-test-example-2-left-sided"><i class="fa fa-check"></i><b>3.1.3</b> Z-test Example 2 (Left Sided)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="stateval.html"><a href="stateval.html#z-test-example-3-two-tailed"><i class="fa fa-check"></i><b>3.1.4</b> Z-test Example 3 (Two Tailed)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
@@ -359,7 +362,7 @@ library(package_name)</code></pre>
 <div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-103">Table 9.1: </span>Snippet of Earnings Dataset
+<span id="tab:unnamed-chunk-107">Table 9.1: </span>Snippet of Earnings Dataset
 </caption>
 <thead>
 <tr>
@@ -394,112 +397,25 @@ Number_Of_Parking_Tickets
 <tbody>
 <tr>
 <td style="text-align:left;">
-4048
+9474
 </td>
 <td style="text-align:right;">
-2.08
-</td>
-<td style="text-align:right;">
-43
-</td>
-<td style="text-align:right;">
-13218.15
-</td>
-<td style="text-align:left;">
-Vocational
-</td>
-<td style="text-align:right;">
-1981
-</td>
-<td style="text-align:right;">
-66.70
-</td>
-<td style="text-align:right;">
-121
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-5386
-</td>
-<td style="text-align:right;">
-2.80
+2.95
 </td>
 <td style="text-align:right;">
 3
 </td>
 <td style="text-align:right;">
-13276.10
+4998.73
 </td>
 <td style="text-align:left;">
-Vocational
+Other
 </td>
 <td style="text-align:right;">
-1973
+2005
 </td>
 <td style="text-align:right;">
-70.23
-</td>
-<td style="text-align:right;">
-121
-</td>
-<td style="text-align:right;">
-2
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-8358
-</td>
-<td style="text-align:right;">
-1.84
-</td>
-<td style="text-align:right;">
-4
-</td>
-<td style="text-align:right;">
-10184.00
-</td>
-<td style="text-align:left;">
-Buisness
-</td>
-<td style="text-align:right;">
-2006
-</td>
-<td style="text-align:right;">
-68.29
-</td>
-<td style="text-align:right;">
-123
-</td>
-<td style="text-align:right;">
-0
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-5809
-</td>
-<td style="text-align:right;">
-2.59
-</td>
-<td style="text-align:right;">
-41
-</td>
-<td style="text-align:right;">
-13259.27
-</td>
-<td style="text-align:left;">
-Vocational
-</td>
-<td style="text-align:right;">
-1975
-</td>
-<td style="text-align:right;">
-67.94
+68.10
 </td>
 <td style="text-align:right;">
 122
@@ -510,28 +426,28 @@ Vocational
 </tr>
 <tr>
 <td style="text-align:left;">
-1058
+4071
 </td>
 <td style="text-align:right;">
-2.58
+2.29
 </td>
 <td style="text-align:right;">
-6
+9
 </td>
 <td style="text-align:right;">
-9747.72
+13221.35
 </td>
 <td style="text-align:left;">
-STEM
+Vocational
 </td>
 <td style="text-align:right;">
-2013
+1970
 </td>
 <td style="text-align:right;">
-67.53
+67.73
 </td>
 <td style="text-align:right;">
-123
+120
 </td>
 <td style="text-align:right;">
 1
@@ -539,83 +455,54 @@ STEM
 </tr>
 <tr>
 <td style="text-align:left;">
-7265
+3927
 </td>
 <td style="text-align:right;">
-2.53
+2.48
 </td>
 <td style="text-align:right;">
-6
+11
 </td>
 <td style="text-align:right;">
-11762.66
-</td>
-<td style="text-align:left;">
-Professional
-</td>
-<td style="text-align:right;">
-1976
-</td>
-<td style="text-align:right;">
-68.59
-</td>
-<td style="text-align:right;">
-121
-</td>
-<td style="text-align:right;">
-1
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2278
-</td>
-<td style="text-align:right;">
-2.37
-</td>
-<td style="text-align:right;">
-29
-</td>
-<td style="text-align:right;">
-10232.22
+10243.39
 </td>
 <td style="text-align:left;">
 Humanities
 </td>
 <td style="text-align:right;">
-1994
+2010
 </td>
 <td style="text-align:right;">
-69.12
+68.95
 </td>
 <td style="text-align:right;">
-121
+124
 </td>
 <td style="text-align:right;">
-2
+1
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-7634
+287
 </td>
 <td style="text-align:right;">
-2.86
+2.40
 </td>
 <td style="text-align:right;">
-43
+30
 </td>
 <td style="text-align:right;">
-11700.17
+9767.40
 </td>
 <td style="text-align:left;">
-Professional
+STEM
 </td>
 <td style="text-align:right;">
-1990
+2007
 </td>
 <td style="text-align:right;">
-71.87
+66.08
 </td>
 <td style="text-align:right;">
 120
@@ -626,28 +513,86 @@ Professional
 </tr>
 <tr>
 <td style="text-align:left;">
-988
+2221
 </td>
 <td style="text-align:right;">
-1.78
+2.72
 </td>
 <td style="text-align:right;">
-67
+36
 </td>
 <td style="text-align:right;">
-9833.52
+10282.54
 </td>
 <td style="text-align:left;">
-STEM
+Humanities
 </td>
 <td style="text-align:right;">
-2015
+1963
 </td>
 <td style="text-align:right;">
-66.66
+69.51
 </td>
 <td style="text-align:right;">
 122
+</td>
+<td style="text-align:right;">
+3
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5198
+</td>
+<td style="text-align:right;">
+1.62
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:right;">
+13152.07
+</td>
+<td style="text-align:left;">
+Vocational
+</td>
+<td style="text-align:right;">
+1962
+</td>
+<td style="text-align:right;">
+67.90
+</td>
+<td style="text-align:right;">
+120
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2767
+</td>
+<td style="text-align:right;">
+2.28
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:right;">
+10236.24
+</td>
+<td style="text-align:left;">
+Humanities
+</td>
+<td style="text-align:right;">
+1978
+</td>
+<td style="text-align:right;">
+66.02
+</td>
+<td style="text-align:right;">
+120
 </td>
 <td style="text-align:right;">
 0
@@ -655,25 +600,83 @@ STEM
 </tr>
 <tr>
 <td style="text-align:left;">
-3092
+8799
 </td>
 <td style="text-align:right;">
-2.53
+2.60
 </td>
 <td style="text-align:right;">
-84
+6
 </td>
 <td style="text-align:right;">
-10254.51
+9740.00
 </td>
 <td style="text-align:left;">
-Humanities
+Buisness
+</td>
+<td style="text-align:right;">
+2001
+</td>
+<td style="text-align:right;">
+66.26
+</td>
+<td style="text-align:right;">
+121
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+9826
+</td>
+<td style="text-align:right;">
+2.43
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:right;">
+5022.88
+</td>
+<td style="text-align:left;">
+Other
 </td>
 <td style="text-align:right;">
 1977
 </td>
 <td style="text-align:right;">
-67.51
+69.98
+</td>
+<td style="text-align:right;">
+124
+</td>
+<td style="text-align:right;">
+1
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4207
+</td>
+<td style="text-align:right;">
+3.19
+</td>
+<td style="text-align:right;">
+8
+</td>
+<td style="text-align:right;">
+13313.53
+</td>
+<td style="text-align:left;">
+Vocational
+</td>
+<td style="text-align:right;">
+1991
+</td>
+<td style="text-align:right;">
+69.70
 </td>
 <td style="text-align:right;">
 123
@@ -793,6 +796,7 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGUxMDcxKVxubGlicmFyeShNb2RlbE1ldHJp
 <div data-datacamp-exercise="" data-height="300" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KG5uZXQpXG5saWJyYXJ5KE1vZGVsTWV0cmljcylcblxuIyBMb2FkIHRoZSBkYXRhc2V0LlxuZWFybmluZ2RhdGE8LXJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L2Vhcm5pbmdzLmNzdlwiLHN0cmluZ3NBc0ZhY3RvcnMgPSBUKVxuXG4jIHNwbGl0dGluZyB0aGUgZGF0YXNldCBpbnRvIHRyYWluaW5nIGFuZCB0ZXN0aW5nLlxuaWR4IDwtIHNhbXBsZSggMToyLCBzaXplID0gbnJvdyhlYXJuaW5nZGF0YSksIHJlcGxhY2UgPSBUUlVFLCBwcm9iID0gYyguOCwgLjIpKVxudHJhaW4gPC0gZWFybmluZ2RhdGFbaWR4ID09IDEsXVxudGVzdCA8LSBlYXJuaW5nZGF0YVtpZHggPT0gMixdXG5cbiMgMS4gQnVpbGQgcHJlZGljdGlvbiBtb2RlbCB1c2luZyBubmV0KCkgZnVuY3Rpb24uXG5wcmVkLm1vZGVsIDwtIG5uZXQoRWFybmluZ3MvMjAwMDAgfi4sIGRhdGEgPSB0cmFpbiwgc2l6ZSA9IDUwLCBkZWNheT01ZS01LG1heGl0ID0gNTAwLGxpbm91dCA9IFQpXG5cbiMgTGV0cyBzZWUgdGhlIHN1bW1hcnkgb2YgdGhlIG5uZXQgbW9kZWwuXG5wcmVkLm1vZGVsXG5cbiMgMi4gUHJlZGljdCB1c2luZyB0aGUgbmV3bHkgYnVpbHQgbW9kZWwgb24gdGhlIHRyYWluaW5nIGRhdGFzZXQuXG5wcmVkLnRyYWluIDwtIHByZWRpY3QocHJlZC5tb2RlbCxuZXdkYXRhID0gdHJhaW4pKjIwMDAwXG5cbiMgMy4gRXZhbHVhdGUgZXJyb3Igb24gdHJhaW5pbmcgdXNpbmcgdGhlIG1zZSgpIGZ1bmN0aW9uLlxubXNlKHRyYWluJEVhcm5pbmdzLHByZWQudHJhaW4pXG5cbiMgNC4gUHJlZGljdCBvbiB0aGUgdGVzdGluZyBkYXRhLlxucHJlZC50ZXN0IDwtIHByZWRpY3QocHJlZC5tb2RlbCxuZXdkYXRhID0gdGVzdCkqMjAwMDBcblxuIyBBZGRpdGlvbmFsbHkgc2luY2UgaGVyZSB3ZSBoYXZlIHRoZSBhY3R1YWwvcmVhbCBwcmVkaWN0aW9uIHZhbHVlcyB3ZSBjYW4gYWxzbyBjaGVjayB0aGUgYWNjdXJhY3kgb2Ygb3VyIHByZWRpY3Rpb24gb24gdGVzdGluZyBkYXRhLlxubXNlKHRlc3QkRWFybmluZ3MscHJlZC50ZXN0KSJ9
 </div>
+<p><strong>NOTE</strong>: If you see a very high value of MSE after running the above code, please re-run it. Usually you will find the MSE to be better than all the models we have studied uptil now for the Earnings prediction problem.</p>
 <p>We can see from the output,</p>
 <ul>
 <li>the summary of the output, neural network model, with details of:

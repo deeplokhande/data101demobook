@@ -154,6 +154,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+<li class="chapter" data-level="3.1.2" data-path="stateval.html"><a href="stateval.html#z-test-example-1-right-sided"><i class="fa fa-check"></i><b>3.1.2</b> Z-test Example 1 (Right Sided)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="stateval.html"><a href="stateval.html#z-test-example-2-left-sided"><i class="fa fa-check"></i><b>3.1.3</b> Z-test Example 2 (Left Sided)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="stateval.html"><a href="stateval.html#z-test-example-3-two-tailed"><i class="fa fa-check"></i><b>3.1.4</b> Z-test Example 3 (Two Tailed)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
@@ -415,84 +418,179 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 <p>In R the <em>merge()</em> function allows merging two data frames by common columns or row names. This function allows you to perform different SQL joins, like <code>left join, inner join, right join or full join</code>, among others.</p>
 <p>We will look at merging datasets in R with this function, along with examples.</p>
 <p>Consider the following 2 datasets.</p>
-<p>First is a smaller just 4 record data subset of the Moody dataset.</p>
+First is a smaller just 4 record data subset of the Moody dataset.<br />
+
 <table>
-<caption><span id="tab:unnamed-chunk-59">Table 5.1: </span>Small subset of Moody Dataset</caption>
+<caption>
+<span id="tab:unnamed-chunk-63">Table 5.1: </span>Small subset of Moody Dataset
+</caption>
 <thead>
-<tr class="header">
-<th align="right">STUDENTID</th>
-<th align="right">SCORE</th>
-<th align="left">GRADE</th>
-<th align="left">ON_SMARTPHONE</th>
-<th align="left">ASKS_QUESTIONS</th>
-<th align="right">FINALEXAM</th>
+<tr>
+<th style="text-align:right;">
+STUDENTID
+</th>
+<th style="text-align:right;">
+SCORE
+</th>
+<th style="text-align:left;">
+GRADE
+</th>
+<th style="text-align:left;">
+ON_SMARTPHONE
+</th>
+<th style="text-align:left;">
+ASKS_QUESTIONS
+</th>
+<th style="text-align:right;">
+FINALEXAM
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">65446</td>
-<td align="right">23.67</td>
-<td align="left">D</td>
-<td align="left">never</td>
-<td align="left">always</td>
-<td align="right">12.874804</td>
+<tr>
+<td style="text-align:right;">
+65446
+</td>
+<td style="text-align:right;">
+23.67
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:right;">
+12.874804
+</td>
 </tr>
-<tr class="even">
-<td align="right">79686</td>
-<td align="right">8.41</td>
-<td align="left">F</td>
-<td align="left">never</td>
-<td align="left">never</td>
-<td align="right">5.044093</td>
+<tr>
+<td style="text-align:right;">
+79686
+</td>
+<td style="text-align:right;">
+8.41
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:right;">
+5.044093
+</td>
 </tr>
-<tr class="odd">
-<td align="right">56400</td>
-<td align="right">69.76</td>
-<td align="left">C</td>
-<td align="left">never</td>
-<td align="left">always</td>
-<td align="right">23.585730</td>
+<tr>
+<td style="text-align:right;">
+56400
+</td>
+<td style="text-align:right;">
+69.76
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:right;">
+23.585730
+</td>
 </tr>
-<tr class="even">
-<td align="right">16792</td>
-<td align="right">95.51</td>
-<td align="left">A</td>
-<td align="left">never</td>
-<td align="left">always</td>
-<td align="right">23.476748</td>
+<tr>
+<td style="text-align:right;">
+16792
+</td>
+<td style="text-align:right;">
+95.51
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:right;">
+23.476748
+</td>
 </tr>
 </tbody>
 </table>
 <p>Second is another dataset of students with respective GPA and Majors.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-60">Table 5.2: </span>Small dataset of students information</caption>
+<caption>
+<span id="tab:unnamed-chunk-64">Table 5.2: </span>Small dataset of students information
+</caption>
 <thead>
-<tr class="header">
-<th align="right">STUDENTID</th>
-<th align="right">GPA</th>
-<th align="left">Major</th>
+<tr>
+<th style="text-align:right;">
+STUDENTID
+</th>
+<th style="text-align:right;">
+GPA
+</th>
+<th style="text-align:left;">
+Major
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">65446</td>
-<td align="right">1.559626</td>
-<td align="left">computer science</td>
+<tr>
+<td style="text-align:right;">
+65446
+</td>
+<td style="text-align:right;">
+1.559626
+</td>
+<td style="text-align:left;">
+computer science
+</td>
 </tr>
-<tr class="even">
-<td align="right">79686</td>
-<td align="right">3.813033</td>
-<td align="left">economics</td>
+<tr>
+<td style="text-align:right;">
+79686
+</td>
+<td style="text-align:right;">
+3.813033
+</td>
+<td style="text-align:left;">
+economics
+</td>
 </tr>
-<tr class="odd">
-<td align="right">56400</td>
-<td align="right">2.840912</td>
-<td align="left">political science</td>
+<tr>
+<td style="text-align:right;">
+56400
+</td>
+<td style="text-align:right;">
+2.840912
+</td>
+<td style="text-align:left;">
+political science
+</td>
 </tr>
-<tr class="even">
-<td align="right">10001</td>
-<td align="right">2.664000</td>
-<td align="left">economics</td>
+<tr>
+<td style="text-align:right;">
+10001
+</td>
+<td style="text-align:right;">
+2.664000
+</td>
+<td style="text-align:left;">
+economics
+</td>
 </tr>
 </tbody>
 </table>
@@ -521,72 +619,172 @@ Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</co
 <h4><span class="header-section-number">5.4.1.1</span> Another example</h4>
 <p>Suppose you have the happiness index dataset,</p>
 <table>
-<caption><span id="tab:unnamed-chunk-63">Table 5.3: </span>Happiness Index Dataset for all countries</caption>
+<caption>
+<span id="tab:unnamed-chunk-67">Table 5.3: </span>Happiness Index Dataset for all countries
+</caption>
 <thead>
-<tr class="header">
-<th align="right">IDN</th>
-<th align="right">AGE</th>
-<th align="left">COUNTRY</th>
-<th align="left">GENDER</th>
-<th align="right">IMMIGRANT</th>
-<th align="right">INCOME</th>
-<th align="right">HAPPINESS</th>
+<tr>
+<th style="text-align:right;">
+IDN
+</th>
+<th style="text-align:right;">
+AGE
+</th>
+<th style="text-align:left;">
+COUNTRY
+</th>
+<th style="text-align:left;">
+GENDER
+</th>
+<th style="text-align:right;">
+IMMIGRANT
+</th>
+<th style="text-align:right;">
+INCOME
+</th>
+<th style="text-align:right;">
+HAPPINESS
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">88364</td>
-<td align="right">29</td>
-<td align="left">Kyrgyzstan</td>
-<td align="left">Male</td>
-<td align="right">0</td>
-<td align="right">103305</td>
-<td align="right">8.35</td>
+<tr>
+<td style="text-align:right;">
+88364
+</td>
+<td style="text-align:right;">
+29
+</td>
+<td style="text-align:left;">
+Kyrgyzstan
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+103305
+</td>
+<td style="text-align:right;">
+8.35
+</td>
 </tr>
-<tr class="even">
-<td align="right">37692</td>
-<td align="right">41</td>
-<td align="left">Afghanistan</td>
-<td align="left">Male</td>
-<td align="right">0</td>
-<td align="right">51682</td>
-<td align="right">4.44</td>
+<tr>
+<td style="text-align:right;">
+37692
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Afghanistan
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+51682
+</td>
+<td style="text-align:right;">
+4.44
+</td>
 </tr>
-<tr class="odd">
-<td align="right">57856</td>
-<td align="right">20</td>
-<td align="left">Azerbaijan</td>
-<td align="left">Female</td>
-<td align="right">0</td>
-<td align="right">72381</td>
-<td align="right">6.24</td>
+<tr>
+<td style="text-align:right;">
+57856
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Azerbaijan
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+72381
+</td>
+<td style="text-align:right;">
+6.24
+</td>
 </tr>
-<tr class="even">
-<td align="right">49453</td>
-<td align="right">62</td>
-<td align="left">South Korea</td>
-<td align="left">Female</td>
-<td align="right">0</td>
-<td align="right">65658</td>
-<td align="right">5.66</td>
+<tr>
+<td style="text-align:right;">
+49453
+</td>
+<td style="text-align:right;">
+62
+</td>
+<td style="text-align:left;">
+South Korea
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+65658
+</td>
+<td style="text-align:right;">
+5.66
+</td>
 </tr>
-<tr class="odd">
-<td align="right">93485</td>
-<td align="right">63</td>
-<td align="left">Jordan</td>
-<td align="left">Female</td>
-<td align="right">1</td>
-<td align="right">109581</td>
-<td align="right">3.17</td>
+<tr>
+<td style="text-align:right;">
+93485
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Jordan
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+109581
+</td>
+<td style="text-align:right;">
+3.17
+</td>
 </tr>
-<tr class="even">
-<td align="right">97976</td>
-<td align="right">36</td>
-<td align="left">Congo-Kinshasa</td>
-<td align="left">Female</td>
-<td align="right">0</td>
-<td align="right">112432</td>
-<td align="right">9.43</td>
+<tr>
+<td style="text-align:right;">
+97976
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Congo-Kinshasa
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+112432
+</td>
+<td style="text-align:right;">
+9.43
+</td>
 </tr>
 </tbody>
 </table>
@@ -814,65 +1012,151 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGx1YnJpZGF0ZSkgIyBpbmNsdWRlIHRoZSBs
 <p>There are various other functions in the lubridate package like for various use case, but we will not cover them since they are not useful here. To learn more about it you can visit the official <code>lubridate</code> package vignette linked here: <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html">lubridate</a></p>
 <p>Now coming back to the main example of avoiding issues/errors while importing date and time attributes present in dataset. For this we will look at the <code>AirQualityUCI</code> dataset. And here is the snippet of the dataset below.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-80">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.</caption>
+<caption>
+<span id="tab:unnamed-chunk-84">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.
+</caption>
 <thead>
-<tr class="header">
-<th align="left">Date</th>
-<th align="left">Time</th>
-<th align="right">CO</th>
-<th align="right">Tin.Oxide</th>
-<th align="right">Non.Metanic.HydroCarbons</th>
-<th align="right">Benzene</th>
+<tr>
+<th style="text-align:left;">
+Date
+</th>
+<th style="text-align:left;">
+Time
+</th>
+<th style="text-align:right;">
+CO
+</th>
+<th style="text-align:right;">
+Tin.Oxide
+</th>
+<th style="text-align:right;">
+Non.Metanic.HydroCarbons
+</th>
+<th style="text-align:right;">
+Benzene
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="left">3/10/2004</td>
-<td align="left">18:00:00</td>
-<td align="right">2.6</td>
-<td align="right">1360</td>
-<td align="right">150</td>
-<td align="right">11.9</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+18:00:00
+</td>
+<td style="text-align:right;">
+2.6
+</td>
+<td style="text-align:right;">
+1360
+</td>
+<td style="text-align:right;">
+150
+</td>
+<td style="text-align:right;">
+11.9
+</td>
 </tr>
-<tr class="even">
-<td align="left">3/10/2004</td>
-<td align="left">19:00:00</td>
-<td align="right">2.0</td>
-<td align="right">1292</td>
-<td align="right">112</td>
-<td align="right">9.4</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+19:00:00
+</td>
+<td style="text-align:right;">
+2.0
+</td>
+<td style="text-align:right;">
+1292
+</td>
+<td style="text-align:right;">
+112
+</td>
+<td style="text-align:right;">
+9.4
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3/10/2004</td>
-<td align="left">20:00:00</td>
-<td align="right">2.2</td>
-<td align="right">1402</td>
-<td align="right">88</td>
-<td align="right">9.0</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+20:00:00
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1402
+</td>
+<td style="text-align:right;">
+88
+</td>
+<td style="text-align:right;">
+9.0
+</td>
 </tr>
-<tr class="even">
-<td align="left">3/10/2004</td>
-<td align="left">21:00:00</td>
-<td align="right">2.2</td>
-<td align="right">1376</td>
-<td align="right">80</td>
-<td align="right">9.2</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+21:00:00
+</td>
+<td style="text-align:right;">
+2.2
+</td>
+<td style="text-align:right;">
+1376
+</td>
+<td style="text-align:right;">
+80
+</td>
+<td style="text-align:right;">
+9.2
+</td>
 </tr>
-<tr class="odd">
-<td align="left">3/10/2004</td>
-<td align="left">22:00:00</td>
-<td align="right">1.6</td>
-<td align="right">1272</td>
-<td align="right">51</td>
-<td align="right">6.5</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+22:00:00
+</td>
+<td style="text-align:right;">
+1.6
+</td>
+<td style="text-align:right;">
+1272
+</td>
+<td style="text-align:right;">
+51
+</td>
+<td style="text-align:right;">
+6.5
+</td>
 </tr>
-<tr class="even">
-<td align="left">3/10/2004</td>
-<td align="left">23:00:00</td>
-<td align="right">1.2</td>
-<td align="right">1197</td>
-<td align="right">38</td>
-<td align="right">4.7</td>
+<tr>
+<td style="text-align:left;">
+3/10/2004
+</td>
+<td style="text-align:left;">
+23:00:00
+</td>
+<td style="text-align:right;">
+1.2
+</td>
+<td style="text-align:right;">
+1197
+</td>
+<td style="text-align:right;">
+38
+</td>
+<td style="text-align:right;">
+4.7
+</td>
 </tr>
 </tbody>
 </table>

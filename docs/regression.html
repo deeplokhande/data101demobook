@@ -154,6 +154,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+<li class="chapter" data-level="3.1.2" data-path="stateval.html"><a href="stateval.html#z-test-example-1-right-sided"><i class="fa fa-check"></i><b>3.1.2</b> Z-test Example 1 (Right Sided)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="stateval.html"><a href="stateval.html#z-test-example-2-left-sided"><i class="fa fa-check"></i><b>3.1.3</b> Z-test Example 2 (Left Sided)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="stateval.html"><a href="stateval.html#z-test-example-3-two-tailed"><i class="fa fa-check"></i><b>3.1.4</b> Z-test Example 3 (Two Tailed)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
@@ -323,75 +326,165 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Lets look at the example on the RealEstate dataset.</p>
 <p>A snippet of the Realestate Dataset is given below.</p>
 <table>
-<caption><span id="tab:unnamed-chunk-98">Table 8.1: </span>Snippet of Real Estate Dataset</caption>
+<caption>
+<span id="tab:unnamed-chunk-102">Table 8.1: </span>Snippet of Real Estate Dataset
+</caption>
 <thead>
-<tr class="header">
-<th align="right">Price</th>
-<th align="right">Bedrooms</th>
-<th align="right">Bathrooms</th>
-<th align="right">Size</th>
+<tr>
+<th style="text-align:right;">
+Price
+</th>
+<th style="text-align:right;">
+Bedrooms
+</th>
+<th style="text-align:right;">
+Bathrooms
+</th>
+<th style="text-align:right;">
+Size
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">795000</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="right">2371</td>
+<tr>
+<td style="text-align:right;">
+795000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2371
+</td>
 </tr>
-<tr class="even">
-<td align="right">399000</td>
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="right">2818</td>
+<tr>
+<td style="text-align:right;">
+399000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2818
+</td>
 </tr>
-<tr class="odd">
-<td align="right">545000</td>
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="right">3032</td>
+<tr>
+<td style="text-align:right;">
+545000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3032
+</td>
 </tr>
-<tr class="even">
-<td align="right">909000</td>
-<td align="right">4</td>
-<td align="right">4</td>
-<td align="right">3540</td>
+<tr>
+<td style="text-align:right;">
+909000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3540
+</td>
 </tr>
-<tr class="odd">
-<td align="right">109900</td>
-<td align="right">3</td>
-<td align="right">1</td>
-<td align="right">1249</td>
+<tr>
+<td style="text-align:right;">
+109900
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+1249
+</td>
 </tr>
-<tr class="even">
-<td align="right">324900</td>
-<td align="right">3</td>
-<td align="right">3</td>
-<td align="right">1800</td>
+<tr>
+<td style="text-align:right;">
+324900
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+1800
+</td>
 </tr>
-<tr class="odd">
-<td align="right">192900</td>
-<td align="right">4</td>
-<td align="right">2</td>
-<td align="right">1603</td>
+<tr>
+<td style="text-align:right;">
+192900
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1603
+</td>
 </tr>
-<tr class="even">
-<td align="right">215000</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="right">1450</td>
+<tr>
+<td style="text-align:right;">
+215000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1450
+</td>
 </tr>
-<tr class="odd">
-<td align="right">999000</td>
-<td align="right">4</td>
-<td align="right">3</td>
-<td align="right">3360</td>
+<tr>
+<td style="text-align:right;">
+999000
+</td>
+<td style="text-align:right;">
+4
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+3360
+</td>
 </tr>
-<tr class="even">
-<td align="right">319000</td>
-<td align="right">3</td>
-<td align="right">2</td>
-<td align="right">1323</td>
+<tr>
+<td style="text-align:right;">
+319000
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:right;">
+2
+</td>
+<td style="text-align:right;">
+1323
+</td>
 </tr>
 </tbody>
 </table>

@@ -537,6 +537,9 @@ pred.test <- predict(pred.model,newdata = test)*20000
 # Additionally since here we have the actual/real prediction values we can also check the accuracy of our prediction on testing data.
 mse(test$Earnings,pred.test)
 ```
+
+**NOTE**: If you see a very high value of MSE after running the above code, please re-run it. Usually you will find the MSE to be better than all the models we have studied uptil now for the Earnings prediction problem.
+
 We can see from the output,
 
 - the summary of the output, neural network model, with details of:

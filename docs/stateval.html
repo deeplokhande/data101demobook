@@ -154,6 +154,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="stateval.html"><a href="stateval.html#ztest"><i class="fa fa-check"></i><b>3.1</b> Z-test</a>
 <ul>
 <li class="chapter" data-level="3.1.1" data-path="stateval.html"><a href="stateval.html#steps-for-hypothesis-testing-using-z-test."><i class="fa fa-check"></i><b>3.1.1</b> Steps for hypothesis testing using Z-test.</a></li>
+<li class="chapter" data-level="3.1.2" data-path="stateval.html"><a href="stateval.html#z-test-example-1-right-sided"><i class="fa fa-check"></i><b>3.1.2</b> Z-test Example 1 (Right Sided)</a></li>
+<li class="chapter" data-level="3.1.3" data-path="stateval.html"><a href="stateval.html#z-test-example-2-left-sided"><i class="fa fa-check"></i><b>3.1.3</b> Z-test Example 2 (Left Sided)</a></li>
+<li class="chapter" data-level="3.1.4" data-path="stateval.html"><a href="stateval.html#z-test-example-3-two-tailed"><i class="fa fa-check"></i><b>3.1.4</b> Z-test Example 3 (Two Tailed)</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="stateval.html"><a href="stateval.html#permtest"><i class="fa fa-check"></i><b>3.2</b> Permutation Test</a>
 <ul>
@@ -282,8 +285,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <script src="files/js/dcl.js"></script>
 <p>The biggest enemy of your findings is randomness. In order to convince your audience that you have found something you need to address the question “how do you know your result is simply sheer luck, it is random?”</p>
 <p>This is where you need statistical tests for use in hypothesis testing.</p>
+<hr />
 <div id="some-basics-first" class="section level4" number="3.0.0.1">
-<h4><span class="header-section-number">3.0.0.1</span> *Some Basics First:</h4>
+<h4><span class="header-section-number">3.0.0.1</span> Some Basics First:</h4>
 <ul>
 <li><p><em>Mean</em>
 <span class="math display">\[\begin{equation}
@@ -300,6 +304,7 @@ N is size of set.}
 
 
 \end{equation}\]</span></p>
+<hr />
 </div>
 <div id="ztest" class="section level2" number="3.1">
 <h2><span class="header-section-number">3.1</span> Z-test</h2>
@@ -356,24 +361,588 @@ z-score is measured in terms of standard deviation from mean.</p>
 <li>Once you calculate the pnorm() in step 4, depending on the properties of two as described above,
 <ul>
 <li>use <code>pnorm(-Z)</code> for right tailed tests,</li>
-<li>use <code>pnorm(Z)</code> for left tailed tests, and</li>
-<li>use <code>2*pnorm(-Z)</code> for two tailed test.</li>
+<li>use <code>2*pnorm(-Z)</code> for two tailed test, and</li>
+<li>use <code>pnorm(Z)</code> for left tailed tests.</li>
 <li><em>Note</em>: (Here Z = z-score). Also the method mentioned above works similar to that studied in class/recitations, but is simple to understand, and does not require subtracting the pnorm() output from 1.</li>
 </ul></li>
 </ul>
+<hr />
+</div>
+<div id="z-test-example-1-right-sided" class="section level3" number="3.1.2">
+<h3><span class="header-section-number">3.1.2</span> Z-test Example 1 (Right Sided)</h3>
 <p>Now lets look at an example to use this z-test for hypothesis testing.</p>
-<p>We will study the example to statistically find the relation between two tunnels, Holland and Lincoln namely, with respect to the traffic volume per minute in those tunnels.</p>
-<p>Thus stating out Null Hypothsis and Alternate Hypothesis.</p>
+<p>We will study the example to statistically find the relation of the traffic volume per minute between two tunnels, namely Holland and Lincoln .</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-13">Table 3.1: </span>Snippet of Traffic Dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+TUNNEL
+</th>
+<th style="text-align:left;">
+DAY
+</th>
+<th style="text-align:right;">
+VOLUME_PER_MINUTE
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+832
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1290
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekend
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+166
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+50
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1713
+</td>
+<td style="text-align:left;">
+Lincoln
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1058
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekend
+</td>
+<td style="text-align:right;">
+57
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2278
+</td>
+<td style="text-align:left;">
+Lincoln
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+234
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+41
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+988
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+139
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+675
+</td>
+<td style="text-align:left;">
+Holland
+</td>
+<td style="text-align:left;">
+weekday
+</td>
+<td style="text-align:right;">
+42
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Thus stating out Null Hypothesis and Alternate Hypothesis.</p>
 <ul>
 <li>Null Hypothesis H0: Traffic in Lincoln is same as Traffic in Holland tunnel.</li>
 <li>Alternate Hypothesis H1: Traffic in Lincoln is higher than traffic in Holland tunnel.</li>
 </ul>
 <p>Once we have stated our hypothesis, lets see the z-test in practice.</p>
-<div data-datacamp-exercise="" data-height="300" data-encoded="true">
+<div data-datacamp-exercise="" data-height="700" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgRGF0YXNldFxuVFJBRkZJQzwtcmVhZC5jc3YoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9UUkFGRklDLmNzdicpXG5zdW1tYXJ5KFRSQUZGSUMpICNnaXZlcyB1cyB0aGUgZGF0YSBzdGF0aXN0aWNzXG5cbiNkYXRhIGNsZWFuIGFuZCBzdWJzZXRcbmxpbmNvbG4uZGF0YSA8LSBzdWJzZXQoVFJBRkZJQywgVFJBRkZJQyRUVU5ORUwgPT0gXCJMaW5jb2xuXCIpXG5ob2xsYW5kLmRhdGEgPC0gc3Vic2V0KFRSQUZGSUMsIFRSQUZGSUMkVFVOTkVMID09IFwiSG9sbGFuZFwiKVxuXG4jIHRyYWZmaWMgYXQgbGluY29sblxuIyBUaGlzIHZhcmlhYmxlIGlzIGEgY29sdW1uIG9mIDE0MDEgcm93cy5cbmxpbmNvbG4udHJhZmZpYyA8LSBsaW5jb2xuLmRhdGEkVk9MVU1FX1BFUl9NSU5VVEVcblxuIyB0cmFmZmljIGF0IGhvbGxhbmRcbiMgVGhpcyB2YXJpYWJsZSBpcyBhIGNvbHVtbiBvZiAxNDAxIHJvd3MuXG5ob2xsYW5kLnRyYWZmaWMgPC0gaG9sbGFuZC5kYXRhJFZPTFVNRV9QRVJfTUlOVVRFXG5cbiMgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHR3byBzYW1wbGVzLlxuIyBUaGUgZmluYWwgdmFsdWUgaXMgdGhlIHN0YW5kYXJkIGRldmlhdGlvbiwgaW4gVm9sdW1lIHBlciBtaW51dGUuXG5zZC5saW5jb2xuIDwtIHNkKGxpbmNvbG4udHJhZmZpYylcbnNkLmhvbGxhbmQgPC0gc2QoaG9sbGFuZC50cmFmZmljKVxuXG4jIG1lYW5zIG9mIHR3byBzYW1wbGVzXG5tZWFuLmxpbmNvbG4gPC0gbWVhbihsaW5jb2xuLnRyYWZmaWMpXG5tZWFuLmhvbGxhbmQgPC0gbWVhbihob2xsYW5kLnRyYWZmaWMpXG5cbiMgbGVuZ3RoIG9mIGxpbmNvbG4gYW5kIGhvbGxhbmRcbmxlbl9saW5jb2xuIDwtIGxlbmd0aChsaW5jb2xuLnRyYWZmaWMpXG5sZW5faG9sbGFuZCA8LSBsZW5ndGgoaG9sbGFuZC50cmFmZmljKVxuXG4jIHN0YW5kYXJkIGRldmlhdGlvbiBvZiB0cmFmZmljXG5zZC5saW4uaG9sIDwtIHNxcnQoc2QubGluY29sbl4yL2xlbl9saW5jb2xuICsgc2QuaG9sbGFuZF4yL2xlbl9ob2xsYW5kKVxuXG4jIHogc2NvcmVcbnpldGEgPC0gKG1lYW4ubGluY29sbiAtIG1lYW4uaG9sbGFuZCkvc2QubGluLmhvbFxuemV0YVxuXG4jIGdldCBwXG5wID0gcG5vcm0oLXpldGEpXG5wXG5cbiMgcGxvdCB0aGUgemV0YSB2YWx1ZSBvbiB0aGUgbm9ybWFsIGRpc3RyaWJ1dGlvbiBjdXJ2ZS5cbnBsb3QoeD1zZXEoZnJvbSA9IC0yNSwgdG89IDI1LCBieT0wLjEpLHk9ZG5vcm0oc2VxKGZyb20gPSAtMjUsIHRvPSAyNSwgIGJ5PTAuMSksbWVhbj0wKSx0eXBlPSdsJyx4bGFiID0gJ21lYW4gZGlmZmVyZW5jZScsICB5bGFiPSdwb3NzaWJpbGl0eScpXG5hYmxpbmUodj16ZXRhLCBjb2w9J3JlZCcpIn0=
 </div>
 <p>We can see that form the P-Value obtained is near to 0, which is less than 0.05.</p>
 <p>Hence, we reject the NULL Hypothesis and conclude with high degree of certainty that traffic in Lincoln is higher than traffic Holland.</p>
+<hr />
+</div>
+<div id="z-test-example-2-left-sided" class="section level3" number="3.1.3">
+<h3><span class="header-section-number">3.1.3</span> Z-test Example 2 (Left Sided)</h3>
+<p>Now lets look at another example to use this z-test for hypothesis testing.</p>
+<p>We will study the example to statistically find the relation between capital gains of people with two Zodiac Signs , namely Aquarius and Libra.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-15">Table 3.2: </span>Snippet of Zodiac Dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+AGE
+</th>
+<th style="text-align:left;">
+STATUS
+</th>
+<th style="text-align:left;">
+EDUCATION
+</th>
+<th style="text-align:right;">
+YEARS
+</th>
+<th style="text-align:left;">
+PROFESSION
+</th>
+<th style="text-align:right;">
+CAPITALGAINS
+</th>
+<th style="text-align:right;">
+CAPITALLOSS
+</th>
+<th style="text-align:left;">
+NATIVE
+</th>
+<th style="text-align:left;">
+ZODIAK
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+10906
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+10th
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Craft-repair
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Capricorn
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24608
+</td>
+<td style="text-align:right;">
+52
+</td>
+<td style="text-align:left;">
+Self-emp-inc
+</td>
+<td style="text-align:left;">
+Some-college
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Sales
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Taurus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11463
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Bachelors
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Prof-specialty
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Taurus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+24993
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+HS-grad
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Craft-repair
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Sagittarius
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+19318
+</td>
+<td style="text-align:right;">
+44
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Bachelors
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Craft-repair
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Leo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2714
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Some-college
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Exec-managerial
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Leo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8041
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Some-college
+</td>
+<td style="text-align:right;">
+10
+</td>
+<td style="text-align:left;">
+Craft-repair
+</td>
+<td style="text-align:right;">
+249330
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Taurus
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+11112
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+State-gov
+</td>
+<td style="text-align:left;">
+Bachelors
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Prof-specialty
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+11276
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Leo
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2455
+</td>
+<td style="text-align:right;">
+24
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+Bachelors
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Sales
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Cancer
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+7293
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Private
+</td>
+<td style="text-align:left;">
+HS-grad
+</td>
+<td style="text-align:right;">
+9
+</td>
+<td style="text-align:left;">
+Machine-op-inspct
+</td>
+<td style="text-align:right;">
+5013
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+United-States
+</td>
+<td style="text-align:left;">
+Aquarius
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Now stating out Null Hypothesis and Alternate Hypothesis.</p>
+<ul>
+<li>Null Hypothesis H0: Capital Gains of people with Aquarius is same as people with Libra zodiac sign.</li>
+<li>Alternate Hypothesis H1: Capital Gains of people with Aquarius is lower than as people with Libra zodiac sign.</li>
+</ul>
+<p>Once we have stated our hypothesis, lets see the z-test in practice.</p>
+<div data-datacamp-exercise="" data-height="700" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgRGF0YXNldFxuWm9kaWFjRGF0YTwtcmVhZC5jc3YoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9ab2RpYWNDaGFsbGVuZ2UuY3N2JylcbnN1bW1hcnkoWm9kaWFjRGF0YSkgI2dpdmVzIHVzIHRoZSBkYXRhIHN0YXRpc3RpY3NcblxuI2RhdGEgY2xlYW4gYW5kIHN1YnNldFxuQXF1YXJpdXMuZGF0YSA8LSBzdWJzZXQoWm9kaWFjRGF0YSwgWm9kaWFjRGF0YSRaT0RJQUsgPT0gXCJBcXVhcml1c1wiKVxuTGlicmEuZGF0YSA8LSBzdWJzZXQoWm9kaWFjRGF0YSwgWm9kaWFjRGF0YSRaT0RJQUsgPT0gXCJMaWJyYVwiKVxuXG4jIFpvZGlhYyBBcXVhcml1c1xuQXF1YXJpdXMuWm9kaWFjIDwtIEFxdWFyaXVzLmRhdGEkQ0FQSVRBTEdBSU5TXG5cbiMgWm9kaWFjICBMaWJyYVxuTGlicmEuWm9kaWFjIDwtIExpYnJhLmRhdGEkQ0FQSVRBTEdBSU5TXG5cbiMgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHR3byBzYW1wbGVzLlxuc2QuQXF1YXJpdXMgPC0gc2QoQXF1YXJpdXMuWm9kaWFjKVxuc2QuTGlicmEgPC0gc2QoTGlicmEuWm9kaWFjKVxuXG4jIG1lYW5zIG9mIHR3byBzYW1wbGVzXG5tZWFuLkFxdWFyaXVzIDwtIG1lYW4oQXF1YXJpdXMuWm9kaWFjKVxubWVhbi5MaWJyYSA8LSBtZWFuKExpYnJhLlpvZGlhYylcblxuIyBsZW5ndGggb2YgQXF1YXJpdXMgYW5kIExpYnJhXG5sZW5fQXF1YXJpdXMgPC0gbGVuZ3RoKEFxdWFyaXVzLlpvZGlhYylcbmxlbl9MaWJyYSA8LSBsZW5ndGgoTGlicmEuWm9kaWFjKVxuXG4jIHN0YW5kYXJkIGRldmlhdGlvblxuc2QuYXF1LmxpYiA8LSBzcXJ0KHNkLkFxdWFyaXVzXjIvbGVuX0FxdWFyaXVzICsgc2QuTGlicmFeMi9sZW5fTGlicmEpXG5cbiMgeiBzY29yZVxuemV0YSA8LSAobWVhbi5BcXVhcml1cyAtIG1lYW4uTGlicmEpL3NkLmFxdS5saWJcbnpldGFcblxuIyBnZXQgcFxucCA9IHBub3JtKHpldGEpXG5wXG5cbiMgcGxvdCB0aGUgemV0YSB2YWx1ZSBvbiB0aGUgbm9ybWFsIGRpc3RyaWJ1dGlvbiBjdXJ2ZS5cbnBsb3QoeD1zZXEoZnJvbSA9IC0yNSwgdG89IDI1LCBieT0wLjEpLHk9ZG5vcm0oc2VxKGZyb20gPSAtMjUsIHRvPSAyNSwgIGJ5PTAuMSksbWVhbj0wKSx0eXBlPSdsJyx4bGFiID0gJ21lYW4gZGlmZmVyZW5jZScsICB5bGFiPSdwb3NzaWJpbGl0eScpXG5hYmxpbmUodj16ZXRhLCBjb2w9J3JlZCcpIn0=
+</div>
+<p>We can see that form the P-Value obtained is less than 0.05.</p>
+<p>Hence, we reject the NULL Hypothesis and conclude with high degree of certainty that Capital Gains of people with Aquarius is lower than as people with Libra zodiac sign.</p>
+<hr />
+</div>
+<div id="z-test-example-3-two-tailed" class="section level3" number="3.1.4">
+<h3><span class="header-section-number">3.1.4</span> Z-test Example 3 (Two Tailed)</h3>
+<p>We will study the example to statistically find the relation between capital gains of people with two Countries, namely US and Columbia.</p>
+<p>Now stating out Null Hypothesis and Alternate Hypothesis.</p>
+<ul>
+<li>Null Hypothesis H0: Capital Gains of people of United States is same as people of Colombia.</li>
+<li>Alternate Hypothesis H1: Capital Gains of people of United States is not equal to that of the people of Colombia.</li>
+</ul>
+<p>Once we have stated our hypothesis, lets see the z-test in practice.</p>
+<div data-datacamp-exercise="" data-height="700" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgRGF0YXNldFxuWm9kaWFjRGF0YTwtcmVhZC5jc3YoJ2h0dHBzOi8vcmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbS9kZWVwbG9raGFuZGUvZGF0YTEwMWRlbW9ib29rL21haW4vZmlsZXMvZGF0YXNldC9ab2RpYWNDaGFsbGVuZ2UuY3N2JylcbnN1bW1hcnkoWm9kaWFjRGF0YSkgI2dpdmVzIHVzIHRoZSBkYXRhIHN0YXRpc3RpY3NcblxuI2RhdGEgY2xlYW4gYW5kIHN1YnNldFxuVVMuZGF0YSA8LSBzdWJzZXQoWm9kaWFjRGF0YSwgWm9kaWFjRGF0YSROQVRJVkUgPT0gXCJVbml0ZWQtU3RhdGVzXCIpXG5Db2x1bWJpYS5kYXRhIDwtIHN1YnNldChab2RpYWNEYXRhLCBab2RpYWNEYXRhJE5BVElWRSA9PSBcIkNvbHVtYmlhXCIpXG5cbiMgQ291bnRyeSBVU1xuVVMuY291bnRyeSA8LSBVUy5kYXRhJENBUElUQUxHQUlOU1xuXG4jIENvdW50cnkgIENvbHVtYmlhXG5Db2x1bWJpYS5jb3VudHJ5IDwtIENvbHVtYmlhLmRhdGEkQ0FQSVRBTEdBSU5TXG5cbiMgc3RhbmRhcmQgZGV2aWF0aW9uIG9mIHR3byBzYW1wbGVzLlxuc2QuVVMgPC0gc2QoVVMuY291bnRyeSlcbnNkLkNvbHVtYmlhIDwtIHNkKENvbHVtYmlhLmNvdW50cnkpXG5cbiMgbWVhbnMgb2YgdHdvIHNhbXBsZXNcbm1lYW4uVVMgPC0gbWVhbihVUy5jb3VudHJ5KVxubWVhbi5Db2x1bWJpYSA8LSBtZWFuKENvbHVtYmlhLmNvdW50cnkpXG5cbiMgbGVuZ3RoIG9mIFVTIGFuZCBDb2x1bWJpYVxubGVuX1VTIDwtIGxlbmd0aChVUy5jb3VudHJ5KVxubGVuX0NvbHVtYmlhIDwtIGxlbmd0aChDb2x1bWJpYS5jb3VudHJ5KVxuXG4jIHN0YW5kYXJkIGRldmlhdGlvblxuc2QudXMuY29sIDwtIHNxcnQoc2QuVVNeMi9sZW5fVVMgKyBzZC5Db2x1bWJpYV4yL2xlbl9Db2x1bWJpYSlcblxuIyB6IHNjb3JlXG56ZXRhIDwtIChtZWFuLlVTIC0gbWVhbi5Db2x1bWJpYSkvc2QudXMuY29sXG56ZXRhXG5cbiMgZ2V0IHBcbnAgPSAyKnBub3JtKC16ZXRhKVxucFxuXG4jIHBsb3QgdGhlIHpldGEgdmFsdWUgb24gdGhlIG5vcm1hbCBkaXN0cmlidXRpb24gY3VydmUuXG5wbG90KHg9c2VxKGZyb20gPSAtMjUsIHRvPSAyNSwgYnk9MC4xKSx5PWRub3JtKHNlcShmcm9tID0gLTI1LCB0bz0gMjUsICBieT0wLjEpLG1lYW49MCksdHlwZT0nbCcseGxhYiA9ICdtZWFuIGRpZmZlcmVuY2UnLCAgeWxhYj0ncG9zc2liaWxpdHknKVxuYWJsaW5lKHY9emV0YSwgY29sPSdyZWQnKSJ9
+</div>
+<p>We can see that form the P-Value obtained is less than 0.05.</p>
+<p>Hence, we reject the NULL Hypothesis and conclude with high degree of certainty that Capital Gains of people of United States is not equal to that of the people of Colombia.</p>
+<hr />
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
 <script src="https://cdn.datacamp.com/datacamp-light-latest.min.js"></script>
@@ -427,6 +996,7 @@ It is very revealing.. Think of Val1, and Val2 as traffic volumes in Holland and
 <div data-datacamp-exercise="" data-height="700" data-encoded="true">
 eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IlBlcm11dGF0aW9uIDwtIGZ1bmN0aW9uKGRmMSxjMSxjMixuLHcxLHcyKXtcbiAgZGYgPC0gYXMuZGF0YS5mcmFtZShkZjEpXG4gIERfbnVsbDwtYygpXG4gIFYxPC1kZlssYzFdXG4gIFYyPC1kZlssYzJdXG4gIHN1Yi52YWx1ZTEgPC0gZGZbZGZbLCBjMV0gPT0gdzEsIGMyXVxuICBzdWIudmFsdWUyIDwtIGRmW2RmWywgYzFdID09IHcyLCBjMl1cbiAgRCA8LSAgYWJzKG1lYW4oc3ViLnZhbHVlMiwgbmEucm09VFJVRSkgLSBtZWFuKHN1Yi52YWx1ZTEsIG5hLnJtPVRSVUUpKVxuICBtPWxlbmd0aChWMSlcbiAgbD1sZW5ndGgoVjFbVjE9PXcyXSlcbiAgZm9yKGpqIGluIDE6bil7XG4gICAgbnVsbCA8LSByZXAodzEsbGVuZ3RoKFYxKSlcbiAgICBudWxsW3NhbXBsZShtLGwpXSA8LSB3MlxuICAgIG5mIDwtIGRhdGEuZnJhbWUoS2V5PW51bGwsIFZhbHVlPVYyKVxuICAgIG5hbWVzKG5mKSA8LSBjKFwiS2V5XCIsXCJWYWx1ZVwiKVxuICAgIHcxX251bGwgPC0gbmZbbmYkS2V5ID09IHcxLDJdXG4gICAgdzJfbnVsbCA8LSBuZltuZiRLZXkgPT0gdzIsMl1cbiAgICBEX251bGwgPC0gYyhEX251bGwsbWVhbih3Ml9udWxsLCBuYS5ybT1UUlVFKSAtIG1lYW4odzFfbnVsbCwgbmEucm09VFJVRSkpXG4gIH1cbiAgbXloaXN0PC1oaXN0KERfbnVsbCwgcHJvYj1UUlVFKVxuICBtdWx0aXBsaWVyIDwtIG15aGlzdCRjb3VudHMgLyBteWhpc3QkZGVuc2l0eVxuICBteWRlbnNpdHkgPC0gZGVuc2l0eShEX251bGwsIGFkanVzdD0yKVxuICBteWRlbnNpdHkkeSA8LSBteWRlbnNpdHkkeSAqIG11bHRpcGxpZXJbMV1cbiAgcGxvdChteWhpc3QpXG4gIGxpbmVzKG15ZGVuc2l0eSwgY29sPSdibHVlJylcbiAgYWJsaW5lKHY9RCwgY29sPSdyZWQnKVxuICBNPC1tZWFuKERfbnVsbD5EKVxuICByZXR1cm4oTSlcbn0iLCJzYW1wbGUiOiJOLmggPC0gMTAgI051bWJlciBvZiB0dXBsZXMgZm9yIEhvbGxhbmQgVHVubmVsXG5OLmwgPC0gMTAgI051bWJlciBvZiB0dXBsZXMgZm9yIExpbmNvbG4gVHVubmVsXG5cbkNhdDE8LXJlcChcIkdyb3VwQVwiLE4uaCkgICMgZm9yIGV4YW1wbGUgR3JvdXBBIGNhbiBiZSBIb2xsYW5kIFR1bm5lbFxuQ2F0MjwtcmVwKFwiR3JvdXBCXCIsTi5sKSAgIyBmb3IgZXhhbXBsZSBHcm91cCBCIHdpbGwgYmUgTGluY29sbiBUdW5uZWxcblxuQ2F0MVxuQ2F0MlxuXG4jVGhlIHJlcCBjb21tYW5kIHdpbGwgcmVwZWF0LCB0aGUgdmFyaWFibGVzIHdpbGwgYmUgb2YgdHlwZSBjaGFyYWN0ZXIgYW5kIHdpbGwgY29udGFpbiAxMCB2YWx1ZXMgZWFjaC5cblxuQ2F0PC1jKENhdDEsQ2F0MikgIyBBIHZhcmlhYmxlIHdpdGggZmlyc3QgMTAgdmFsdWVzIEdyb3VwQSBhbmQgbmV4dCAxMCB2YWx1ZXMgR3JvdXBCXG5DYXRcblxuI1RyeSBjaGFuZ2luZyBtZWFuIGFuZCBzZCB2YWx1ZXMuIFdoZW4geW91IHJ1biB0aGlzIHlvdSB3aWxsIHNlZSB0aGF0IHRoZSBkaWZmZXJlbmNlIGlzIHNvbWV0aW1lcyBuZWdhdGl2ZSAjb3Igc29tZXRpbWVzIHBvc2l0aXZlLlxuXG5WYWwxPC1ybm9ybShOLmgsbWVhbj0yNSwgc2Q9MTApICNzYXksIHRyYWZmaWMgdm9sdW1lIGluIEhvbGxhbmQgVCBhcyBub3JtYWwgZGlzdHJpYnV0aW9uIHdpdGggbWVhbiBhbmQgc2RcblZhbDI8LXJub3JtKE4ubCxtZWFuPTMwLCBzZD0xMCkgI3NheSwgdHJhZmZpYyB2b2x1bWUgaW4gTGluY29sbiBUIGFzIG5vcm1hbCBkaXN0cmlidXRpb24gd2l0aCBtZWFuIGFuZCBzZFxuXG5WYWw8LWMoVmFsMSxWYWwyKSAjQSB2YXJpYWJsZSB3aXRoIDIwIHJvd3MsIHdpdGggZmlyc3QgMTAgcm93cyBjb250YWluaW5nIDEwIHJhbmRvbSBub3JtYWwgdmFsdWVzIG9mIFZhbDEgI2FuZCB0aGUgbmV4dCAxMCB2YWx1ZXMgb2YgVmFsMlxuXG5WYWxcblxuZDwtZGF0YS5mcmFtZShDYXQsVmFsKVxuXG5PYnNlcnZlZF9EaWZmZXJlbmNlPC1tZWFuKGRbZCRDYXQ9PSdHcm91cEEnLDJdKS1tZWFuKGRbZCRDYXQ9PSdHcm91cEInLDJdKVxuXG4jVGhpcyB3aWxsIGNhbGN1bGF0ZSB0aGUgbWVhbiBvZiB0aGUgc2Vjb25kIGNvbHVtbiAoaGF2aW5nIDEwIHJhbmRvbSB2YWx1ZXMgZm9yIGVhY2ggZ3JvdXApLCBhbmQgdGhlIG1lYW4gb2YgZ3JvdXBCIHZhbHVlcyBpcyBzdWJ0cmFjdGVkIGZyb20gdGhlIG1lYW4gb2YgZ3JvdXBBIHZhbHVlcywgd2hpY2ggd2lsbCBnaXZlIHlvdSB0aGUgdmFsdWUgb2YgdGhlIGRpZmZlcmVuY2Ugb2YgdGhlIG1lYW4uXG5PYnNlcnZlZF9EaWZmZXJlbmNlXG5cblxuUGVybXV0YXRpb24oZCwgXCJDYXRcIiwgXCJWYWxcIiwxMDAwMCwgXCJHcm91cEFcIiwgXCJHcm91cEJcIilcblxuI1RoZSBQZXJtdXRhdGlvbiBmdW5jdGlvbiByZXR1cm5zIHRoZSBhYnNvbHV0ZSB2YWx1ZSBvZiB0aGUgZGlmZmVyZW5jZS4gU28gdGhlIHJlZCBsaW5lIGlzIHRoZSBhYnNvbHV0ZSB2YWx1ZSBvZiB0aGUgb2JzZXJ2ZWQgZGlmZmVyZW5jZS4gWW91IHdpbGwgc2VlIGEgaGlzdG9ncmFtIGhhdmluZyBhIG5vcm1hbCBkaXN0cmlidXRpb24gd2l0aCBhIHJlZCBzaG93aW5nIHRoZSBvYnNlcnZlZCBkaWZmZXJlbmNlLiJ9
 </div>
+<hr />
 </div>
 </div>
 <div id="multiple-hypothesis---bonferroni-correction." class="section level2" number="3.3">

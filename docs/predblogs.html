@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>DATA 101 Shortest Textbook</title>
+  <title>Chapter 9 Blog: Prediction Challenges | DATA 101 Shortest Textbook</title>
   <meta name="description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="DATA 101 Shortest Textbook" />
+  <meta property="og:title" content="Chapter 9 Blog: Prediction Challenges | DATA 101 Shortest Textbook" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="DATA 101 Shortest Textbook" />
+  <meta name="twitter:title" content="Chapter 9 Blog: Prediction Challenges | DATA 101 Shortest Textbook" />
   
   <meta name="twitter:description" content="This is a example of a interactive book for DATA 101 Course thought by Prof. Tomasz Imielinski (http://data101.cs.rutgers.edu/) Find the demo site at (https://deeplokhande.github.io/data101demobook/) Published using Bookdown for R." />
   
@@ -29,8 +29,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
+<link rel="prev" href="models.html"/>
 
-<link rel="next" href="intro.html"/>
 <script src="libs/header-attrs-2.7/header-attrs.js"></script>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -284,51 +284,777 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">DATA 101 Shortest Textbook</h1>
-<h2 class="subtitle"><em>How To Accomplish More With Less</em></h2>
-<p class="author"><em>Tomasz Imielinski</em></p>
-<a class="author_email" href="mailto:#"><a href="mailto:timielinski@gmail.com" class="email">timielinski@gmail.com</a></a>
-</address>
-
-<p> </p>
-</div>
-<div id="section" class="section level1 unnumbered">
-<h1 class="unnumbered"></h1>
-<hr />
-<!-- <script src=https://cdn.datacamp.com/datacamp-light-latest.min.js></script> -->
+<div id="predblogs" class="section level1" number="9">
+<h1><span class="header-section-number">Chapter 9</span> Blog: Prediction Challenges</h1>
 <script src="files/js/dcl.js"></script>
-<!-- <span style="color: red;background-color: lightgrey;font-size: 25px;">NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.</span> -->
-<!-- <!-- **$\color{red}{\text{{NOTE: THE DATACAMP SERVER ARE CURRENTLY DOWN. PLEASE COPY PASTE THE CODE IN RSTUDIO TO RUN OFFLINE. WE'LL TRY TO GET THE SITE WORKING AGAIN SHORTLY.}}}$** -->
-<p>This is a textbook based on the <a href="http://data101.cs.rutgers.edu/">DATA 101</a> course thought by Prof. Tomasz Imielinski at Computer Science Department at Rutgers University, New Brunswick.</p>
-<p>Data 101 is an introductory course for beginners from any field of study, interested in the field of Data Science.</p>
-<!-- _Acknowledgment_: We thank the significant contributions of **[Deep Lokhande](deeplokhande.github.io)** towards building this book. -->
-<p>This book’s pages are created using <a href="https://rmarkdown.rstudio.com/">Rmarkdown</a> from Rstudio (similar to jupyter notebook) and the book is compiled using <a href="https://cran.r-project.org/web/packages/bookdown/index.html">“bookdown”</a> package.</p>
-<p>The most important aspect of this interactive book are the interactive code chunks for running code, which are powered by a minimal version of Datacamp’s learning interface called <code>Datacamp Light</code>. For more info visit <a href="https://github.com/datacamp/datacamp-light">Datacamp Light</a></p>
-<ul>
-<li><p>Note1: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".</p></li>
-<li><p>Note2: This book uses Datacamp Light for supporting runnable code chunks. In case the code chunks do not connect to run-time session, please copy the code and run in RStudio. Also, please report if facing this issue to the instructor via <a href="mailto:timielinski@gmail.com">email</a>.</p></li>
-</ul>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<p>Until we have studied multiple methods of data analysis in sections <a href="dataexp.html#freestyle">2.2</a>,<a href="datatransformation.html#datatransformation">5</a>, statistical testing in sections <a href="stateval.html#stateval">3</a>, &amp; building prediction models for both classification <a href="classification.html#classification">6</a> and regression <a href="regression.html#regression">7</a> along with advanced ML models <a href="models.html#models">8</a>.</p>
+<p>Now its time to utilize them in various ways for analysis and prediction of data.</p>
+<p>To do this, in this course, we have designed few prediction challenges, which test your ability to implement skills learnt in the course until now.</p>
+<p>First challenge is a basic prediction challenge using only data analysis using the freestyle techniques from section <a href="dataexp.html#freestyle">2.2</a>.</p>
+<p>Then onwards, prediction challenges used multitude of modeling techniques which were studied in <a href="classification.html#classification">6</a> and <a href="regression.html#regression">7</a>.</p>
 <hr />
-<!-- **FIRST FEW PAGES CAN BE SKIPPED. JUMP TO RECITAION 3 FOR DEMO** -->
-<!-- This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$. -->
-<!-- The **bookdown** package can be installed from CRAN or Github: -->
-<!-- ```{r eval=FALSE} -->
-<!-- install.packages("bookdown") -->
-<!-- # or the development version -->
-<!-- # devtools::install_github("rstudio/bookdown") -->
-<!-- ``` -->
-<!-- Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`. -->
-<!-- To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.org/tinytex/>. -->
+<div id="general-structure-of-the-prediction-challenges." class="section level2" number="9.1">
+<h2><span class="header-section-number">9.1</span> General Structure of the Prediction Challenges.</h2>
+<p>Usually there is a task to be performed in each prediction challenge.</p>
+<p>Either predicting a numerical of categorical values is the task of each challenge.</p>
+<p>The way to perform those task are constrained differently for different prediction challenges based on levels of difficulty and ML models to be used.</p>
+<p>The submission will take place on <strong>Kaggle</strong> which is used for organizing these prediction challenges online, helping in validating submissions, placing deadlines for submission and also calculating the prediction scores along with ranking all the submission.</p>
+<p>The datasets provided for each prediction challenge is as follows:</p>
+<ol style="list-style-type: decimal">
+<li>Training Dataset.
+<ul>
+<li>It is used for training and cross-validation purpose in the prediction challenge.</li>
+<li>This data has all the training attributes along and the ideal values of the prediction attribute.</li>
+<li>Models for prediction are to be trained using this dataset only.</li>
+</ul></li>
+<li>Testing Dataset.
+<ul>
+<li>It is used for prediction only.</li>
+<li>It consists of all the attributes that were used for training, but it does not contain any values of the actual prediction attributes, which is actually the attribute that the prediction challenge predicts.</li>
+<li>Since its only used for prediction purpose and is not involved in training of the models, it is thus not involved in the cross-validation phase too.</li>
+</ul></li>
+<li>Submission Dataset.
+<ul>
+<li>After prediction using the “testing” dataset, for submitting on Kaggle, we must copy the predicted attribute column to this Submission Dataset which only has 2 columns, first an index column(e.g. ID or name,etc) and second the predicted attribute column.</li>
+<li>Remember after copying the predicted attribute column to this dataset, one should also save this dataset into the same submission dataset file, which then can be used to upload on Kaggle.</li>
+</ul></li>
+</ol>
+<ul>
+<li>To read the datasets use the <em>read.csv()</em> function and for writing the dataset to the file, use the <em>write.csv()</em> function.
+<ul>
+<li>Offen times while writing the dataframe from R to a csv file, people make mistake of writing even the row names, which results in error upon submission of this file to Kaggle.</li>
+<li>To avoid this, you can add the parameter, <code>row.names = F</code> in the <code>write.csv()</code> function. e.g. <code>write.csv(*dataframe*,*fileaddress*,row.names = F)</code>.</li>
+</ul></li>
+</ul>
+<p>Now lets look at the prediction challenges that took place in this course along with the top submissions by students.</p>
+<hr />
+</div>
+<div id="prediction-challange-1." class="section level2" number="9.2">
+<h2><span class="header-section-number">9.2</span> Prediction Challange 1.</h2>
+<p>In Prediction challange 1, the task was to predict a categorical value using <em>only free-style</em> prediction.</p>
+<p>For this prediction challenge we used our favorite dataset, the Moody dataset, and predicted the Grade category of all students. The Grade category had only 2 factors: <em>Pass</em> OR <em>Fail</em>.</p>
+<p>Let look at a snippet of the moody dataset used for training in this challenge.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-111">Table 9.1: </span>Snippet of Moody Dataset(TRAINING) for Prediction Challenge 1
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Studentid
+</th>
+<th style="text-align:right;">
+Attendance
+</th>
+<th style="text-align:left;">
+Major
+</th>
+<th style="text-align:left;">
+Questions
+</th>
+<th style="text-align:right;">
+Score
+</th>
+<th style="text-align:left;">
+Seniority
+</th>
+<th style="text-align:left;">
+Texting
+</th>
+<th style="text-align:left;">
+Grade
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+29998
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:left;">
+Stat
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+65
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+29999
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:left;">
+Fail
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30000
+</td>
+<td style="text-align:right;">
+90
+</td>
+<td style="text-align:left;">
+Communication
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+60
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30001
+</td>
+<td style="text-align:right;">
+5
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+46
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30002
+</td>
+<td style="text-align:right;">
+67
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+36
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Fail
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30003
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Stat
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30004
+</td>
+<td style="text-align:right;">
+78
+</td>
+<td style="text-align:left;">
+Stat
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30005
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+45
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Fail
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30006
+</td>
+<td style="text-align:right;">
+81
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+6
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Fail
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+30007
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Communication
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:left;">
+Pass
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see that there are multiple attributes like <em>Score, Attendence, Major, etc.</em> that can be used as predictors, and then there is <em>Grade</em> attribute with ideal values for each record of student which will be used while training and then will be predicted on the testing dataset.</p>
+<p>Lets look at the snippet of the moody dataset for testing.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-112">Table 9.2: </span>Snippet of Moody Dataset(TESTING) for Prediction Challenge 1
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Studentid
+</th>
+<th style="text-align:right;">
+Attendance
+</th>
+<th style="text-align:left;">
+Major
+</th>
+<th style="text-align:left;">
+Questions
+</th>
+<th style="text-align:right;">
+Score
+</th>
+<th style="text-align:left;">
+Seniority
+</th>
+<th style="text-align:left;">
+Texting
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+39574
+</td>
+<td style="text-align:right;">
+15
+</td>
+<td style="text-align:left;">
+Stat
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+84
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39575
+</td>
+<td style="text-align:right;">
+48
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Freshman
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39576
+</td>
+<td style="text-align:right;">
+27
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+34
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39577
+</td>
+<td style="text-align:right;">
+25
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+3
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39578
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Cs
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+41
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39579
+</td>
+<td style="text-align:right;">
+17
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+68
+</td>
+<td style="text-align:left;">
+Junior
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39580
+</td>
+<td style="text-align:right;">
+74
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+97
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39581
+</td>
+<td style="text-align:right;">
+13
+</td>
+<td style="text-align:left;">
+Communication
+</td>
+<td style="text-align:left;">
+Rarely
+</td>
+<td style="text-align:right;">
+31
+</td>
+<td style="text-align:left;">
+Senior
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39582
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+Polsci
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39583
+</td>
+<td style="text-align:right;">
+96
+</td>
+<td style="text-align:left;">
+Communication
+</td>
+<td style="text-align:left;">
+Always
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+Sophomore
+</td>
+<td style="text-align:left;">
+Always
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see that the <em>Grade</em> attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset.</p>
+<p>Also, lets look at the submission file for prediction challenge 1.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-113">Table 9.3: </span>Snippet of Submission file for Prediction Challenge 1
+</caption>
+<thead>
+<tr>
+<th style="text-align:right;">
+Studentid
+</th>
+<th style="text-align:left;">
+Grade
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right;">
+39574
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39575
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39576
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39577
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39578
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39579
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39580
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39581
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39582
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+<tr>
+<td style="text-align:right;">
+39583
+</td>
+<td style="text-align:left;">
+NA
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see there are only 2 columns <em>Studentid</em> and <em>Grade</em>. <em>Studentid</em> column’s entries corresponds/are similar to the <em>Studentid</em> column of the testing data. Thus we need to just fill the <em>Grade</em> column with appropriate grade predicted by our analysis, corresponding to the same <em>Studentid</em> values in both test and submission data.</p>
+<p>Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: <a href="https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d" target="_blank">Prediction Challenge 1</a></p>
+<hr />
+<div id="top-submissions-for-challenge-1." class="section level3" number="9.2.1">
+<h3><span class="header-section-number">9.2.1</span> Top Submissions for Challenge 1.</h3>
+<ol style="list-style-type: decimal">
+<li><em>Jeremy Prasad</em></li>
+</ol>
+<ul>
+<li>Jeremy performed exceptionally well in this prediction challenge.</li>
+<li>His approach was a iterative learning process, where at each step after performing analysis he tried to decrease the error more and more.</li>
+<li>He started with a very basic model, of using just the score attribute with a hard threshold for pass or fail grade based on the score value.</li>
+<li>After this, to increase accuracy, he analysed the data more found which attributes effect the prediction of the data, and which are not really useful</li>
+<li>After finding these highly effective attributes, he wrote concrete set of attributs that can be used to assign the grade. Most of them were dependent on 2-3 attributes like Major-Senioriy-Score, Major-Score, or Major-Questions-Score,etc.</li>
+<li>This gave him a much better accuracy value for prediction.</li>
+</ul>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#Spectra" align="center">
+Jeremy’s PPT
+</button>
+<div id="Spectra" class="collapse">
+<object data="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/jeremypred1.pdf" width="100%" height="500px">
+</object>
+</div>
+<ol start="2" style="list-style-type: decimal">
+<li><em>Rohit Manjunath</em></li>
+</ol>
+<ul>
+<li>Rohit performed well in this prediction challenge, and has a different approach than that of Jeremy’s.</li>
+<li>In Rohit’s approach, instead of finding the minimum global threshold of pass or fail based on score, he found the threshold for the maximum score, above which every student passed the class.</li>
+<li>He then analysed the data based on the Majors first and then found interval threshold for each Majors scores.</li>
+<li>For some Majors, to increase accuracy, he further explored other attributes in detail to find which effects the final grade.</li>
+<li>Rohit obtained accuracy of almost 85%.</li>
+</ul>
+<button class="btn btn-primary" data-toggle="collapse" data-target="#Spectra2" align="center">
+Rohit’s PPT
+</button>
+<div id="Spectra2" class="collapse">
+<object data="https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/rohitpred1.pdf" width="100%" height="500px">
+</object>
+</div>
+<hr />
+</div>
+</div>
+<div id="predition-challenge-2" class="section level2" number="9.3">
+<h2><span class="header-section-number">9.3</span> Predition Challenge 2 *</h2>
 
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
+<a href="models.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
-<a href="intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

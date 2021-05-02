@@ -320,12 +320,11 @@ One such library is the `rModeling` package, which has function *crossValidation
 Before we proceed to the next section, please look at the snippet of the *earnings.csv* dataset, which we will be using for predicting the *Earnings* attribute based on various other attributes provided in the dataset, using different prediction models.
 
 ```{r,echo=FALSE,error=FALSE,warning=FALSE}
-library(kableExtra)
 earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earnings.csv") #web load
 temp<-knitr::kable(earningdata[sample(nrow(earningdata),10),], caption = 'Snippet of Earnings Dataset',booktabs=TRUE) 
+library(kableExtra)
 kableExtra::scroll_box(temp,width = "100%")
 ```
-.
 
 Now that we saw the general structure of the model and took a glace at the dataset we will be using, lets look at few of the algorithms as we promised from the list above.
 

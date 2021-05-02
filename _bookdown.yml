@@ -9,8 +9,8 @@ rmd_files: [
   "./chapters/revcommands.Rmd",
   "./chapters/datatransformation.Rmd",
   "./chapters/modeling.Rmd",
-  "./chapters/pred1blog.Rmd",
-  "./chapters/modeling2.Rmd"]
+  "./chapters/modeling2.Rmd",
+  "./chapters/predblogs.Rmd"]
 # rmd_subdir: "./chapters"
 
 language:

@@ -1,5 +1,5 @@
 tab:unnamed-chunk-6
-tab:unnamed-chunk-115
+tab:unnamed-chunk-121
 tab:unnamed-chunk-13
 tab:unnamed-chunk-15
 tab:unnamed-chunk-63
@@ -11,6 +11,12 @@ tab:unnamed-chunk-106
 tab:unnamed-chunk-111
 tab:unnamed-chunk-112
 tab:unnamed-chunk-113
+tab:unnamed-chunk-114
+tab:unnamed-chunk-115
+tab:unnamed-chunk-116
+tab:unnamed-chunk-117
+tab:unnamed-chunk-118
+tab:unnamed-chunk-119
 intro
 setting-up-r
 dataexp
@@ -109,3 +115,8 @@ general-structure-of-the-prediction-challenges.
 prediction-challange-1.
 top-submissions-for-challenge-1.
 predition-challenge-2
+top-submissions-for-challenge-2
+prediction-challenge-3.
+top-submissions-for-challenge-3
+prediction-challenge-4
+top-submissions-for-challenge-4

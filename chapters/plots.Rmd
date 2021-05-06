@@ -15,11 +15,12 @@ tutorial::go_interactive( greedy = FALSE)
 moody<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/moody2020b.csv") #web load
 # head(moody)
 
-knitr::kable(
+temp<-knitr::kable(
   head(moody, 10), caption = 'Snippet of Moody Dataset',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 <!-- --- -->

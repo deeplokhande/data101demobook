@@ -138,7 +138,7 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
 
 ---
 
-## Predition Challenge 2
+## Prediction Challenge 2.
 
 In Prediction Challenge 2, we introduced the use of Decision Tree algorithm for prediction model building, to complete the same task as we saw in the Prediction Challenge 1.
 
@@ -296,23 +296,22 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
 ---
 
     
-## Prediction Challenge 4
+## Prediction Challenge 4.
 
 Challenge 4 was a relatively newer challenge, and was built to test and combine all that has been learnt from the previous challenges.
 
 In this challenge, there was a scenario as described below:
 
-``` text
-Mysterious box was found on the beach. 
+*Mysterious box was found on the beach. *
 
-Despite spending probably years in the water, it still works! 
+*Despite spending probably years in the water, it still works! *
 
-But what does it do? 
+*But what does it do? *
 
-It has four inputs (electric) & a switch. Setting these inputs and different switch positions emits various weird and scary sounds as output in response to the electric signals. 
+*It has four inputs (electric) & a switch. Setting these inputs and different switch positions emits various weird and scary sounds as output in response to the electric signals. *
 
-It sizzles, gurgles, hisses, ominously tics like a bomb,etc.....but nothing happens - just sounds. So no harm will happen to surroundings.
-```
+*It sizzles, gurgles, hisses, ominously tics like a bomb,etc.....but nothing happens - just sounds. So no harm will happen to surroundings.*
+
 As we can see from the scenario, the task now in this challenge, is to predict the sounds that the *Mysterios Box* will make upon providing various set of inputs and different switch positions.
 
 Henceforth, we will refer to this *mysterious* box as *Black Box*.
@@ -375,7 +374,7 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
 
 1. Nicole Coria     <button class="btn btn-primary" data-toggle="collapse" data-target="#pred41">Nicole's PPT</button>
 <div id="pred41" class="collapse">    
-<embed src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/nicolepred4.pdf&embedded=true" width="100%" height="500px"></embed>
+<embed src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/nicolepred41.pdf&embedded=true" width="100%" height="500px"></embed>
 </div>
 
   - This was the top submission based on accuracy score, with a final score more than 68.7%
@@ -387,7 +386,7 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
   
 2. Atharva Patil     <button class="btn btn-primary" data-toggle="collapse" data-target="#pred42">Atharva's PPT</button>
 <div id="pred42" class="collapse">    
-<embed src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/atharvapred4.pdf&embedded=true" width="100%" height="500px"></embed>
+<embed src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/atharvapred41.pdf&embedded=true" width="100%" height="500px"></embed>
 </div>
 
   - This was another top submission based on accuracy score, with final score above 68%
@@ -412,8 +411,8 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
 
 To perform any of the above challenges yourself, visit the appropriate links.
 
-1. Prediction Challenge 1 [link1](https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d){target="_blank"}
-1. Prediction Challenge 2 [link2](https://www.kaggle.com/t/607a8221c6a647048f88ffa380ad1e4b){target="_blank"}
-1. Prediction Challenge 3 [link3](https://www.kaggle.com/t/951a9ad1d7e9444bb29b0dca65aed1cd){target="_blank"}
-1. Prediction Challenge 4 [link4](https://www.kaggle.com/t/423f51ea45be4efea1ddb12fee969cfe){target="_blank"}
+1. Prediction Challenge 1 [https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d](https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d){target="_blank"}
+1. Prediction Challenge 2 [https://www.kaggle.com/t/607a8221c6a647048f88ffa380ad1e4b](https://www.kaggle.com/t/607a8221c6a647048f88ffa380ad1e4b){target="_blank"}
+1. Prediction Challenge 3 [https://www.kaggle.com/t/951a9ad1d7e9444bb29b0dca65aed1cd](https://www.kaggle.com/t/951a9ad1d7e9444bb29b0dca65aed1cd){target="_blank"}
+1. Prediction Challenge 4 [https://www.kaggle.com/t/423f51ea45be4efea1ddb12fee969cfe](https://www.kaggle.com/t/423f51ea45be4efea1ddb12fee969cfe){target="_blank"}
     

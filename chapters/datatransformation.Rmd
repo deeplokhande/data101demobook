@@ -323,11 +323,12 @@ First is a smaller just 4 record data subset of the Moody dataset.
 ```{r tut=FALSE,echo=FALSE}
 library(knitr)
 moodysm<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallMoody.csv") #web load
-knitr::kable(
+temp<-knitr::kable(
   head(moodysm), caption = 'Small subset of Moody Dataset',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 Second is another dataset of students with respective GPA and Majors.
@@ -335,11 +336,12 @@ Second is another dataset of students with respective GPA and Majors.
 ```{r tut=FALSE,echo=F}
 library(knitr)
 moodyst<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/SmallSt.csv") #web load
-knitr::kable(
+temp<-knitr::kable(
   head(moodyst), caption = 'Small dataset of students information',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 _NOTE:_ We can see from the above snippets of the above the top 3 records in both dataset have same `STUDENTID`, but the 4th records in both datasets are of different students. The most important element while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various merge options and attributes.
@@ -391,11 +393,12 @@ Suppose you have the happiness index dataset,
 ```{r tut=FALSE,echo=F}
 library(knitr)
 happy<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv") #web load
-knitr::kable(
+temp<-knitr::kable(
   head(happy), caption = 'Happiness Index Dataset for all countries',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 where you have the survey data of people of various countries with records of information about ` AGE, COUNTRY, GENDER, IMMIGRANT, INCOME, and HAPPINESS`.
@@ -841,11 +844,12 @@ Now coming back to the main example of avoiding issues/errors while importing da
 ```{r tut=FALSE,echo=F}
 library(knitr)
 aq<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/AirQualityUCI.csv") #web load
-knitr::kable(
+temp<-knitr::kable(
   head(aq[,1:6]), caption = 'Air Quality Dataset of amount of elements and pollutants in air.',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 You will see from the dataset that the date and time columns are imported correctly. But in fact, and as we will see in the code below, the date column is of type `character` and the time is also of type `character`.

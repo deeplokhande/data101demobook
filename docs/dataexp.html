@@ -164,7 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
 <li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> *Multiple Hypothesis - Bonferroni Correction.</a></li>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#bonferroni"><i class="fa fa-check"></i><b>3.3</b> Multiple Hypothesis - Bonferroni Correction.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="stateval.html"><a href="stateval.html#examples-for-multiple-hypothesis-testing."><i class="fa fa-check"></i><b>3.3.1</b> Examples for Multiple hypothesis testing.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="revision.html"><a href="revision.html"><i class="fa fa-check"></i><b>4</b> Revision of R commands</a>
 <ul>
@@ -262,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-1."><i class="fa fa-check"></i><b>9.2.1</b> Top Submissions for Challenge 1.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#predition-challenge-2"><i class="fa fa-check"></i><b>9.3</b> Predition Challenge 2</a>
+<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-2."><i class="fa fa-check"></i><b>9.3</b> Prediction Challenge 2.</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-2"><i class="fa fa-check"></i><b>9.3.1</b> Top Submissions for Challenge 2</a></li>
 </ul></li>
@@ -270,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-3"><i class="fa fa-check"></i><b>9.4.1</b> Top Submissions for Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4"><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4</a>
+<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4."><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4.</a>
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-4"><i class="fa fa-check"></i><b>9.5.1</b> Top Submissions for Challenge 4</a></li>
 </ul></li>
@@ -477,91 +480,205 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIG1vb2R5PC1yZWFkLmNzdihcIi4uL2ZpbGVzL2RhdGFz
 <li><p>Looks like Professor Moody is in fact very alert in class. He is aware of what students do, detecting texting during class and remembering exactly who asked many questions in class. He also keeps the mysterious “participation index” which is a numerical score from 0 to 1. This is probably related to questions asked and answered by students as well as their general attentiveness in class. Remarkable but a little creepy, isn’t it?</p></li>
 <li><p>What is the best advice the new TA, can give future students how to get a good grade in Professor Moody’s class? What factors influence the grade besides the score? Back your recommendation up with plots and evidence from the attached data.</p></li>
 </ul>
-<p>The Moody data set is defined here by the following attributes</p>
+The Moody data set is defined here by the following attributes
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
-<caption><span id="tab:unnamed-chunk-121">Table 2.2: </span>Snippet of Moody Dataset</caption>
+<caption>
+<span id="tab:unnamed-chunk-125">Table 2.2: </span>Snippet of Moody Dataset
+</caption>
 <thead>
-<tr class="header">
-<th align="right">score</th>
-<th align="left">grade</th>
-<th align="left">texting</th>
-<th align="left">questions</th>
-<th align="right">participation</th>
+<tr>
+<th style="text-align:right;">
+score
+</th>
+<th style="text-align:left;">
+grade
+</th>
+<th style="text-align:left;">
+texting
+</th>
+<th style="text-align:left;">
+questions
+</th>
+<th style="text-align:right;">
+participation
+</th>
 </tr>
 </thead>
 <tbody>
-<tr class="odd">
-<td align="right">26.89</td>
-<td align="left">F</td>
-<td align="left">never</td>
-<td align="left">never</td>
-<td align="right">0.41</td>
+<tr>
+<td style="text-align:right;">
+26.89
+</td>
+<td style="text-align:left;">
+F
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:right;">
+0.41
+</td>
 </tr>
-<tr class="even">
-<td align="right">71.57</td>
-<td align="left">B</td>
-<td align="left">always</td>
-<td align="left">rarely</td>
-<td align="right">0.00</td>
+<tr>
+<td style="text-align:right;">
+71.57
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+rarely
+</td>
+<td style="text-align:right;">
+0.00
+</td>
 </tr>
-<tr class="odd">
-<td align="right">90.11</td>
-<td align="left">A</td>
-<td align="left">always</td>
-<td align="left">never</td>
-<td align="right">0.27</td>
+<tr>
+<td style="text-align:right;">
+90.11
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:right;">
+0.27
+</td>
 </tr>
-<tr class="even">
-<td align="right">31.52</td>
-<td align="left">D</td>
-<td align="left">sometimes</td>
-<td align="left">rarely</td>
-<td align="right">0.68</td>
+<tr>
+<td style="text-align:right;">
+31.52
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+sometimes
+</td>
+<td style="text-align:left;">
+rarely
+</td>
+<td style="text-align:right;">
+0.68
+</td>
 </tr>
-<tr class="odd">
-<td align="right">95.94</td>
-<td align="left">A</td>
-<td align="left">always</td>
-<td align="left">rarely</td>
-<td align="right">0.09</td>
+<tr>
+<td style="text-align:right;">
+95.94
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+rarely
+</td>
+<td style="text-align:right;">
+0.09
+</td>
 </tr>
-<tr class="even">
-<td align="right">45.72</td>
-<td align="left">D</td>
-<td align="left">always</td>
-<td align="left">rarely</td>
-<td align="right">0.19</td>
+<tr>
+<td style="text-align:right;">
+45.72
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+rarely
+</td>
+<td style="text-align:right;">
+0.19
+</td>
 </tr>
-<tr class="odd">
-<td align="right">90.82</td>
-<td align="left">A</td>
-<td align="left">always</td>
-<td align="left">always</td>
-<td align="right">0.25</td>
+<tr>
+<td style="text-align:right;">
+90.82
+</td>
+<td style="text-align:left;">
+A
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:right;">
+0.25
+</td>
 </tr>
-<tr class="even">
-<td align="right">75.52</td>
-<td align="left">B</td>
-<td align="left">sometimes</td>
-<td align="left">never</td>
-<td align="right">0.28</td>
+<tr>
+<td style="text-align:right;">
+75.52
+</td>
+<td style="text-align:left;">
+B
+</td>
+<td style="text-align:left;">
+sometimes
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:right;">
+0.28
+</td>
 </tr>
-<tr class="odd">
-<td align="right">52.31</td>
-<td align="left">C</td>
-<td align="left">never</td>
-<td align="left">never</td>
-<td align="right">0.67</td>
+<tr>
+<td style="text-align:right;">
+52.31
+</td>
+<td style="text-align:left;">
+C
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:left;">
+never
+</td>
+<td style="text-align:right;">
+0.67
+</td>
 </tr>
-<tr class="even">
-<td align="right">39.57</td>
-<td align="left">D</td>
-<td align="left">always</td>
-<td align="left">always</td>
-<td align="right">0.40</td>
+<tr>
+<td style="text-align:right;">
+39.57
+</td>
+<td style="text-align:left;">
+D
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:left;">
+always
+</td>
+<td style="text-align:right;">
+0.40
+</td>
 </tr>
 </tbody>
 </table>
+</div>
 <p>Moody[score, grade, participation, questions, texting]
 Score and grade are self explanatory. Participation is supposedly measuring students participation in class. We do not know whether higher participation would necessarily be positive, since Professor Moody’s mood changes from year to year and he may be annoyed by students who are too active and bother him too much. Who knows? We have to find out.</p>
 <p>Attribute “questions” has several values “always”, “frequently”, “sometimes” and “never”. So does the attribute “texting”. In our data set there are students who are are always texting and who never ask any questions. Oh, yes, and some students participation index is almost zero. Guess what grade are they getting? F, you probably guess. Well, but about their score.It should matter probably. At least to some degree!</p>

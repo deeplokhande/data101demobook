@@ -164,7 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
 <li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> *Multiple Hypothesis - Bonferroni Correction.</a></li>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#bonferroni"><i class="fa fa-check"></i><b>3.3</b> Multiple Hypothesis - Bonferroni Correction.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="stateval.html"><a href="stateval.html#examples-for-multiple-hypothesis-testing."><i class="fa fa-check"></i><b>3.3.1</b> Examples for Multiple hypothesis testing.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="revision.html"><a href="revision.html"><i class="fa fa-check"></i><b>4</b> Revision of R commands</a>
 <ul>
@@ -262,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-1."><i class="fa fa-check"></i><b>9.2.1</b> Top Submissions for Challenge 1.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#predition-challenge-2"><i class="fa fa-check"></i><b>9.3</b> Predition Challenge 2</a>
+<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-2."><i class="fa fa-check"></i><b>9.3</b> Prediction Challenge 2.</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-2"><i class="fa fa-check"></i><b>9.3.1</b> Top Submissions for Challenge 2</a></li>
 </ul></li>
@@ -270,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-3"><i class="fa fa-check"></i><b>9.4.1</b> Top Submissions for Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4"><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4</a>
+<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4."><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4.</a>
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-4"><i class="fa fa-check"></i><b>9.5.1</b> Top Submissions for Challenge 4</a></li>
 </ul></li>
@@ -301,8 +304,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The biggest enemy of your findings is randomness. In order to convince your audience that you have found something you need to address the question “how do you know your result is simply sheer luck, it is random?”</p>
 <p>This is where you need statistical tests for use in hypothesis testing.</p>
 <hr />
-<div id="some-basics-first" class="section level4" number="3.0.0.1">
-<h4><span class="header-section-number">3.0.0.1</span> Some Basics First:</h4>
+<div id="two-important-formulas" class="section level4" number="3.0.0.1">
+<h4><span class="header-section-number">3.0.0.1</span> Two Important Formula’s:</h4>
 <ul>
 <li><p><em>Mean</em>
 <span class="math display">\[\begin{equation}
@@ -1014,9 +1017,380 @@ eyJsYW5ndWFnZSI6InIiLCJwcmVfZXhlcmNpc2VfY29kZSI6IlBlcm11dGF0aW9uIDwtIGZ1bmN0aW9u
 <hr />
 </div>
 </div>
-<div id="multiple-hypothesis---bonferroni-correction." class="section level2" number="3.3">
-<h2><span class="header-section-number">3.3</span> *Multiple Hypothesis - Bonferroni Correction.</h2>
+<div id="bonferroni" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> Multiple Hypothesis - Bonferroni Correction.</h2>
+<script src="files/js/dcl.js"></script>
+<p>While dealing with the dataset with several number of dimensions, it is possible to get a lot of amazing and interesting insights and conclusions from it.</p>
+<p>But, unfortunately, sometimes a lot of the data included in case of such large dataset, might be junk.</p>
+<p>We can make multiple assumptions from such data. But, while doing so, we may consider some useless data/patterns that might hamper our results and lead to the pitfall of believing in hypotheses, that are not actually true.</p>
+<p>This is common when performing multiple hypothesis testing.</p>
+<p>Multiple hypothesis testing refers to any instance that involves the simultaneous testing of more than one hypothesis.</p>
+<p>Let’s consider the example of Traffic dataset.</p>
+<ul>
+<li>We have given two tunnels ”Holland” and “Lincoln”, but what if we were given all the tunnels in the US?</li>
+<li>We can make a lot of hypotheses in that case.</li>
+<li>And for each set of hypothesis, would you still consider the value of α as 0.05 as the cut-off for P-value?</li>
+</ul>
+<p>It may seem to be a good idea to just go and check the p-value for any set of hypotheses with the cut-off value of <span class="math inline">\(\alpha\)</span> as 0.05.</p>
+<p>But this might not give you the correct answer always.</p>
+<p>If you have 100 different hypotheses to consider in the data, then the probability of getting at least one significant result with <span class="math inline">\(\alpha = 0.05\)</span> will be,
+<span class="math display">\[P(\text{at least one significant result}) = 1- (1-0.05)^{100} ≈ 0.99\]</span></p>
+<p>This means that if we consider 0.05 as our cut-off value, then the probability of getting at least one significant result will be about 99%, which leads to overfitting of data and it clearly doesn’t give us proper idea about our hypothesis.</p>
+<p>Methods for dealing with multiple testing frequently call for adjusting <span class="math inline">\(\alpha\)</span> in some way, so that the probability of observing at least one significant result due to chance remains below your desired significance level.</p>
+<p>One such method for adjusting <span class="math inline">\(\alpha\)</span> is <em>BONFERRONI CORRECTION!</em></p>
+<p>The Bonferroni correction sets the significance cut-off at <span class="math inline">\(\alpha / N\)</span> where N is the number of possible hypotheses.</p>
+<p>For example, in the example above, with 100 tests and <span class="math inline">\(\alpha = 0.05\)</span>, you’d only reject a null hypothesis if the p-value is less than <span class="math inline">\(\alpha/N = 0.05/100 = 0.0005\)</span></p>
+<p>Thus, the value of <span class="math inline">\(\alpha\)</span> after Bonferroni correction would be <span class="math inline">\(0.0005\)</span>.</p>
+<p>Again, let’s calculate the probability of observing at least one significant result when using the correction just described:</p>
+<p><span class="math display">\[P(\text{at least one significant result}) = 1 − P(\text{no significant results}) \\
+= 1 − (1 − 0.0005)^{100} ≈ 0.048\]</span></p>
+<p>This gives us 4.8% probability of getting at least one significant result.</p>
+<p>As we can see this value of probability using Bonferroni correction is much better than the 99% which we saw before when we did not use correction for performing multiple hypothesis testing.</p>
+<p>But there are some downfall of using Bonferroni correction too. (Although for the scope of this course Bonferroni Correction works fine.)</p>
+<ul>
+<li>The Bonferroni correction tends to be a bit too conservative.</li>
+<li>Also, we benefit here from assuming that all tests are independent of each other. In practical applications, that is often not the case.</li>
+<li>Depending on the correlation structure of the tests, the Bonferroni correction could beextremely conservative, leading to a high rate of false negatives.</li>
+</ul>
+<hr />
+<div id="examples-for-multiple-hypothesis-testing." class="section level3" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Examples for Multiple hypothesis testing.</h3>
+Let’s consider the Happiness dataset as an example.
+<script src="files/js/dcl.js"></script>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
+<table>
+<caption>
+<span id="tab:unnamed-chunk-20">Table 3.3: </span>Snippet of Happiness Dataset
+</caption>
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+IDN
+</th>
+<th style="text-align:right;">
+AGE
+</th>
+<th style="text-align:left;">
+COUNTRY
+</th>
+<th style="text-align:left;">
+GENDER
+</th>
+<th style="text-align:right;">
+IMMIGRANT
+</th>
+<th style="text-align:right;">
+INCOME
+</th>
+<th style="text-align:right;">
+HAPPINESS
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+3308
+</td>
+<td style="text-align:right;">
+72704
+</td>
+<td style="text-align:right;">
+37
+</td>
+<td style="text-align:left;">
+Kazakhstan
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+88201
+</td>
+<td style="text-align:right;">
+7.42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4600
+</td>
+<td style="text-align:right;">
+76777
+</td>
+<td style="text-align:right;">
+56
+</td>
+<td style="text-align:left;">
+Trinidad and Tobago
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+93598
+</td>
+<td style="text-align:right;">
+4.95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+1282
+</td>
+<td style="text-align:right;">
+31315
+</td>
+<td style="text-align:right;">
+53
+</td>
+<td style="text-align:left;">
+Sweden
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+49034
+</td>
+<td style="text-align:right;">
+7.83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5122
+</td>
+<td style="text-align:right;">
+84009
+</td>
+<td style="text-align:right;">
+20
+</td>
+<td style="text-align:left;">
+Colombia
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+100414
+</td>
+<td style="text-align:right;">
+8.26
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2433
+</td>
+<td style="text-align:right;">
+42920
+</td>
+<td style="text-align:right;">
+33
+</td>
+<td style="text-align:left;">
+Iraq
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+57674
+</td>
+<td style="text-align:right;">
+4.36
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4308
+</td>
+<td style="text-align:right;">
+13675
+</td>
+<td style="text-align:right;">
+54
+</td>
+<td style="text-align:left;">
+Zambia
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+1
+</td>
+<td style="text-align:right;">
+28754
+</td>
+<td style="text-align:right;">
+3.28
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+4071
+</td>
+<td style="text-align:right;">
+51005
+</td>
+<td style="text-align:right;">
+43
+</td>
+<td style="text-align:left;">
+Thailand
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+67206
+</td>
+<td style="text-align:right;">
+5.47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3927
+</td>
+<td style="text-align:right;">
+38442
+</td>
+<td style="text-align:right;">
+30
+</td>
+<td style="text-align:left;">
+Morocco
+</td>
+<td style="text-align:left;">
+Male
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+53284
+</td>
+<td style="text-align:right;">
+4.33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6382
+</td>
+<td style="text-align:right;">
+20492
+</td>
+<td style="text-align:right;">
+50
+</td>
+<td style="text-align:left;">
+Turkey
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+35729
+</td>
+<td style="text-align:right;">
+2.51
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+287
+</td>
+<td style="text-align:right;">
+55146
+</td>
+<td style="text-align:right;">
+63
+</td>
+<td style="text-align:left;">
+Suriname
+</td>
+<td style="text-align:left;">
+Female
+</td>
+<td style="text-align:right;">
+0
+</td>
+<td style="text-align:right;">
+71402
+</td>
+<td style="text-align:right;">
+5.67
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There are 156 unique countries in the dataset.
+This can be checked using the unique() function – <code>unique(indiv_happiness$country)</code></p>
+<p>Since there are 156 distinct countries, we have <span class="math inline">\({{n}\choose{2}} = {156\choose2}=(156 * 155)/2 = 12090\)</span> different hypotheses. Let’s call this value N.</p>
+<p>Using this N, the P-value cutoff after Bonferroni correction will be, <span class="math inline">\(α = 0.05 / 12090 ≈ 4.13 *10^{-6}\)</span></p>
+<div id="example-1" class="section level4" number="3.3.1.1">
+<h4><span class="header-section-number">3.3.1.1</span> Example 1</h4>
+<p>Let’s calculate the P-value for the following hypotheses from the dataset.</p>
+<ul>
+<li>Our hypothesis: People from Canada are happier than people from Iceland.</li>
+<li>Null hypothesis: There is no difference in happiness levels of people from Canada and people from Iceland.</li>
+</ul>
+<script src="files/js/dcl.js"></script>
+<div data-datacamp-exercise="" data-height="700" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgZGF0YXNldFxuaGFwcGluZXNzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L0hBUFBJTkVTUzIwMTcuY3N2XCIsIHN0cmluZ3NBc0ZhY3RvcnMgPSBUKSAjd2ViIGxvYWRcblxuIyBUd28gc3Vic2V0cyBvZiBDYW5hZGEgYW5kIEljZWxhbmQgXG5oYXBwaW5lc3MuY2FuYWRhIDwtIHN1YnNldChoYXBwaW5lc3MkSEFQUElORVNTLCBoYXBwaW5lc3MkQ09VTlRSWSA9PVwiQ2FuYWRhXCIpXG5oYXBwaW5lc3MuaWNlbGFuZCA8LSBzdWJzZXQoaGFwcGluZXNzJEhBUFBJTkVTUywgaGFwcGluZXNzJENPVU5UUlkgPT0gXCJJY2VsYW5kXCIpXG5cbiMgTWVhbiBvZiBzdWJzZXRzLlxubWVhbi5jYW5hZGEgPC0gbWVhbihoYXBwaW5lc3MuY2FuYWRhKVxubWVhbi5pY2VsYW5kIDwtIG1lYW4oaGFwcGluZXNzLmljZWxhbmQpXG5cbm1lYW4uY2FuYWRhXG5tZWFuLmljZWxhbmRcblxuIyBMZW5ndGggb2Ygc3Vic2V0c1xubGVuLmNhbmFkYSA8LSBsZW5ndGgoaGFwcGluZXNzLmNhbmFkYSlcbmxlbi5pY2VsYW5kIDwtIGxlbmd0aChoYXBwaW5lc3MuaWNlbGFuZClcblxuIyBTdGFuZGFyZCBEZXZpYXRpb24gb2YgU3Vic2V0cy5cbnNkLmNhbmFkYSA8LSBzZChoYXBwaW5lc3MuY2FuYWRhKVxuc2QuaWNlbGFuZCA8LSBzZChoYXBwaW5lc3MuaWNlbGFuZClcblxuIyBDYWxjdWxhdGluZyBaLXNjb3JlIFxuemV0YSA8LSAobWVhbi5jYW5hZGEgLSBtZWFuLmljZWxhbmQpLyBzcXJ0KChzZC5jYW5hZGFeMikvbGVuLmNhbmFkYSArIChzZC5pY2VsYW5kXjIpL2xlbi5pY2VsYW5kKVxuemV0YVxuXG4jIENhbGN1bGF0ZSBwLXZhbHVlIGZyb20gWi1zY29yZVxucF92YWx1ZSA8LSBwbm9ybSgtemV0YSlcbnBfdmFsdWUifQ==
+</div>
+<p>In this case, after applying Bonferroni Correction we get the value of <span class="math inline">\(α = 0.05/12090 ≈ 4.14 * 10^{-06}\)</span>
+Here, we get the p-value of 0.25 which is much higher than the value of our α.
+Based on this we fail reject our null hypothesis.</p>
+</div>
+<div id="example-2" class="section level4" number="3.3.1.2">
+<h4><span class="header-section-number">3.3.1.2</span> Example 2</h4>
+<script src="files/js/dcl.js"></script>
+<p>Let’s consider the following hypotheses from the dataset.</p>
+<ul>
+<li>Our hypothesis: People from Italy are happier than people from Afghanistan.</li>
+<li>Null hypothesis: There is no difference in happiness levels of people from Italy and people from Afghanistan.</li>
+</ul>
+<div data-datacamp-exercise="" data-height="700" data-encoded="true">
+eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiIjIExvYWQgZGF0YXNldFxuaGFwcGluZXNzIDwtIHJlYWQuY3N2KFwiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2RlZXBsb2toYW5kZS9kYXRhMTAxZGVtb2Jvb2svbWFpbi9maWxlcy9kYXRhc2V0L0hBUFBJTkVTUzIwMTcuY3N2XCIsIHN0cmluZ3NBc0ZhY3RvcnMgPSBUKSAjd2ViIGxvYWRcblxuIyBUd28gc3Vic2V0cyBvZiBJdGFseSBhbmQgQWZnaGFuaXN0YW4gXG5oYXBwaW5lc3MuaXRhbHkgPC0gc3Vic2V0KGhhcHBpbmVzcyRIQVBQSU5FU1MsIGhhcHBpbmVzcyRDT1VOVFJZID09XCJJdGFseVwiKVxuaGFwcGluZXNzLmFmZ2hhbmlzdGFuIDwtIHN1YnNldChoYXBwaW5lc3MkSEFQUElORVNTLCBoYXBwaW5lc3MkQ09VTlRSWSA9PSBcIkFmZ2hhbmlzdGFuXCIpXG5cbiMgTWVhbiBvZiBzdWJzZXRzLlxubWVhbi5pdGFseSA8LSBtZWFuKGhhcHBpbmVzcy5pdGFseSlcbm1lYW4uYWZnaGFuaXN0YW4gPC0gbWVhbihoYXBwaW5lc3MuYWZnaGFuaXN0YW4pXG5cbm1lYW4uaXRhbHlcbm1lYW4uYWZnaGFuaXN0YW5cblxuIyBMZW5ndGggb2Ygc3Vic2V0c1xubGVuLml0YWx5IDwtIGxlbmd0aChoYXBwaW5lc3MuaXRhbHkpXG5sZW4uYWZnaGFuaXN0YW4gPC0gbGVuZ3RoKGhhcHBpbmVzcy5hZmdoYW5pc3RhbilcblxuIyBTdGFuZGFyZCBEZXZpYXRpb24gb2YgU3Vic2V0cy5cbnNkLml0YWx5IDwtIHNkKGhhcHBpbmVzcy5pdGFseSlcbnNkLmFmZ2hhbmlzdGFuIDwtIHNkKGhhcHBpbmVzcy5hZmdoYW5pc3RhbilcblxuIyBDYWxjdWxhdGluZyBaLXNjb3JlIFxuemV0YSA8LSAobWVhbi5pdGFseSAtIG1lYW4uYWZnaGFuaXN0YW4pLyBzcXJ0KChzZC5pdGFseV4yKS9sZW4uaXRhbHkgKyAoc2QuYWZnaGFuaXN0YW5eMikvbGVuLmFmZ2hhbmlzdGFuKVxuemV0YVxuXG4jIENhbGN1bGF0ZSBwLXZhbHVlIGZyb20gWi1zY29yZVxucF92YWx1ZSA8LSBwbm9ybSgtemV0YSlcbnBfdmFsdWUifQ==
+</div>
+<p>In this case, after applying Bonferroni Correction we get the value of <span class="math inline">\(α = 0.05/12090 ≈ 4.14 * 10^{-06}\)</span></p>
+<p>Here, we get the p-value of 0.00364 which is lower than the value of default p-value cutoff <span class="math inline">\(α = 0.05\)</span>, but this obtained p-value is higher than our Bonferroni correction cutoff.</p>
+<p>So, based on the results, we fail to reject our null hypothesis even though the obtained p-value is less than 0.05.</p>
+<hr />
+<p><strong>EOC</strong></p>
 
+</div>
+</div>
 </div>
 </div>
             </section>

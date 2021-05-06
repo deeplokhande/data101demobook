@@ -164,7 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
 <li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> *Multiple Hypothesis - Bonferroni Correction.</a></li>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#bonferroni"><i class="fa fa-check"></i><b>3.3</b> Multiple Hypothesis - Bonferroni Correction.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="stateval.html"><a href="stateval.html#examples-for-multiple-hypothesis-testing."><i class="fa fa-check"></i><b>3.3.1</b> Examples for Multiple hypothesis testing.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="revision.html"><a href="revision.html"><i class="fa fa-check"></i><b>4</b> Revision of R commands</a>
 <ul>
@@ -262,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-1."><i class="fa fa-check"></i><b>9.2.1</b> Top Submissions for Challenge 1.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#predition-challenge-2"><i class="fa fa-check"></i><b>9.3</b> Predition Challenge 2</a>
+<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-2."><i class="fa fa-check"></i><b>9.3</b> Prediction Challenge 2.</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-2"><i class="fa fa-check"></i><b>9.3.1</b> Top Submissions for Challenge 2</a></li>
 </ul></li>
@@ -270,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-3"><i class="fa fa-check"></i><b>9.4.1</b> Top Submissions for Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4"><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4</a>
+<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4."><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4.</a>
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-4"><i class="fa fa-check"></i><b>9.5.1</b> Top Submissions for Challenge 4</a></li>
 </ul></li>
@@ -340,9 +343,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>For more info on the <em>lm()</em> function visit <a href="https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/lm">lm()</a></p>
 <p>Lets look at the example on the RealEstate dataset.</p>
 <p>A snippet of the Realestate Dataset is given below.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-101">Table 7.1: </span>Snippet of Real Estate Dataset
+<span id="tab:unnamed-chunk-105">Table 7.1: </span>Snippet of Real Estate Dataset
 </caption>
 <thead>
 <tr>
@@ -503,6 +507,7 @@ Size
 </tr>
 </tbody>
 </table>
+</div>
 <p>Now we can build a simple linear regression model to predict the Price attribute based on the various other attributes present in the dataset, as shown above.</p>
 <p>Since we will be predicting only one attribute values, this model will be called simple linear regression model.</p>
 <p>For the first example we will predict the price value of house using only <em>size</em> attribute as the predictor.</p>

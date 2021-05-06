@@ -164,7 +164,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.2.2" data-path="stateval.html"><a href="stateval.html#permfunction"><i class="fa fa-check"></i><b>3.2.2</b> Permutation Function</a></li>
 <li class="chapter" data-level="3.2.3" data-path="stateval.html"><a href="stateval.html#aniceexample"><i class="fa fa-check"></i><b>3.2.3</b> Exercise - How p-value is affected by difference of means and standard deviations</a></li>
 </ul></li>
-<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#multiple-hypothesis---bonferroni-correction."><i class="fa fa-check"></i><b>3.3</b> *Multiple Hypothesis - Bonferroni Correction.</a></li>
+<li class="chapter" data-level="3.3" data-path="stateval.html"><a href="stateval.html#bonferroni"><i class="fa fa-check"></i><b>3.3</b> Multiple Hypothesis - Bonferroni Correction.</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="stateval.html"><a href="stateval.html#examples-for-multiple-hypothesis-testing."><i class="fa fa-check"></i><b>3.3.1</b> Examples for Multiple hypothesis testing.</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="revision.html"><a href="revision.html"><i class="fa fa-check"></i><b>4</b> Revision of R commands</a>
 <ul>
@@ -262,7 +265,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.2.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-1."><i class="fa fa-check"></i><b>9.2.1</b> Top Submissions for Challenge 1.</a></li>
 </ul></li>
-<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#predition-challenge-2"><i class="fa fa-check"></i><b>9.3</b> Predition Challenge 2</a>
+<li class="chapter" data-level="9.3" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-2."><i class="fa fa-check"></i><b>9.3</b> Prediction Challenge 2.</a>
 <ul>
 <li class="chapter" data-level="9.3.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-2"><i class="fa fa-check"></i><b>9.3.1</b> Top Submissions for Challenge 2</a></li>
 </ul></li>
@@ -270,7 +273,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="9.4.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-3"><i class="fa fa-check"></i><b>9.4.1</b> Top Submissions for Challenge 3</a></li>
 </ul></li>
-<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4"><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4</a>
+<li class="chapter" data-level="9.5" data-path="predblogs.html"><a href="predblogs.html#prediction-challenge-4."><i class="fa fa-check"></i><b>9.5</b> Prediction Challenge 4.</a>
 <ul>
 <li class="chapter" data-level="9.5.1" data-path="predblogs.html"><a href="predblogs.html#top-submissions-for-challenge-4"><i class="fa fa-check"></i><b>9.5.1</b> Top Submissions for Challenge 4</a></li>
 </ul></li>
@@ -435,9 +438,10 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJtb29keTwtcmVhZC5jc3YoXCJodHRwczovL3Jhdy5naXRo
 <p>Consider the following 2 datasets.</p>
 First is a smaller just 4 record data subset of the Moody dataset.<br />
 
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-63">Table 5.1: </span>Small subset of Moody Dataset
+<span id="tab:unnamed-chunk-67">Table 5.1: </span>Small subset of Moody Dataset
 </caption>
 <thead>
 <tr>
@@ -544,10 +548,12 @@ always
 </tr>
 </tbody>
 </table>
+</div>
 <p>Second is another dataset of students with respective GPA and Majors.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-64">Table 5.2: </span>Small dataset of students information
+<span id="tab:unnamed-chunk-68">Table 5.2: </span>Small dataset of students information
 </caption>
 <thead>
 <tr>
@@ -609,6 +615,7 @@ economics
 </tr>
 </tbody>
 </table>
+</div>
 <p><em>NOTE:</em> We can see from the above snippets of the above the top 3 records in both dataset have same <code>STUDENTID</code>, but the 4th records in both datasets are of different students. The most important element while discussing the examples below, will focus on what happens to the 4th records of both datasets when using the various merge options and attributes.</p>
 <div id="inner-join" class="section level3" number="5.4.1">
 <h3><span class="header-section-number">5.4.1</span> Inner Join</h3>
@@ -633,9 +640,10 @@ Here you can provide the argument <code>by.x = "studentid" , by.y = "stu-id"</co
 <div id="another-example" class="section level4" number="5.4.1.1">
 <h4><span class="header-section-number">5.4.1.1</span> Another example</h4>
 <p>Suppose you have the happiness index dataset,</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-67">Table 5.3: </span>Happiness Index Dataset for all countries
+<span id="tab:unnamed-chunk-71">Table 5.3: </span>Happiness Index Dataset for all countries
 </caption>
 <thead>
 <tr>
@@ -803,6 +811,7 @@ Female
 </tr>
 </tbody>
 </table>
+</div>
 <p>where you have the survey data of people of various countries with records of information about <code>AGE, COUNTRY, GENDER, IMMIGRANT, INCOME, and HAPPINESS</code>.</p>
 <p>You can do analysis on the above dataset per country, per age group,etc.</p>
 <p>But if you want to do analysis based on per continent, then you will have to create lists of all the countries in each continent, and then subset using the appropriate subset method/s from section below <a href="datatransformation.html#sliceanddice">5.5</a>.</p>
@@ -1026,9 +1035,10 @@ eyJsYW5ndWFnZSI6InIiLCJzYW1wbGUiOiJsaWJyYXJ5KGx1YnJpZGF0ZSkgIyBpbmNsdWRlIHRoZSBs
 <p>We can see that the output of the 2 functions above are in POSIXct format and has the information of hours minutes and seconds annotated properly.</p>
 <p>There are various other functions in the lubridate package like for various use case, but we will not cover them since they are not useful here. To learn more about it you can visit the official <code>lubridate</code> package vignette linked here: <a href="https://cran.r-project.org/web/packages/lubridate/vignettes/lubridate.html">lubridate</a></p>
 <p>Now coming back to the main example of avoiding issues/errors while importing date and time attributes present in dataset. For this we will look at the <code>AirQualityUCI</code> dataset. And here is the snippet of the dataset below.</p>
+<div style="border: 1px solid #ddd; padding: 5px; overflow-x: scroll; width:100%; ">
 <table>
 <caption>
-<span id="tab:unnamed-chunk-84">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.
+<span id="tab:unnamed-chunk-88">Table 5.4: </span>Air Quality Dataset of amount of elements and pollutants in air.
 </caption>
 <thead>
 <tr>
@@ -1175,6 +1185,7 @@ Benzene
 </tr>
 </tbody>
 </table>
+</div>
 <p>You will see from the dataset that the date and time columns are imported correctly. But in fact, and as we will see in the code below, the date column is of type <code>character</code> and the time is also of type <code>character</code>.</p>
 <p>Now to convert these columns into POSIXct supported date time columns we will use the lubridate functions.
 And then we will count the number of records in the dataset per <em>year</em> using the <code>year()</code> function.</p>

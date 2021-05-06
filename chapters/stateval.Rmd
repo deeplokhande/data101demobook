@@ -12,7 +12,7 @@ This is where you need statistical tests for use in hypothesis testing.
 
 ---
 
-#### Some Basics First:
+#### Two Important Formula's:
 
 - _Mean_
 \begin{equation}
@@ -286,4 +286,177 @@ Hence, we reject the NULL Hypothesis and conclude with high degree of certainty 
 
 ---
 
-## *Multiple Hypothesis - Bonferroni Correction.
+## Multiple Hypothesis - Bonferroni Correction. {#bonferroni}
+
+```{r ,include=FALSE}
+tutorial::go_interactive(greedy=TRUE,height=700)
+knitr::opts_chunk$set(echo = TRUE,error=TRUE)
+```
+
+<script src="files/js/dcl.js"></script>
+
+While dealing with the dataset with several number of dimensions, it is possible to get a lot of amazing and interesting insights and conclusions from it.
+
+But, unfortunately, sometimes a lot of the data included in case of such large dataset, might be junk.
+
+We can make multiple assumptions from such data. But, while doing so, we may consider some useless data/patterns that might hamper our results and lead to the pitfall of believing in hypotheses, that are not actually true.
+
+This is common when performing multiple hypothesis testing.
+
+Multiple hypothesis testing refers to any instance that involves the simultaneous testing of more than one hypothesis.
+
+Let’s consider the example of Traffic dataset.
+
+- We have given two tunnels ”Holland” and “Lincoln”, but what if we were given all the tunnels in the US? 
+- We can make a lot of hypotheses in that case. 
+- And for each set of hypothesis, would you still consider the value of α as 0.05 as the cut-off for P-value? 
+
+It may seem to be a good idea to just go and check the p-value for any set of hypotheses with the cut-off value of $\alpha$ as 0.05. 
+
+But this might not give you the correct answer always. 
+
+If you have 100 different hypotheses to consider in the data, then the probability of getting at least one significant result with $\alpha = 0.05$ will be,
+$$P(\text{at least one significant result}) = 1- (1-0.05)^{100} ≈ 0.99$$
+
+This means that if we consider 0.05 as our cut-off value, then the probability of getting at least one significant result will be about 99%, which leads to overfitting of data and it clearly doesn’t give us proper idea about our hypothesis. 
+
+Methods for dealing with multiple testing frequently call for adjusting $\alpha$ in some way, so that the probability of observing at least one significant result due to chance remains below your desired significance level.
+
+One such method for adjusting $\alpha$ is *BONFERRONI CORRECTION!*
+
+The Bonferroni correction sets the significance cut-off at $\alpha / N$ where N is the number of possible hypotheses. 
+
+For example, in the example above, with 100 tests and $\alpha = 0.05$, you’d only reject a null hypothesis if the p-value is less than $\alpha/N = 0.05/100 = 0.0005$
+
+Thus, the value of $\alpha$ after Bonferroni correction would be $0.0005$.
+
+Again, let’s calculate the probability of observing at least one significant result when using the correction just described:
+
+$$P(\text{at least one significant result}) = 1 − P(\text{no significant results}) \\
+= 1 − (1 − 0.0005)^{100} ≈ 0.048$$
+
+This gives us 4.8% probability of getting at least one significant result. 
+
+As we can see this value of probability using Bonferroni correction is much better than the 99% which we saw before when  we did not use correction for performing multiple hypothesis testing.
+
+But there are some downfall of using Bonferroni correction too. (Although for the scope of this course Bonferroni Correction works fine.)
+
+  - The Bonferroni correction tends to be a bit too conservative. 
+  - Also, we benefit here from assuming that all tests are independent of each other. In practical applications, that is often not the case. 
+  - Depending on the correlation structure of the tests, the Bonferroni correction could beextremely conservative, leading to a high rate of false negatives.
+
+---
+
+### Examples for Multiple hypothesis testing.
+
+Let’s consider the Happiness dataset as an example.
+<script src="files/js/dcl.js"></script>
+
+
+```{r,echo=FALSE,error=FALSE,warning=FALSE,tut=FALSE}
+library(kableExtra)
+earningdata<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv") #web load
+temp<-knitr::kable(earningdata[sample(nrow(earningdata),10),], caption = 'Snippet of Happiness Dataset',booktabs=TRUE) 
+kableExtra::scroll_box(temp,width = "100%")
+```
+
+There are 156 unique countries in the dataset. 
+This can be checked using the unique() function – `unique(indiv_happiness$country)`
+
+Since there are 156 distinct countries, we have ${{n}\choose{2}} = {156\choose2}=(156 * 155)/2 = 12090$ different hypotheses. Let’s call this value N. 
+
+Using this N, the P-value cutoff after Bonferroni correction will be, $α = 0.05 / 12090 ≈ 4.13 *10^{-6}$
+
+#### Example 1 
+
+Let’s calculate the P-value for the following hypotheses from the dataset.
+
+- Our hypothesis: People from Canada are happier than people from Iceland.
+- Null hypothesis: There is no difference in happiness levels of people from Canada and people from Iceland.
+
+<script src="files/js/dcl.js"></script>
+
+```{r,tut=TRUE}
+# Load dataset
+happiness <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv", stringsAsFactors = T) #web load
+
+# Two subsets of Canada and Iceland 
+happiness.canada <- subset(happiness$HAPPINESS, happiness$COUNTRY =="Canada")
+happiness.iceland <- subset(happiness$HAPPINESS, happiness$COUNTRY == "Iceland")
+
+# Mean of subsets.
+mean.canada <- mean(happiness.canada)
+mean.iceland <- mean(happiness.iceland)
+
+mean.canada
+mean.iceland
+
+# Length of subsets
+len.canada <- length(happiness.canada)
+len.iceland <- length(happiness.iceland)
+
+# Standard Deviation of Subsets.
+sd.canada <- sd(happiness.canada)
+sd.iceland <- sd(happiness.iceland)
+
+# Calculating Z-score 
+zeta <- (mean.canada - mean.iceland)/ sqrt((sd.canada^2)/len.canada + (sd.iceland^2)/len.iceland)
+zeta
+
+# Calculate p-value from Z-score
+p_value <- pnorm(-zeta)
+p_value
+```
+
+In this case, after applying Bonferroni Correction we get the value of $α = 0.05/12090 ≈ 4.14 * 10^{-06}$
+Here, we get the p-value of 0.25 which is much higher than the value of our α.
+Based on this we fail reject our null hypothesis.
+
+#### Example 2
+<script src="files/js/dcl.js"></script>
+
+Let’s consider the following hypotheses from the dataset.
+
+- Our hypothesis: People from Italy are happier than people from Afghanistan.
+- Null hypothesis: There is no difference in happiness levels of people from Italy and people from Afghanistan.
+
+```{r,tut=TRUE}
+# Load dataset
+happiness <- read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/HAPPINESS2017.csv", stringsAsFactors = T) #web load
+
+# Two subsets of Italy and Afghanistan 
+happiness.italy <- subset(happiness$HAPPINESS, happiness$COUNTRY =="Italy")
+happiness.afghanistan <- subset(happiness$HAPPINESS, happiness$COUNTRY == "Afghanistan")
+
+# Mean of subsets.
+mean.italy <- mean(happiness.italy)
+mean.afghanistan <- mean(happiness.afghanistan)
+
+mean.italy
+mean.afghanistan
+
+# Length of subsets
+len.italy <- length(happiness.italy)
+len.afghanistan <- length(happiness.afghanistan)
+
+# Standard Deviation of Subsets.
+sd.italy <- sd(happiness.italy)
+sd.afghanistan <- sd(happiness.afghanistan)
+
+# Calculating Z-score 
+zeta <- (mean.italy - mean.afghanistan)/ sqrt((sd.italy^2)/len.italy + (sd.afghanistan^2)/len.afghanistan)
+zeta
+
+# Calculate p-value from Z-score
+p_value <- pnorm(-zeta)
+p_value
+```
+In this case, after applying Bonferroni Correction we get the value of $α = 0.05/12090 ≈ 4.14 * 10^{-06}$
+
+Here, we get the p-value of 0.00364 which is lower than the value of default p-value cutoff $α = 0.05$, but this obtained p-value is higher than our Bonferroni correction cutoff.
+
+So, based on the results, we fail to reject our null hypothesis even though the obtained p-value is less than 0.05.
+
+---
+
+**EOC**

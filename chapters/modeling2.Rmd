@@ -51,11 +51,12 @@ A snippet of the Realestate Dataset is given below.
 
 ```{r,echo=FALSE}
 realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/RealEstate.csv") #web load
-knitr::kable(
+temp<-knitr::kable(
   head(realestate, 10), caption = 'Snippet of Real Estate Dataset',
   booktabs = TRUE
 )
-
+library(kableExtra)
+kableExtra::scroll_box(temp,width = "100%")
 ```
 
 Now we can build a simple linear regression model to predict the Price attribute based on the various other attributes present in the dataset, as shown above. 

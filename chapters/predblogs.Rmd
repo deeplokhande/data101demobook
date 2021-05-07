@@ -391,7 +391,7 @@ Now that we have seen the data, feel free to go to the Kaggle site of this predi
 
   - This was another top submission based on accuracy score, with final score above 68%
   - The approach to solving the task was very well implemented, using external resources too.
-    - Atharva tried to analyze the data first. To so this, he used Prof. Imielinski's online platform called [Boundless Analytics](http://www.foreveranalytics.com){target="_blank"}.
+    - Atharva tried to analyze the data first. To do this, he used Prof. Imielinski's online platform called [Boundless Analytics](http://www.foreveranalytics.com){target="_blank"}.
       - This online platform has ability to analyze the data automatically, and create plots which only matter or provide more information about the data.
       - It eliminates the need to perform the data analysis manually.
   - Then, he proceeded by building the model using the rpart() function and control parameters.

@@ -1,6 +1,8 @@
 --- 
 title: "DATA 101 Shortest Textbook"
 subtitle: "How To Accomplish More With Less"
+version: "Early Draft 0.1"
+date: "`r Sys.Date()`"
 author: 
     name: "Tomasz Imielinski"
     email: "timielinski@gmail.com"
@@ -41,13 +43,15 @@ Data 101 is an introductory course for beginners from any field of study, intere
 
 <!-- _Acknowledgment_: We thank the significant contributions of **[Deep Lokhande](deeplokhande.github.io)** towards building this book. -->
 
+**Acknowledgment**: Contribution of *[Deep Lokhande](deeplokhande.github.io)* to this draft is gratefully acknowledged.
+
 This book's pages are created using [Rmarkdown](https://rmarkdown.rstudio.com/) from Rstudio (similar to jupyter notebook) and the book is compiled using ["bookdown"](https://cran.r-project.org/web/packages/bookdown/index.html) package.
 
-The most important aspect of this interactive book are the interactive code chunks for running code, which are powered by a minimal version of Datacamp's learning interface called `Datacamp Light`. For more info visit [Datacamp Light](https://github.com/datacamp/datacamp-light)
+The most important aspect of this interactive book are the interactive code chunks for running code, which are powered by a minimal version of Datacamp's learning interface called "Datacamp Light". For more info visit [Datacamp Light](https://github.com/datacamp/datacamp-light)
 
-- Note1: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
+- **Note1**: This book is undergoing constant updates following along with the course thought in Spring 2021. Topics under progress are marked with a " * ".
 
-- Note2: This book uses Datacamp Light for supporting runnable code chunks. In case the code chunks do not connect to run-time session, please copy the code and run in RStudio. Also, please report if facing this issue to the instructor via [email](mailto:timielinski@gmail.com).
+- **Note2**: This book uses Datacamp Light for supporting runnable code chunks. In case the code chunks do not connect to run-time session, please copy the code and run in RStudio. Also, please report if facing this issue to the instructor via [email](mailto:timielinski@gmail.com).
 
 ---
 

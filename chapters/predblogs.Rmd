@@ -76,45 +76,45 @@ kableExtra::scroll_box(temp,width = "100%")
 
 We can see that there are multiple attributes like *Score, Attendence, Major, etc.* that can be used as predictors, and then there is *Grade* attribute with ideal values for each record of student which will be used while training and then will be predicted on the testing dataset.
 
-Lets look at the snippet of the moody dataset for testing.
+<!-- Lets look at the snippet of the moody dataset for testing. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test-students.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Moody Dataset(TESTING) for Prediction Challenge 1',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test-students.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Moody Dataset(TESTING) for Prediction Challenge 1', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see that the *Grade* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset.
+<!-- We can see that the *Grade* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset. -->
 
-Also, lets look at the submission file for prediction challenge 1.
+<!-- Also, lets look at the submission file for prediction challenge 1. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test-submission-file.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 1',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test-submission-file.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 1', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see there are only 2 columns *Studentid* and *Grade*. *Studentid* column's entries corresponds/are similar to the *Studentid* column of the testing data. Thus we need to just fill the *Grade* column with appropriate grade predicted by our analysis, corresponding to the same *Studentid* values in both test and submission data.
+<!-- We can see there are only 2 columns *Studentid* and *Grade*. *Studentid* column's entries corresponds/are similar to the *Studentid* column of the testing data. Thus we need to just fill the *Grade* column with appropriate grade predicted by our analysis, corresponding to the same *Studentid* values in both test and submission data. -->
 
-Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 1](https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d){target="_blank"}
+<!-- Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 1](https://www.kaggle.com/t/8099c3c8bd5940928d102a6ddda0ee3d){target="_blank"} -->
 
 ---
 
-### Ideal Solution for Challenge 1
+### How the data was generated for Challenge 1
 
-The ideal solution consists of subsetting the dataset based on attributes to find a easier patterns.
+The data consists of creating subset of the dataset based on attributes to include easier patterns.
 
-For the solution, the first subsetting is done on the basis of the *Major* attribute of the Moody Dataset. And following that each subset has its own sub divisions where you can find clear distinct sets with pass/fail grade students.
+For the data, the first subsetting is done on the basis of the *Major* attribute of the Moody Dataset. And following that each subset has its own sub divisions where you can find clear distinct sets with pass/fail grade students.
 
-The ideal answer is based on a tree given by the following conditions:
+The data is based on a tree given by the following conditions:
 
 ``` text
 Tree which is embedded in the data (secret pattern for Moody -challenge1/2)
@@ -175,8 +175,8 @@ We can see this in pictorial representation below based on each subset of Majors
   
 If you want to see a well detailed data analysis of the dataset based on Majors as subset, then please look at *Rohit Manjunath's* submission in the Top Submission section for prediction challenge 1.
   
-- **Ideal Solution using R on the testing dataset**
-  - You can see a simple way to write the solution using the above patterns to predict the grade of students.
+- **How the data was generated using R**
+  - You can see a simple way to write the data using the above patterns.
   
 ```{r,height=700}
 # Load Data
@@ -215,6 +215,8 @@ Thus we can see, using the ideal patterns the students would have expected to sc
 ---
 
 ### Top Submissions for Challenge 1.
+
+Students with accuracy over 60% were considered passed for this prediction challenge.
 
 1. *Jeremy Prasad*     <button class="btn btn-primary" data-toggle="collapse" data-target="#pred11">Jeremy's PPT</button>
 <div id="pred11" class="collapse">    
@@ -258,49 +260,51 @@ To implement this algorithm, students were allowed to use the RPART package \@re
 
 With rpart() doing most work of prediction in this task, the students were also asked to provide validation for their models prediction power/accuracy. This involved use of cross-validation techinques, which for the ease of this course level was provided in a custom function, see \@ref(crossvalidation).
 
-To perform this challenge yourself please visit the kaggle site of this prediction challenge. Link to Kaggle Site: [Prediction Challenge 2](https://www.kaggle.com/t/607a8221c6a647048f88ffa380ad1e4b){target="_blank"}
+<!-- To perform this challenge yourself please visit the kaggle site of this prediction challenge. Link to Kaggle Site: [Prediction Challenge 2](https://www.kaggle.com/t/607a8221c6a647048f88ffa380ad1e4b){target="_blank"} -->
 
 ---
 
-### Ideal Solution to Challenge 2
+### How the data was generated to Challenge 2
 
 As we saw that the prediction task and the datasets in challenge 2 are similar to that of the challenge 1. Thus the data analysis of the challenge 1 would applicable in this case too.
 
-But here we can use the rpart() function of creating the decision tree and predicting on the testing dataset.
+<!-- But here we can use the rpart() function of creating the decision tree and predicting on the testing dataset. -->
 
-- **Ideal solution using R for prediction challenge 2**
+<!-- - **How the data was generated using R for prediction challenge 2** -->
 
-```{r}
-library(rpart)
+<!-- ```{r} -->
+<!-- library(rpart) -->
 
-# Load Data
-dat<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test_answer.csv",stringsAsFactors = T)
+<!-- # Load Data -->
+<!-- dat<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/M2021test_answer.csv",stringsAsFactors = T) -->
 
-# Using  rpart() for prediction
-tree <- rpart(Grade ~ Attendance+Major+Questions+Score+Seniority+Texting, data=dat,method = "class")
+<!-- # Using  rpart() for prediction -->
+<!-- tree <- rpart(Grade ~ Attendance+Major+Questions+Score+Seniority+Texting, data=dat,method = "class") -->
 
-# Predict using the built decision tree.
-pred <- predict(tree, newdata = dat, type = "class")
+<!-- # Predict using the built decision tree. -->
+<!-- pred <- predict(tree, newdata = dat, type = "class") -->
 
-# Confusion matrix for prediction vs actual values.
-table(actual = dat[,8], predicted = pred)
+<!-- # Confusion matrix for prediction vs actual values. -->
+<!-- table(actual = dat[,8], predicted = pred) -->
 
-# Accuracy of the prediction
-mean(pred==dat$Grade)
+<!-- # Accuracy of the prediction -->
+<!-- mean(pred==dat$Grade) -->
 
-# Code to display the tree. Cannot be used in this interactive box.
-# library(rpart.plot)
-# rpart.plot(tree)
-```
-![Tree Predicted above using the rpart function.](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/predblog/pred2.svg)
+<!-- # Code to display the tree. Cannot be used in this interactive box. -->
+<!-- # library(rpart.plot) -->
+<!-- # rpart.plot(tree) -->
+<!-- ``` -->
+<!-- ![Tree Predicted above using the rpart function.](https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/img/predblog/pred2.svg) -->
 
-- As we can see, the prediction accuracy is near 83%, using just the simple rpart model without any control parameters.
-  - Students can use the control parameters for creating decision tree with more accuracy.
-- **Note**, that the decision tree generated using the rpart() function will be different than that of the ideal trees shown in prediction challenge 1.
+<!-- - As we can see, the prediction accuracy is near 83%, using just the simple rpart model without any control parameters. -->
+<!--   - Students can use the control parameters for creating decision tree with more accuracy. -->
+<!-- - **Note**, that the decision tree generated using the rpart() function will be different than that of the ideal trees shown in prediction challenge 1. -->
 
 ---
 
 ### Top Submissions for Challenge 2
+
+Since rpart() is a very powerful function to find patterns with higher accuracy, the passing criteria for this challenge was above 80% accuracy score.
 
 1. Kevin Larkin    <button class="btn btn-primary" data-toggle="collapse" data-target="#pred21">Kevin's PPT</button>
 <div id="pred21" class="collapse">    
@@ -365,44 +369,44 @@ kableExtra::scroll_box(temp,width = "100%")
 
 We can see that there are multiple attributes like *GPA,Major,Graduation_Year,Height,etc.* that can be used as predictors, and then there is *Earnings* attribute with ideal values for each record of student which will be used while training and then will be predicted on the testing dataset.
 
-Lets look at the snippet of the earnings dataset for testing.
+<!-- Lets look at the snippet of the earnings dataset for testing. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/Earnings_Test.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Earnings Dataset(TESTING) for Prediction Challenge 3',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/Earnings_Test.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Earnings Dataset(TESTING) for Prediction Challenge 3', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see that the *Earnings* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset.
+<!-- We can see that the *Earnings* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset. -->
 
-Also, lets look at the submission file for prediction challenge 3.
+<!-- Also, lets look at the submission file for prediction challenge 3. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earning_submission.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 3',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/earning_submission.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 3', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see there are only 2 columns *ID* and *Earnings*. *ID* column's entries corresponds/are similar to the *ID* column of the testing data. Thus we need to just fill the *Earnings* column with appropriate earning value predicted by our analysis.
+<!-- We can see there are only 2 columns *ID* and *Earnings*. *ID* column's entries corresponds/are similar to the *ID* column of the testing data. Thus we need to just fill the *Earnings* column with appropriate earning value predicted by our analysis. -->
 
-Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 3](https://www.kaggle.com/t/951a9ad1d7e9444bb29b0dca65aed1cd){target="_blank"}
+<!-- Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 3](https://www.kaggle.com/t/951a9ad1d7e9444bb29b0dca65aed1cd){target="_blank"} -->
 
 
 ---
 
-### Ideal Solution for Challenge 3
+### How the data was generated for Challenge 3
 
-In this challenge, the Earnings variable was calculated using the attributes like GPA, Connections and Graduation Year in some case.
+In this challenge, the Earnings variable was calculated using the attributes like GPA, Connections and Graduation Year in some cases.
 
-Again, the main attribute on which the problem can be subsetted is the Eduacation attribute.
+The main attribute on which the data is subsetted is the Education attribute.
 
 Then further, there is a predetermined polynomial formula based on the various attributes. 
 
@@ -431,7 +435,7 @@ For more detailed data analysis please view the document attached here. <button 
 <embed src="https://docs.google.com/viewer?url=https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/pred/sarahpred3.pdf&embedded=true" width="100%" height="500px"></embed>
 </div>
 
-- **Ideal solution modeled in R **
+- **How the data was modeled in R **
 
 ```{r,height=800}
 # Load the dataset
@@ -474,6 +478,8 @@ Thus students who took part in this prediction challenge and scored around this 
 
 
 ### Top Submissions for Challenge 3
+
+For this prediction challenge, the MSE score below 30000 was considered a Passing score.
 
 1. Seok Yim     <button class="btn btn-primary" data-toggle="collapse" data-target="#pred31">Seok's PPT</button>
 <div id="pred31" class="collapse">    
@@ -556,39 +562,39 @@ kableExtra::scroll_box(temp,width = "100%")
 
 We can see that there are multiple attributes like *INPUT1,2,3,4 and Switch* that can be used as predictors, and then there is *Sound* attribute with ideal values for each record of the experiment record which will be used while training and then will be predicted on the testing dataset.
 
-Lets look at the snippet of the black box dataset for testing.
+<!-- Lets look at the snippet of the black box dataset for testing. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/BlackBoxTestApril22-students.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Black Box Dataset(TESTING) for Prediction Challenge 4',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/BlackBoxTestApril22-students.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Black Box Dataset(TESTING) for Prediction Challenge 4', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see that the *Sound* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset.
+<!-- We can see that the *Sound* attribute is not present in this dataset, since it is the attribute that will be predicted using our analysis of the training dataset. -->
 
-Also, lets look at the submission file for prediction challenge 4.
+<!-- Also, lets look at the submission file for prediction challenge 4. -->
 
-```{r,echo=FALSE}
-realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/BlackBoxTestApril22-submission.csv") #web load
-temp<-knitr::kable(
-  head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 4',
-  booktabs = TRUE
-)
-library(kableExtra)
-kableExtra::scroll_box(temp,width = "100%")
-```
+<!-- ```{r,echo=FALSE} -->
+<!-- realestate<-read.csv("https://raw.githubusercontent.com/deeplokhande/data101demobook/main/files/dataset/BlackBoxTestApril22-submission.csv") #web load -->
+<!-- temp<-knitr::kable( -->
+<!--   head(realestate, 10), caption = 'Snippet of Submission file for Prediction Challenge 4', -->
+<!--   booktabs = TRUE -->
+<!-- ) -->
+<!-- library(kableExtra) -->
+<!-- kableExtra::scroll_box(temp,width = "100%") -->
+<!-- ``` -->
 
-We can see there are only 2 columns *ID* and *Sound*. *ID* column's entries corresponds/are similar to the *ID* column of the testing data. Thus we need to just fill the *Sound* column with appropriate earning value predicted by our analysis.
+<!-- We can see there are only 2 columns *ID* and *Sound*. *ID* column's entries corresponds/are similar to the *ID* column of the testing data. Thus we need to just fill the *Sound* column with appropriate earning value predicted by our analysis. -->
 
-Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 4](https://www.kaggle.com/t/423f51ea45be4efea1ddb12fee969cfe){target="_blank"}
+<!-- Now that we have seen the data, feel free to go to the Kaggle site of this prediction challenge and take the challenge yourself. The link for challenge: [Prediction Challenge 4](https://www.kaggle.com/t/423f51ea45be4efea1ddb12fee969cfe){target="_blank"} -->
 
 ---
 
-### Ideal solution for Challenge 4
+### How the data was generated for Challenge 4
 
 This challenge was the most involved of the 4 challenges in this blog. 
 
@@ -636,9 +642,9 @@ As we can see, that the 4 Input attributes are used to calculate the OUTPUT valu
 
 After finding the OUTPUT values, then the decision tree like structure can be implemented to assign Sound attribute to corresponding OUTPUT value based on the chart above.
 
-- **Possible Solution for Challenge 4 in R**
+- **How the data was generated for Challenge 4 in R**
 
-**NOTE**: This is not an Ideal solution for Challenge 4, since most of the data was stochastically generated.
+NOTE: The data was stochastically generated.
 
 ```text
 
@@ -669,6 +675,8 @@ mean(dat$SOUND==dat$predSound)
 ---
 
 ### Top Submissions for Challenge 4
+
+Since this challenge involved stochastically generated data, the prediction accuracy required for passing this challenge was above 60%.
 
 1. Nicole Coria     <button class="btn btn-primary" data-toggle="collapse" data-target="#pred41">Nicole's PPT</button>
 <div id="pred41" class="collapse">    

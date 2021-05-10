@@ -644,8 +644,6 @@ After finding the OUTPUT values, then the decision tree like structure can be im
 
 - **How the data was generated for Challenge 4 in R**
 
-NOTE: The data was stochastically generated.
-
 ```text
 
 # Load The Data

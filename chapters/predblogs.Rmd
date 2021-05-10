@@ -110,9 +110,9 @@ We can see that there are multiple attributes like *Score, Attendence, Major, et
 
 ### How the data was generated for Challenge 1
 
-The data consists of creating subset of the dataset based on attributes to include easier patterns.
+Professor Moody data set has been synthetically generated using random generator which follows probabilistic rules implementing "secret patterns" which we embedded in the data. 
 
-For the data, the first subsetting is done on the basis of the *Major* attribute of the Moody Dataset. And following that each subset has its own sub divisions where you can find clear distinct sets with pass/fail grade students.
+These patterns  are presented below in the form of decision tree.   For example a rule that statistics major with score over 60, pass the class - reflects the generated data in which high percentage (but not 100%) of such students indeed pass Moody's class. There will always be random exceptions to these rules.  But majority of stat students with score above 60 will pass the class
 
 The data is based on a tree given by the following conditions:
 

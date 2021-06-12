@@ -269,8 +269,7 @@ We will look at few algorithms from the above list:
 
 - Random Forest
 - Support Vector Machine (SVM)
-- Neural Metworks
-- and also Linear Discriminant Analysis (LDA)
+- Neural Networks
 
 ---
 
